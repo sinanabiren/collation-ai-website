@@ -24,8 +24,8 @@ export default function DashboardClient({ user }: DashboardClientProps) {
   if (user.trialActive) {
     return (
       <div className="min-h-screen">
-        {/* Trial Banner */}
-        <div className="absolute top-4 right-4 z-50">
+        {/* Trial Banner - Centered at top to avoid blocking workspace buttons */}
+        <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-50">
           <div className="bg-white/95 backdrop-blur-sm rounded-full shadow-lg px-4 py-2 flex items-center gap-3">
             <div className="flex items-center gap-2">
               <span className="text-sm font-medium text-gray-700">

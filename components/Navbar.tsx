@@ -51,16 +51,19 @@ const Navbar = () => {
             <Link href="/about" className="text-foreground hover:text-primary transition-colors">
               About Us
             </Link>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button variant="light" asChild>
-                <Link href="/login">Login</Link>
-              </Button>
-            </motion.div>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button asChild>
-                <Link href="/signup">Start your Trial</Link>
-              </Button>
-            </motion.div>
+            {/* Auth buttons grouped together with tighter spacing */}
+            <div className="flex items-center gap-2">
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button className="bg-blue-400 hover:bg-blue-500 text-white" asChild>
+                  <Link href="/login">Login</Link>
+                </Button>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button asChild>
+                  <Link href="/signup">Start your Trial</Link>
+                </Button>
+              </motion.div>
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
@@ -120,7 +123,7 @@ const Navbar = () => {
                 >
                   About Us
                 </Link>
-                <Button variant="light" className="w-full" asChild onClick={() => setIsMenuOpen(false)}>
+                <Button className="w-full bg-blue-400 hover:bg-blue-500 text-white" asChild onClick={() => setIsMenuOpen(false)}>
                   <Link href="/login">Login</Link>
                 </Button>
                 <Button className="w-full" asChild onClick={() => setIsMenuOpen(false)}>

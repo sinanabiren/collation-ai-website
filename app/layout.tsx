@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import Chatbot from '@/components/Chatbot'
 import SessionProvider from '@/components/SessionProvider'
 // import { Toaster } from '@/components/ui/toaster'
 
@@ -93,7 +92,6 @@ export default function RootLayout({
       <body>
         <SessionProvider>
           {children}
-          <Chatbot />
           {/* <Toaster /> */}
         </SessionProvider>
       </body>

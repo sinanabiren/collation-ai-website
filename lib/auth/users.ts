@@ -35,7 +35,7 @@ export async function createUser(email: string, password: string, name: string):
 
   // Check if user exists
   const existingUser = await query(
-    'SELECT id FROM users WHERE email = $1',
+    'SELECT id FROM auth_users WHERE email = $1',
     [email]
   );
 
@@ -51,7 +51,7 @@ export async function createUser(email: string, password: string, name: string):
   const trialEndsAt = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000);
 
   const result = await query(
-    `INSERT INTO users (email, password, name, trial_ends_at, is_active)
+    `INSERT INTO auth_users (email, password, name, trial_ends_at, is_active)
      VALUES ($1, $2, $3, $4, $5)
      RETURNING id, email, name, created_at, trial_ends_at, is_active`,
     [email, hashedPassword, name, trialEndsAt, true]
@@ -75,7 +75,7 @@ export async function verifyUser(email: string, password: string): Promise<User 
   await ensureTable();
 
   const result = await query(
-    'SELECT id, email, password, name, created_at, trial_ends_at, is_active FROM users WHERE email = $1',
+    'SELECT id, email, password, name, created_at, trial_ends_at, is_active FROM auth_users WHERE email = $1',
     [email]
   );
 
@@ -106,7 +106,7 @@ export async function getUserByEmail(email: string): Promise<User | null> {
   await ensureTable();
 
   const result = await query(
-    'SELECT id, email, password, name, created_at, trial_ends_at, is_active FROM users WHERE email = $1',
+    'SELECT id, email, password, name, created_at, trial_ends_at, is_active FROM auth_users WHERE email = $1',
     [email]
   );
 
@@ -132,7 +132,7 @@ export async function getUserById(id: string): Promise<User | null> {
   await ensureTable();
 
   const result = await query(
-    'SELECT id, email, password, name, created_at, trial_ends_at, is_active FROM users WHERE id = $1',
+    'SELECT id, email, password, name, created_at, trial_ends_at, is_active FROM auth_users WHERE id = $1',
     [id]
   );
 
@@ -183,7 +183,7 @@ export async function updateUser(id: string, updates: Partial<User>): Promise<Us
   values.push(id);
 
   const result = await query(
-    `UPDATE users SET ${fields.join(', ')} WHERE id = $${paramIndex}
+    `UPDATE auth_users SET ${fields.join(', ')} WHERE id = $${paramIndex}
      RETURNING id, email, password, name, created_at, trial_ends_at, is_active`,
     values
   );

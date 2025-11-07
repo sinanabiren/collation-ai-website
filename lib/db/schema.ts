@@ -19,8 +19,34 @@ export interface DataSample {
 /**
  * Get database schema for a specific customer
  * This returns table structures so the LLM knows what data is available
+ * Filters tables by user's table prefix and optionally by selected table names
  */
-export async function getCustomerSchema(customerId: string): Promise<TableInfo[]> {
+export async function getCustomerSchema(customerId: string, selectedTables?: string[]): Promise<TableInfo[]> {
+  // First, check if this user has a table prefix
+  let userPrefix = ''; // no prefix = show all tables
+  try {
+    const userResult = await query<{ user_prefix: string }>(`
+      SELECT user_prefix FROM auth_users WHERE id = $1
+    `, [customerId]);
+
+    if (userResult.rows.length > 0 && userResult.rows[0].user_prefix) {
+      userPrefix = userResult.rows[0].user_prefix;
+    }
+  } catch (error) {
+    console.log('Could not fetch user prefix, showing all tables:', error);
+  }
+
+  // Build table name filter
+  let tableNameFilter = '';
+  if (selectedTables && selectedTables.length > 0) {
+    // If selectedTables is provided, only fetch those specific tables
+    const escapedTableNames = selectedTables.map(t => `'${t.replace(/'/g, "''")}'`).join(',');
+    tableNameFilter = `AND c.table_name IN (${escapedTableNames})`;
+  } else if (userPrefix) {
+    // Otherwise, use prefix filter if available
+    tableNameFilter = `AND c.table_name LIKE '${userPrefix}%'`;
+  }
+
   const schemaQuery = `
     SELECT
       c.table_name,
@@ -29,9 +55,11 @@ export async function getCustomerSchema(customerId: string): Promise<TableInfo[]
       c.is_nullable
     FROM information_schema.columns c
     INNER JOIN information_schema.tables t
-      ON c.table_name = t.table_name
+      ON c.table_name = t.table_name AND c.table_schema = t.table_schema
     WHERE t.table_schema = 'public'
       AND t.table_type = 'BASE TABLE'
+      AND c.table_name NOT IN ('auth_users')
+      ${tableNameFilter}
     ORDER BY c.table_name, c.ordinal_position;
   `;
 
@@ -65,14 +93,15 @@ export async function getCustomerSchema(customerId: string): Promise<TableInfo[]
 /**
  * Get sample data from each table (first 5 rows)
  * This gives the LLM context about actual data format and values
+ * Optionally filters by selected table names
  */
-export async function getSampleData(customerId: string): Promise<DataSample[]> {
-  const tables = await getCustomerSchema(customerId);
+export async function getSampleData(customerId: string, selectedTables?: string[]): Promise<DataSample[]> {
+  const tables = await getCustomerSchema(customerId, selectedTables);
   const samples: DataSample[] = [];
 
   for (const table of tables) {
     try {
-      const sampleQuery = `SELECT * FROM ${table.table_name} LIMIT 5`;
+      const sampleQuery = `SELECT * FROM "${table.table_name}" LIMIT 5`;
       const result = await query(sampleQuery);
       samples.push({
         table_name: table.table_name,
@@ -107,12 +136,14 @@ export function generateSchemaDescription(
       }\n`;
     }
 
-    // Add sample data
+    // Add sample data (limit to first 2 rows and use compact JSON)
     const sample = samples.find(s => s.table_name === table.table_name);
     if (sample && sample.sample_data.length > 0) {
       description += '\nSample data:\n';
       description += '```json\n';
-      description += JSON.stringify(sample.sample_data, null, 2);
+      // Only include first 2 rows and use compact JSON (no indentation)
+      const limitedSamples = sample.sample_data.slice(0, 2);
+      description += JSON.stringify(limitedSamples);
       description += '\n```\n';
     }
     description += '\n';
