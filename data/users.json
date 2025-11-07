@@ -1,0 +1,12 @@
+[
+  {
+    "id": "bcd01caa-8c4b-472e-8b40-6e1ebb19ead3",
+    "email": "sinanbiren@gmail.com",
+    "password": "$2b$10$6dEntINUAGe1zyL4lyYe8e7o9zXDkw4gQhThRM5IGngTpp1dHz/5y",
+    "name": "sinan biren",
+    "createdAt": "2025-11-07T13:04:09.010Z",
+    "trialEndsAt": "2025-11-14T13:04:09.010Z",
+    "isActive": true,
+    "databaseConnections": []
+  }
+]

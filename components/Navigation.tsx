@@ -2,9 +2,11 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
+import DemoModal from './DemoModal'
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
+  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false)
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200">
@@ -17,21 +19,24 @@ export default function Navigation() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link href="/#features" className="text-gray-700 hover:text-primary transition-colors">
-              Features
+            <Link href="/" className="text-gray-700 hover:text-primary transition-colors font-medium">
+              Home
             </Link>
-            <Link href="/#solutions" className="text-gray-700 hover:text-primary transition-colors">
-              Solutions
+            <Link href="/security" className="text-gray-700 hover:text-primary transition-colors font-medium">
+              Security
             </Link>
-            <Link href="/blog" className="text-gray-700 hover:text-primary transition-colors">
-              Blog
+            <Link href="/case-studies" className="text-gray-700 hover:text-primary transition-colors font-medium">
+              Case Studies
             </Link>
-            <Link href="/#about" className="text-gray-700 hover:text-primary transition-colors">
-              About
+            <Link href="/blogs" className="text-gray-700 hover:text-primary transition-colors font-medium">
+              Blogs
             </Link>
-            <Link href="/#contact" className="btn-primary">
-              Get Started
+            <Link href="/about-us" className="text-gray-700 hover:text-primary transition-colors font-medium">
+              About Us
             </Link>
+            <button onClick={() => setIsDemoModalOpen(true)} className="btn-primary text-sm px-6 py-2.5">
+              Request a Demo
+            </button>
           </div>
 
           {/* Mobile menu button */}
@@ -63,44 +68,54 @@ export default function Navigation() {
           <div className="md:hidden py-4 border-t border-gray-200">
             <div className="flex flex-col space-y-4">
               <Link
-                href="/#features"
-                className="text-gray-700 hover:text-primary transition-colors"
+                href="/"
+                className="text-gray-700 hover:text-primary transition-colors font-medium"
                 onClick={() => setIsOpen(false)}
               >
-                Features
+                Home
               </Link>
               <Link
-                href="/#solutions"
-                className="text-gray-700 hover:text-primary transition-colors"
+                href="/security"
+                className="text-gray-700 hover:text-primary transition-colors font-medium"
                 onClick={() => setIsOpen(false)}
               >
-                Solutions
+                Security
               </Link>
               <Link
-                href="/blog"
-                className="text-gray-700 hover:text-primary transition-colors"
+                href="/case-studies"
+                className="text-gray-700 hover:text-primary transition-colors font-medium"
                 onClick={() => setIsOpen(false)}
               >
-                Blog
+                Case Studies
               </Link>
               <Link
-                href="/#about"
-                className="text-gray-700 hover:text-primary transition-colors"
+                href="/blogs"
+                className="text-gray-700 hover:text-primary transition-colors font-medium"
                 onClick={() => setIsOpen(false)}
               >
-                About
+                Blogs
               </Link>
               <Link
-                href="/#contact"
+                href="/about-us"
+                className="text-gray-700 hover:text-primary transition-colors font-medium"
+                onClick={() => setIsOpen(false)}
+              >
+                About Us
+              </Link>
+              <button
+                onClick={() => {
+                  setIsOpen(false)
+                  setIsDemoModalOpen(true)
+                }}
                 className="btn-primary text-center"
-                onClick={() => setIsOpen(false)}
               >
-                Get Started
-              </Link>
+                Request a Demo
+              </button>
             </div>
           </div>
         )}
       </div>
+      <DemoModal isOpen={isDemoModalOpen} onClose={() => setIsDemoModalOpen(false)} />
     </nav>
   )
 }

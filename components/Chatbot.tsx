@@ -78,6 +78,60 @@ export default function Chatbot() {
     }
   }
 
+  // Format message content for better readability
+  const formatMessage = (content: string) => {
+    // Split by double line breaks for paragraphs
+    const paragraphs = content.split('\n\n')
+
+    // Helper to format text with bold
+    const formatText = (text: string) => {
+      const parts = text.split(/(\*\*[^*]+\*\*)/g)
+      return parts.map((part, i) => {
+        if (part.startsWith('**') && part.endsWith('**')) {
+          return <strong key={i} className="font-semibold">{part.slice(2, -2)}</strong>
+        }
+        return part
+      })
+    }
+
+    return paragraphs.map((para, idx) => {
+      // Check if it's a list item
+      if (para.trim().startsWith('-') || para.trim().startsWith('•') || para.trim().startsWith('*')) {
+        const items = para.split('\n').filter(line => line.trim())
+        return (
+          <ul key={idx} className="list-disc list-inside space-y-1.5 my-3 ml-2">
+            {items.map((item, i) => (
+              <li key={i} className="leading-relaxed pl-1">
+                {formatText(item.replace(/^[-•*]\s*/, ''))}
+              </li>
+            ))}
+          </ul>
+        )
+      }
+
+      // Check if it's a numbered list
+      if (/^\d+\./.test(para.trim())) {
+        const items = para.split('\n').filter(line => line.trim())
+        return (
+          <ol key={idx} className="list-decimal list-inside space-y-1.5 my-3 ml-2">
+            {items.map((item, i) => (
+              <li key={i} className="leading-relaxed pl-1">
+                {formatText(item.replace(/^\d+\.\s*/, ''))}
+              </li>
+            ))}
+          </ol>
+        )
+      }
+
+      // Regular paragraph
+      return (
+        <p key={idx} className="leading-relaxed my-2.5">
+          {formatText(para)}
+        </p>
+      )
+    })
+  }
+
   return (
     <>
       {/* Chat Button */}
@@ -106,7 +160,7 @@ export default function Chatbot() {
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-6 right-6 z-50 w-96 h-[600px] bg-white rounded-xl shadow-2xl flex flex-col overflow-hidden border border-gray-200">
+        <div className="fixed bottom-6 right-6 z-50 w-[480px] h-[700px] bg-white rounded-xl shadow-2xl flex flex-col overflow-hidden border border-gray-200">
           {/* Header */}
           <div className="bg-primary text-white p-4 flex items-center justify-between">
             <div className="flex items-center gap-3">
@@ -161,13 +215,19 @@ export default function Chatbot() {
                 }`}
               >
                 <div
-                  className={`max-w-[80%] rounded-lg p-3 ${
+                  className={`max-w-[85%] rounded-lg px-4 py-3 ${
                     message.role === 'user'
                       ? 'bg-primary text-white'
-                      : 'bg-white text-gray-900 border border-gray-200'
+                      : 'bg-white text-gray-900 border border-gray-200 shadow-sm'
                   }`}
                 >
-                  <p className="text-sm whitespace-pre-wrap">{message.content}</p>
+                  {message.role === 'user' ? (
+                    <p className="text-sm leading-relaxed">{message.content}</p>
+                  ) : (
+                    <div className="text-sm space-y-2">
+                      {formatMessage(message.content)}
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
