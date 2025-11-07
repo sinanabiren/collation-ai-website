@@ -1,6 +1,26 @@
-# Allow all crawlers
+# Allow all major search engines and AI crawlers
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: Slurp
+User-agent: DuckDuckBot
+User-agent: Baiduspider
+User-agent: YandexBot
+User-agent: Sogou
+User-agent: Exabot
+User-agent: facebot
+User-agent: ia_archiver
+User-agent: GPTBot
+User-agent: ChatGPT-User
+User-agent: CCBot
+User-agent: anthropic-ai
+User-agent: Claude-Web
+User-agent: PerplexityBot
+User-agent: Applebot
 User-agent: *
 Allow: /
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
 
 # Sitemap location
 Sitemap: https://www.collation.ai/sitemap.xml

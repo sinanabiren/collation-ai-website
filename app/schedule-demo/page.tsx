@@ -1,10 +1,10 @@
-'use client'
+"use client";
 
 import { ArrowLeft } from "lucide-react";
-import Link from "next/link";
+import { Link } from "next/link";
 import { useEffect } from "react";
 
-export default function ScheduleDemoPage() {
+const ScheduleDemo = () => {
   useEffect(() => {
     // Load Calendly script
     const script = document.createElement('script');
@@ -25,7 +25,8 @@ export default function ScheduleDemoPage() {
     <div className="min-h-screen bg-gradient-to-br from-background to-secondary/20">
       <div className="container mx-auto px-6 py-8">
         {/* Back to Home */}
-        <Link href="/" 
+        <Link 
+          to="/" 
           className="inline-flex items-center text-muted-foreground hover:text-foreground transition-colors mb-8"
         >
           <ArrowLeft className="w-4 h-4 mr-2" />
@@ -70,3 +71,4 @@ export default function ScheduleDemoPage() {
   );
 };
 
+export default ScheduleDemo;

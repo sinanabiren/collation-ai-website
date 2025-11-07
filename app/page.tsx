@@ -1,990 +1,1081 @@
-'use client'
+"use client";
 
-import Navigation from '@/components/Navigation'
-import Footer from '@/components/Footer'
-import DemoModal from '@/components/DemoModal'
-import Link from 'next/link'
-import { useState } from 'react'
+import { useState } from "react";
+import { Link } from "next/link";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Checkbox } from "@/components/ui/checkbox";
+import { InlineWidget } from "react-calendly";
+import { Play } from "lucide-react";
+import { ArrowRight, Bot, Database, Workflow, Calculator, MessageSquare } from "lucide-react";
+import HowItWorksIcon from "@/components/HowItWorksIcon";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import SEOHead from "@/components/SEOHead";
+import LottieAnimation from "@/components/LottieAnimation";
+import { blogPosts } from "@/data/blogPosts";
+import { motion } from "framer-motion";
+import { useCounterAnimation } from "@/hooks/use-counter-animation";
+import VibeCodingShowcase from "@/components/VibeCodingShowcase";
 
-export default function Home() {
-  const [activeTestimonial, setActiveTestimonial] = useState(0)
-  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false)
-
-  const testimonials = [
-    {
-      quote: "We were struggling badly with our manual workflows until we brought in Collation.AI. They have automated all of our data audit workflows across our Portfolio Management Software, CRM System, Alternative Investments Data Handling Vendor.",
-      company: "A RIA in California - USA",
-      role: "CTO"
-    },
-    {
-      quote: "We hired Collation.AI to systemically pull down our data from our General Ledger System and house it in our own centralized data warehouse where we have Full Admin access at All Times! We love it",
-      company: "A Single Family Office in Chicago - USA",
-      role: "Controller"
-    }
-  ]
+const Home = () => {
+  const [showVideo, setShowVideo] = useState(false);
 
   return (
-    <>
-      <Navigation />
+    <div className="min-h-screen bg-gradient-to-b from-background to-secondary overflow-hidden">
+      <SEOHead />
+      <Navbar />
 
-      <main className="pt-16">
-        {/* Hero Section */}
-        <section className="bg-gradient-to-br from-blue-50 to-white py-20 md:py-32 relative overflow-hidden">
-          <div className="container-custom">
-            <div className="max-w-5xl mx-auto text-center">
-              <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight animate-fade-in">
-                We Solve Data Headaches{' '}
-                <br />
-                <span className="text-primary">For Wealth Managers</span>
-              </h1>
-              <p className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed max-w-4xl mx-auto">
-                We reduce operational costs, improve workflow efficiencies by Aggregating Financial Data via AI-driven Bots from
-                your "existing technology stack", and bring it into your "Data Warehouse Silo"
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/signup" className="btn-primary inline-block">
-                  Start Free Trial
-                </Link>
-                <button onClick={() => setIsDemoModalOpen(true)} className="btn-secondary">
-                  Request a Demo
-                </button>
-              </div>
-            </div>
+      {/* Hero Section */}
+      <section className="pt-32 pb-20 px-4">
+        <div className="container mx-auto text-center">
+          <motion.h1 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6 leading-tight"
+          >
+            We Solve Data Headaches<br />For Wealth Managers
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto mb-12 leading-relaxed"
+          >
+            We reduce operational costs, improve workflow efficiencies by Aggregating Financial Data via AI Bots from your 'existing technology stack', and bring it into your 'fully accessible' centralized Data Warehouse.
+          </motion.p>
 
-            {/* Hero Illustrations */}
-            <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              <div className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
-                <div className="text-sm text-gray-500 mb-4">Data Aggregation</div>
-                <div className="space-y-2">
-                  <div className="h-8 bg-gray-100 rounded animate-pulse"></div>
-                  <div className="h-8 bg-gray-100 rounded animate-pulse delay-100"></div>
-                  <div className="h-8 bg-gray-100 rounded animate-pulse delay-200"></div>
-                </div>
+          {/* Hero Illustration with Arrow */}
+          <div className="relative mt-16 mb-12">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
+            >
+              {/* Desktop Animation */}
+              <div className="hidden lg:block max-w-7xl mx-auto">
+                <LottieAnimation animationImport={() => import("@/assets/animations/hero-desktop.json")} className="w-full h-auto" />
               </div>
+              {/* Tablet & Mobile Animation */}
+              <div className="lg:hidden max-w-5xl mx-auto">
+                <LottieAnimation animationImport={() => import("@/assets/animations/hero-tablet-mobile.json")} className="w-full h-auto" />
+              </div>
+            </motion.div>
 
-              <div className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
-                <div className="text-sm text-gray-500 mb-4">Data Reconciliation</div>
-                <div className="flex items-center justify-center h-32">
-                  <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center">
-                    <svg className="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
-                <div className="text-sm text-gray-500 mb-4">Workflow Automation</div>
-                <div className="flex items-center justify-center h-32">
-                  <div className="relative">
-                    <div className="w-16 h-16 bg-primary rounded-lg animate-bounce"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {/* Arrow pointing to Vibe Coding - curved arrow stopping before box */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 1.4 }}
+              className="absolute -bottom-32 right-[28%] lg:right-[30%] hidden md:block pointer-events-none z-10"
+            >
+              <svg width="80" height="130" viewBox="0 0 80 130" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-primary/70">
+                <defs>
+                  <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                    <polygon points="0 0, 8 4, 0 8" fill="currentColor" />
+                  </marker>
+                </defs>
+                <motion.path
+                  d="M 40 0 L 40 70 Q 40 90, 20 90 L 6 90" 
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  fill="none"
+                  markerEnd="url(#arrowhead)"
+                  initial={{ pathLength: 0 }}
+                  animate={{ pathLength: 1 }}
+                  transition={{ duration: 1.5, delay: 1.6, ease: "easeInOut" }}
+                />
+              </svg>
+            </motion.div>
           </div>
-        </section>
 
-        {/* Proudly Featured On */}
-        <section className="py-16 bg-white">
-          <div className="container-custom">
-            <h2 className="text-center text-2xl font-semibold text-gray-900 mb-12">Proudly featured on</h2>
-            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 opacity-60">
-              <div className="text-gray-400 font-semibold">THE WEALTH MOSAIC</div>
-              <div className="text-gray-400 font-bold text-2xl">CITYWIRE</div>
-              <div className="text-gray-400 font-bold text-2xl">Forbes</div>
-              <div className="text-gray-400 font-bold text-xl">RIABiz</div>
-              <div className="text-gray-400 font-semibold">WealthBriefing</div>
-              <div className="text-gray-400 font-bold text-xl">KITCES</div>
-              <div className="text-gray-400 font-semibold">CFDTechHub</div>
+          {/* Vibe-Coding Showcase */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1 }}
+            className="mb-32 max-w-5xl mx-auto"
+          >
+            <VibeCodingShowcase />
+          </motion.div>
+
+          {/* Proudly Featured Section */}
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 1.2 }}
+            className="mt-0"
+          >
+            <h3 className="text-xl font-semibold text-foreground mb-8 text-center">Proudly featured on</h3>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-4 max-w-7xl mx-auto">
+              {[
+                { src: theWealthMosaic, alt: "The Wealth Mosaic" },
+                { src: citywire, alt: "CityWire" },
+                { src: forbes, alt: "Forbes" },
+                { src: riabiz, alt: "RIABiz" },
+                { src: wealthbriefing, alt: "WealthBriefing" },
+                { src: kitces, alt: "Kitces" },
+                { src: fotechhub, alt: "FOTech Hub" }
+              ].map((logo, i) => (
+                <motion.div 
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.2 + i * 0.05, duration: 0.4 }}
+                  className="bg-card rounded-xl border border-border/50 p-6 flex items-center justify-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                >
+                  <img 
+                    src={logo.src} 
+                    alt={logo.alt}
+                    className="w-full h-12 object-contain grayscale opacity-60 hover:opacity-80 transition-opacity duration-300"
+                    loading="lazy"
+                  />
+                </motion.div>
+              ))}
             </div>
-          </div>
-        </section>
+          </motion.div>
+        </div>
+      </section>
 
-        {/* Challenges Section */}
-        <section id="challenges" className="py-20 bg-light">
-          <div className="container-custom">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-                Challenges You're Facing
-              </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Breaking Through Data Barriers That Hold Your Business Back
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-              {/* Challenge 1 */}
-              <div className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 group">
-                <div className="mb-6">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="space-y-2 mb-6">
-                    <div className="flex items-center gap-2">
-                      <div className="w-16 h-16 bg-white border-2 border-gray-200 rounded-lg flex items-center justify-center text-xs font-semibold">carta</div>
-                      <div className="w-2 h-px bg-gray-300"></div>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <div className="w-16 h-16 bg-white border-2 border-gray-200 rounded-lg flex items-center justify-center text-xs font-semibold text-green-600">Sage</div>
-                      <div className="w-16 h-16 bg-white border-2 border-gray-200 rounded-lg flex items-center justify-center">
-                        <svg className="w-8 h-8 text-blue-500" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <div className="w-16 h-16 bg-white border-2 border-gray-200 rounded-lg flex items-center justify-center text-xs font-semibold">ADDEPAR</div>
-                      <div className="w-16 h-16 bg-white border-2 border-gray-200 rounded-lg flex items-center justify-center text-xs font-semibold">Fidelity</div>
-                    </div>
-                  </div>
-                </div>
-                <h3 className="text-2xl font-bold mb-3">Disconnected Data</h3>
-                <p className="text-gray-600 mb-4">
-                  Data is fragmented across systems.
-                </p>
-                <p className="text-gray-600">
-                  Registered Investment Advisor operations teams waste <strong>3 hours</strong> per day to aggregate data.
-                </p>
-              </div>
-
-              {/* Challenge 2 */}
-              <div className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 group">
-                <div className="mb-6 relative">
-                  <div className="absolute top-0 right-0">
-                    <div className="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                      Your manual efforts
-                    </div>
-                  </div>
-                  <div className="mt-12 space-y-3">
-                    <div className="flex items-center gap-2 text-sm">
-                      <svg className="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/><path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3z" clipRule="evenodd"/></svg>
-                      <span>Download</span>
-                      <span className="ml-auto text-gray-400">2/3 hrs</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-sm">
-                      <svg className="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20"><path d="M7 9a2 2 0 012-2h6a2 2 0 012 2v6a2 2 0 01-2 2H9a2 2 0 01-2-2V9z"/><path d="M5 3a2 2 0 00-2 2v6a2 2 0 002 2V5h8a2 2 0 00-2-2H5z"/></svg>
-                      <span>Copy</span>
-                      <span className="ml-auto text-gray-400">3/4 hrs</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-sm">
-                      <svg className="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20"><path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"/><path fillRule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clipRule="evenodd"/></svg>
-                      <span>Check & Fix</span>
-                      <span className="ml-auto text-gray-400">1/2 hrs</span>
-                    </div>
-                  </div>
-                </div>
-                <h3 className="text-2xl font-bold mb-3">Manual Data Management</h3>
-                <p className="text-gray-600">
-                  Downloading, copying, checking & fixing across systems manually causes on average <strong>2 weeks</strong> of delays for preparing reports.
-                </p>
-              </div>
-
-              {/* Challenge 3 */}
-              <div className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 group">
-                <div className="mb-6">
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                      <span className="text-sm">Cleaned files</span>
-                      <span className="text-sm text-gray-500">-$27</span>
-                    </div>
-                    <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                      <span className="text-sm">Edits files</span>
-                      <span className="text-sm text-gray-500">-$57</span>
-                    </div>
-                    <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                      <span className="text-sm">Copied files</span>
-                      <span className="text-sm text-gray-500">-$72</span>
-                    </div>
-                    <div className="p-4 bg-red-50 border-2 border-red-200 rounded-xl">
-                      <div className="flex items-center gap-2 text-red-600 font-semibold">
-                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd"/></svg>
-                        <span>Crossed yearly limit</span>
-                      </div>
-                      <div className="text-2xl font-bold mt-2">+ $ 8,000</div>
-                    </div>
-                  </div>
-                </div>
-                <h3 className="text-2xl font-bold mb-3">Repetitive Data Work</h3>
-                <p className="text-gray-600">
-                  Manual data entry and processing can take upto <strong>15 hours</strong> per week for an External Asset Manager.
-                </p>
-              </div>
-            </div>
-
-            {/* Additional Challenges */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {/* Poor Data Analytics */}
-              <div className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300">
-                <div className="mb-6">
-                  <div className="bg-gray-50 p-6 rounded-xl relative">
-                    <div className="absolute top-4 right-4">
-                      <div className="bg-red-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
-                        Poor Data Analytics
-                      </div>
-                    </div>
-                    <div className="mt-8">
-                      <svg className="w-full h-24 text-red-500" viewBox="0 0 200 100">
-                        <polyline fill="none" stroke="currentColor" strokeWidth="2" points="0,80 20,60 40,70 60,40 80,50 100,30 120,45 140,25 160,40 180,20 200,35"/>
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-                <h3 className="text-2xl font-bold mb-3">Poor Data Analytics</h3>
-                <p className="text-gray-600 mb-4">
-                  FOs experiment with an 'overpriced' performance reporting software and/or excel spread sheets.
-                </p>
-                <p className="text-gray-600">
-                  Yet they already have a general ledger system & the experts to run it, so why not overlay a more affordable reporting software on your GL?
-                </p>
-              </div>
-
-              {/* Overstaffing */}
-              <div className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300">
-                <h3 className="text-2xl font-bold mb-3">Overstaffing & Understaffing</h3>
-                <p className="text-gray-600 mb-4">
-                  RIAs struggle to recruit new financial advisors when they lack a future-proof, scalable tech stack.
-                </p>
-                <p className="text-gray-600">
-                  And excessive hiring puts unnecessary pressure on their budget.
-                </p>
-              </div>
-
-              {/* High Cost */}
-              <div className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300">
-                <h3 className="text-2xl font-bold mb-3">High Cost of Manual Solutions</h3>
-                <p className="text-gray-600 mb-4">
-                  Manual solutions are not scalable and become increasingly expensive.
-                </p>
-                <p className="text-gray-600">
-                  Wealth Managers spend <strong>USD 60K</strong> per annum more if they were to build an in-house tech. stack vs. outsourcing to a specialized tech. vendor.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Our Agentic AI Bots Section */}
-        <section id="agentic-bots" className="py-20 bg-white">
-          <div className="container-custom">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-                Our Agentic AI Bots: The Future Of Data
-              </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                The Future of DataSmart automation that transforms complex data into actionable insights, revolutionizing wealth management
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {/* Data Extraction Bot */}
-              <div className="bg-gradient-to-br from-blue-50 to-white p-8 rounded-2xl border border-gray-200 hover:shadow-xl transition-all duration-300">
-                <div className="mb-6">
-                  <div className="bg-white p-6 rounded-xl shadow-sm">
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="text-xs text-gray-500">Data Sources</div>
-                    </div>
-                    <div className="grid grid-cols-4 gap-3">
-                      <div className="p-3 bg-gray-50 rounded-lg text-center text-xs font-semibold">CRM<br/>Systems</div>
-                      <div className="p-3 bg-gray-50 rounded-lg text-center text-xs font-semibold">Online<br/>Portals</div>
-                      <div className="p-3 bg-gray-50 rounded-lg text-center text-xs font-semibold">PDF Files</div>
-                      <div className="p-3 bg-gray-50 rounded-lg text-center text-xs font-semibold">APIs</div>
-                    </div>
-                  </div>
-                </div>
-                <h3 className="text-2xl font-bold mb-3">Data Extraction Bot</h3>
-                <p className="text-gray-600">
-                  Unlock trapped data from any source, automate extraction from CRMs, PDFs, Portals, and Protected Systems.
-                </p>
-              </div>
-
-              {/* Data Scrubbing Bot */}
-              <div className="bg-gradient-to-br from-blue-50 to-white p-8 rounded-2xl border border-gray-200 hover:shadow-xl transition-all duration-300">
-                <div className="mb-6">
-                  <div className="flex items-center justify-center">
-                    <div className="relative">
-                      <div className="w-32 h-32 bg-primary/10 rounded-full flex items-center justify-center">
-                        <svg className="w-16 h-16 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                      </div>
-                      <div className="absolute -right-2 -top-2 w-12 h-12 bg-blue-500 rounded-lg animate-pulse"></div>
-                    </div>
-                  </div>
-                </div>
-                <h3 className="text-2xl font-bold mb-3">Data Scrubbing Bot</h3>
-                <p className="text-gray-600">
-                  Once the data is collated, our Bot reconciles, cleanses, and ensures the data's consistency and reliability.
-                </p>
-                <p className="text-gray-600 mt-2">
-                  We solve for data consistency within a system and also across systems.
-                </p>
-              </div>
-
-              {/* Centralized Data Warehouse Bot */}
-              <div className="bg-gradient-to-br from-blue-50 to-white p-8 rounded-2xl border border-gray-200 hover:shadow-xl transition-all duration-300">
-                <h3 className="text-2xl font-bold mb-3">Centralized Data Warehouse Bot</h3>
-                <p className="text-gray-600 mb-4">
-                  Single source of truth and unlimited access to copies of your data from ALL of your tech. stack!
-                </p>
-                <p className="text-gray-600">
-                  Monitor client relationships, predict retention to ensure you can take timely actions maintaining high levels of client satisfaction.
-                </p>
-              </div>
-
-              {/* Automated Workflows Bot */}
-              <div className="bg-gradient-to-br from-blue-50 to-white p-8 rounded-2xl border border-gray-200 hover:shadow-xl transition-all duration-300">
-                <h3 className="text-2xl font-bold mb-3">Automated Workflows Bot</h3>
-                <p className="text-gray-600 mb-4">
-                  Intelligent automation across your existing technology stack.
-                </p>
-                <p className="text-gray-600">
-                  Recruit new financial advisors to join your RIA thanks to future-proof ("AI ready" out of the box), scalable, open, & modern platform.
-                </p>
-              </div>
-
-              {/* Analytics Calculator Bot */}
-              <div className="bg-gradient-to-br from-blue-50 to-white p-8 rounded-2xl border border-gray-200 hover:shadow-xl transition-all duration-300">
-                <h3 className="text-2xl font-bold mb-3">Analytics Calculator Bot</h3>
-                <p className="text-gray-600 mb-4">
-                  Customizable financial calculations at scale. You can simply bolt on top of your existing tech. stack! (e.g. Accounting Software).
-                </p>
-                <p className="text-gray-600">
-                  Smart analytics help a WM to better understand client behaviors and needs, enabling more effective marketing and sales strategies.
-                </p>
-              </div>
-
-              {/* AI Chatbot */}
-              <div className="bg-gradient-to-br from-blue-50 to-white p-8 rounded-2xl border border-gray-200 hover:shadow-xl transition-all duration-300">
-                <h3 className="text-2xl font-bold mb-3">AI Chatbot</h3>
-                <p className="text-gray-600 mb-4">
-                  Don't want to download "canned reports" from online portals?
-                </p>
-                <p className="text-gray-600">
-                  Sure, Talk to your Data! Ask conversational questions to get instant and in-depth answers.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* VIBECODING REPORTING SECTION - NEW */}
-        <section id="vibecode-reporting" className="py-20 bg-gradient-to-br from-primary/5 to-blue-50 relative overflow-hidden">
-          <div className="container-custom">
-            <div className="text-center mb-16">
-              <div className="inline-block bg-primary text-white px-6 py-2 rounded-full text-sm font-semibold mb-6 animate-bounce">
-                NEW REPORTING SERVICE
-              </div>
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                The Future of Reporting: Vibecoding
-              </h2>
-              <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-                Ditch expensive BI tools like PowerBI and Tableau. Connect your data warehouse directly to AI-powered vibecoding
-                platforms like Lovable, Bolt.new, or Claude Code to build fully custom reporting UIs, apps, and dashboards.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 max-w-5xl mx-auto">
-              {/* Traditional Way */}
-              <div className="group bg-white p-8 rounded-2xl border-2 border-gray-200 hover:shadow-lg transition-all duration-300">
-                <div className="flex items-center mb-6">
-                  <div className="w-14 h-14 bg-gray-100 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
-                    <svg className="w-7 h-7 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                  </div>
-                  <h3 className="text-2xl font-bold text-gray-900">Traditional BI Tools</h3>
-                </div>
-                <div className="mb-4 text-gray-600 font-medium">Data Warehouse → PowerBI / Tableau</div>
-                <ul className="space-y-3 text-gray-600">
-                  <li className="flex items-start hover:translate-x-1 transition-transform">
-                    <span className="text-gray-400 mr-3 mt-1">×</span>
-                    <span>Expensive licensing costs</span>
-                  </li>
-                  <li className="flex items-start hover:translate-x-1 transition-transform">
-                    <span className="text-gray-400 mr-3 mt-1">×</span>
-                    <span>Limited customization options</span>
-                  </li>
-                  <li className="flex items-start hover:translate-x-1 transition-transform">
-                    <span className="text-gray-400 mr-3 mt-1">×</span>
-                    <span>Rigid dashboard templates</span>
-                  </li>
-                  <li className="flex items-start hover:translate-x-1 transition-transform">
-                    <span className="text-gray-400 mr-3 mt-1">×</span>
-                    <span>Steep learning curve</span>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Vibecoding Way */}
-              <div className="group bg-gradient-to-br from-primary to-blue-700 p-8 rounded-2xl text-white hover:shadow-2xl hover:scale-105 transition-all duration-300 border-2 border-primary">
-                <div className="flex items-center mb-6">
-                  <div className="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center mr-4 group-hover:rotate-12 transition-transform">
-                    <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                    </svg>
-                  </div>
-                  <h3 className="text-2xl font-bold">Vibecoding</h3>
-                </div>
-                <div className="mb-4 font-medium opacity-90">Data Warehouse → Lovable / Bolt.new / Claude Code</div>
-                <ul className="space-y-3">
-                  <li className="flex items-start hover:translate-x-1 transition-transform">
-                    <span className="mr-3 mt-1">✓</span>
-                    <span>Build 100% custom UIs and apps</span>
-                  </li>
-                  <li className="flex items-start hover:translate-x-1 transition-transform">
-                    <span className="mr-3 mt-1">✓</span>
-                    <span>No expensive BI tool licenses</span>
-                  </li>
-                  <li className="flex items-start hover:translate-x-1 transition-transform">
-                    <span className="mr-3 mt-1">✓</span>
-                    <span>Complete design freedom</span>
-                  </li>
-                  <li className="flex items-start hover:translate-x-1 transition-transform">
-                    <span className="mr-3 mt-1">✓</span>
-                    <span>AI-powered rapid development</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            {/* Security Section */}
-            <div className="max-w-5xl mx-auto bg-white p-8 md:p-10 rounded-2xl border-2 border-primary/30 hover:border-primary/50 transition-all duration-300 hover:shadow-xl">
-              <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
-                <div className="w-20 h-20 bg-primary/10 rounded-2xl flex items-center justify-center flex-shrink-0">
-                  <svg className="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                  </svg>
-                </div>
-                <div className="flex-grow">
-                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Your Data Stays Secure & Sovereign</h3>
-                  <p className="text-gray-600 leading-relaxed mb-6">
-                    All customer data remains hosted exclusively on <strong>our secure servers</strong>. We never store data with
-                    third-party vibecoding platforms. Your data is accessed only through our secure API gateway with strict access controls.
-                  </p>
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div className="flex items-start gap-3 p-4 bg-gradient-to-br from-gray-50 to-white rounded-xl hover:shadow-md transition-shadow">
-                      <span className="text-3xl">🔒</span>
-                      <div>
-                        <div className="font-bold text-gray-900 mb-1">Development Environment</div>
-                        <p className="text-sm text-gray-600">Separate dummy data only, isolated credentials</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3 p-4 bg-gradient-to-br from-gray-50 to-white rounded-xl hover:shadow-md transition-shadow">
-                      <span className="text-3xl">🛡️</span>
-                      <div>
-                        <div className="font-bold text-gray-900 mb-1">Production Environment</div>
-                        <p className="text-sm text-gray-600">Zero external platform access to your data</p>
-                      </div>
-                    </div>
-                  </div>
-                  <p className="text-gray-600 mt-6 text-sm italic">
-                    Your data privacy and sovereignty remain paramount while you benefit from cutting-edge vibecoding innovation.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* CTA */}
-            <div className="text-center mt-12">
-              <Link href="/vibecode-demo" className="btn-primary inline-block text-lg px-10 py-4">
-                See Vibecode Reporting in Action
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        {/* How It Works Section */}
-        <section id="how-it-works" className="py-20 bg-white">
-          <div className="container-custom">
-            <div className="mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">How It Works</h2>
-              <p className="text-xl text-gray-600 max-w-3xl">
-                Seamless Integration, Powerful Automation - Your Data Journey Simplified
-              </p>
-              <button onClick={() => setIsDemoModalOpen(true)} className="btn-primary inline-block mt-6">
-                Request a Demo
-              </button>
-            </div>
-
-            <div className="max-w-5xl mx-auto">
-              <div className="space-y-8">
-                {/* Step 1 */}
-                <div className="flex gap-6 items-start group">
-                  <div className="flex-shrink-0 w-24 h-24 bg-primary/10 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <svg className="w-12 h-12 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                  </div>
-                  <div className="flex-grow bg-gray-50 p-6 rounded-xl hover:shadow-md transition-shadow">
-                    <h3 className="text-2xl font-bold mb-2">Book a Call</h3>
-                    <p className="text-gray-600">Schedule a 30-min free consultation with our Agentic AI Bot experts.</p>
-                  </div>
-                </div>
-
-                {/* Step 2 */}
-                <div className="flex gap-6 items-start group">
-                  <div className="flex-shrink-0 w-24 h-24 bg-primary/10 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <svg className="w-12 h-12 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                    </svg>
-                  </div>
-                  <div className="flex-grow bg-gray-50 p-6 rounded-xl hover:shadow-md transition-shadow">
-                    <h3 className="text-2xl font-bold mb-2">Discuss Challenges & Suggest the AI Bot(s)</h3>
-                    <p className="text-gray-600">We will delve into your specific business challenges & objectives, and pick the best Bot for the job out of our Bot Library.</p>
-                  </div>
-                </div>
-
-                {/* Step 3 */}
-                <div className="flex gap-6 items-start group">
-                  <div className="flex-shrink-0 w-24 h-24 bg-primary/10 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <svg className="w-12 h-12 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                    </svg>
-                  </div>
-                  <div className="flex-grow bg-gray-50 p-6 rounded-xl hover:shadow-md transition-shadow">
-                    <h3 className="text-2xl font-bold mb-2">Sign NDAs</h3>
-                    <p className="text-gray-600">We prioritize data security & client confidentiality.</p>
-                  </div>
-                </div>
-
-                {/* Step 4 */}
-                <div className="flex gap-6 items-start group">
-                  <div className="flex-shrink-0 w-24 h-24 bg-primary/10 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <svg className="w-12 h-12 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                  <div className="flex-grow bg-gradient-to-r from-primary/10 to-blue-50 p-6 rounded-xl hover:shadow-md transition-shadow border-2 border-primary/20">
-                    <h3 className="text-2xl font-bold mb-2">$0, no change, no risk, no stress Proof Of Concept</h3>
-                    <p className="text-gray-600">You don't need specialized headcount on your side. We are not changing / breaking anything in your tech. stack. All the magic happens in the data warehouse. The PoC is quick, effortless, and free of charge!</p>
-                  </div>
-                </div>
-
-                {/* Step 5 */}
-                <div className="flex gap-6 items-start group">
-                  <div className="flex-shrink-0 w-24 h-24 bg-primary/10 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <svg className="w-12 h-12 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
-                    </svg>
-                  </div>
-                  <div className="flex-grow bg-gray-50 p-6 rounded-xl hover:shadow-md transition-shadow">
-                    <h3 className="text-2xl font-bold mb-2">5 Minutes - Centralised Data Warehouse is created</h3>
-                    <p className="text-gray-600">Your data warehouse is created within 5 Minutes. You decide where your data should be hosted; your cloud or Collation.AI's cloud.</p>
-                  </div>
-                </div>
-
-                {/* Step 6 */}
-                <div className="flex gap-6 items-start group">
-                  <div className="flex-shrink-0 w-24 h-24 bg-primary/10 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <svg className="w-12 h-12 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-                    </svg>
-                  </div>
-                  <div className="flex-grow bg-gray-50 p-6 rounded-xl hover:shadow-md transition-shadow">
-                    <h3 className="text-2xl font-bold mb-2">1-3 Days - Data starts flowing</h3>
-                    <p className="text-gray-600">You give Collation.AI access to your data. Your data starts flowing into your data warehouse within 1-3 business days. We use the best tool for the job; APIs, Bots, web scraping, etc.</p>
-                  </div>
-                </div>
-
-                {/* Step 7 */}
-                <div className="flex gap-6 items-start group">
-                  <div className="flex-shrink-0 w-24 h-24 bg-primary/10 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <svg className="w-12 h-12 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                    </svg>
-                  </div>
-                  <div className="flex-grow bg-gray-50 p-6 rounded-xl hover:shadow-md transition-shadow">
-                    <h3 className="text-2xl font-bold mb-2">5-10 Days - Start seeing Insights on your Data</h3>
-                    <p className="text-gray-600">Once the Bots have pulled in All of your Data into your data warehouse, you start seeing your first set of insights on your data via online dashboards within 5-10 business days.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Why Choose Us Section */}
-        <section id="why-choose-us" className="py-20 bg-light">
-          <div className="container-custom">
-            <div className="mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Why Choose Us</h2>
-              <p className="text-xl text-gray-600 mb-2">Predictable Pricing. Minimal Risk. Maximum Value.</p>
-              <ul className="space-y-2 text-gray-600 max-w-2xl">
-                <li className="flex items-start">
-                  <span className="text-primary mr-2">•</span>
-                  Flat fee — no surprises.
-                </li>
-                <li className="flex items-start">
-                  <span className="text-primary mr-2">•</span>
-                  Costs less than a quarter of a full-time hire.
-                </li>
-                <li className="flex items-start">
-                  <span className="text-primary mr-2">•</span>
-                  100% free if it doesn't work.
-                </li>
-              </ul>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-              {/* Audit-Ready Data */}
-              <div className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300">
-                <div className="mb-6">
-                  <div className="bg-gray-50 p-6 rounded-xl">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm text-gray-600">Current Balance</span>
-                      <span className="font-bold">$ 2,550.67</span>
-                    </div>
-                    <div className="text-xs text-gray-500 space-y-1">
-                      <div>Reference Number: 2305035366</div>
-                      <div>Exchange Rate: 1.33999 USD/SGD</div>
-                    </div>
-                  </div>
-                </div>
-                <h3 className="text-2xl font-bold mb-3">Audit-Ready Data</h3>
-                <p className="text-gray-600 mb-4">
-                  Benefit from accurate and readily auditable data, ensuring compliance and informed decision-making.
-                </p>
-                <p className="text-gray-600">
-                  Helps with <strong>5x faster</strong> client onboarding.
-                </p>
-              </div>
-
-              {/* Boost Revenue */}
-              <div className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300">
-                <div className="mb-6">
-                  <div className="bg-gray-50 p-6 rounded-xl">
-                    <div className="text-sm text-gray-600 mb-2">Last 2 months</div>
-                    <div className="text-3xl font-bold mb-2">$35,586</div>
-                    <div className="flex items-center gap-2 text-sm text-green-600">
-                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z" clipRule="evenodd"/></svg>
-                      <span>28.65%</span>
-                    </div>
-                  </div>
-                </div>
-                <h3 className="text-2xl font-bold mb-3">Boost Revenue</h3>
-                <p className="text-gray-600 mb-4">
-                  With increased efficiency & streamlined processes, you'll have more time to focus on selling.
-                </p>
-                <p className="text-gray-600">
-                  Save on average <strong>15 hours per week</strong> on mundane workload.
-                </p>
-              </div>
-
-              {/* Total Automation */}
-              <div className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300">
-                <div className="mb-6">
-                  <div className="bg-gray-50 p-6 rounded-xl relative">
-                    <div className="flex items-center justify-center">
-                      <div className="text-center">
-                        <div className="w-16 h-16 bg-primary rounded-full mx-auto mb-3 flex items-center justify-center">
-                          <span className="text-white font-bold">AI</span>
-                        </div>
-                        <div className="text-xs text-gray-500">collation.ai</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <h3 className="text-2xl font-bold mb-3">Total Automation</h3>
-                <p className="text-gray-600 mb-4">
-                  Experience seamless automation across your data processes minimizing manual intervention.
-                </p>
-                <p className="text-gray-600">
-                  Grow client engagement on average <strong>200%</strong> year-over-year.
-                </p>
-              </div>
-            </div>
-
-            {/* Additional Benefits */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {/* Security */}
-              <div className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300">
-                <h3 className="text-2xl font-bold mb-3">Security</h3>
-                <p className="text-gray-600 mb-4">
-                  Collation.AI meets international information security standards and is SOC2 certified.
-                </p>
-                <p className="text-gray-600">
-                  On average <strong>32%</strong> reduction in infrastructure costs.
-                </p>
-              </div>
-
-              {/* Scalable Data Handling */}
-              <div className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300">
-                <h3 className="text-2xl font-bold mb-3">Scalable Data Handling</h3>
-                <p className="text-gray-600 mb-4">
-                  No change required on your incumbent tech. stack! Effortlessly manage & process vast amounts of data, accommodating your growing needs.
-                </p>
-                <p className="text-gray-600">
-                  Save on average <strong>2/3</strong> on staff salaries.
-                </p>
-              </div>
-
-              {/* Instant Insights */}
-              <div className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300">
-                <h3 className="text-2xl font-bold mb-3">Instant Insights</h3>
-                <p className="text-gray-600 mb-4">
-                  Get immediate access to critical information, enabling faster responses to market changes
-                </p>
-                <p className="text-gray-600">
-                  Avoid on average <strong>2 weeks</strong> of unnecessary delays in report preparation and delivery.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Impact Numbers */}
-        <section className="py-20 bg-primary text-white">
-          <div className="container-custom">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold mb-4">Impact Numbers</h2>
-              <p className="text-xl opacity-90">Real results in numbers that speak for themselves</p>
-            </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
-              <div className="text-center">
-                <div className="text-5xl md:text-6xl font-bold mb-2">$100B+</div>
-                <div className="text-lg opacity-90">Assets Under Reporting</div>
-              </div>
-              <div className="text-center">
-                <div className="text-5xl md:text-6xl font-bold mb-2">100+</div>
-                <div className="text-lg opacity-90">Active Agentic AI Bots</div>
-              </div>
-              <div className="text-center">
-                <div className="text-5xl md:text-6xl font-bold mb-2">20+</div>
-                <div className="text-lg opacity-90">Wealth Manager Clients</div>
-              </div>
-              <div className="text-center">
-                <div className="text-5xl md:text-6xl font-bold mb-2">04</div>
-                <div className="text-lg opacity-90">Locations</div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Testimonials */}
-        <section className="py-20 bg-white">
-          <div className="container-custom">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-16 text-center">
-              Over 20+ Clients<br />Used Our Agentic AI Bots
+      {/* Challenges Section */}
+      <section id="challenges" className="py-20 px-4 bg-background">
+        <div className="container mx-auto">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+              Challenges you're facing
             </h2>
+            <p className="text-xl text-muted-foreground">
+              Breaking Through Data Barriers That Hold Your Business Back
+            </p>
+          </motion.div>
 
-            <div className="max-w-4xl mx-auto relative">
-              <div className="bg-gray-50 p-8 md:p-12 rounded-2xl">
-                <div className="text-6xl text-primary mb-6">"</div>
-                <p className="text-xl text-gray-700 mb-8 leading-relaxed">
-                  {testimonials[activeTestimonial].quote}
-                </p>
-                <div className="border-t pt-6">
-                  <div className="font-bold text-lg">{testimonials[activeTestimonial].company}</div>
-                  <div className="text-gray-500">{testimonials[activeTestimonial].role}</div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {challenges.map((challenge, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ y: -8, transition: { duration: 0.2 } }}
+              >
+                <Card className="h-full hover:shadow-xl transition-shadow">
+                  <CardContent className="p-6">
+                    <div className="mb-6 flex justify-center">
+                      <LottieAnimation 
+                        animationImport={challenge.animationImport} 
+                        className="w-full max-w-xs h-auto"
+                      />
+                    </div>
+                    <h3 className="text-xl font-semibold text-foreground mb-3">{challenge.title}</h3>
+                    <p className="text-muted-foreground">{challenge.description}</p>
+                    {challenge.stat && (
+                      <motion.p 
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.3 + index * 0.1 }}
+                        className="mt-4 text-primary font-bold"
+                      >
+                        {challenge.stat}
+                      </motion.p>
+                    )}
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Agentic AI Bots Section */}
+      <section id="our-agents" className="py-20 px-4 bg-secondary">
+        <div className="container mx-auto">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+              Our Agentic AI Bots: The Future of Data
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Smart automation that transforms complex data into actionable insights, revolutionizing wealth management
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {aiBots.map((bot, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ 
+                  scale: 1.05, 
+                  y: -8,
+                  transition: { duration: 0.2 } 
+                }}
+              >
+                <Card className="h-full hover:shadow-xl transition-shadow">
+                  <CardContent className="p-6">
+                    <div className="mb-6 flex justify-center">
+                      <LottieAnimation 
+                        animationImport={bot.animationImport} 
+                        className="w-full max-w-xs h-auto"
+                      />
+                    </div>
+                    <h3 className="text-xl font-semibold text-foreground mb-3">{bot.title}</h3>
+                    <p className="text-muted-foreground">{bot.description}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works Section */}
+      <section id="how-it-works" className="py-20 px-4 bg-background">
+        <div className="container mx-auto max-w-7xl">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className="mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+              How it works
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl">
+              Seamless Integration, Powerful Automation - Your Data Journey Simplified
+            </p>
+          </motion.div>
+
+          {/* Desktop & Tablet Layout - Side by side */}
+          <div className="hidden md:flex gap-16 lg:gap-24 items-start">
+            {/* Left side - Icons with connecting line and animated ball */}
+            <div className="flex-shrink-0 relative overflow-hidden py-12 lg:py-16" style={{ width: "280px" }}>
+              <div className="absolute inset-x-0 top-8 bottom-8 pointer-events-none">
+                {/* Animated flowing ball - Desktop */}
+                <div className="hidden lg:block">
+                  <LottieAnimation
+                    animationImport={() => import("@/assets/animations/how-it-works-desktop.json")}
+                    className="h-full w-auto mx-auto"
+                    loop={true}
+                    autoplay={true}
+                    speed={0.5}
+                  />
+                </div>
+                {/* Animated flowing ball - Tablet */}
+                <div className="lg:hidden">
+                  <LottieAnimation
+                    animationImport={() => import("@/assets/animations/how-it-works-tablet.json")}
+                    className="h-full w-auto mx-auto"
+                    loop={true}
+                    autoplay={true}
+                    speed={0.5}
+                  />
                 </div>
               </div>
+              
+              <div className="relative z-10 space-y-6">
+                {[
+                  { type: 'calendar' as const, offset: 0 },
+                  { type: 'brain' as const, offset: 0 },
+                  { type: 'share' as const, offset: 0 },
+                  { type: 'chart' as const, offset: 0 },
+                  { type: 'clock' as const, offset: 0 },
+                  { type: 'puzzle' as const, offset: 0 },
+                  { type: 'dashboard' as const, offset: 0 },
+                ].slice(0, 7).map((icon, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="relative"
+                  >
+                    <HowItWorksIcon type={icon.type} size="lg" position="center" />
+                  </motion.div>
+                ))}
+              </div>
+            </div>
 
-              <div className="flex justify-center gap-4 mt-8">
-                <button
-                  onClick={() => setActiveTestimonial(0)}
-                  className={`w-3 h-3 rounded-full transition-all ${activeTestimonial === 0 ? 'bg-primary w-8' : 'bg-gray-300'}`}
-                ></button>
-                <button
-                  onClick={() => setActiveTestimonial(1)}
-                  className={`w-3 h-3 rounded-full transition-all ${activeTestimonial === 1 ? 'bg-primary w-8' : 'bg-gray-300'}`}
-                ></button>
+            {/* Right side - Steps (only 7 steps) */}
+            <div className="flex-1 space-y-6">
+              {steps.slice(0, 7).map((step, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="flex items-center"
+                  style={{ minHeight: '144px' }}
+                >
+                  <Card className="hover:shadow-lg transition-shadow w-full">
+                    <CardContent className="p-8">
+                      <h3 className="text-xl font-semibold text-foreground mb-3">{step.title}</h3>
+                      <p className="text-muted-foreground">{step.description}</p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Mobile Layout - Icons with cards */}
+          <div className="md:hidden">
+            <div className="relative">
+              {/* Animated flowing ball - Mobile */}
+              <LottieAnimation
+                animationImport={() => import("@/assets/animations/how-it-works-phone.json")}
+                className="absolute left-1/2 top-0 -translate-x-1/2 h-full w-auto scale-[1.5]"
+                loop={true}
+                autoplay={true}
+              />
+              
+              <div className="relative z-10 space-y-4">
+                {steps.slice(0, 7).map((step, index) => {
+                  const iconTypes = ['calendar', 'brain', 'share', 'chart', 'clock', 'puzzle', 'dashboard'] as const;
+                  return (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: "-50px" }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      className="relative"
+                    >
+                      <div className="flex justify-center mb-4">
+                        <HowItWorksIcon type={iconTypes[index]} size="md" position="center" />
+                      </div>
+                      <Card className="hover:shadow-lg transition-shadow">
+                        <CardContent className="p-6">
+                          <h3 className="text-xl font-semibold text-foreground mb-2">{step.title}</h3>
+                          <p className="text-muted-foreground">{step.description}</p>
+                        </CardContent>
+                      </Card>
+                    </motion.div>
+                  );
+                })}
               </div>
             </div>
           </div>
-        </section>
 
-        {/* FAQs */}
-        <section className="py-20 bg-light">
-          <div className="container-custom max-w-4xl">
-            <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">Frequently Asked Questions</h2>
+        </div>
+      </section>
 
-            <div className="space-y-4">
-              <details className="bg-white p-6 rounded-xl shadow-sm group">
-                <summary className="font-semibold text-lg cursor-pointer flex justify-between items-center">
-                  Does Collation.AI offer Customized Calculations?
-                  <span className="text-2xl group-open:rotate-45 transition-transform">+</span>
-                </summary>
-              </details>
+      {/* Why Choose Us Section */}
+      <section id="why-choose-us" className="py-20 px-4 bg-secondary">
+        <div className="container mx-auto">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+              Why choose us
+            </h2>
+            <p className="text-xl text-muted-foreground mb-8">
+              Predictable Pricing. Minimal Risk. Maximum Value.
+            </p>
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3, duration: 0.5 }}
+              className="max-w-2xl mx-auto"
+            >
+              <Card className="bg-card/50 backdrop-blur-sm border-primary/20 shadow-lg">
+                <CardContent className="p-8">
+                  <div className="space-y-4">
+                    {["Flat fee — no surprises.", "Costs less than a quarter of a full-time hire.", "100% free if it doesn't work."].map((text, i) => (
+                      <motion.div 
+                        key={i}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.5 + i * 0.1, duration: 0.4 }}
+                        className="flex items-center gap-3 text-lg"
+                      >
+                        <div className="flex-shrink-0 w-2 h-2 rounded-full bg-primary" />
+                        <p className="text-foreground font-medium">{text}</p>
+                      </motion.div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </motion.div>
 
-              <details className="bg-white p-6 rounded-xl shadow-sm group open">
-                <summary className="font-semibold text-lg cursor-pointer flex justify-between items-center mb-4">
-                  What is the type of data Collation.AI aggregates?
-                  <span className="text-2xl group-open:rotate-45 transition-transform">−</span>
-                </summary>
-                <div className="text-gray-600 space-y-4 pt-4 border-t">
-                  <p>
-                    Irrespective of the incumbent systems used (e.g. PMS, CRM, PFM, GL, etc.), there are essentially three types of data Collation.AI aggregates for its clients;
-                  </p>
-                  <ol className="list-decimal list-inside space-y-2 pl-4">
-                    <li>Transactions (e.g. in a portfolio management system)</li>
-                    <li>General Ledger (e.g. in an accounting software)</li>
-                    <li>Contacts (e.g. in a client relationship management system)</li>
-                  </ol>
-                </div>
-              </details>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {benefits.map((benefit, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ y: -8, transition: { duration: 0.2 } }}
+              >
+                <Card className="h-full hover:shadow-xl transition-shadow">
+                  <CardContent className="p-6">
+                    <div className="mb-6 flex justify-center">
+                      <LottieAnimation 
+                        animationImport={benefit.animationImport} 
+                        className="w-full max-w-xs h-auto"
+                      />
+                    </div>
+                    <h3 className="text-xl font-semibold text-foreground mb-3">{benefit.title}</h3>
+                    <p className="text-muted-foreground mb-4">{benefit.description}</p>
+                    <motion.p 
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.3 + index * 0.1 }}
+                      className="text-primary font-bold"
+                    >
+                      {benefit.stat}
+                    </motion.p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Implementation Roadmap */}
-        <section className="py-20 bg-light">
-          <div className="container-custom max-w-5xl">
-            <div className="text-center mb-12">
-              <div className="inline-block bg-primary/10 text-primary px-6 py-3 rounded-full text-sm font-semibold mb-6">
-                🚀 Implementation Roadmap
-              </div>
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-                What does an implementation look like?
+      {/* Impact Numbers Section with Blue Ribbon */}
+      <section id="impact" className="relative py-20 px-4 bg-primary text-white overflow-hidden">
+        {/* Decorative wave at bottom */}
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-background" style={{
+          clipPath: 'polygon(0 50%, 10% 45%, 20% 50%, 30% 45%, 40% 50%, 50% 45%, 60% 50%, 70% 45%, 80% 50%, 90% 45%, 100% 50%, 100% 100%, 0 100%)'
+        }} />
+        
+        <div className="container mx-auto relative z-10">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              Impact Numbers
+            </h2>
+            <p className="text-xl opacity-90">
+              Real results in numbers that speak for themselves
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+            {impactStats.map((stat, index) => (
+              <ImpactStatItem key={index} stat={stat} index={index} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section - Circular Layout */}
+      <section id="testimonials" className="py-20 px-4 bg-background relative overflow-hidden">
+        <div className="container mx-auto max-w-7xl">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-2">
+              Over 20+ Clients
+            </h2>
+            <h3 className="text-3xl font-semibold text-foreground">
+              Used Our Agentic AI Bots
+            </h3>
+          </motion.div>
+
+          <div className="relative min-h-[700px] flex items-center justify-center">
+            {/* Decorative circular lines */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div className="w-[300px] h-[300px] rounded-full border border-muted/30 md:w-[500px] md:h-[500px]" />
+              <div className="absolute w-[450px] h-[450px] rounded-full border border-muted/20 md:w-[700px] md:h-[700px]" />
+              <div className="absolute w-[600px] h-[600px] rounded-full border border-muted/10 md:w-[900px] md:h-[900px]" />
+            </div>
+
+            <Carousel className="w-full max-w-4xl">
+              <CarouselContent>
+                {testimonials.map((t, i) => (
+                  <CarouselItem key={i}>
+                    <div className="relative min-h-[600px] flex items-center justify-center py-20">
+                      {/* Circular image layout */}
+                      <div className="hidden md:block absolute inset-0">
+                        {[0, 1, 2, 3, 4, 5].map((idx) => {
+                          const angle = (idx * 60 - 90) * (Math.PI / 180);
+                          const radius = 200;
+                          const x = Math.cos(angle) * radius;
+                          const y = Math.sin(angle) * radius;
+                          const size = idx === 0 ? 100 : idx % 2 === 0 ? 80 : 70;
+                          
+                            return (
+                              <motion.div
+                                key={idx}
+                                initial={{ opacity: 0, scale: 0 }}
+                                animate={{ 
+                                  opacity: 1, 
+                                  scale: 1
+                                }}
+                                transition={{ 
+                                  delay: idx * 0.1, 
+                                  duration: 0.5
+                                }}
+                                className="absolute rounded-full overflow-hidden border-4 border-white shadow-lg"
+                                style={{
+                                  width: `${size}px`,
+                                  height: `${size}px`,
+                                  left: `calc(50% + ${x}px - ${size/2}px)`,
+                                  top: `calc(50% + ${y}px - ${size/2}px)`
+                                }}
+                              >
+                              <img 
+                                src={testimonials[(i + idx) % testimonials.length].landmark} 
+                                alt="Client location"
+                                className="w-full h-full object-cover"
+                              />
+                            </motion.div>
+                          );
+                        })}
+                      </div>
+
+                      {/* Quote card */}
+                      <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.3 }}
+                        className="relative z-10 max-w-2xl mx-auto"
+                      >
+                        <Card className="shadow-xl">
+                          <CardContent className="p-8 text-center">
+                            <div className="text-6xl text-primary mb-4">"</div>
+                            <p className="text-lg text-foreground mb-6 leading-relaxed">{t.quote}</p>
+                            <div className="flex items-center justify-center gap-4">
+                              <img src={t.landmark} alt={t.author} className="w-16 h-16 rounded-full object-cover border-2 border-primary" />
+                              <div className="text-left">
+                                <p className="font-semibold text-foreground">{t.author}</p>
+                                <p className="text-muted-foreground text-sm">{t.role}</p>
+                              </div>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      </motion.div>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="-left-12 md:-left-16" />
+              <CarouselNext className="-right-12 md:-right-16" />
+            </Carousel>
+          </div>
+        </div>
+      </section>
+
+      {/* Blog Preview Section */}
+      <section id="blog-preview" className="py-20 px-4 bg-background">
+        <div className="container mx-auto">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+              Blogs
+            </h2>
+            <p className="text-xl text-muted-foreground mb-8">
+              Keep up to date with our latest whitepapers, blog posts, articles, and news.
+            </p>
+            <Button asChild variant="outline" className="group">
+              <Link href="/blog">
+                View All Blogs
+                <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={16} />
+              </Link>
+            </Button>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+            {blogPosts.slice(0, 3).map((blog, index) => (
+              <motion.a
+                key={index}
+                href={blog.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ 
+                  y: -12, 
+                  transition: { duration: 0.2 } 
+                }}
+                className="block"
+              >
+                <Card className="h-full hover:shadow-xl transition-shadow">
+                  <CardContent className="p-0">
+                    <div className="aspect-video overflow-hidden rounded-t-lg">
+                      <img src={blog.image} alt={`${blog.title} - blog thumbnail`} className="w-full h-full object-cover" loading="lazy" />
+                    </div>
+                    <div className="p-6">
+                      <div className="text-sm text-muted-foreground mb-2">
+                        {blog.author} • {blog.date}
+                      </div>
+                      <h3 className="text-lg font-semibold text-foreground hover:text-primary transition-colors">
+                        {blog.title}
+                      </h3>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section with Accordion */}
+      <section id="faq" className="py-20 px-4 bg-background">
+        <div className="container mx-auto max-w-4xl">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className="mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+              FAQ
+            </h2>
+            <p className="text-xl text-muted-foreground">
+              Answers to Your Most Frequent Questions
+            </p>
+          </motion.div>
+
+          <Accordion type="single" collapsible defaultValue="item-0" className="space-y-4">
+            {faqs.map((faq, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
+              >
+                <AccordionItem value={`item-${index}`} className="border-2 border-border rounded-xl overflow-hidden bg-card">
+                  <AccordionTrigger className="px-6 py-5 text-lg font-semibold hover:no-underline hover:bg-muted/50 transition-colors [&[data-state=open]]:bg-muted">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="px-6 pt-4 pb-6 text-base text-muted-foreground leading-relaxed bg-background">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              </motion.div>
+            ))}
+          </Accordion>
+        </div>
+      </section>
+
+      {/* Get in Touch Section */}
+      <section id="contact" className="py-20 px-4 bg-secondary">
+        <div className="container mx-auto max-w-7xl">
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            {/* Left side - Form and Calendly */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+                Get in Touch
               </h2>
-              <p className="text-xl text-gray-600">
-                Quick and comprehensive implementation. Fully functional in days.
+              <p className="text-lg text-muted-foreground mb-8">
+                Our friendly team would love to hear from you.
               </p>
-            </div>
 
-            <div className="space-y-6">
-              {/* Step 1 */}
-              <div className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300">
-                <div className="flex items-start">
-                  <div className="bg-primary text-white w-12 h-12 rounded-xl flex items-center justify-center font-bold text-xl mr-6 flex-shrink-0">
-                    📅
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-3">1. Book a Call</h3>
-                    <p className="text-gray-600 leading-relaxed">
-                      Schedule a 30-min free consultation with our Agentic AI Bot experts.<br />
-                      We will dive into your specific business challenges & objectives, and pick the best Bot for the job out of our Bot Library.
-                    </p>
-                  </div>
-                </div>
-              </div>
+              <Tabs defaultValue="inquiry" className="w-full">
+                <TabsList className="grid w-full grid-cols-2 mb-8 h-12">
+                  <TabsTrigger value="inquiry" className="text-base">Inquiry Form</TabsTrigger>
+                  <TabsTrigger value="book" className="text-base">Book a Call</TabsTrigger>
+                </TabsList>
+                
+                <TabsContent value="inquiry" className="mt-0">
+                  <Card>
+                    <CardContent className="p-6 space-y-4">
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="space-y-2">
+                          <Label htmlFor="firstName">First Name</Label>
+                          <Input id="firstName" placeholder="Ex. John" />
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="lastName">Last Name</Label>
+                          <Input id="lastName" placeholder="Ex. Doe" />
+                        </div>
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="email">Email</Label>
+                        <Input id="email" type="email" placeholder="you@company.com" />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="phone">Phone Number</Label>
+                        <Input id="phone" type="tel" placeholder="+1 (555) 000-0000" />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="message">Message</Label>
+                        <Textarea id="message" rows={4} placeholder="Your message..." />
+                      </div>
+                      <div className="flex items-start space-x-2">
+                        <Checkbox id="privacy" />
+                        <Label htmlFor="privacy" className="text-sm leading-relaxed cursor-pointer">
+                          You agree to our friendly privacy policy.
+                        </Label>
+                      </div>
+                      <Button className="w-full" size="lg">
+                        Submit
+                        <ArrowRight className="ml-2" size={18} />
+                      </Button>
+                    </CardContent>
+                  </Card>
+                </TabsContent>
 
-              {/* Step 2 */}
-              <div className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300">
-                <div className="flex items-start">
-                  <div className="bg-primary text-white w-12 h-12 rounded-xl flex items-center justify-center font-bold text-xl mr-6 flex-shrink-0">
-                    ✅
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-3">2. Discuss Challenges & Suggest the AI Bot(s)</h3>
-                    <p className="text-gray-600 leading-relaxed mb-3">
-                      <strong>$0, no charge, no risk, no stress Proof Of Concept.</strong>
-                    </p>
-                    <p className="text-gray-600 leading-relaxed">
-                      You don't need specialized headcount on your side. We are not charging / breaking anything in your tech stack. All the magic happens in the data warehouse. The PoC is quick, effortless, and free of charge!
-                    </p>
-                  </div>
-                </div>
-              </div>
+                <TabsContent value="book" className="mt-0">
+                  <Card className="overflow-hidden">
+                    <CardContent className="p-0">
+                      <InlineWidget 
+                        url="https://calendly.com/sinan-biren-collationai/30min"
+                        styles={{ height: '700px', minWidth: '320px' }}
+                      />
+                    </CardContent>
+                  </Card>
+                </TabsContent>
+              </Tabs>
+            </motion.div>
 
-              {/* Step 3 */}
-              <div className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300">
-                <div className="flex items-start">
-                  <div className="bg-primary text-white w-12 h-12 rounded-xl flex items-center justify-center font-bold text-xl mr-6 flex-shrink-0">
-                    📊
+            {/* Right side - Robot with Video */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="h-full"
+            >
+              <Card className="h-full min-h-[700px]">
+                <CardContent className="p-0 h-full">
+                  <div className="relative w-full h-full">
+                    {!showVideo ? (
+                      <>
+                        <img 
+                          src="/assets/robot-image.webp"
+                          alt="AI Robot"
+                          className="w-full h-full object-cover rounded-lg"
+                        />
+                        <button
+                          onClick={() => setShowVideo(true)}
+                          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-white rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-transform group"
+                          aria-label="Play video"
+                        >
+                          <Play className="w-10 h-10 text-primary ml-1 group-hover:text-primary/80 transition-colors" fill="currentColor" />
+                        </button>
+                      </>
+                    ) : (
+                      <div className="w-full h-full rounded-lg overflow-hidden">
+                        <iframe
+                          width="100%"
+                          height="100%"
+                          src="https://www.youtube.com/embed/_UfCQ7y-pTo?autoplay=1"
+                          title="Collation AI Demo"
+                          frameBorder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                          className="w-full h-full"
+                        />
+                      </div>
+                    )}
                   </div>
-                  <div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-3">3. 5 Minutes - Centralised Data Warehouse is created</h3>
-                    <p className="text-gray-600 leading-relaxed">
-                      Your data warehouse is created within 5 Minutes.<br />
-                      You decide where your data should be hosted: your cloud or Collation.AI's cloud.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Step 4 */}
-              <div className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300">
-                <div className="flex items-start">
-                  <div className="bg-primary text-white w-12 h-12 rounded-xl flex items-center justify-center font-bold text-xl mr-6 flex-shrink-0">
-                    📈
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-3">4. 1-3 Days - Data starts flowing</h3>
-                    <p className="text-gray-600 leading-relaxed">
-                      You give Collation.AI access to your data.<br />
-                      Your data starts flowing into your data warehouse within 1-3 business days. We use the best tool for the job: APIs, Bots, web scraping, etc.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Step 5 */}
-              <div className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300">
-                <div className="flex items-start">
-                  <div className="bg-primary text-white w-12 h-12 rounded-xl flex items-center justify-center font-bold text-xl mr-6 flex-shrink-0">
-                    💡
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-3">5. 5-10 Days - Start seeing Insights on your Data</h3>
-                    <p className="text-gray-600 leading-relaxed">
-                      Once the Bots have pulled in All of your Data into your data warehouse.<br />
-                      You start seeing your first set of insights on your data via online dashboards within 5-10 business days.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+                </CardContent>
+              </Card>
+            </motion.div>
           </div>
-        </section>
-
-        {/* Contact Form */}
-        <section id="contact" className="py-20 bg-white">
-          <div className="container-custom max-w-6xl">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-              <div>
-                <h2 className="text-4xl font-bold text-gray-900 mb-6">Get in Touch</h2>
-                <p className="text-xl text-gray-600 mb-8">
-                  Ready to transform your data management? Let's talk about how our Agentic AI Bots can help your business.
-                </p>
-              </div>
-
-              <div className="bg-gray-50 p-8 rounded-2xl">
-                <form className="space-y-6">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
-                    <input
-                      type="text"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                      placeholder="Your name"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                    <input
-                      type="email"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                      placeholder="your@email.com"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
-                    <textarea
-                      rows={4}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                      placeholder="Tell us about your data challenges..."
-                    ></textarea>
-                  </div>
-                  <div className="flex items-start">
-                    <input type="checkbox" className="mt-1 mr-2" id="privacy" />
-                    <label htmlFor="privacy" className="text-sm text-gray-600">
-                      You agree to our <a href="#" className="text-primary hover:underline">friendly privacy policy</a>.
-                    </label>
-                  </div>
-                  <button type="submit" className="btn-primary w-full">
-                    Submit
-                  </button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
+        </div>
+      </section>
 
       <Footer />
-      <DemoModal isOpen={isDemoModalOpen} onClose={() => setIsDemoModalOpen(false)} />
-    </>
-  )
-}
+    </div>
+  );
+};
+
+const challenges = [
+  {
+    title: "Disconnected Data",
+    description: "Data is fragmented across systems.",
+    stat: "Registered Investment Advisor operations teams waste 3 hours per day to aggregate data.",
+    animationImport: () => import("@/assets/animations/problem-statement-01.json")
+  },
+  {
+    title: "Manual Data Management",
+    description: "Downloading, copying, checking & fixing across systems manually causes delays.",
+    stat: "On average 2 weeks of delays for preparing reports.",
+    animationImport: () => import("@/assets/animations/problem-statement-02.json")
+  },
+  {
+    title: "Repetitive Data Work",
+    description: "Manual data entry and processing takes significant time.",
+    stat: "Up to 15 hours per week for an External Asset Manager.",
+    animationImport: () => import("@/assets/animations/problem-statement-03.json")
+  },
+  {
+    title: "Poor Data Analytics",
+    description: "FOs experiment with 'overpriced' performance reporting software and/or excel spreadsheets.",
+    stat: "Already have a general ledger system, so why not overlay a more affordable reporting software?",
+    animationImport: () => import("@/assets/animations/problem-statement-04.json")
+  },
+  {
+    title: "Overstaffing & Understaffing",
+    description: "RIAs struggle to recruit new financial advisors when they lack a future-proof, scalable tech stack.",
+    stat: "Excessive hiring puts unnecessary pressure on budget.",
+    animationImport: () => import("@/assets/animations/problem-statement-05.json")
+  },
+  {
+    title: "High Cost of Manual Solutions",
+    description: "Manual solutions are not scalable and become increasingly expensive.",
+    stat: "Wealth Managers spend USD 60K per annum more for in-house tech vs. specialized vendor.",
+    animationImport: () => import("@/assets/animations/problem-statement-06.json")
+  }
+];
+
+const aiBots = [
+  {
+    icon: <Database size={40} />,
+    title: "Data Extraction Bot",
+    description: "Unlock trapped data from any source, automate extraction from CRMs, PDFs, Portals, and Protected Systems.",
+    animationImport: () => import("@/assets/animations/agent-01.json")
+  },
+  {
+    icon: <Bot size={40} />,
+    title: "Data Scrubbing Bot",
+    description: "Once the data is collated, our Bot reconciles, cleanses, and ensures the data's consistency and reliability across systems.",
+    animationImport: () => import("@/assets/animations/agent-02.json")
+  },
+  {
+    icon: <Database size={40} />,
+    title: "Centralized Data Warehouse Bot",
+    description: "Single source of truth and unlimited access to copies of your data from ALL of your tech stack! Monitor client relationships and predict retention.",
+    animationImport: () => import("@/assets/animations/agent-03.json")
+  },
+  {
+    icon: <Workflow size={40} />,
+    title: "Automated Workflows Bot",
+    description: "Intelligent automation across your existing technology stack. Recruit new financial advisors thanks to AI-ready, scalable platform.",
+    animationImport: () => import("@/assets/animations/agent-04.json")
+  },
+  {
+    icon: <Calculator size={40} />,
+    title: "Analytics Calculator Bot",
+    description: "Customizable financial calculations at scale. Bolt on top of your existing tech stack! Smart analytics for better client understanding.",
+    animationImport: () => import("@/assets/animations/agent-05.json")
+  },
+  {
+    icon: <MessageSquare size={40} />,
+    title: "AI Chatbot",
+    description: "Don't want to download 'canned reports' from online portals? Talk to your Data! Ask conversational questions for instant answers.",
+    animationImport: () => import("@/assets/animations/agent-06.json")
+  }
+];
+
+const steps = [
+  { number: 1, title: "Book a Call", description: "Schedule a 30-min free consultation with our Agentic AI Bot experts." },
+  { number: 2, title: "Discuss Challenges", description: "We delve into your specific business challenges & objectives, and pick the best Bot from our library." },
+  { number: 3, title: "Sign NDAs", description: "We prioritize data security & client confidentiality." },
+  { number: 4, title: "$0 Proof Of Concept", description: "No specialized headcount needed. No changes to your tech stack. Quick, effortless, and free!" },
+  { number: 5, title: "5 Minutes Setup", description: "Your data warehouse is created within 5 Minutes. You decide where to host it." },
+  { number: 6, title: "1-3 Days Data Flow", description: "Data starts flowing into your warehouse using APIs, Bots, web scraping, etc." },
+  { number: 7, title: "5-10 Days Insights", description: "Start seeing your first insights via online dashboards within 5-10 business days." }
+];
+
+const benefits = [
+  {
+    title: "Audit-Ready Data",
+    description: "Benefit from accurate and readily auditable data, ensuring compliance and informed decision-making.",
+    stat: "5x faster client onboarding",
+    animationImport: () => import("@/assets/animations/why-choose-us-01.json")
+  },
+  {
+    title: "Boost Revenue",
+    description: "With increased efficiency & streamlined processes, you'll have more time to focus on selling.",
+    stat: "Save 15 hours per week on mundane workload",
+    animationImport: () => import("@/assets/animations/why-choose-us-02.json")
+  },
+  {
+    title: "Total Automation",
+    description: "Experience seamless automation across your data processes minimizing manual intervention.",
+    stat: "200% YoY growth in client engagement",
+    animationImport: () => import("@/assets/animations/why-choose-us-03.json")
+  },
+  {
+    title: "Security",
+    description: "Collation.AI meets international information security standards and is SOC2 certified.",
+    stat: "32% reduction in infrastructure costs",
+    animationImport: () => import("@/assets/animations/why-choose-us-04.json")
+  },
+  {
+    title: "Scalable Data Handling",
+    description: "No change required on your incumbent tech stack! Effortlessly manage vast amounts of data.",
+    stat: "Save 2/3 on staff salaries",
+    animationImport: () => import("@/assets/animations/why-choose-us-05.json")
+  },
+  {
+    title: "Instant Insights",
+    description: "Get immediate access to critical information, enabling faster responses to market changes.",
+    stat: "Avoid 2 weeks of delays in reports",
+    animationImport: () => import("@/assets/animations/why-choose-us-06.json")
+  }
+];
+
+const impactStats = [
+  { value: 10, suffix: "B+", prefix: "$", label: "Assets Under Reporting" },
+  { value: 50, suffix: "+", prefix: "", label: "Active Agentic AI Bots" },
+  { value: 20, suffix: "+", prefix: "", label: "Wealth Manager Clients" },
+  { value: 10, suffix: "", prefix: "", label: "Locations" }
+];
+
+const ImpactStatItem = ({ stat, index }: { stat: { value: number; suffix: string; prefix: string; label: string }; index: number }) => {
+  const { count, ref } = useCounterAnimation(stat.value, 2000);
+  
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, scale: 0.5 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ 
+        duration: 0.5, 
+        delay: index * 0.1,
+        type: "spring",
+        stiffness: 100
+      }}
+      className="text-center"
+    >
+      <motion.div
+        animate={{ scale: [1, 1.05, 1] }}
+        transition={{ 
+          duration: 2, 
+          repeat: Infinity, 
+          ease: "easeInOut",
+          delay: index * 0.2 
+        }}
+        className="text-4xl md:text-6xl font-bold mb-3"
+      >
+        {stat.prefix}{count}{stat.suffix}
+      </motion.div>
+      <div className="text-base md:text-lg opacity-90">{stat.label}</div>
+    </motion.div>
+  );
+};
+
+const testimonials = [
+  {
+    quote:
+      "We were struggling badly with our manual workflows until we brought in Collation.AI. They automated all of our data audit workflows across our Portfolio Management Software, CRM System, Alternative Investments Data Handling Vendor.",
+    author: "A RIA in California - USA",
+    role: "CTO",
+    landmark: californiaGoldenGate,
+    image: californiaGoldenGate
+  },
+  {
+    quote:
+      "Collation.AI has successfully built and meticulously maintained two data connectors for both of the custodian banks our RIA clients have been using.",
+    author: "A Portfolio Software Provider in Massachusetts - USA",
+    role: "Product Manager",
+    landmark: massachusettsStateHouse,
+    image: massachusettsStateHouse
+  },
+  {
+    quote:
+      "We have been running Collation.AI for almost 2 years now. They have bolted on top of our incumbent Portfolio System effortlessly and provide extremely customizable, flexible, scalable reporting.",
+    author: "A Multi Family Office in Chicago - USA",
+    role: "Principal",
+    landmark: chicagoSkyline,
+    image: chicagoSkyline
+  },
+  {
+    quote:
+      "Collation.AI has been successfully building APIs and web-scraping our data from our current tech stack and reconciling against our Bank Statements.",
+    author: "A Registered Investment Advisor in New York - USA",
+    role: "CEO",
+    landmark: newYorkSkyline,
+    image: newYorkSkyline
+  },
+  {
+    quote:
+      "Before we engaged with Collation.AI we had 2x fulltime headcount that manually downloaded our data from our Real Estate Valuation Platform, Billing Software, Accounting System, Performance Reporting Software.",
+    author: "A SFO in Atlanta - USA",
+    role: "VP, Family Operations",
+    landmark: atlantaSkyline,
+    image: atlantaSkyline
+  },
+  {
+    quote:
+      "Collation.AI's automated data reconciliation has saved us countless hours and eliminated costly errors in our portfolio reporting.",
+    author: "A Wealth Management Firm in Texas - USA",
+    role: "Operations Director",
+    landmark: texasCapitol,
+    image: texasCapitol
+  }
+];
+
+// featuredBlogs now pulled from shared blogPosts data (Home uses blogPosts.slice(0,3))
+
+const faqs = [
+  {
+    question: "What is an Agentic AI Bot?",
+    answer: "In artificial intelligence, an intelligent agent is an entity that perceives its environment, takes actions autonomously to achieve goals, and may improve its performance through machine learning or by acquiring knowledge."
+  },
+  {
+    question: "How do I integrate?",
+    answer: "Integration is seamless and requires no changes to your existing technology stack. We work with your current systems through APIs, bots, and web scraping."
+  },
+  {
+    question: "What is Collation.AI's Data Structure?",
+    answer: "We create a centralized data warehouse that serves as your single source of truth, with unlimited access to copies of your data from all your systems."
+  },
+  {
+    question: "Does Collation.AI offer Customized Calculations?",
+    answer: "Yes! Our Analytics Calculator Bot provides customizable financial calculations at scale that can bolt on top of your existing tech stack."
+  },
+  {
+    question: "What type of data does Collation.AI aggregate?",
+    answer: "We aggregate financial data from CRMs, Portfolio Management Systems, PDFs, online portals, protected systems, and all components of your existing technology stack."
+  }
+];
+
+export default Home;

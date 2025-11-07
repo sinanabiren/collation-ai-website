@@ -1,170 +1,169 @@
-'use client'
+"use client";
 
-import Navigation from '@/components/Navigation'
-import Footer from '@/components/Footer'
-import DemoModal from '@/components/DemoModal'
-import Link from 'next/link'
-import { useState } from 'react'
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Link } from "next/link";
+import SEOHead from "@/components/SEOHead";
+import LottieAnimation from "@/components/LottieAnimation";
+import { motion } from "framer-motion";
+import caseStudy01 from "@/assets/animations/case-study-01.json";
+import caseStudy02 from "@/assets/animations/case-study-02.json";
+import caseStudy03 from "@/assets/animations/case-study-03.json";
+import caseStudy04 from "@/assets/animations/case-study-04.json";
+import heroImage from "@/assets/case-studies-hero.png";
 
-export default function CaseStudies() {
-  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false)
-  const caseStudies = [
-    {
-      title: 'RIA in California Automates Data Workflows',
-      industry: 'Wealth Management',
-      challenge: 'Manual data workflows causing 15+ hours of work per week',
-      solution: 'Automated data audit workflows across Portfolio Management Software, CRM, and Alternative Investments',
-      results: [
-        '90% reduction in manual data processing time',
-        '5x faster client onboarding',
-        '200% increase in client engagement'
-      ],
-      quote: 'We were struggling badly with our manual workflows until we brought in Collation.AI. They have automated all of our data audit workflows across our Portfolio Management Software, CRM System, Alternative Investments Data Handling Vendor.',
-      company: 'A RIA in California - USA',
-      role: 'CTO'
-    },
-    {
-      title: 'Single Family Office Gains Data Control',
-      industry: 'Family Office',
-      challenge: 'Lack of centralized data warehouse and admin access to all systems',
-      solution: 'Built centralized data warehouse with full admin access and automated data pulls from General Ledger',
-      results: [
-        'Full control over all data',
-        'Automated daily data synchronization',
-        '32% reduction in infrastructure costs'
-      ],
-      quote: 'We hired Collation.AI to systemically pull down our data from our General Ledger System and house it in our own centralized data warehouse where we have Full Admin access at All Times! We love it',
-      company: 'A Single Family Office in Chicago - USA',
-      role: 'Controller'
-    }
-  ]
-
+const CaseStudies = () => {
   return (
-    <>
-      <Navigation />
+    <div className="min-h-screen bg-background">
+      <SEOHead 
+        title="Case Studies - Collation.AI Success Stories | RIA & Family Office Results"
+        description="Real-world success stories of RIAs and Family Offices using Collation.AI's Agentic AI Bots. See how we've helped wealth managers automate data operations, reduce costs, and achieve 5x faster onboarding."
+        keywords="RIA case studies, Family Office success stories, wealth management automation results, data warehouse implementation, Agentic AI results, financial data automation case studies"
+        canonical="https://www.collation.ai/case-studies"
+      />
+      <Navbar />
 
-      <main className="pt-16">
-        {/* Hero Section */}
-        <section className="py-20 md:py-32 bg-gradient-to-br from-blue-50 to-white">
-          <div className="container-custom">
-            <div className="max-w-4xl mx-auto text-center">
-              <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-                Success Stories
+      <section className="pt-32 pb-20 px-4">
+        <div className="container mx-auto">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24"
+          >
+            <div>
+              <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6">
+                Case Studies
               </h1>
-              <p className="text-xl text-gray-600 leading-relaxed">
-                See how wealth managers are transforming their operations with Collation.AI's Agentic AI Bots.
+              <p className="text-xl text-muted-foreground">
+                Real businesses, real people, and how Agentic AI Bots have managed to solve their complex data problems at scale and ease.
               </p>
             </div>
-          </div>
-        </section>
+            <div className="flex justify-center lg:justify-end">
+              <img 
+                src={heroImage} 
+                alt="Business professionals in modern office building" 
+                className="w-full max-w-xl h-auto rounded-lg"
+              />
+            </div>
+          </motion.div>
 
-        {/* Case Studies */}
-        <section className="py-20 bg-white">
-          <div className="container-custom">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
             {caseStudies.map((study, index) => (
-              <div key={index} className={`mb-20 ${index !== caseStudies.length - 1 ? 'pb-20 border-b border-gray-200' : ''}`}>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-                  {/* Content */}
-                  <div>
-                    <div className="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-4">
-                      {study.industry}
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.15 }}
+                whileHover={{ y: -8, scale: 1.02, transition: { duration: 0.2 } }}
+              >
+                <Card className="h-full hover:shadow-xl transition-shadow">
+                  <CardContent className="p-8">
+                    <div className="mb-6 flex justify-center">
+                      <LottieAnimation 
+                        animationData={study.animation} 
+                        className="w-full max-w-md h-auto"
+                      />
                     </div>
-                    <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                      {study.title}
-                    </h2>
-
-                    <div className="mb-8">
-                      <h3 className="text-xl font-bold text-gray-900 mb-3">The Challenge</h3>
-                      <p className="text-gray-600 leading-relaxed">
-                        {study.challenge}
-                      </p>
+                    <div className="mb-4">
+                      <p className="text-sm font-bold text-muted-foreground uppercase tracking-wide mb-2">{study.client}</p>
+                      <h3 className="text-2xl font-bold text-foreground mb-4">{study.title}</h3>
                     </div>
-
-                    <div className="mb-8">
-                      <h3 className="text-xl font-bold text-gray-900 mb-3">The Solution</h3>
-                      <p className="text-gray-600 leading-relaxed">
-                        {study.solution}
-                      </p>
-                    </div>
-
-                    <div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-4">Results</h3>
+                    <div className="mb-6">
+                      <h4 className="font-semibold text-foreground mb-2 flex items-center">
+                        <span className="mr-2">⚠️</span> The Problem
+                      </h4>
+                      <p className="text-foreground font-semibold mb-6">{study.description}</p>
+                      <h4 className="font-semibold text-foreground mb-2 flex items-center">
+                        <span className="mr-2">✓</span> The Solution
+                      </h4>
                       <ul className="space-y-3">
-                        {study.results.map((result, i) => (
-                          <li key={i} className="flex items-start">
-                            <svg className="w-6 h-6 text-primary mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                            </svg>
-                            <span className="text-gray-600">{result}</span>
+                        {study.results.map((result, idx) => (
+                          <li key={idx} className="text-muted-foreground leading-relaxed">
+                            {result}
                           </li>
                         ))}
                       </ul>
                     </div>
-                  </div>
-
-                  {/* Testimonial */}
-                  <div className="bg-gradient-to-br from-primary to-blue-700 p-8 md:p-12 rounded-2xl text-white lg:sticky lg:top-24">
-                    <div className="text-6xl mb-6">"</div>
-                    <p className="text-xl leading-relaxed mb-8">
-                      {study.quote}
-                    </p>
-                    <div className="border-t border-white/20 pt-6">
-                      <div className="font-bold text-lg">{study.company}</div>
-                      <div className="opacity-90">{study.role}</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
             ))}
           </div>
-        </section>
 
-        {/* Stats Section */}
-        <section className="py-20 bg-primary text-white">
-          <div className="container-custom">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold mb-4">Results Across All Clients</h2>
-              <p className="text-xl opacity-90">Real impact across 20+ wealth management firms</p>
-            </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
-              <div className="text-center">
-                <div className="text-5xl md:text-6xl font-bold mb-2">$100B+</div>
-                <div className="text-lg opacity-90">Assets Under Reporting</div>
-              </div>
-              <div className="text-center">
-                <div className="text-5xl md:text-6xl font-bold mb-2">15hrs</div>
-                <div className="text-lg opacity-90">Average Time Saved/Week</div>
-              </div>
-              <div className="text-center">
-                <div className="text-5xl md:text-6xl font-bold mb-2">5x</div>
-                <div className="text-lg opacity-90">Faster Client Onboarding</div>
-              </div>
-              <div className="text-center">
-                <div className="text-5xl md:text-6xl font-bold mb-2">200%</div>
-                <div className="text-lg opacity-90">Client Engagement Growth</div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section className="py-20 bg-white">
-          <div className="container-custom text-center">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              Ready to Transform Your Operations?
-            </h2>
-            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-              Join 20+ wealth managers who have automated their data workflows with Collation.AI.
-            </p>
-            <button onClick={() => setIsDemoModalOpen(true)} className="btn-primary inline-block text-lg">
-              Request a Demo
-            </button>
-          </div>
-        </section>
-      </main>
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            className="text-center"
+          >
+            <Card className="max-w-3xl mx-auto bg-primary text-primary-foreground hover:shadow-2xl transition-shadow">
+              <CardContent className="p-12">
+                <h2 className="text-3xl font-bold mb-4">Want Similar Results?</h2>
+                <p className="text-lg mb-8 opacity-90">
+                  See how Collation.AI can transform your wealth management data operations with our Agentic AI Bots.
+                </p>
+                <Button asChild size="lg" variant="secondary">
+                  <Link href="/contact">Schedule a Free Consultation</Link>
+                </Button>
+              </CardContent>
+            </Card>
+          </motion.div>
+        </div>
+      </section>
 
       <Footer />
-      <DemoModal isOpen={isDemoModalOpen} onClose={() => setIsDemoModalOpen(false)} />
-    </>
-  )
-}
+    </div>
+  );
+};
+
+const caseStudies = [
+  {
+    title: "Data Extraction Bot & Analytics Calculator Bot Transforms Raw Accounting Data into Actionable Insights",
+    client: "FAMILY OFFICE",
+    description: "We are a FO and our Accounting System does not do investment reporting.",
+    results: [
+      "Collation.AI generates reports as an overlay to our current General Ledger system after having enriched it with the data coming from our Custodian Banks (e.g. Schwab, Fidelity)",
+      "Collation.AI pulls your data from your incumbent Accounting System and pushes it into your data warehouse, runs various calculations e.g. TWR, PnL, Attribution (with drill down functionality), Risk/Return calculations, etc.",
+      "Collation.AI was 30% of the cost and 4X faster than the next best solution"
+    ],
+    animation: caseStudy01
+  },
+  {
+    title: "Data Extraction Bot Bridges the Gap Between Data Providers and Your Systems",
+    client: "FAMILY OFFICE / RIA",
+    description: "Our Staff is spending way too much time on downloading documents manually from various portals.",
+    results: [
+      "Collation.AI downloads the files and extracts data points from the PDF Files automatically",
+      "Collation.AI uses its Data Extraction Bot to login into your data provider e.g. Fund Manager, Custodian Bank, Real Estate Platform, etc., pulls your the data down into your data warehouse, and finally pushes it into your preferred system",
+      "We saved 01 full head count and Collation.AI was 4X faster than any other vendor"
+    ],
+    animation: caseStudy02
+  },
+  {
+    title: "Data Scrubbing Bot & Automated Workflow Bot Detect and Resolve Data Anomalies",
+    client: "FAMILY OFFICE / RIA",
+    description: "My data contains errors, which leads to incorrect reporting.",
+    results: [
+      "Collation.AI's Auditor Bots scrub the data",
+      "Collation.AI pulls your data from your portfolio system(s) and pushes it into your data warehouse, then the Audit Bots look for data anomalies; and it either fixes these data bugs or notifies you so that you can take appropriate / timely action",
+      "Our Customer base grew 3X with 80% retention rate"
+    ],
+    animation: caseStudy03
+  },
+  {
+    title: "Centralized Data Warehouse Bot centralizes & warehouses Multi-Source Financial Data",
+    client: "FAMILY OFFICE / RIA",
+    description: "We will lose our data that is on our old system we are planning to retire.",
+    results: [
+      "Collation.AI's Bots will extract and warehouse the data",
+      "Collation.AI pulls your data from your portfolio systems, accounting systems, CRM systems, etc., pushes it into your centralised data warehouse so that you can migrate your historical data into your new system without any hassle",
+      "Collation.AI was 60% more affordable and 10X faster than anything else in the market"
+    ],
+    animation: caseStudy04
+  }
+];
+
+export default CaseStudies;

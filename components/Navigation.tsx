@@ -1,121 +1,140 @@
-'use client'
+import { Link, useLocation } from "next/link";
+import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
+import {
+  LayoutDashboard,
+  Database,
+  TrendingUp,
+  Shield,
+  BarChart3,
+  FileText,
+  AlertTriangle,
+  LineChart,
+  Activity,
+  Workflow,
+  PieChart,
+  DollarSign,
+  Menu,
+  LogOut,
+} from "lucide-react";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
-import Link from 'next/link'
-import { useState } from 'react'
-import DemoModal from './DemoModal'
+const navigationItems = [
+  { name: "Dashboard", path: "/trial-dashboard", icon: LayoutDashboard },
+  { name: "Data Warehouse", path: "/data-warehouse", icon: Database },
+  { name: "Direct Alpha", path: "/direct-alpha", icon: TrendingUp },
+  { name: "Risk Metrics", path: "/risk-metrics", icon: Shield },
+  { name: "Holdings Report", path: "/holdings-report", icon: BarChart3 },
+  { name: "Financial Summary", path: "/financial-summary", icon: FileText },
+  { name: "Drawdown Analysis", path: "/drawdown-analysis", icon: AlertTriangle },
+  { name: "Fixed Income", path: "/fixed-income", icon: LineChart },
+  { name: "Volatility", path: "/volatility-analysis", icon: Activity },
+  { name: "Workflow", path: "/workflow-analysis", icon: Workflow },
+  { name: "Sector Risk", path: "/sector-risk", icon: PieChart },
+  { name: "Stress Testing", path: "/stress-testing", icon: DollarSign },
+];
 
-export default function Navigation() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false)
+export const Navigation = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { toast } = useToast();
+
+  const handleLogout = async () => {
+    if (error) {
+      toast({
+        title: "Error",
+        description: "Failed to log out",
+        variant: "destructive",
+      });
+    } else {
+      navigate("/");
+    }
+  };
+
+  const NavLinks = () => (
+    <>
+      {navigationItems.map((item) => {
+        const Icon = item.icon;
+        const isActive = location.pathname === item.path;
+        return (
+          <Link
+            key={item.path}
+            to={item.path}
+            className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-colors ${
+              isActive
+                ? "bg-primary text-primary-foreground"
+                : "text-muted-foreground hover:bg-muted hover:text-foreground"
+            }`}
+          >
+            <Icon className="w-4 h-4" />
+            <span className="text-sm">{item.name}</span>
+          </Link>
+        );
+      })}
+    </>
+  );
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200">
-      <div className="container-custom">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <Link href="/" className="text-2xl font-bold text-primary">
-            Collation AI
+    <>
+      {/* Desktop Navigation */}
+      <nav className="hidden lg:flex w-64 min-h-screen border-r bg-card flex-col">
+        <div className="p-6 border-b">
+          <Link href="/trial-dashboard">
+            <h1 className="text-xl font-bold">Collation.AI</h1>
           </Link>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            <Link href="/" className="text-gray-700 hover:text-primary transition-colors font-medium">
-              Home
-            </Link>
-            <Link href="/security" className="text-gray-700 hover:text-primary transition-colors font-medium">
-              Security
-            </Link>
-            <Link href="/case-studies" className="text-gray-700 hover:text-primary transition-colors font-medium">
-              Case Studies
-            </Link>
-            <Link href="/blogs" className="text-gray-700 hover:text-primary transition-colors font-medium">
-              Blogs
-            </Link>
-            <Link href="/about-us" className="text-gray-700 hover:text-primary transition-colors font-medium">
-              About Us
-            </Link>
-            <button onClick={() => setIsDemoModalOpen(true)} className="btn-primary text-sm px-6 py-2.5">
-              Request a Demo
-            </button>
-          </div>
-
-          {/* Mobile menu button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-gray-100"
-            aria-label="Toggle menu"
-          >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              {isOpen ? (
-                <path d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
-          </button>
         </div>
+        <div className="flex-1 p-4 space-y-1 overflow-y-auto">
+          <NavLinks />
+        </div>
+        <div className="p-4 border-t">
+          <Button
+            variant="outline"
+            className="w-full"
+            onClick={handleLogout}
+          >
+            <LogOut className="w-4 h-4 mr-2" />
+            Logout
+          </Button>
+        </div>
+      </nav>
 
-        {/* Mobile Navigation */}
-        {isOpen && (
-          <div className="md:hidden py-4 border-t border-gray-200">
-            <div className="flex flex-col space-y-4">
-              <Link
-                href="/"
-                className="text-gray-700 hover:text-primary transition-colors font-medium"
-                onClick={() => setIsOpen(false)}
-              >
-                Home
-              </Link>
-              <Link
-                href="/security"
-                className="text-gray-700 hover:text-primary transition-colors font-medium"
-                onClick={() => setIsOpen(false)}
-              >
-                Security
-              </Link>
-              <Link
-                href="/case-studies"
-                className="text-gray-700 hover:text-primary transition-colors font-medium"
-                onClick={() => setIsOpen(false)}
-              >
-                Case Studies
-              </Link>
-              <Link
-                href="/blogs"
-                className="text-gray-700 hover:text-primary transition-colors font-medium"
-                onClick={() => setIsOpen(false)}
-              >
-                Blogs
-              </Link>
-              <Link
-                href="/about-us"
-                className="text-gray-700 hover:text-primary transition-colors font-medium"
-                onClick={() => setIsOpen(false)}
-              >
-                About Us
-              </Link>
-              <button
-                onClick={() => {
-                  setIsOpen(false)
-                  setIsDemoModalOpen(true)
-                }}
-                className="btn-primary text-center"
-              >
-                Request a Demo
-              </button>
-            </div>
-          </div>
-        )}
+      {/* Mobile Navigation */}
+      <div className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-card border-b">
+        <div className="flex items-center justify-between p-4">
+          <Link href="/trial-dashboard">
+            <h1 className="text-lg font-bold">Collation.AI</h1>
+          </Link>
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon">
+                <Menu className="w-5 h-5" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="left" className="w-64 p-0">
+              <div className="p-6 border-b">
+                <h1 className="text-xl font-bold">Collation.AI</h1>
+              </div>
+              <div className="p-4 space-y-1">
+                <NavLinks />
+              </div>
+              <div className="p-4 border-t">
+                <Button
+                  variant="outline"
+                  className="w-full"
+                  onClick={handleLogout}
+                >
+                  <LogOut className="w-4 h-4 mr-2" />
+                  Logout
+                </Button>
+              </div>
+            </SheetContent>
+          </Sheet>
+        </div>
       </div>
-      <DemoModal isOpen={isDemoModalOpen} onClose={() => setIsDemoModalOpen(false)} />
-    </nav>
-  )
-}
+    </>
+  );
+};
