@@ -1,6 +1,10 @@
-import { Link, useLocation } from "next/link";
+"use client";
+
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
+import { signOut } from "next-auth/react";
 import {
   LayoutDashboard,
   Database,
@@ -39,19 +43,20 @@ const navigationItems = [
 ];
 
 export const Navigation = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
+  const router = useRouter();
+  const pathname = usePathname();
   const { toast } = useToast();
 
   const handleLogout = async () => {
-    if (error) {
+    try {
+      await signOut({ redirect: false });
+      router.push("/");
+    } catch (error) {
       toast({
         title: "Error",
         description: "Failed to log out",
         variant: "destructive",
       });
-    } else {
-      navigate("/");
     }
   };
 
@@ -59,11 +64,11 @@ export const Navigation = () => {
     <>
       {navigationItems.map((item) => {
         const Icon = item.icon;
-        const isActive = location.pathname === item.path;
+        const isActive = pathname === item.path;
         return (
           <Link
             key={item.path}
-            to={item.path}
+            href={item.path}
             className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-colors ${
               isActive
                 ? "bg-primary text-primary-foreground"

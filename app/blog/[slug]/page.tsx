@@ -1,4 +1,4 @@
-import Navigation from '@/components/Navigation'
+import { Navigation } from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import Link from 'next/link'
 import type { Metadata } from 'next'
@@ -77,7 +77,6 @@ const blogPosts: Record<string, any> = {
     date: '2024-01-15',
     category: 'AI Automation',
     readTime: '8 min read',
-    author: 'Collation AI Team',
   },
   // Add more blog posts here as needed
 }

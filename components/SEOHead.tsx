@@ -1,5 +1,7 @@
+"use client";
+
 import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { usePathname } from 'next/navigation';
 
 interface SEOHeadProps {
   title?: string;
@@ -8,14 +10,14 @@ interface SEOHeadProps {
   canonical?: string;
 }
 
-const SEOHead = ({ 
+const SEOHead = ({
   title = "Collation.AI - Agentic AI Bots for Wealth Management Data Automation | RIA Data Warehouse Solutions",
   description = "Collation.AI solves data headaches for Wealth Managers, RIAs, and Family Offices with Agentic AI Bots. Automate financial data aggregation, create centralized data warehouses, and achieve audit-ready data.",
   keywords = "Agentic AI, AI Bots, Wealth Management, RIA, Registered Investment Advisor, Family Office, Data Warehouse, Financial Data Aggregation, Data Automation, Portfolio Management, Asset Management, Data Reconciliation, Audit-Ready Data, Financial Data Integration, Multi-Custodian, Data Silos, Compliance, Performance Reporting, Data Analytics, AI Agents, Workflow Automation",
   canonical
 }: SEOHeadProps) => {
-  const location = useLocation();
-  const currentUrl = canonical || `https://www.collation.ai${location.pathname}`;
+  const pathname = usePathname();
+  const currentUrl = canonical || `https://www.collation.ai${pathname}`;
 
   useEffect(() => {
     // Update title

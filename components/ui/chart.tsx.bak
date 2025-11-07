@@ -101,9 +101,10 @@ const ChartTooltipContent = React.forwardRef<
     }
 >(
   (
+    // @ts-expect-error - recharts TooltipProps types need updating
     {
       active,
-      payload,
+      payload = [],
       className,
       indicator = "dot",
       hideLabel = false,

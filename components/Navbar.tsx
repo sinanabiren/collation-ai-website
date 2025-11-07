@@ -1,25 +1,16 @@
+"use client";
+
 import { useState, useEffect } from "react";
-import { Link } from "next/link";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { supabase } from "@/integrations/supabase/client";
+import { useSession } from "next-auth/react";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isAuthed, setIsAuthed] = useState(false);
-
-  useEffect(() => {
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      setIsAuthed(!!session);
-    });
-
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setIsAuthed(!!session);
-    });
-
-    return () => subscription.unsubscribe();
-  }, []);
+  const { data: session } = useSession();
+  const isAuthed = !!session;
 
 
   return (
@@ -95,35 +86,35 @@ const Navbar = () => {
             >
               <div className="flex flex-col gap-4 py-4">
                 <Link
-                  to="/"
+                  href="/"
                   className="text-foreground hover:text-primary transition-colors py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Home
                 </Link>
                 <Link
-                  to="/security"
+                  href="/security"
                   className="text-foreground hover:text-primary transition-colors py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Security
                 </Link>
                 <Link
-                  to="/case-studies"
+                  href="/case-studies"
                   className="text-foreground hover:text-primary transition-colors py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Case Studies
                 </Link>
                 <Link
-                  to="/blog"
+                  href="/blog"
                   className="text-foreground hover:text-primary transition-colors py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Blogs
                 </Link>
                 <Link
-                  to="/about"
+                  href="/about"
                   className="text-foreground hover:text-primary transition-colors py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >

@@ -210,7 +210,7 @@ const Security = () => {
                           transition={{ duration: 0.3 }}
                         >
                           <img 
-                            src={soc2Logo} 
+                            src={typeof soc2Logo === "string" ? soc2Logo : soc2Logo.src} 
                             alt="AICPA SOC 2 Certification" 
                             className="w-32 h-32 object-contain"
                           />
@@ -221,7 +221,7 @@ const Security = () => {
                           transition={{ duration: 0.3 }}
                         >
                           <img 
-                            src={iso27001Logo} 
+                            src={typeof iso27001Logo === "string" ? iso27001Logo : iso27001Logo.src} 
                             alt="ISO 27001 Certification" 
                             className="w-32 h-32 object-contain"
                           />

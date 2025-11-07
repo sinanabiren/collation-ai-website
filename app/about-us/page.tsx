@@ -187,8 +187,8 @@ const About = () => {
                 <Card className="hover:shadow-xl transition-shadow overflow-hidden">
                   <CardContent className="p-0">
                     <div className="aspect-square bg-gradient-to-br from-primary/10 to-accent/10 overflow-hidden">
-                      <img 
-                        src={member.image} 
+                      <img
+                        src={typeof member.image === 'string' ? member.image : member.image.src}
                         alt={member.name}
                         className="w-full h-full object-cover object-center"
                         style={{ aspectRatio: '1/1' }}

@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Link } from "next/link";
+import Link from "next/link";
 import SEOHead from "@/components/SEOHead";
 import LottieAnimation from "@/components/LottieAnimation";
 import { motion } from "framer-motion";
@@ -42,9 +42,9 @@ const CaseStudies = () => {
               </p>
             </div>
             <div className="flex justify-center lg:justify-end">
-              <img 
-                src={heroImage} 
-                alt="Business professionals in modern office building" 
+              <img
+                src={typeof heroImage === 'string' ? heroImage : heroImage.src}
+                alt="Business professionals in modern office building"
                 className="w-full max-w-xl h-auto rounded-lg"
               />
             </div>

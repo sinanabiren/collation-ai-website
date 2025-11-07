@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowLeft } from "lucide-react";
-import { Link } from "next/link";
+import Link from "next/link";
 import { useEffect } from "react";
 
 const ScheduleDemo = () => {
@@ -25,8 +25,8 @@ const ScheduleDemo = () => {
     <div className="min-h-screen bg-gradient-to-br from-background to-secondary/20">
       <div className="container mx-auto px-6 py-8">
         {/* Back to Home */}
-        <Link 
-          to="/" 
+        <Link
+          href="/"
           className="inline-flex items-center text-muted-foreground hover:text-foreground transition-colors mb-8"
         >
           <ArrowLeft className="w-4 h-4 mr-2" />

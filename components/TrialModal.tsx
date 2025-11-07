@@ -45,7 +45,7 @@ export const TrialModal = ({ open, onOpenChange }: TrialModalProps) => {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      const trialUrl = import.meta.env.VITE_TRIAL_URL || "https://lovable.dev/projects/f18d007a-d7ee-460c-b0ee-ee72a51683d9";
+      const trialUrl = process.env.NEXT_PUBLIC_TRIAL_URL || "https://lovable.dev/projects/f18d007a-d7ee-460c-b0ee-ee72a51683d9";
 
       // Open target immediately on user gesture to avoid blank about:blank tabs
       let opened = false;

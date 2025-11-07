@@ -1,4 +1,4 @@
-import { Link } from "next/link";
+import Link from "next/link";
 import { Youtube } from "lucide-react";
 
 const Footer = () => {

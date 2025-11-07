@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Link } from "next/link";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
@@ -117,13 +117,13 @@ const Home = () => {
             <h3 className="text-xl font-semibold text-foreground mb-8 text-center">Proudly featured on</h3>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-4 max-w-7xl mx-auto">
               {[
-                { src: theWealthMosaic, alt: "The Wealth Mosaic" },
-                { src: citywire, alt: "CityWire" },
-                { src: forbes, alt: "Forbes" },
-                { src: riabiz, alt: "RIABiz" },
-                { src: wealthbriefing, alt: "WealthBriefing" },
-                { src: kitces, alt: "Kitces" },
-                { src: fotechhub, alt: "FOTech Hub" }
+                { src: "/assets/logos/the_wealth_mosaic.png", alt: "The Wealth Mosaic" },
+                { src: "/assets/logos/citywire.png", alt: "CityWire" },
+                { src: "/assets/logos/forbes.png", alt: "Forbes" },
+                { src: "/assets/logos/riabiz.png", alt: "RIABiz" },
+                { src: "/assets/logos/wealthbriefing.png", alt: "WealthBriefing" },
+                { src: "/assets/logos/kitces.png", alt: "Kitces" },
+                { src: "/assets/logos/fotechhub.png", alt: "FOTech Hub" }
               ].map((logo, i) => (
                 <motion.div 
                   key={i}
@@ -1008,48 +1008,48 @@ const testimonials = [
       "We were struggling badly with our manual workflows until we brought in Collation.AI. They automated all of our data audit workflows across our Portfolio Management Software, CRM System, Alternative Investments Data Handling Vendor.",
     author: "A RIA in California - USA",
     role: "CTO",
-    landmark: californiaGoldenGate,
-    image: californiaGoldenGate
+    landmark: "/assets/landmarks/california-golden-gate.jpg",
+    image: "/assets/landmarks/california-golden-gate.jpg"
   },
   {
     quote:
       "Collation.AI has successfully built and meticulously maintained two data connectors for both of the custodian banks our RIA clients have been using.",
     author: "A Portfolio Software Provider in Massachusetts - USA",
     role: "Product Manager",
-    landmark: massachusettsStateHouse,
-    image: massachusettsStateHouse
+    landmark: "/assets/landmarks/massachusetts-state-house.jpg",
+    image: "/assets/landmarks/massachusetts-state-house.jpg"
   },
   {
     quote:
       "We have been running Collation.AI for almost 2 years now. They have bolted on top of our incumbent Portfolio System effortlessly and provide extremely customizable, flexible, scalable reporting.",
     author: "A Multi Family Office in Chicago - USA",
     role: "Principal",
-    landmark: chicagoSkyline,
-    image: chicagoSkyline
+    landmark: "/assets/landmarks/chicago-skyline.jpg",
+    image: "/assets/landmarks/chicago-skyline.jpg"
   },
   {
     quote:
       "Collation.AI has been successfully building APIs and web-scraping our data from our current tech stack and reconciling against our Bank Statements.",
     author: "A Registered Investment Advisor in New York - USA",
     role: "CEO",
-    landmark: newYorkSkyline,
-    image: newYorkSkyline
+    landmark: "/assets/landmarks/new-york-skyline.jpg",
+    image: "/assets/landmarks/new-york-skyline.jpg"
   },
   {
     quote:
       "Before we engaged with Collation.AI we had 2x fulltime headcount that manually downloaded our data from our Real Estate Valuation Platform, Billing Software, Accounting System, Performance Reporting Software.",
     author: "A SFO in Atlanta - USA",
     role: "VP, Family Operations",
-    landmark: atlantaSkyline,
-    image: atlantaSkyline
+    landmark: "/assets/landmarks/atlanta-skyline.jpg",
+    image: "/assets/landmarks/atlanta-skyline.jpg"
   },
   {
     quote:
       "Collation.AI's automated data reconciliation has saved us countless hours and eliminated costly errors in our portfolio reporting.",
     author: "A Wealth Management Firm in Texas - USA",
     role: "Operations Director",
-    landmark: texasCapitol,
-    image: texasCapitol
+    landmark: "/assets/landmarks/texas-capitol.jpg",
+    image: "/assets/landmarks/texas-capitol.jpg"
   }
 ];
 

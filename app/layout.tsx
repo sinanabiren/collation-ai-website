@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import Chatbot from '@/components/Chatbot'
+import SessionProvider from '@/components/SessionProvider'
 // import { Toaster } from '@/components/ui/toaster'
 
 const inter = Inter({
@@ -90,9 +91,11 @@ export default function RootLayout({
         />
       </head>
       <body>
-        {children}
-        <Chatbot />
-        {/* <Toaster /> */}
+        <SessionProvider>
+          {children}
+          <Chatbot />
+          {/* <Toaster /> */}
+        </SessionProvider>
       </body>
     </html>
   )
