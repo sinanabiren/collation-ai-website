@@ -58,7 +58,7 @@ const Navbar = () => {
             </motion.div>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button asChild>
-                <Link href="/trial">Start your Trial</Link>
+                <Link href="/signup">Start your Trial</Link>
               </Button>
             </motion.div>
           </div>
@@ -124,7 +124,7 @@ const Navbar = () => {
                   <Link href="/login">Login</Link>
                 </Button>
                 <Button className="w-full" asChild onClick={() => setIsMenuOpen(false)}>
-                  <Link href="/trial">Start your Trial</Link>
+                  <Link href="/signup">Start your Trial</Link>
                 </Button>
               </div>
             </motion.div>
