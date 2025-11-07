@@ -1,6 +1,5 @@
-import fs from 'fs/promises';
-import path from 'path';
 import bcrypt from 'bcryptjs';
+import { query, initUsersTable } from '../db';
 
 export interface User {
   id: string;
@@ -18,37 +17,29 @@ export interface User {
   }[];
 }
 
-const USERS_FILE = path.join(process.cwd(), 'data', 'users.json');
-
-async function ensureDataDir() {
-  const dir = path.join(process.cwd(), 'data');
-  try {
-    await fs.access(dir);
-  } catch {
-    await fs.mkdir(dir, { recursive: true });
+// Initialize table on first import
+let tableInitialized = false;
+async function ensureTable() {
+  if (!tableInitialized) {
+    try {
+      await initUsersTable();
+      tableInitialized = true;
+    } catch (error) {
+      console.error('Failed to initialize users table:', error);
+    }
   }
-}
-
-async function readUsers(): Promise<User[]> {
-  await ensureDataDir();
-  try {
-    const data = await fs.readFile(USERS_FILE, 'utf-8');
-    return JSON.parse(data);
-  } catch {
-    return [];
-  }
-}
-
-async function writeUsers(users: User[]): Promise<void> {
-  await ensureDataDir();
-  await fs.writeFile(USERS_FILE, JSON.stringify(users, null, 2));
 }
 
 export async function createUser(email: string, password: string, name: string): Promise<User> {
-  const users = await readUsers();
+  await ensureTable();
 
   // Check if user exists
-  if (users.find(u => u.email === email)) {
+  const existingUser = await query(
+    'SELECT id FROM users WHERE email = $1',
+    [email]
+  );
+
+  if (existingUser.rows.length > 0) {
     throw new Error('User already exists');
   }
 
@@ -59,61 +50,160 @@ export async function createUser(email: string, password: string, name: string):
   const now = new Date();
   const trialEndsAt = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000);
 
-  const user: User = {
-    id: crypto.randomUUID(),
-    email,
+  const result = await query(
+    `INSERT INTO users (email, password, name, trial_ends_at, is_active)
+     VALUES ($1, $2, $3, $4, $5)
+     RETURNING id, email, name, created_at, trial_ends_at, is_active`,
+    [email, hashedPassword, name, trialEndsAt, true]
+  );
+
+  const row = result.rows[0];
+
+  return {
+    id: row.id,
+    email: row.email,
     password: hashedPassword,
-    name,
-    createdAt: now.toISOString(),
-    trialEndsAt: trialEndsAt.toISOString(),
-    isActive: true,
+    name: row.name,
+    createdAt: row.created_at.toISOString(),
+    trialEndsAt: row.trial_ends_at.toISOString(),
+    isActive: row.is_active,
     databaseConnections: [],
   };
-
-  users.push(user);
-  await writeUsers(users);
-
-  return user;
 }
 
 export async function verifyUser(email: string, password: string): Promise<User | null> {
-  const users = await readUsers();
-  const user = users.find(u => u.email === email);
+  await ensureTable();
 
-  if (!user) {
+  const result = await query(
+    'SELECT id, email, password, name, created_at, trial_ends_at, is_active FROM users WHERE email = $1',
+    [email]
+  );
+
+  if (result.rows.length === 0) {
     return null;
   }
 
-  const isValid = await bcrypt.compare(password, user.password);
+  const row = result.rows[0];
+  const isValid = await bcrypt.compare(password, row.password);
+
   if (!isValid) {
     return null;
   }
 
-  return user;
+  return {
+    id: row.id,
+    email: row.email,
+    password: row.password,
+    name: row.name,
+    createdAt: row.created_at.toISOString(),
+    trialEndsAt: row.trial_ends_at.toISOString(),
+    isActive: row.is_active,
+    databaseConnections: [],
+  };
 }
 
 export async function getUserByEmail(email: string): Promise<User | null> {
-  const users = await readUsers();
-  return users.find(u => u.email === email) || null;
-}
+  await ensureTable();
 
-export async function getUserById(id: string): Promise<User | null> {
-  const users = await readUsers();
-  return users.find(u => u.id === id) || null;
-}
+  const result = await query(
+    'SELECT id, email, password, name, created_at, trial_ends_at, is_active FROM users WHERE email = $1',
+    [email]
+  );
 
-export async function updateUser(id: string, updates: Partial<User>): Promise<User | null> {
-  const users = await readUsers();
-  const index = users.findIndex(u => u.id === id);
-
-  if (index === -1) {
+  if (result.rows.length === 0) {
     return null;
   }
 
-  users[index] = { ...users[index], ...updates };
-  await writeUsers(users);
+  const row = result.rows[0];
 
-  return users[index];
+  return {
+    id: row.id,
+    email: row.email,
+    password: row.password,
+    name: row.name,
+    createdAt: row.created_at.toISOString(),
+    trialEndsAt: row.trial_ends_at.toISOString(),
+    isActive: row.is_active,
+    databaseConnections: [],
+  };
+}
+
+export async function getUserById(id: string): Promise<User | null> {
+  await ensureTable();
+
+  const result = await query(
+    'SELECT id, email, password, name, created_at, trial_ends_at, is_active FROM users WHERE id = $1',
+    [id]
+  );
+
+  if (result.rows.length === 0) {
+    return null;
+  }
+
+  const row = result.rows[0];
+
+  return {
+    id: row.id,
+    email: row.email,
+    password: row.password,
+    name: row.name,
+    createdAt: row.created_at.toISOString(),
+    trialEndsAt: row.trial_ends_at.toISOString(),
+    isActive: row.is_active,
+    databaseConnections: [],
+  };
+}
+
+export async function updateUser(id: string, updates: Partial<User>): Promise<User | null> {
+  await ensureTable();
+
+  const fields: string[] = [];
+  const values: any[] = [];
+  let paramIndex = 1;
+
+  if (updates.name !== undefined) {
+    fields.push(`name = $${paramIndex++}`);
+    values.push(updates.name);
+  }
+
+  if (updates.email !== undefined) {
+    fields.push(`email = $${paramIndex++}`);
+    values.push(updates.email);
+  }
+
+  if (updates.isActive !== undefined) {
+    fields.push(`is_active = $${paramIndex++}`);
+    values.push(updates.isActive);
+  }
+
+  if (fields.length === 0) {
+    return getUserById(id);
+  }
+
+  values.push(id);
+
+  const result = await query(
+    `UPDATE users SET ${fields.join(', ')} WHERE id = $${paramIndex}
+     RETURNING id, email, password, name, created_at, trial_ends_at, is_active`,
+    values
+  );
+
+  if (result.rows.length === 0) {
+    return null;
+  }
+
+  const row = result.rows[0];
+
+  return {
+    id: row.id,
+    email: row.email,
+    password: row.password,
+    name: row.name,
+    createdAt: row.created_at.toISOString(),
+    trialEndsAt: row.trial_ends_at.toISOString(),
+    isActive: row.is_active,
+    databaseConnections: [],
+  };
 }
 
 export function isTrialActive(user: User): boolean {
