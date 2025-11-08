@@ -229,7 +229,7 @@ const Contact = () => {
                   <Button
                     size="lg"
                     className="bg-[#2563eb] hover:bg-[#1d4ed8]"
-                    onClick={() => window.open("https://calendly.com/collation-ai", "_blank")}
+                    onClick={() => window.open("https://calendly.com/sinan-biren-collationai/30min", "_blank")}
                   >
                     Schedule Now
                   </Button>
@@ -244,8 +244,9 @@ const Contact = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="relative h-full min-h-[600px] rounded-3xl overflow-hidden bg-gradient-to-br from-gray-300 to-gray-400 shadow-lg"
             >
+              {/* TODO: Replace with correct robot image URL from live site */}
               <img
-                src="https://framerusercontent.com/images/iRyCN7w7M46aEc6qkL4UpIxY.jpg"
+                src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=1200&fit=crop"
                 alt="AI Robot - Collation.AI Contact"
                 className="w-full h-full object-cover"
               />
