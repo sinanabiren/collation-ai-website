@@ -23,25 +23,25 @@ const About = () => {
     {
       name: "Tanmai Sharma",
       title: "Founder & CEO",
-      image: tanmaiSharma,
+      image: tanmaiSharma.src,
       linkedin: "https://www.linkedin.com/in/tanmai-sharma-9b1777/"
     },
     {
       name: "Sinan Biren",
       title: "Chief Revenue Officer",
-      image: sinanBiren,
+      image: sinanBiren.src,
       linkedin: "https://www.linkedin.com/in/sinanbiren/"
     },
     {
       name: "Prashant Surana",
       title: "CTO",
-      image: prashantSurana,
+      image: prashantSurana.src,
       linkedin: "https://www.linkedin.com/in/prashantsurana/"
     },
     {
       name: "Shamara Pereira",
       title: "Head, Implementation",
-      image: shamaraPereira,
+      image: shamaraPereira.src,
       linkedin: "https://www.linkedin.com/in/shamara-pereira/"
     }
   ];

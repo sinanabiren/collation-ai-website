@@ -6,11 +6,14 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/hooks/use-toast";
 import { Card, CardContent } from "@/components/ui/card";
+import SEOHead from "@/components/SEOHead";
 import { motion } from "framer-motion";
 import { Mail, Phone, Building2 } from "lucide-react";
 
 const Contact = () => {
+  const { toast } = useToast();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -21,7 +24,10 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert("Thank you for contacting us! Our team will get back to you within 24 hours.");
+    toast({
+      title: "Thank you for contacting us!",
+      description: "Our team will get back to you within 24 hours.",
+    });
     setFormData({ firstName: "", lastName: "", email: "", phone: "", message: "" });
   };
 
@@ -34,6 +40,12 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="Contact Collation.AI - Request Demo | Agentic AI for Wealth Management"
+        description="Schedule a free consultation with Collation.AI. Learn how our Agentic AI Bots can solve your wealth management data challenges. Free Proof of Concept available for RIAs and Family Offices."
+        keywords="contact Collation.AI, request demo, wealth management consultation, Agentic AI demo, RIA solutions contact, Family Office consultation, data warehouse demo"
+        canonical="https://www.collation.ai/contact"
+      />
       <Navbar />
 
       <section className="pt-32 pb-20 px-4">
