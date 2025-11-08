@@ -165,7 +165,7 @@ export const blogPosts: BlogPost[] = [
     author: "Sinan Biren",
     date: "Oct 20, 2024",
     url: "https://www.collation.ai/blog/embrace-the-family-office-of-the-future-multigenerational-wealth-meets-ai-rpa",
-    image: "https://framerusercontent.com/images/iwP9PmpMhUMiCC3goOTgIcTjS8.png?lossless=1&width=1921&height=774",
+    image: "https://framerusercontent.com/images/A3IDWjsjbN4RDUMd3V4F2lI75I.png?lossless=1&width=1280&height=720",
     excerpt: "How AI and RPA support multigenerational family office operations."
   }
 ];
