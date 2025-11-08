@@ -22,7 +22,7 @@ export const blogPosts: BlogPost[] = [
     date: "Oct 23, 2025",
     url: "https://www.collation.ai/blog/disruption-of-traditional-saas-models-in-wealth-management",
     image: "https://framerusercontent.com/images/RMrTgzHblKtQ6xsfGI9crIVGI8k.png?lossless=1&width=1280&height=720",
-    excerpt: "Agentic AI is reshaping software models across wealth management—here’s how and why."
+    excerpt: "Agentic AI is reshaping software models across wealth management—here's how and why."
   },
   {
     title: "AI Agents: The Next Evolution in Wealth Management for RIAs",
