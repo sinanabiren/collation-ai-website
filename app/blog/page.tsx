@@ -1,4 +1,4 @@
-import { Navigation } from '@/components/Navigation'
+import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import Link from 'next/link'
 import type { Metadata } from 'next'
@@ -135,7 +135,7 @@ const blogPosts = [
 export default function BlogPage() {
   return (
     <>
-      <Navigation />
+      <Navbar />
 
       <main className="pt-16">
         {/* Blog Header */}

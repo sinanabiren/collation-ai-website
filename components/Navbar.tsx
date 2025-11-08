@@ -48,7 +48,7 @@ const Navbar = () => {
             <Link href="/blog" className="text-foreground hover:text-primary transition-colors">
               Blogs
             </Link>
-            <Link href="/about" className="text-foreground hover:text-primary transition-colors">
+            <Link href="/about-us" className="text-foreground hover:text-primary transition-colors">
               About Us
             </Link>
             {/* Auth buttons grouped together with tighter spacing */}
@@ -117,7 +117,7 @@ const Navbar = () => {
                   Blogs
                 </Link>
                 <Link
-                  href="/about"
+                  href="/about-us"
                   className="text-foreground hover:text-primary transition-colors py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
