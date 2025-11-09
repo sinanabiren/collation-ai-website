@@ -66,6 +66,7 @@ const Home = () => {
                   animationImport={() => import("@/assets/animations/hero-desktop.json")}
                   className="w-full h-auto"
                   loop={false}
+                  speed={1.5}
                   onComplete={() => setHeroAnimationComplete(true)}
                 />
               </div>
@@ -75,6 +76,7 @@ const Home = () => {
                   animationImport={() => import("@/assets/animations/hero-tablet-mobile.json")}
                   className="w-full h-auto"
                   loop={false}
+                  speed={1.5}
                   onComplete={() => setHeroAnimationComplete(true)}
                 />
               </div>
@@ -85,7 +87,7 @@ const Home = () => {
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.8 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
                 className="absolute -bottom-32 right-[28%] lg:right-[30%] hidden md:block pointer-events-none z-10"
               >
                 <svg width="80" height="130" viewBox="0 0 80 130" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-primary/70">
@@ -103,7 +105,7 @@ const Home = () => {
                     markerEnd="url(#arrowhead)"
                     initial={{ pathLength: 0 }}
                     animate={{ pathLength: 1 }}
-                    transition={{ duration: 1.5, delay: 1, ease: "easeInOut" }}
+                    transition={{ duration: 1, delay: 0.5, ease: "easeInOut" }}
                   />
                 </svg>
               </motion.div>
@@ -115,7 +117,7 @@ const Home = () => {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
+              transition={{ duration: 0.5, delay: 0 }}
               className="mb-32 max-w-5xl mx-auto"
             >
               <VibeCodingShowcase />
