@@ -12,10 +12,42 @@ const PerformanceChart = () => (
 
 const PortfolioAllocation = () => (
   <div className="bg-card rounded-md p-2 border border-border h-16 flex items-center justify-center gap-2">
-    <div className="relative w-10 h-10 rounded-full overflow-hidden">
-      <div className="absolute inset-0 bg-primary" style={{ clipPath: "polygon(50% 50%, 50% 0%, 100% 0%, 100% 50%)" }} />
-      <div className="absolute inset-0 bg-secondary" style={{ clipPath: "polygon(50% 50%, 100% 50%, 100% 100%, 50% 100%)" }} />
-      <div className="absolute inset-0 bg-accent" style={{ clipPath: "polygon(50% 50%, 50% 100%, 0% 100%, 0% 0%, 50% 0%)" }} />
+    <div className="relative w-10 h-10">
+      <svg viewBox="0 0 100 100" className="w-full h-full -rotate-90">
+        {/* Stocks 45% - starts at 0deg */}
+        <circle
+          cx="50"
+          cy="50"
+          r="40"
+          fill="none"
+          stroke="hsl(var(--primary))"
+          strokeWidth="20"
+          strokeDasharray="162 251"
+          strokeDashoffset="0"
+        />
+        {/* Bonds 30% - starts at 45% (162) */}
+        <circle
+          cx="50"
+          cy="50"
+          r="40"
+          fill="none"
+          stroke="hsl(var(--secondary))"
+          strokeWidth="20"
+          strokeDasharray="108 251"
+          strokeDashoffset="-162"
+        />
+        {/* Cash 25% - starts at 75% (270) */}
+        <circle
+          cx="50"
+          cy="50"
+          r="40"
+          fill="none"
+          stroke="hsl(var(--accent))"
+          strokeWidth="20"
+          strokeDasharray="90 251"
+          strokeDashoffset="-270"
+        />
+      </svg>
     </div>
     <div className="flex flex-col gap-0.5 text-[9px]">
       <div className="flex items-center gap-1"><div className="w-1.5 h-1.5 bg-primary rounded" /><span className="text-muted-foreground">Stocks 45%</span></div>
