@@ -32,7 +32,7 @@ const Home = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setHeroAnimationComplete(true);
-    }, 1300);
+    }, 4000);
     return () => clearTimeout(timer);
   }, []);
 
