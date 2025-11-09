@@ -73,7 +73,7 @@ const Home = () => {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 1.4 }}
+              transition={{ duration: 0.8, delay: 2.5 }}
               className="absolute -bottom-32 right-[28%] lg:right-[30%] hidden md:block pointer-events-none z-10"
             >
               <svg width="80" height="130" viewBox="0 0 80 130" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-primary/70">
@@ -83,7 +83,7 @@ const Home = () => {
                   </marker>
                 </defs>
                 <motion.path
-                  d="M 40 0 L 40 70 Q 40 90, 20 90 L 6 90" 
+                  d="M 40 0 L 40 70 Q 40 90, 20 90 L 6 90"
                   stroke="currentColor"
                   strokeWidth="2"
                   strokeLinecap="round"
@@ -91,7 +91,7 @@ const Home = () => {
                   markerEnd="url(#arrowhead)"
                   initial={{ pathLength: 0 }}
                   animate={{ pathLength: 1 }}
-                  transition={{ duration: 1.5, delay: 1.6, ease: "easeInOut" }}
+                  transition={{ duration: 1.5, delay: 2.7, ease: "easeInOut" }}
                 />
               </svg>
             </motion.div>
