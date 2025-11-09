@@ -83,36 +83,34 @@ const Home = () => {
             </motion.div>
 
             {/* Arrow pointing to Vibe Coding - curved arrow stopping before box */}
-            {heroAnimationComplete && (
-              <div className="absolute -bottom-32 right-[28%] lg:right-[30%] hidden md:block pointer-events-none z-10">
-                <svg width="80" height="130" viewBox="0 0 80 130" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-primary/70">
-                  <defs>
-                    <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
-                      <polygon points="0 0, 8 4, 0 8" fill="currentColor" />
-                    </marker>
-                  </defs>
-                  <motion.path
-                    d="M 40 0 L 40 70 Q 40 90, 20 90 L 6 90"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    fill="none"
-                    markerEnd="url(#arrowhead)"
-                    initial={{ pathLength: 0 }}
-                    animate={{ pathLength: 1 }}
-                    transition={{ duration: 0.5, delay: 0, ease: "easeInOut" }}
-                  />
-                </svg>
-              </div>
-            )}
+            <div
+              className={`absolute -bottom-32 right-[28%] lg:right-[30%] hidden md:block pointer-events-none z-10 transition-opacity duration-200 ${heroAnimationComplete ? 'opacity-100' : 'opacity-0'}`}
+            >
+              <svg width="80" height="130" viewBox="0 0 80 130" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-primary/70">
+                <defs>
+                  <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                    <polygon points="0 0, 8 4, 0 8" fill="currentColor" />
+                  </marker>
+                </defs>
+                <motion.path
+                  d="M 40 0 L 40 70 Q 40 90, 20 90 L 6 90"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  fill="none"
+                  markerEnd="url(#arrowhead)"
+                  initial={{ pathLength: 0 }}
+                  animate={{ pathLength: heroAnimationComplete ? 1 : 0 }}
+                  transition={{ duration: 0.5, delay: 0, ease: "easeInOut" }}
+                />
+              </svg>
+            </div>
           </div>
 
           {/* Vibe-Coding Showcase */}
-          {heroAnimationComplete && (
-            <div className="mb-32 max-w-5xl mx-auto">
-              <VibeCodingShowcase />
-            </div>
-          )}
+          <div className={`mb-32 max-w-5xl mx-auto transition-opacity duration-200 ${heroAnimationComplete ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+            <VibeCodingShowcase />
+          </div>
 
           {/* Proudly Featured Section */}
           <motion.div 
