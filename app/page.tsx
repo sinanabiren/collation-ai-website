@@ -541,43 +541,32 @@ const Home = () => {
                 {testimonials.map((t, i) => (
                   <CarouselItem key={i}>
                     <div className="relative min-h-[600px] flex items-center justify-center py-20">
-                      {/* Circular image layout */}
+                      {/* Single landmark image */}
                       <div className="hidden md:block absolute inset-0">
-                        {[0, 1, 2, 3, 4, 5].map((idx) => {
-                          const angle = (idx * 60 - 90) * (Math.PI / 180);
-                          const radius = 200;
-                          const x = Math.cos(angle) * radius;
-                          const y = Math.sin(angle) * radius;
-                          const size = idx === 0 ? 100 : idx % 2 === 0 ? 80 : 70;
-                          
-                            return (
-                              <motion.div
-                                key={idx}
-                                initial={{ opacity: 0, scale: 0 }}
-                                animate={{ 
-                                  opacity: 1, 
-                                  scale: 1
-                                }}
-                                transition={{ 
-                                  delay: idx * 0.1, 
-                                  duration: 0.5
-                                }}
-                                className="absolute rounded-full overflow-hidden border-4 border-white shadow-lg"
-                                style={{
-                                  width: `${size}px`,
-                                  height: `${size}px`,
-                                  left: `calc(50% + ${x}px - ${size/2}px)`,
-                                  top: `calc(50% + ${y}px - ${size/2}px)`
-                                }}
-                              >
-                              <img 
-                                src={testimonials[(i + idx) % testimonials.length].landmark} 
-                                alt="Client location"
-                                className="w-full h-full object-cover"
-                              />
-                            </motion.div>
-                          );
-                        })}
+                        <motion.div
+                          initial={{ opacity: 0, scale: 0 }}
+                          animate={{
+                            opacity: 1,
+                            scale: 1
+                          }}
+                          transition={{
+                            delay: 0.1,
+                            duration: 0.5
+                          }}
+                          className="absolute rounded-full overflow-hidden border-4 border-white shadow-lg"
+                          style={{
+                            width: '100px',
+                            height: '100px',
+                            left: 'calc(50% - 50px)',
+                            top: 'calc(50% - 250px)'
+                          }}
+                        >
+                          <img
+                            src={t.landmark}
+                            alt="Client location"
+                            className="w-full h-full object-cover"
+                          />
+                        </motion.div>
                       </div>
 
                       {/* Quote card */}
