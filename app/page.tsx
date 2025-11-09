@@ -28,11 +28,11 @@ const Home = () => {
   const [showVideo, setShowVideo] = useState(false);
   const [heroAnimationComplete, setHeroAnimationComplete] = useState(false);
 
-  // Trigger Vibe-Coding after 4th box appears (at 1.2s with 3x speed)
+  // Trigger Vibe-Coding after 3rd box (Workflow Automation) appears
   useEffect(() => {
     const timer = setTimeout(() => {
       setHeroAnimationComplete(true);
-    }, 1200);
+    }, 900);
     return () => clearTimeout(timer);
   }, []);
 
