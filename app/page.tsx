@@ -973,10 +973,10 @@ const benefits = [
 ];
 
 const impactStats = [
-  { value: 10, suffix: "B+", prefix: "$", label: "Assets Under Reporting" },
-  { value: 50, suffix: "+", prefix: "", label: "Active Agentic AI Bots" },
+  { value: 100, suffix: "B+", prefix: "$", label: "Assets Under Reporting" },
+  { value: 100, suffix: "+", prefix: "", label: "Active Agentic AI Bots" },
   { value: 20, suffix: "+", prefix: "", label: "Wealth Manager Clients" },
-  { value: 10, suffix: "", prefix: "", label: "Locations" }
+  { value: 4, suffix: "", prefix: "", label: "Locations" }
 ];
 
 const ImpactStatItem = ({ stat, index }: { stat: { value: number; suffix: string; prefix: string; label: string }; index: number }) => {
