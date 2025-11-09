@@ -917,7 +917,7 @@ const aiBots = [
   },
   {
     icon: <MessageSquare size={40} />,
-    title: "AI Report Builder",
+    title: "AI Report Builder - Vibe Code",
     description: "Don't want to download 'canned reports' from online portals? Talk to your Data! Build custom Reports by giving simple prompts",
     animationImport: () => import("@/assets/animations/agent-06.json")
   }

@@ -557,7 +557,7 @@ A: Yes, we work extensively with family offices, RIAs, and wealth managers. Our 
 - **Private Networks** - All internal communication isolated
 - **Azure Key Vault** - Centralized secret management
 
-### AI Report Builder Security Architecture
+### AI Report Builder - Vibe Code Security Architecture
 
 **7-Step Secure Process:**
 1. **User Question** - User asks question via report builder
