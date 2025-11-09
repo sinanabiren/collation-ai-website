@@ -74,12 +74,9 @@ const VibeCodingShowcase = () => {
     { label: "Return Analysis", code: "Table data={returns}", Component: ReturnAnalysis },
   ];
 
-  // Wait for hero animation before starting
+  // Start immediately when component mounts
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShouldAnimate(true);
-    }, 600); // Match hero animation delay
-    return () => clearTimeout(timer);
+    setShouldAnimate(true);
   }, []);
 
   // Typewriter effect
