@@ -912,7 +912,7 @@ const aiBots = [
   {
     icon: <Calculator size={40} />,
     title: "Analytics Calculator Bot",
-    description: "Customizable financial calculations at scale. Bolt on top of your existing tech stack! Smart analytics for better client understanding.",
+    description: "Customizable financial calculations at scale. Bolt on top of your existing tech stack! Build Smart Analytics via Vibe Coding for better client understanding.",
     animationImport: () => import("@/assets/animations/agent-05.json")
   },
   {
