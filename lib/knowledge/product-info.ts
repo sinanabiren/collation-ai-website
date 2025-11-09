@@ -557,11 +557,11 @@ A: Yes, we work extensively with family offices, RIAs, and wealth managers. Our 
 - **Private Networks** - All internal communication isolated
 - **Azure Key Vault** - Centralized secret management
 
-### AI Chatbot Security Architecture
+### AI Report Builder Security Architecture
 
 **7-Step Secure Process:**
-1. **User Question** - User asks question via chatbot
-2. **ChatBot Interface** - Secure web interface
+1. **User Question** - User asks question via report builder
+2. **Report Builder Interface** - Secure web interface
 3. **Azure Function** - Serverless processing
 4. **Context Database** - Retrieves relevant context (customer data never leaves secure environment)
 5. **ChatGPT 4.0** - Generates SQL query or direct answer (only receives question + context, no raw customer data)

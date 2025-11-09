@@ -917,8 +917,8 @@ const aiBots = [
   },
   {
     icon: <MessageSquare size={40} />,
-    title: "AI Chatbot",
-    description: "Don't want to download 'canned reports' from online portals? Talk to your Data! Ask conversational questions for instant answers.",
+    title: "AI Report Builder",
+    description: "Don't want to download 'canned reports' from online portals? Talk to your Data! Build custom Reports by giving simple prompts",
     animationImport: () => import("@/assets/animations/agent-06.json")
   }
 ];
