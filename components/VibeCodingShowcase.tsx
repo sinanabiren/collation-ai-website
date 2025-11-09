@@ -11,48 +11,22 @@ const PerformanceChart = () => (
 );
 
 const PortfolioAllocation = () => (
-  <div className="bg-card rounded-md p-2 border border-border h-16 flex items-center justify-center gap-2">
-    <div className="relative w-10 h-10">
-      <svg viewBox="0 0 100 100" className="w-full h-full -rotate-90">
-        {/* Stocks 45% - starts at 0deg */}
-        <circle
-          cx="50"
-          cy="50"
-          r="40"
-          fill="none"
-          stroke="hsl(var(--primary))"
-          strokeWidth="20"
-          strokeDasharray="162 251"
-          strokeDashoffset="0"
-        />
-        {/* Bonds 30% - starts at 45% (162) */}
-        <circle
-          cx="50"
-          cy="50"
-          r="40"
-          fill="none"
-          stroke="hsl(var(--secondary))"
-          strokeWidth="20"
-          strokeDasharray="108 251"
-          strokeDashoffset="-162"
-        />
-        {/* Cash 25% - starts at 75% (270) */}
-        <circle
-          cx="50"
-          cy="50"
-          r="40"
-          fill="none"
-          stroke="hsl(var(--accent))"
-          strokeWidth="20"
-          strokeDasharray="90 251"
-          strokeDashoffset="-270"
-        />
-      </svg>
-    </div>
+  <div className="bg-card rounded-md p-2 border border-border h-16 flex items-center justify-center gap-3">
+    <div
+      className="w-12 h-12 rounded-full border-2 border-border"
+      style={{
+        background: `conic-gradient(
+          from -90deg,
+          #3b82f6 0deg 162deg,
+          #8b5cf6 162deg 270deg,
+          #ec4899 270deg 360deg
+        )`
+      }}
+    />
     <div className="flex flex-col gap-0.5 text-[9px]">
-      <div className="flex items-center gap-1"><div className="w-1.5 h-1.5 bg-primary rounded" /><span className="text-muted-foreground">Stocks 45%</span></div>
-      <div className="flex items-center gap-1"><div className="w-1.5 h-1.5 bg-secondary rounded" /><span className="text-muted-foreground">Bonds 30%</span></div>
-      <div className="flex items-center gap-1"><div className="w-1.5 h-1.5 bg-accent rounded" /><span className="text-muted-foreground">Cash 25%</span></div>
+      <div className="flex items-center gap-1"><div className="w-2 h-2 rounded" style={{ backgroundColor: '#3b82f6' }} /><span className="text-foreground font-medium">Stocks 45%</span></div>
+      <div className="flex items-center gap-1"><div className="w-2 h-2 rounded" style={{ backgroundColor: '#8b5cf6' }} /><span className="text-muted-foreground">Bonds 30%</span></div>
+      <div className="flex items-center gap-1"><div className="w-2 h-2 rounded" style={{ backgroundColor: '#ec4899' }} /><span className="text-muted-foreground">Cash 25%</span></div>
     </div>
   </div>
 );
@@ -154,7 +128,7 @@ const VibeCodingShowcase = () => {
         <div className="flex items-center gap-2 px-3 py-2 bg-secondary/30 border-b border-border">
           <Code2 className="w-3 h-3 text-primary" />
           <h3 className="text-xs font-semibold text-foreground">Vibe-Coding Live</h3>
-          <div className="ml-auto flex items-center gap-1.5">
+          <div className="ml-auto flex items-center gap-1.5 pl-8">
             <div className="w-1.5 h-1.5 rounded-full bg-green-500" />
             <span className="text-[10px] text-muted-foreground">Building...</span>
           </div>
