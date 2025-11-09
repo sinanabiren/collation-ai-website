@@ -8,17 +8,19 @@ interface LottieAnimationProps {
   loop?: boolean;
   autoplay?: boolean;
   speed?: number;
+  onComplete?: () => void;
 }
 
 const Lottie = lazy(() => import("lottie-react"));
 
-const LottieAnimation = ({ 
-  animationData, 
+const LottieAnimation = ({
+  animationData,
   animationImport,
-  className = "", 
-  loop = true, 
+  className = "",
+  loop = true,
   autoplay = true,
-  speed = 1
+  speed = 1,
+  onComplete
 }: LottieAnimationProps) => {
   const lottieRef = useRef<any>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -67,7 +69,7 @@ const LottieAnimation = ({
   return (
     <div ref={containerRef} className={className}>
       {isVisible && data && (
-        <Suspense fallback={<div className={className} />}> 
+        <Suspense fallback={<div className={className} />}>
           <Lottie
             lottieRef={lottieRef}
             animationData={data}
@@ -75,6 +77,7 @@ const LottieAnimation = ({
             autoplay={autoplay}
             className={className}
             rendererSettings={{ preserveAspectRatio: 'xMidYMid slice' }}
+            onComplete={onComplete}
           />
         </Suspense>
       )}

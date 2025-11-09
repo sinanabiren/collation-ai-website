@@ -26,6 +26,7 @@ import VibeCodingShowcase from "@/components/VibeCodingShowcase";
 
 const Home = () => {
   const [showVideo, setShowVideo] = useState(false);
+  const [heroAnimationComplete, setHeroAnimationComplete] = useState(false);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-secondary overflow-hidden">
@@ -61,51 +62,65 @@ const Home = () => {
             >
               {/* Desktop Animation */}
               <div className="hidden lg:block max-w-7xl mx-auto">
-                <LottieAnimation animationImport={() => import("@/assets/animations/hero-desktop.json")} className="w-full h-auto" />
+                <LottieAnimation
+                  animationImport={() => import("@/assets/animations/hero-desktop.json")}
+                  className="w-full h-auto"
+                  loop={false}
+                  onComplete={() => setHeroAnimationComplete(true)}
+                />
               </div>
               {/* Tablet & Mobile Animation */}
               <div className="lg:hidden max-w-5xl mx-auto">
-                <LottieAnimation animationImport={() => import("@/assets/animations/hero-tablet-mobile.json")} className="w-full h-auto" />
+                <LottieAnimation
+                  animationImport={() => import("@/assets/animations/hero-tablet-mobile.json")}
+                  className="w-full h-auto"
+                  loop={false}
+                  onComplete={() => setHeroAnimationComplete(true)}
+                />
               </div>
             </motion.div>
 
             {/* Arrow pointing to Vibe Coding - curved arrow stopping before box */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 4.3 }}
-              className="absolute -bottom-32 right-[28%] lg:right-[30%] hidden md:block pointer-events-none z-10"
-            >
-              <svg width="80" height="130" viewBox="0 0 80 130" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-primary/70">
-                <defs>
-                  <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
-                    <polygon points="0 0, 8 4, 0 8" fill="currentColor" />
-                  </marker>
-                </defs>
-                <motion.path
-                  d="M 40 0 L 40 70 Q 40 90, 20 90 L 6 90"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  fill="none"
-                  markerEnd="url(#arrowhead)"
-                  initial={{ pathLength: 0 }}
-                  animate={{ pathLength: 1 }}
-                  transition={{ duration: 1.5, delay: 4.5, ease: "easeInOut" }}
-                />
-              </svg>
-            </motion.div>
+            {heroAnimationComplete && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+                className="absolute -bottom-32 right-[28%] lg:right-[30%] hidden md:block pointer-events-none z-10"
+              >
+                <svg width="80" height="130" viewBox="0 0 80 130" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-primary/70">
+                  <defs>
+                    <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                      <polygon points="0 0, 8 4, 0 8" fill="currentColor" />
+                    </marker>
+                  </defs>
+                  <motion.path
+                    d="M 40 0 L 40 70 Q 40 90, 20 90 L 6 90"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    fill="none"
+                    markerEnd="url(#arrowhead)"
+                    initial={{ pathLength: 0 }}
+                    animate={{ pathLength: 1 }}
+                    transition={{ duration: 1.5, delay: 1, ease: "easeInOut" }}
+                  />
+                </svg>
+              </motion.div>
+            )}
           </div>
 
           {/* Vibe-Coding Showcase */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 3.5 }}
-            className="mb-32 max-w-5xl mx-auto"
-          >
-            <VibeCodingShowcase />
-          </motion.div>
+          {heroAnimationComplete && (
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="mb-32 max-w-5xl mx-auto"
+            >
+              <VibeCodingShowcase />
+            </motion.div>
+          )}
 
           {/* Proudly Featured Section */}
           <motion.div 
