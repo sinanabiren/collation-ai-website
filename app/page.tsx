@@ -282,7 +282,7 @@ const Home = () => {
           </motion.div>
 
           {/* Desktop & Tablet Layout - Side by side */}
-          <div className="hidden md:flex gap-8 lg:gap-12 items-start">
+          <div className="hidden md:flex gap-4 lg:gap-6 items-start">
             {/* Left side - Icons with connecting line and animated ball */}
             <div className="flex-shrink-0 relative overflow-hidden py-12 lg:py-16" style={{ width: "280px" }}>
               <div className="absolute inset-x-0 top-8 bottom-8 pointer-events-none">
