@@ -66,7 +66,7 @@ const Home = () => {
                   animationImport={() => import("@/assets/animations/hero-desktop.json")}
                   className="w-full h-auto"
                   loop={false}
-                  speed={2.5}
+                  speed={3}
                   onComplete={() => setHeroAnimationComplete(true)}
                 />
               </div>
@@ -76,7 +76,7 @@ const Home = () => {
                   animationImport={() => import("@/assets/animations/hero-tablet-mobile.json")}
                   className="w-full h-auto"
                   loop={false}
-                  speed={2.5}
+                  speed={3}
                   onComplete={() => setHeroAnimationComplete(true)}
                 />
               </div>
@@ -84,12 +84,7 @@ const Home = () => {
 
             {/* Arrow pointing to Vibe Coding - curved arrow stopping before box */}
             {heroAnimationComplete && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.2, delay: 0 }}
-                className="absolute -bottom-32 right-[28%] lg:right-[30%] hidden md:block pointer-events-none z-10"
-              >
+              <div className="absolute -bottom-32 right-[28%] lg:right-[30%] hidden md:block pointer-events-none z-10">
                 <svg width="80" height="130" viewBox="0 0 80 130" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-primary/70">
                   <defs>
                     <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
@@ -105,23 +100,18 @@ const Home = () => {
                     markerEnd="url(#arrowhead)"
                     initial={{ pathLength: 0 }}
                     animate={{ pathLength: 1 }}
-                    transition={{ duration: 0.6, delay: 0.1, ease: "easeInOut" }}
+                    transition={{ duration: 0.5, delay: 0, ease: "easeInOut" }}
                   />
                 </svg>
-              </motion.div>
+              </div>
             )}
           </div>
 
           {/* Vibe-Coding Showcase */}
           {heroAnimationComplete && (
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.2, delay: 0 }}
-              className="mb-32 max-w-5xl mx-auto"
-            >
+            <div className="mb-32 max-w-5xl mx-auto">
               <VibeCodingShowcase />
-            </motion.div>
+            </div>
           )}
 
           {/* Proudly Featured Section */}
