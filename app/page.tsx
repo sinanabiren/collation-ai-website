@@ -90,7 +90,7 @@ const Home = () => {
 
             {/* Arrow pointing to Vibe Coding - curved arrow stopping before box */}
             <div
-              className={`absolute -bottom-32 right-[28%] lg:right-[30%] hidden md:block pointer-events-none z-10 transition-opacity duration-200 ${heroAnimationComplete ? 'opacity-100' : 'opacity-0'}`}
+              className={`absolute -bottom-32 right-[35%] lg:right-[37%] hidden md:block pointer-events-none z-10 transition-opacity duration-200 ${heroAnimationComplete ? 'opacity-100' : 'opacity-0'}`}
             >
               <svg width="80" height="130" viewBox="0 0 80 130" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-primary/70">
                 <defs>
