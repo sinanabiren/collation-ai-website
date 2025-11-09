@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -27,6 +27,14 @@ import VibeCodingShowcase from "@/components/VibeCodingShowcase";
 const Home = () => {
   const [showVideo, setShowVideo] = useState(false);
   const [heroAnimationComplete, setHeroAnimationComplete] = useState(false);
+
+  // Trigger Vibe-Coding after 4th box appears (at 1.2s with 3x speed)
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setHeroAnimationComplete(true);
+    }, 1200);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-secondary overflow-hidden">
@@ -67,7 +75,6 @@ const Home = () => {
                   className="w-full h-auto"
                   loop={false}
                   speed={3}
-                  onComplete={() => setHeroAnimationComplete(true)}
                 />
               </div>
               {/* Tablet & Mobile Animation */}
@@ -77,7 +84,6 @@ const Home = () => {
                   className="w-full h-auto"
                   loop={false}
                   speed={3}
-                  onComplete={() => setHeroAnimationComplete(true)}
                 />
               </div>
             </motion.div>
