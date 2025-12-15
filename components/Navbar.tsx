@@ -39,6 +39,9 @@ const Navbar = () => {
             <Link href="/" className="text-foreground hover:text-primary transition-colors">
               Home
             </Link>
+            <Link href="/connections" className="text-foreground hover:text-primary transition-colors">
+              Connections
+            </Link>
             <Link href="/security" className="text-foreground hover:text-primary transition-colors">
               Security
             </Link>
@@ -46,7 +49,7 @@ const Navbar = () => {
               Case Studies
             </Link>
             <Link href="/blog" className="text-foreground hover:text-primary transition-colors">
-              Blogs
+              Blog
             </Link>
             <Link href="/about-us" className="text-foreground hover:text-primary transition-colors">
               About Us
@@ -59,7 +62,7 @@ const Navbar = () => {
                 </Button>
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button asChild>
+                <Button className="bg-blue-500 hover:bg-blue-600 text-white" asChild>
                   <Link href="/signup">Start your Trial</Link>
                 </Button>
               </motion.div>
@@ -96,6 +99,13 @@ const Navbar = () => {
                   Home
                 </Link>
                 <Link
+                  href="/connections"
+                  className="text-foreground hover:text-primary transition-colors py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Connections
+                </Link>
+                <Link
                   href="/security"
                   className="text-foreground hover:text-primary transition-colors py-2"
                   onClick={() => setIsMenuOpen(false)}
@@ -114,7 +124,7 @@ const Navbar = () => {
                   className="text-foreground hover:text-primary transition-colors py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Blogs
+                  Blog
                 </Link>
                 <Link
                   href="/about-us"
@@ -126,7 +136,7 @@ const Navbar = () => {
                 <Button className="w-full bg-blue-400 hover:bg-blue-500 text-white" asChild onClick={() => setIsMenuOpen(false)}>
                   <Link href="/login">Login</Link>
                 </Button>
-                <Button className="w-full" asChild onClick={() => setIsMenuOpen(false)}>
+                <Button className="w-full bg-blue-500 hover:bg-blue-600 text-white" asChild onClick={() => setIsMenuOpen(false)}>
                   <Link href="/signup">Start your Trial</Link>
                 </Button>
               </div>

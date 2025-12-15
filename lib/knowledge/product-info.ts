@@ -267,15 +267,176 @@ Best results from combining:
 
 **Certifications & Standards:**
 - **ISO 27001 Certified** (Information Security Management)
-- **SOC 2 Compliance** (Currently being finalized)
-- **Microsoft Technology Stack** (Enterprise-grade infrastructure)
+- **SOC 2 Type II Compliance** (Completed)
+- **Microsoft Azure Cloud Platform** (Enterprise-grade infrastructure)
+- **Annual Security Assessments:** Third-party penetration testing and vulnerability assessments
 
 **Security Measures:**
 - **Anonymous Platform:** No PII (personally identifiable information) required during signup
 - **Client data anonymization:** Recommended removal of PII from statements
-- End-to-end encryption
-- Role-based access controls
-- Secure data transmission protocols
+- **Data Encryption:**
+  - Data at rest: AES-256 encryption
+  - Data in transit: TLS 1.2 or higher with HSTS enabled
+  - Wireless network: WPA2 with AES-128 encryption
+- **Role-based access controls** via Azure Entra ID (Active Directory)
+- **Multi-Factor Authentication (MFA)** required for all system access
+- **Secure data transmission protocols**
+- **Azure Key Vault** for secrets and cryptographic key management
+- **Endpoint Protection:** CrowdStrike Falcon Pro on all desktops and servers
+- **Microsoft Defender** for cloud infrastructure security
+- **Automated Security Patching** on all virtual machines
+
+**Comprehensive Security Architecture:**
+
+**1. Authentication & Identity Management**
+- **Azure Entra ID (Active Directory):**
+  - Single Sign-On (SSO) integration
+  - Service Principals for application authentication
+  - Multi-Factor Authentication (MFA) mandatory
+  - Role-Based Access Control (RBAC)
+- **Azure Key Vault:**
+  - Secure storage of API keys, secrets, connection strings, certificates
+  - Managed HSM (Hardware Security Module)
+  - Encryption as a service without direct key access
+  - Shamir's secret sharing algorithm for root token distribution (minimum 5 individuals)
+
+**2. Network & Infrastructure Security**
+- **Bastion Host:** Secure remote access via OpenVPN for infrastructure management
+- **Private Networks:** All internal communication isolated within Azure Virtual Networks
+- **Public-Facing Hosts:**
+  - agents.collation.ai (React frontend + Node.js backend)
+  - bots.collation.ai (Automated ETL processing and bot orchestration)
+- **Firewall & Network Segmentation:** Strict access controls between environments
+- **DDoS Protection:** Azure-provided distributed denial of service protection
+
+**3. Access Control Policies**
+- **Physical Security:** Biometric access controls for office premises
+- **Logical Access:**
+  - Unique user IDs with strong password policies (min. 128-bit strength)
+  - 2-Factor authentication enabled on all systems
+  - Cryptographic key exchange (public/private keys) for Azure access
+  - Access granted on need-to-know basis with proper approvals
+  - Password lockout after 3 failed attempts
+  - Forced password change on first login
+- **Quarterly Access Reviews:** Regular review of user permissions and rights
+- **Immediate Revocation:** Access removed/blocked upon employee separation
+- **Privileged Access Management:**
+  - Administrative access restricted to authorized personnel only
+  - All privileged actions logged and monitored
+  - Service Principal authentication for automated processes
+
+**4. Encryption & Cryptographic Controls**
+
+**Data at Rest:**
+- AES-256 or equivalent symmetric encryption for all stored data
+- Database encryption enabled on Azure PostgreSQL
+- Encrypted backups with point-in-time recovery
+
+**Data in Transit:**
+- TLS 1.2 or above for all HTTPS resources
+- Approved cipher suites:
+  - ECDHE-ECDSA-AES128-GCM-SHA256
+  - ECDHE-RSA-AES128-GCM-SHA256
+  - ECDHE-ECDSA-AES256-GCM-SHA384
+  - ECDHE-RSA-AES256-GCM-SHA384
+  - DHE-RSA-AES128-GCM-SHA256
+- HSTS (HTTP Strict Transport Security) enabled on all web servers
+- Certificate management via Azure Key Vault
+
+**Password & Authentication:**
+- SHA-1/SHA-2 or equivalent for password hashing
+- Strong password requirements (letters, numbers, special characters)
+- No password reuse or storage in plain text
+
+**5. Monitoring & Threat Detection**
+- **Azure Monitor:** Infrastructure monitoring with real-time alerts
+- **Application Insights:** Application performance monitoring
+- **Log Analytics:** Centralized logging and analysis
+- **Microsoft Defender for Cloud:** Advanced threat protection
+- **CrowdStrike Falcon Pro:** Endpoint detection and response
+- **Security Information and Event Management (SIEM):** Continuous monitoring
+- **Automated Alerts:** Immediate notification of security incidents
+
+**6. Vulnerability Management**
+- **Regular Penetration Testing:** Third-party security assessments
+- **Burp Scanner:** Application-level vulnerability scanning on agents.collation.ai and bots.collation.ai
+- **Automated Patching:** Security patches auto-applied to all virtual machines
+- **Continuous Vulnerability Scanning:** Microsoft Defender scan reports
+- **Security Issue Remediation:** Medium and high-severity issues prioritized and resolved
+
+**7. Disaster Recovery & Business Continuity**
+
+**Proven DR Capabilities:**
+- **Target Recovery Time:** 4.5 hours (270 minutes)
+- **Actual Recovery Time:** 36 minutes (tested June 2024)
+- **Recovery Point Objective:** Daily automated backups with zero data loss
+- **Last DR Test:** June 29, 2024 - **100% successful**
+
+**DR Test Results (June 2024):**
+- Database Recovery: 12 minutes (target: 120 minutes)
+- REST API Restoration: 7 minutes (target: 60 minutes)
+- Excel Add-in Verification: 6 minutes (target: 30 minutes)
+- Power BI Reports: 8 minutes (target: 30 minutes)
+- Portal Deployment: 3 minutes (target: 30 minutes)
+- **Total: 36 minutes vs. 270-minute target (7.5x faster than objective)**
+
+**Database Backup & Recovery:**
+- **Azure PostgreSQL Flexible Server:** 99.99% SLA
+- **Automated Daily Backups:** With retention policies
+- **Point-in-Time Recovery:** Restore to any point within retention period
+- **Geo-Redundant Backups:** Multiple availability zones
+- **Backup Validation:** Regular restore testing
+- **Zero Data Loss:** Continuous replication and backup verification
+
+**High Availability Features:**
+- **Read Replicas:** For load distribution and failover
+- **Auto-Scaling:** Azure App Services and Container Apps scale automatically
+- **Load Balancing:** Traffic distribution across multiple instances
+- **Redundant Infrastructure:** Multi-region deployment capability
+
+**8. Data Protection & Privacy**
+
+**Data Protection Agreement (DPA) - GDPR Compliant:**
+- Collation.AI acts as **Data Processor**
+- Customer acts as **Data Controller**
+- Processing limited to documented instructions only
+- **Sub-Processors:** Microsoft Azure (cloud hosting, storage, analytics)
+- **International Transfers:** Standard Contractual Clauses for EEA/UK data
+- **Data Subject Rights:** Assistance with access, rectification, erasure, restriction, portability requests
+- **Data Retention:** Data deleted or returned upon termination (unless legally required to retain)
+- **Security Program:** SOC 2 Type II controls covering security, availability, confidentiality
+
+**Data Handling:**
+- **No Sensitive Data Collection:** No special category data intentionally collected
+- **Data Minimization:** Only financial and transactional data required for service
+- **Client Data Ownership:** Customers own all their data; Collation.AI has license only for service provision
+- **Data Deletion:** Original uploaded data may be deleted after processing (to save storage); processed data retained for reporting
+- **Upon Termination:** Best efforts to delete all customer data within reasonable time
+
+**9. Secure Development Practices**
+- **Secure SDLC:** Security integrated into software development lifecycle
+- **Code Reviews:** Mandatory peer review before deployment
+- **Dependency Scanning:** Automated vulnerability detection in libraries
+- **Container Security:** Docker images scanned for vulnerabilities
+- **GitHub Integration:** Version control with security scanning
+- **Staging Environments:** Separate development, staging, production environments
+- **Read-Only Production Access:** Prevents unauthorized modifications
+
+**10. Compliance & Audit**
+- **Annual Third-Party Audits:** SOC 2 Type II attestation
+- **ISO 27001 Certification:** Information Security Management System
+- **Regulatory Compliance:** GDPR, data protection laws
+- **Audit Trails:** Comprehensive logging of all system access and changes
+- **Security Incident Response Team (SIRT):** Dedicated team for incident handling
+- **Vendor Security:** All sub-processors bound by equivalent security obligations
+
+**Security Questionnaire Responses:**
+- Comprehensive security documentation available
+- Recent penetration test reports (Burp Scanner)
+- Microsoft Defender scan reports
+- All publicly accessible assets assessed and secured
+- No unremediated high or critical vulnerabilities
+- Azure OAuth implementation validated (false positives explained and documented)
 
 ## Support Model
 
@@ -317,25 +478,621 @@ Best results from combining:
 ✓ **Flexible Report Generation** - Customizable to any requirement
 ✓ **Simple, Fast, and Cost Effective** - Quick implementation, proven ROI
 
+## Contracts & Legal Framework
+
+### Non-Disclosure Agreement (NDA)
+
+**When You Need It:**
+- Before sharing any confidential business information
+- Prior to detailed product demonstrations involving your data
+- During proof of concept discussions
+
+**NDA Terms:**
+- **Receiving Party:** Collation.AI INC., 263 Tresser Blvd Floor 9, 06901 Stamford, Connecticut, United States
+- **Confidentiality Period:** 2 years from date of information receipt
+- **Key Contact for Signing:** Tanmai Sharma (CEO)
+- **Governing Law:** United States of America
+- **Dispute Resolution:** Arbitration under U.S. law
+
+**What's Protected:**
+- Your business information and financial data
+- Client lists and portfolio details
+- Technical specifications and requirements
+- Any information marked as "confidential" or disclosed orally and confirmed in writing within 7 days
+
+**What's NOT Confidential:**
+- Information already in public domain
+- Information you already possessed before disclosure
+- Information independently developed by Collation.AI
+- Information approved for release by you in writing
+- Information required to be disclosed by law or regulation
+
+**Our Commitment:**
+- We only share confidential information with employees on a "need to know" basis
+- No publicity or disclosure of our discussions without mutual written consent
+- We're responsible for any breaches by our team members
+- All terms of the NDA itself are also confidential
+
+**How to Proceed:**
+1. Request NDA from hello@collation.ai
+2. Review with your legal team
+3. Sign and return
+4. Begin detailed discussions about your specific needs
+
+### Service Agreement - Trial Subscription
+
+**Contract Overview:**
+Collation.AI offers a Trial Subscription Agreement that allows businesses to test the service before committing to a long-term contract. This flexible approach reduces risk and allows you to validate our capabilities with your actual data.
+
+**Key Contract Terms:**
+
+**1. Service Scope**
+- Financial account aggregation, portfolio visualization, analytics and reporting service
+- Hosted on Collation's secure servers
+- Access via Applications (web, mobile, tablet)
+- Customer Support during operating hours (9AM-5PM EST on Business Days)
+- Available as Collation-branded or White-Labelled Service
+
+**2. White-Labelling Option**
+- Service can be branded with your company identity
+- Hosted on Collation servers with interface to your website
+- You provide support to your end users; Collation supports you
+- Additional White-Labelling Fee may apply
+
+**3. Subscription Structure**
+- Automatic renewal at end of each Billing Cycle (unless cancelled)
+- Minimum Subscription Period may apply (varies by agreement)
+- Must provide 10 business days' notice to cancel before end of Billing Cycle
+- If cancelling during Minimum Subscription Period, remaining fees still owed
+
+**4. Payment Terms**
+- Subscription Fee invoiced based on Billing Cycle
+- Additional Fees for extra services as agreed
+- Payment due within date specified on invoice
+- Late payments subject to 2% monthly interest
+- Business Subscriber responsible for taxes, bank charges, transaction costs
+
+**5. Fee Revisions**
+- Collation may revise Subscription Fee with 30 days' notice
+- New fees take effect in subsequent Billing Cycle
+- Business Subscriber can cancel if they don't accept new fees
+
+**6. Data Ownership & Privacy**
+- **End User Financial Data:** Remains property of End User
+- **Your Data:** Collation licensed to use data only for providing the service
+- **Original Data Deletion:** Raw uploaded data may be deleted after processing (to save storage)
+- **Anonymous User Policy:** No Personally Identifiable Information required from end users
+- **Upon Termination:** Best efforts to delete all End User Financial Data within reasonable time
+- **Legal Compliance:** Data retained only as required by law or to protect Collation's IP
+
+**7. Intellectual Property Rights**
+- All IP in Website, Applications, and Service remains Collation's property
+- Business Subscribers receive non-exclusive, limited, revocable license to use
+- 'Collation' trademark may not be used without prior written consent
+- No reproduction or distribution of content without written consent
+
+**8. Business Subscriber Responsibilities**
+
+**Security:**
+- Keep usernames and passwords secure and confidential
+- Immediately notify Collation of any security breaches
+- Not attempt to reverse engineer or compromise system security
+- Not upload malicious code or offensive content
+
+**Data Accuracy:**
+- Warrant that all uploaded data is owned and accurate
+- Does not infringe third party rights
+- Fully entitled to provide data to Collation
+
+**Usage Limitations:**
+- May only use service for own lawful business operations
+- May only allow own End Users to access (not third parties)
+- Cannot resell, license, or outsource service to others
+- Violation results in immediate termination
+
+**End User Compliance:**
+- Must procure agreement from each End User to be bound by contract terms
+- Must ensure End Users comply with Privacy Policy
+
+**9. Service Disclaimers**
+
+**No Financial Advice:**
+- Reports and analyses are for information purposes only
+- Do not constitute financial advice
+- End Users must make investment decisions based on independent research
+- Collation makes no investment recommendations
+
+**"As Is" Provision:**
+- Service provided "as is" and "as available"
+- No warranty for accuracy, timeliness, or uninterrupted availability
+- Use at sole risk of Business Subscriber and End Users
+
+**Data Accuracy:**
+- If Business Subscriber uploads data: Solely responsible for accuracy
+- If Collation processes data: Uses reasonable commercial efforts but does not warrant error-free processing
+- Business Subscriber must review and verify all reports
+- Collation will rectify confirmed errors as soon as practicable
+
+**10. Liability Limitations**
+
+**No Indirect Damages:**
+- Collation not liable for indirect, consequential, incidental, or special damages
+- Not liable for loss of profits, revenue, savings, business opportunities, goodwill, or reputation
+- Even if advised of possibility of such damages
+
+**Aggregate Liability Cap:**
+- Maximum liability limited to amounts paid by Business Subscriber during preceding 12 months
+- Applies regardless of legal theory (contract, tort, negligence, etc.)
+
+**Indemnification:**
+- Business Subscriber indemnifies Collation against all claims arising from breaches of agreement
+- Covers legal fees, losses, damages, and expenses
+
+**11. Termination Rights**
+
+**By Business Subscriber:**
+- Give 10 business days' written notice before end of Billing Cycle
+- If within Minimum Subscription Period, pay remaining subscription fees
+
+**By Collation (Immediate):**
+- Non-rectifiable breach by Business Subscriber or End Users
+- Rectifiable breach unrectified for 7+ days after written notice
+- Use of service that exposes Collation to legal liability or disrupts service
+
+**Upon Termination:**
+- Collation will delete End User Financial Data (best efforts)
+- Business Subscriber loses access to service
+- No refund of prepaid fees
+
+**12. Additional Terms**
+
+**Third Party Services:**
+- Service may link to third party websites/services
+- Collation has no control over and not responsible for third party content
+- Business Subscriber assumes all risks
+
+**Force Majeure:**
+- Neither party liable for delays due to events outside reasonable control
+- If event continues 1+ month, either party may terminate
+
+**No Assignment:**
+- Business Subscriber cannot assign rights without Collation's written consent
+- Collation may assign to subsidiaries or associated companies
+
+**Notices:**
+- All notices must be in writing
+- Send to: Tanmai Sharma, CEO, 263 Tresser Boulevard Floor 9, Stamford, CT 06901
+- Email: tanmai.sharma@collation.ai
+- Effective 3 days after domestic mail, 5 days after international mail, or on date of email receipt
+
+**13. Getting the Contract**
+
+**To Request Trial Subscription Agreement:**
+1. Contact hello@collation.ai or call +1 347 449 4818
+2. Discuss your specific needs and requirements
+3. Receive customized Annex with your specific pricing and terms
+4. Review with your legal team
+5. Sign and return to begin trial
+
+**Contract Customization:**
+The Annex to the Trial Subscription Agreement specifies:
+- Your Subscription Fee
+- Billing Cycle (monthly, quarterly, annual)
+- Minimum Subscription Period (if any)
+- White-Labelling Fee (if applicable)
+- Any Additional Fees for extra services
+- Specific integrations and data sources
+
+**Typical Contract Structure:**
+- Client signs bilateral contract directly with Collation.AI
+- Bank/custodian is NOT a party to the agreement (for bank-sponsored implementations)
+- Client instructs their financial institutions to share data with Collation.AI
+- Clear data ownership: Client owns all their data
+- Service Level Agreements (SLAs) for uptime and support
+- Flexible termination terms with proper notice
+
 ## Pricing & Implementation
 
 ### Pricing Philosophy
-- Customized pricing based on specific needs and scale
+- **Customized pricing** based on specific needs and scale
+- Transparent, predictable costs
+- No hidden fees or surprise charges
 - Flexible licensing options
-- Enterprise-grade support included
-- Contact sales for detailed quote: **sales@collation.ai**
+- Enterprise-grade support included in all plans
+
+**RIA Standard Pricing:**
+- **Setup Fee:** $30,000 (one-time)
+- **Annual Subscription:** $30,000 per year
+- Includes data integration, bot workflows, dashboards, and ongoing support
+- Fully functional in days to weeks
+- Custom pricing available for larger implementations
+
+**Enterprise Pricing Factors:**
+1. Number of data sources to integrate
+2. Volume of data processing required
+3. Complexity of reporting requirements
+4. Level of customization needed
+5. Deployment model (multi-tenant vs. dedicated)
+6. Number of users and access levels
+
+**Contact for Quote:**
+- **Sales Team:** hello@collation.ai
+- **Phone:** +1 347 449 4818
+- We typically provide a quote within 2-3 business days
+
+### What You Need to Get Started
+
+**Required Information:**
+1. **Data Sources:**
+   - List of custodians, banks, brokers you use
+   - Portfolio management systems (if any)
+   - General ledger/accounting software
+   - CRM system (if applicable)
+   - Number of accounts/portfolios to aggregate
+
+2. **Reporting Requirements:**
+   - Types of reports you need (investment, financial statements, attribution)
+   - Frequency of reporting (daily, weekly, monthly)
+   - Number of report recipients
+   - Customization requirements
+
+3. **Technical Environment:**
+   - Preferred hosting (our Azure tenant vs. your tenant)
+   - SSO/authentication requirements
+   - Any compliance/regulatory constraints
+   - Data retention policies
+
+4. **Team Structure:**
+   - Number of users by role (advisors, operations, management)
+   - Access control requirements
+   - Training needs
+
+**Nice to Have (But Not Required Initially):**
+- Sample statements/reports for parser training
+- Existing data warehouse details (if any)
+- Integration documentation from current systems
+- Workflow diagrams of current processes
 
 ### Implementation Timeline
-- **Discovery and Setup:** 2-4 weeks
-- **Data Integration:** Varies by complexity and number of data sources
-- **Training and Go-Live:** 1-2 weeks
-- **Ongoing Support:** Continuous
+
+**Phase 1: Discovery & Setup (2-4 weeks)**
+- Initial discovery calls and requirement gathering
+- NDA and contract execution
+- Technical architecture planning
+- User access and permissions setup
+- Data source identification and API access coordination
+
+**Phase 2: Data Integration (Varies by Complexity)**
+- **Simple Setup (1-2 sources):** 1-2 weeks
+- **Standard Setup (3-5 sources):** 2-4 weeks
+- **Complex Setup (6+ sources):** 4-8 weeks
+
+Tasks:
+- API/datafeed configuration
+- PDF parser training (if needed for custom statements)
+- Data warehouse setup
+- Initial data extraction and validation
+- Data reconciliation and quality checks
+
+**Phase 3: Reporting & Workflows (2-3 weeks)**
+- Report template customization
+- Dashboard configuration
+- Automated workflow setup (bots, alerts, notifications)
+- Data auditing rules configuration
+- User acceptance testing
+
+**Phase 4: Training & Go-Live (1-2 weeks)**
+- End-user training sessions
+- Administrator training
+- Documentation delivery
+- Production go-live
+- Post-launch support and optimization
+
+**Phase 5: Ongoing Support (Continuous)**
+- Dedicated support team
+- Regular system updates
+- New data source additions as needed
+- Report customization and enhancements
+- Quarterly business reviews
+
+**Accelerated Timeline:**
+For urgent needs, we can fast-track implementation. Our fastest deployment was fully functional in a matter of days.
+
+### Onboarding Process
+
+**Step 1: Initial Consultation (30-60 minutes)**
+- Schedule via hello@collation.ai or +1 347 449 4818
+- Demo the platform
+- Understand your specific challenges
+- Identify potential quick wins
+
+**Step 2: Proof of Concept (1-2 weeks)**
+- Often provided at no cost
+- Test with sample of your actual data
+- See real results with your statements/data sources
+- Validate our capabilities before commitment
+
+**Step 3: Pilot Program (4-8 weeks)**
+- Roll out to select accounts/clients
+- Validate accuracy and completeness
+- Gather feedback from end users
+- Refine reporting and workflows
+
+**Step 4: Full Deployment**
+- Scale to full organization
+- Complete training for all users
+- Establish ongoing support processes
+- Regular optimization and enhancement
 
 ### Getting Started
-1. **Schedule a demo:** See the platform in action
-2. **Proof of concept:** Test with sample data
-3. **Pilot program:** Roll out to select clients
-4. **Full deployment:** Scale across organization
+1. **Schedule a demo:** See the platform in action - hello@collation.ai
+2. **Sign NDA:** Protect confidential information during discussions
+3. **Proof of concept:** Test with sample data at little to no cost
+4. **Review proposal:** Customized pricing and implementation plan
+5. **Contract execution:** Finalize legal agreements
+6. **Pilot program:** Roll out to select clients
+7. **Full deployment:** Scale across organization
+
+## Downloadable Resources & Documents
+
+We provide several resources that users can download for more detailed information:
+
+### 📋 Quick Download Reference by Category
+
+**🔒 Security & Compliance** (Due Diligence Package)
+1. /downloads/Collation AI Inc. SOC 2 Type 2 Report 2024.pdf - Official SOC 2 audit
+2. /downloads/Pen Test Report_Aug. 2025.pdf - Latest penetration test results
+3. /downloads/Third Party Vendor Due Diligence Request - CollationAI.pdf - Third-party vendor due diligence responses
+4. /downloads/Collation.AI_Vendor due diligence questionnaire_June 2024.xlsx - Vendor due diligence questionnaire (Excel)
+5. /downloads/Security Incident Response_Policy_Ver.1.2.pdf - Security incident response policy
+6. /downloads/AI Vendor Due Diligence Checklist_CollationAI_Jun. 13th 2025.pdf - AI vendor due diligence checklist
+7. /downloads/Collationai-Response.pdf - Security assessment responses
+8. /downloads/Access Control_Policy_Ver.1.1 (2).pdf - Access control policy
+9. /downloads/Encryption and Cryptographic_Policy_Ver.1.2 (1).pdf - Encryption standards
+10. /downloads/Change Management_Policy_Ver.1.1.pdf - Change management procedures
+11. /downloads/azure-collation-architecture-enhanced copy.pdf - Azure architecture diagram (detailed)
+12. /downloads/collation-architecture copy 3.pdf - Collation architecture overview
+
+**📈 Business Continuity**
+1. /downloads/Collation DR Test 29-Jun-2024.pdf - DR test results (36-min recovery)
+2. /downloads/Disaster Recovery Procedure.pdf - DR procedures and protocols
+
+**📜 Legal & Contracts**
+1. /downloads/NDA_Collation.AI_Receiving Party.docx - Non-disclosure agreement template
+2. /downloads/Collation US Trial Contract_Template_Apr. 2024.docx - Trial subscription agreement
+3. /downloads/Data Protection Agreement (Draft).docx - GDPR-compliant DPA
+
+**📊 Product Information & Sales Materials**
+1. /downloads/251003 Collation - RIA Deck.pdf - RIA solutions deck ($30K pricing)
+2. /downloads/CollationAI_Two Pager_Sep. 2025.pdf - Company overview (2 pages)
+3. /downloads/CollationAI_Banks.pdf - Bank & wealth management solutions
+4. /downloads/250514 Collation - Investment Reporting on Top of your GL (3).pdf - GL overlay solution
+
+**🔧 Technical Documentation & Implementation**
+1. /downloads/Collation.AI_APIs & Datafeeds & PDF Parser List_Oct 2025.xlsx - 200+ integrations list
+2. /downloads/USER_GUIDE.md - Collation Studio user guide
+3. /downloads/Identity Access Model.pdf - Identity & access management model
+4. /downloads/CollationAI_AI Chatbot_Diagram copy.pdf - AI chatbot architecture diagram
+5. /downloads/241105 Setting up PostgreSQL database in Azure.pdf - PostgreSQL database setup guide
+
+**📰 Thought Leadership & Educational Content**
+1. /downloads/LINKEDIN_Decoding Data Storage- Database, Data Warehouse, and Data Lake in Financial Services_CollationAI.pdf - Data storage models explained
+2. /downloads/LINKEDIN_AI Agents- The Next Evolution in Wealth Management for RIAs.pdf - AI agents for RIAs
+3. /downloads/LINKEDIN_The Asset Management sector is aggressively automating its operational processes, but outdated legacy technology continues to slow down true digital transformation!.pdf - Digital transformation in asset management
+4. /downloads/LINKEDIN_The Unseen Costs - Why Manual Data Management is Impacting Your RIA's Bottom Line_CollationAI.pdf - Manual data management costs
+
+### Legal & Contract Documents
+**Non-Disclosure Agreement (NDA)**
+- Download: /downloads/NDA_Collation.AI_Receiving Party.docx
+- Use when: Discussing confidential business information, conducting POCs
+- 2-year confidentiality protection
+- Contact: Tanmai Sharma (CEO) for signing
+
+**Trial Subscription Agreement Template**
+- Download: /downloads/Collation US Trial Contract_Template_Apr. 2024.docx
+- Content: Complete contract template with all terms and conditions
+- Use for: Understanding subscription terms, data ownership, liability limitations, service scope
+- Note: Actual contract will include customized Annex with your specific pricing and terms
+- Contact hello@collation.ai to request a customized version
+
+### Product Information & Decks
+**RIA Solutions Deck**
+- Download: /downloads/251003 Collation - RIA Deck.pdf
+- Content: Complete overview of RIA solutions, pricing ($30K setup + $30K/year), implementation roadmap
+- Use for: Understanding how Collation AI solves wealth manager data headaches
+
+**Two-Page Company Overview**
+- Download: /downloads/CollationAI_Two Pager_Sep. 2025.pdf
+- Content: Company overview, key capabilities, case studies
+- Use for: Quick introduction to Collation AI
+
+**Investment Reporting on GL Deck**
+- Download: /downloads/250514 Collation - Investment Reporting on Top of your GL (3).pdf
+- Content: How to add investment reporting without buying expensive portfolio systems
+- Use for: Family offices and RIAs looking to leverage existing general ledger systems
+
+**Bank & Wealth Management Solutions**
+- Download: /downloads/CollationAI_Banks.pdf
+- Content: Account aggregation for banks, UBS case study, competitive intelligence dashboards
+- Use for: Understanding bank and private wealth use cases
+
+### Integration Lists
+**API & Datafeed Capabilities**
+- Download: /downloads/Collation.AI_APIs & Datafeeds & PDF Parser List_Oct 2025.xlsx
+- Content: Complete list of 200+ supported integrations including portfolio systems, GLs, CRMs, custodians
+- Updated: October 2025
+- Use for: Verifying compatibility with your existing systems
+
+## Collation AI Integration Ecosystem
+
+### Overview
+- **Total Connections:** 11,267 integrations
+- **Direct Integrations:** 77 platforms
+- **Partner Network:** 11,190 institutions
+
+### Direct Integrations (77 platforms)
+Collation AI directly integrates with the following financial platforms, portfolio management systems, and data providers:
+
+Addepar, ADP, ARCH, Allvue, Altruist, Amazon AWS, Archway Group, Black Diamond, Box, Canoe Intelligence, Citibank, DTCC, Databricks, DocuSign, Dynamo, Envestnet, FactSet, Fidelity, Fundcount, Goldman Sachs, HubSpot, ICE Data Services, Intuit Mailchimp, LSEG Data & Analytics, Masttro, Merrill Lynch, Microsoft Azure, Microsoft Dynamics 365, Microsoft OneDrive, Microsoft Power BI, Microsoft SharePoint, Monday.com, MoneyGuide, Morningstar, MySQL, Nirvana Solutions, Northern Trust, Oracle NetSuite, Orion, PCR Insights, PREQIN, Pershing, PitchBook, Plaid, Plain Sail, PostgreSQL, Practifi, Quickbooks, Raymond James, Redtail, SS&C, Sage Intacct, Salesforce, Salesforce Tableau, Schwab, Snowflake, Tamarac, UBS, Vanguard, Wealthbox, Wells Fargo, YCharts, Zendesk, Zeplyn, Zillow, and Zoho.
+
+Key categories include:
+- **Portfolio Management Systems:** Addepar, Black Diamond, Orion, Tamarac, Envestnet
+- **Custodians & Brokers:** Schwab, Fidelity, Pershing, UBS, Vanguard, Wells Fargo, Goldman Sachs
+- **CRM Systems:** Salesforce, Redtail, Wealthbox, Microsoft Dynamics 365
+- **Accounting Systems:** Quickbooks, Oracle NetSuite, Sage Intacct
+- **Data Providers:** Morningstar, FactSet, ICE Data Services, LSEG, PREQIN, PitchBook
+
+### Partner Network (11,190 institutions)
+Through our partner network (including Plaid and other aggregation partners), we connect to 11,190 banks, credit unions, and financial institutions including major institutions like Bank of America, Chase, Wells Fargo, Citibank, Goldman Sachs, Morgan Stanley, and thousands of regional banks and credit unions.
+
+**To explore all integrations:** Visit /connections on the website for the complete searchable list with logos.
+
+### Integration Capabilities
+- **Real-time data access:** Live connections to custodians and banks
+- **Automated data pull:** Scheduled updates from all sources
+- **PDF parsing:** Extract data from any PDF statement
+- **API & Webhooks:** RESTful APIs for custom integrations
+- **Aggregation partners:** Plaid and other aggregators for broad coverage
+
+### IT Security & Compliance Documentation
+**Azure Architecture Diagram (Detailed)**
+- Download: /downloads/azure-collation-architecture-enhanced copy.pdf
+- Content: Comprehensive Microsoft Azure cloud architecture showing authentication, compute services, data storage, monitoring, and security components
+- Use for: Understanding technical infrastructure, security architecture, data flow
+
+**Collation Architecture Overview**
+- Download: /downloads/collation-architecture copy 3.pdf
+- Content: High-level architecture overview of Collation.AI platform, system components, data flow diagrams
+- Use for: Quick architecture understanding, sales presentations, technical overview discussions
+
+**Third-Party Vendor Due Diligence Request**
+- Download: /downloads/Third Party Vendor Due Diligence Request - CollationAI.pdf
+- Content: Comprehensive responses to third-party vendor due diligence requests, covering security, compliance, operations, and business practices
+- Use for: Enterprise procurement, vendor assessments, compliance verification, RFP responses
+
+**Vendor Due Diligence Questionnaire**
+- Download: /downloads/Collation.AI_Vendor due diligence questionnaire_June 2024.xlsx
+- Content: Interactive Excel questionnaire with detailed vendor due diligence questions and Collation.AI responses
+- Date: June 2024
+- Use for: Procurement teams, vendor evaluation, compliance checklists, structured due diligence processes
+
+**Security Assessment Response**
+- Download: /downloads/Collationai-Response.pdf
+- Content: Responses to security questionnaire, penetration test results, vulnerability assessments, Microsoft Defender reports
+- Use for: Due diligence, security reviews, compliance verification
+
+**Access Control Policy**
+- Download: /downloads/Access Control_Policy_Ver.1.1 (2).pdf
+- Content: Comprehensive access control policy covering RBAC, MFA, user access management, privileged access, password policies
+- Version: 1.1 (Latest update: May 2025)
+- Use for: Understanding access control procedures, ISO 27001 compliance
+
+**Encryption and Cryptographic Policy**
+- Download: /downloads/Encryption and Cryptographic_Policy_Ver.1.2 (1).pdf
+- Content: Encryption standards (AES-256, TLS 1.2+), cryptographic algorithms, key management procedures
+- Version: 1.2 (Latest update: September 2025)
+- Use for: Understanding data protection methods, encryption standards
+
+**Disaster Recovery Test Report**
+- Download: /downloads/Collation DR Test 29-Jun-2024.pdf
+- Content: Complete DR test results showing 36-minute recovery time (vs. 270-minute target), zero data loss, full system restoration
+- Test Date: June 29, 2024
+- Use for: Verifying business continuity capabilities, RTO/RPO validation
+
+**Disaster Recovery Procedure**
+- Download: /downloads/Disaster Recovery Procedure.pdf
+- Content: Detailed disaster recovery procedures, step-by-step recovery processes, RTO/RPO targets, failover procedures
+- Use for: Understanding DR protocols, business continuity planning, compliance audits
+
+**SOC 2 Type II Report**
+- Download: /downloads/Collation AI Inc. SOC 2 Type 2 Report 2024.pdf
+- Content: Official SOC 2 Type II audit report (2024) covering security, availability, confidentiality controls
+- Use for: Compliance verification, vendor due diligence, security audits, enterprise procurement
+
+**Penetration Test Report**
+- Download: /downloads/Pen Test Report_Aug. 2025.pdf
+- Content: Third-party penetration testing results from August 2025, vulnerability assessments, security findings
+- Use for: Security due diligence, risk assessment, compliance reviews
+
+**Change Management Policy**
+- Download: /downloads/Change Management_Policy_Ver.1.1.pdf
+- Content: Change management procedures, approval workflows, testing requirements, rollback procedures
+- Version: 1.1
+- Use for: Understanding change control processes, compliance verification
+
+**Security Incident Response Policy**
+- Download: /downloads/Security Incident Response_Policy_Ver.1.2.pdf
+- Content: Security incident response procedures, escalation workflows, incident classification, response teams, communication protocols
+- Version: 1.2
+- Use for: Understanding security incident handling, compliance verification, enterprise security reviews
+
+**AI Vendor Due Diligence Checklist**
+- Download: /downloads/AI Vendor Due Diligence Checklist_CollationAI_Jun. 13th 2025.pdf
+- Content: Comprehensive due diligence checklist specifically for AI vendors, covering security, compliance, data handling, AI ethics, model governance
+- Date: June 13, 2025
+- Use for: Procurement reviews, vendor assessments, compliance verification, enterprise due diligence processes
+
+**Data Protection Agreement (DPA)**
+- Download: /downloads/Data Protection Agreement (Draft).docx
+- Content: GDPR-compliant DPA template covering data processing, sub-processors, security measures, SOC 2 Type II compliance
+- Use for: Legal review, GDPR compliance, data processing agreements
+
+**Collation Studio User Guide**
+- Download: /downloads/USER_GUIDE.md
+- Content: Complete user guide for Collation Studio development environment (internal development tool)
+- Note: This is for internal development tooling, not the main Collation.AI platform
+- Use for: Developers using Collation Studio for custom development work
+
+### Technical Documentation
+
+**Identity & Access Management Model**
+- Download: /downloads/Identity Access Model.pdf
+- Content: Comprehensive identity and access management model for Collation.AI platform, covering user roles, permissions, authentication flows, and security controls
+- Use for: Understanding access control architecture, security reviews, compliance audits, IAM integration planning
+
+**AI Chatbot Architecture Diagram**
+- Download: /downloads/CollationAI_AI Chatbot_Diagram copy.pdf
+- Content: Detailed architecture diagram of Collation.AI's AI chatbot system, showing components, data flows, and integration points
+- Use for: Technical discussions about chatbot capabilities, integration planning, architecture reviews
+
+**PostgreSQL Database Setup Guide**
+- Download: /downloads/241105 Setting up PostgreSQL database in Azure.pdf
+- Content: Step-by-step guide for setting up PostgreSQL database in Microsoft Azure for Collation.AI deployment
+- Date: November 5, 2024
+- Use for: Database administrators, implementation teams, technical setup, Azure infrastructure planning
+
+### Thought Leadership & Educational Content
+
+**Decoding Data Storage in Financial Services**
+- Download: /downloads/LINKEDIN_Decoding Data Storage- Database, Data Warehouse, and Data Lake in Financial Services_CollationAI.pdf
+- Content: Educational article explaining the differences between databases, data warehouses, and data lakes in financial services context
+- Use for: Educating stakeholders, understanding data architecture options, decision-making frameworks
+
+**AI Agents for Wealth Management**
+- Download: /downloads/LINKEDIN_AI Agents- The Next Evolution in Wealth Management for RIAs.pdf
+- Content: Thought leadership on how AI agents are transforming wealth management for RIAs
+- Use for: Understanding industry trends, AI adoption strategies, competitive positioning
+
+**Digital Transformation in Asset Management**
+- Download: /downloads/LINKEDIN_The Asset Management sector is aggressively automating its operational processes, but outdated legacy technology continues to slow down true digital transformation!.pdf
+- Content: Analysis of automation trends in asset management and challenges with legacy technology
+- Use for: Understanding industry challenges, building business case for modernization
+
+**The Costs of Manual Data Management**
+- Download: /downloads/LINKEDIN_The Unseen Costs - Why Manual Data Management is Impacting Your RIA's Bottom Line_CollationAI.pdf
+- Content: Deep dive into hidden costs of manual data management for RIAs, with quantifiable impacts
+- Use for: Building ROI case, understanding pain points, justifying automation investments
+
+**When to Offer These Documents:**
+- When users ask about NDAs or contracts
+- When they want detailed product information
+- When they ask "can I see examples?" or "do you have documentation?"
+- When they ask about pricing, integrations, or specific use cases
+- When they're evaluating Collation AI and need materials to share with their team
+- When they ask for "product decks", "sales materials", or "documentation"
+
+**How to Present Downloads:**
+Tell users they can download documents directly from your website at www.collation.ai/downloads/[filename] or provide the specific document link. Always explain what the document contains and why it's relevant to their question.
 
 ## Contact Information
 
@@ -343,8 +1100,8 @@ Best results from combining:
 **Phone:** +1 347 449 4818
 **Website:** www.collation.ai
 
-**Sales Inquiries:** sales@collation.ai
-**Support:** support@collation.ai
+**Sales Inquiries:** hello@collation.ai
+**Support:** hello@collation.ai
 
 **Office:** Collation AI INC., USA
 
@@ -380,9 +1137,63 @@ A: Banks report increased wallet share, improved client retention, and significa
 **Q: Do you work with Family Offices?**
 A: Yes, we work extensively with family offices, RIAs, and wealth managers. Our platform is ideal for complex multi-generational wealth structures with assets across multiple banks and countries.
 
+**Q: What contract terms do you offer?**
+A: We offer a flexible Trial Subscription Agreement that allows you to test the service before long-term commitment. Key features: automatic renewal by Billing Cycle (you can cancel with 10 business days' notice), clear data ownership (your data remains yours), white-labelling options, and reasonable liability protections. Download our contract template to review all terms.
+
+**Q: Who owns the data?**
+A: You and your end users own all your data. Collation only has a license to use data for providing the service. We follow an Anonymous User Policy (no PII required). Upon termination, we make best efforts to delete all your data. Original uploaded data may be deleted after processing to save storage, but processed data is retained for reporting.
+
+**Q: Can I cancel my subscription?**
+A: Yes, you can cancel by providing 10 business days' written notice before the end of your current Billing Cycle. If you're within a Minimum Subscription Period, you'll need to pay the remaining subscription fees for that period.
+
+**Q: What if there are errors in my reports?**
+A: If we're processing your data, we use reasonable commercial efforts to ensure accuracy but don't warrant error-free processing. You should review all reports and notify us of any errors. We'll investigate and rectify confirmed errors as soon as practicable. If you're uploading your own data, you're responsible for accuracy.
+
+**Q: What's your liability if something goes wrong?**
+A: Our aggregate liability is limited to the amounts you paid during the preceding 12 months. We're not liable for indirect, consequential, or special damages including loss of profits, revenue, or business opportunities. The service is provided "as is" and "as available."
+
+**Q: Can I white-label your service?**
+A: Yes! We offer white-labelling where the service appears under your brand on your website (but hosted on our secure servers). You support your end users; we support you. There may be an additional White-Labelling Fee. This is specified in your contract Annex.
+
+**Q: What security certifications do you have?**
+A: We are ISO 27001 certified and SOC 2 Type II compliant. We undergo annual third-party security audits and regular penetration testing. Our infrastructure is built on Microsoft Azure with enterprise-grade security.
+
+**Q: How do you encrypt data?**
+A: We use AES-256 encryption for data at rest and TLS 1.2+ for data in transit. All web servers have HSTS enabled. Our wireless network uses WPA2 with AES-128 encryption. Password hashing uses SHA-1/SHA-2 or equivalent. All encryption keys are managed securely via Azure Key Vault.
+
+**Q: What's your disaster recovery time?**
+A: Our target recovery time is 4.5 hours, but our last DR test (June 2024) completed in just 36 minutes with zero data loss - 7.5x faster than our objective. We have automated daily backups with point-in-time recovery and 99.99% SLA on our Azure PostgreSQL database.
+
+**Q: Do you have multi-factor authentication?**
+A: Yes, MFA is mandatory for all system access. We also use biometric controls for physical security, role-based access control via Azure Entra ID, and cryptographic key exchange for infrastructure access.
+
+**Q: What monitoring and threat detection do you have?**
+A: We use Azure Monitor, Application Insights, Microsoft Defender for Cloud, and CrowdStrike Falcon Pro for endpoint protection. All system access is logged, and we have automated alerts for security incidents. Our Security Incident Response Team (SIRT) handles any issues.
+
+**Q: Can I get a copy of your security policies?**
+A: Yes, we can provide our Access Control Policy, Encryption and Cryptographic Policy, Azure architecture diagrams, DR test reports, and security assessment responses. Contact hello@collation.ai to request these documents.
+
+**Q: Are you GDPR compliant?**
+A: Yes, we are GDPR compliant. We act as a Data Processor, and we have a Data Protection Agreement (DPA) that covers all GDPR requirements including data subject rights, international transfers (Standard Contractual Clauses), and sub-processor management.
+
+**Q: Where is my data stored?**
+A: Your data is stored on Microsoft Azure in secure, encrypted Azure PostgreSQL databases. You can choose your preferred Azure region for data residency. All data is encrypted at rest and in transit.
+
+**Q: What happens to my data if I cancel?**
+A: Upon termination, we make best efforts to delete all your data within a reasonable time. Original uploaded data may be deleted after processing, but we'll ensure all processed data is removed unless we're legally required to retain it for compliance purposes.
+
 ## RIA-Specific Solutions: Solving Data Headaches for Wealth Managers
 
-### The RIA Data Problem
+### The RIA Data Nightmare
+
+**"More data sources = More people = More costs"**
+
+The typical wealth management firm faces a nightmare scenario:
+- Data scattered across dozens of custodians, banks, and systems
+- Each new client brings 3-5 new data sources
+- Operations teams spend 60-80% of time on manual data tasks
+- Errors cascade through reporting causing client trust issues
+- Scaling requires hiring more people (not technology)
 
 **Manual Operations that are Slow and Expensive:**
 - Converting unstructured data (PDFs) into structured data
@@ -393,8 +1204,12 @@ A: Yes, we work extensively with family offices, RIAs, and wealth managers. Our 
 - Verifying all information is updated, no missing KYC fields
 - Manually converting transactions into GL entries
 - Closing books for month/quarter/year end
+- Downloading statements manually from 20+ portals
+- Re-keying data between systems
+- Fixing data breaks and reconciliation issues
 
 **Current Solution:** Throw people at the problem (slow and expensive)
+**The Result:** Operations teams drowning in manual work, unable to scale efficiently
 
 ### Our RIA Solution: Automated Data Warehouse Approach
 
@@ -490,9 +1305,118 @@ A: Yes, we work extensively with family offices, RIAs, and wealth managers. Our 
 ✓ **Automated Workflows** - Bots manage data so you don't have to
 ✓ **Normalized Data** - Bots get data from all sources and normalize it
 
+## AI-Driven Alternatives & Document Processing
+
+### The Alternative Investments Challenge
+
+**Alternative investments** (Private Equity, Hedge Funds, Real Estate, Venture Capital) present unique data challenges:
+- No standardized reporting format
+- Quarterly statements in complex PDF formats
+- Each fund manager has unique report layouts
+- Manual data extraction is time-consuming and error-prone
+- Capital calls, distributions, and valuations scattered across documents
+- NAV calculations require parsing multiple statement sections
+
+### Our AI-Powered Solution
+
+**Automated Document Processing Workflow:**
+
+1. **Document Collection**
+   - Bots automatically download from investor portals
+   - Email ingestion from fund administrators
+   - SFTP/API connections where available
+   - Manual upload option for one-off documents
+
+2. **AI Document Classification**
+   - Automatically identifies document type (capital call, distribution, quarterly statement, K-1)
+   - Recognizes fund manager and investment vehicle
+   - Routes to appropriate processing pipeline
+
+3. **Intelligent Data Extraction**
+   - Proprietary AI trained on 100,000+ alternative investment documents
+   - Extracts key data points:
+     - Commitment amount, funded amount, unfunded commitment
+     - NAV and valuation dates
+     - Capital calls and distribution details
+     - IRR, MOIC, and performance metrics
+     - Fee calculations and management fees
+   - Handles complex multi-page tables and nested structures
+
+4. **Data Validation & Reconciliation**
+   - Cross-references extracted data across multiple documents
+   - Validates calculations (IRR, MOIC, cash flows)
+   - Flags anomalies and outliers for review
+   - Reconciles with prior period data
+
+5. **Standardization & Normalization**
+   - Converts all data to common format regardless of source
+   - Currency normalization
+   - Date standardization
+   - Consistent naming conventions
+
+6. **Integration & Reporting**
+   - Feeds standardized data into portfolio systems, GLs, or data warehouse
+   - Available via API for downstream systems
+   - Enables consolidated reporting across all alternatives
+   - Real-time dashboards and analytics
+
+### Benefits for Alternative Investments
+
+✓ **90% Time Savings** - Eliminate manual data entry from PDF statements
+✓ **Higher Accuracy** - AI catches errors humans miss
+✓ **Faster Closes** - Quarter-end reporting completed in days, not weeks
+✓ **Better Analytics** - All alternatives data in one normalized format
+✓ **Scalable** - Handle unlimited fund investments without adding staff
+✓ **Audit Trail** - Complete lineage from source document to final report
+
+### Supported Alternative Investment Types
+
+- **Private Equity** - Buyout funds, growth equity, distressed debt
+- **Venture Capital** - Early stage to late stage funds
+- **Hedge Funds** - Long/short equity, event-driven, macro strategies
+- **Real Estate** - Direct investments, REITs, opportunity funds
+- **Private Credit** - Direct lending, mezzanine, distressed debt
+- **Infrastructure** - Energy, transportation, utilities
+- **Managed Futures & Commodities**
+- **Fund of Funds** - Multi-layer structure consolidation
+
 ## Technical Architecture & Infrastructure
 
 ### Azure Cloud Architecture
+
+**Architecture Overview (Azure East US Instance):**
+
+Our system is built on Microsoft Azure with a sophisticated bot-driven architecture:
+
+**Core Components:**
+
+1. **"Worker" Bot**
+   - Extracts data from source systems (Archway, Addepar, Intacct, and other portfolio/accounting systems)
+   - Runs continuously to pull data from client's existing technology stack
+   - Python-based, containerized in Docker for scalability
+
+2. **"Auditor" Bot**
+   - 24/7 Data Quality Monitoring and Fixing
+   - Automatically detects data anomalies and errors
+   - Self-healing capabilities to fix common data issues
+   - Alerts team for complex issues requiring human intervention
+   - Python-based, containerized in Docker
+
+3. **Data Storage Layer:**
+   - **PostgreSQL Database** - Primary document and data storage
+   - **SharePoint Site** - Alternative document storage option
+   - Both provide secure, enterprise-grade storage with backup and recovery
+
+4. **Containerization:**
+   - All bots are Python programs running in Docker containers
+   - Ensures consistent execution across environments
+   - Easy scaling and deployment
+   - Isolated, secure execution
+
+5. **Output & Analytics:**
+   - Flexible data output to **Excel** for ad-hoc analysis
+   - Direct integration with **Power BI** for dashboards and reporting
+   - Supports **custom workflows** for automated processes
 
 **Authentication & Security:**
 - **Azure Entra ID** - Single Sign-On (SSO), Multi-Factor Authentication (MFA), Role-Based Access Control (RBAC)
@@ -720,7 +1644,452 @@ Our AI-powered PDF parser can be trained on any statement format within days. If
 
 ---
 
-*This knowledge base is based on actual Collation AI product documentation and sales materials. All information is accurate and current as of the latest update.*
+# WEBSITE CONTENT SUMMARY
+
+## Home Page Key Messages
+
+### Hero Message
+"We Solve Data Headaches For Wealth Managers"
+
+We reduce operational costs, improve workflow efficiencies by Aggregating Financial Data via AI Bots from your 'existing technology stack', and bring it into your 'fully accessible' centralized Data Warehouse.
+
+### Challenges Wealth Managers Face
+
+**1. Disconnected Data**
+- Data is fragmented across systems
+- RIA operations teams waste 3 hours per day to aggregate data
+
+**2. Manual Data Management**
+- Downloading, copying, checking & fixing across systems manually causes delays
+- On average 2 weeks of delays for preparing reports
+
+**3. Repetitive Data Work**
+- Manual data entry and processing takes significant time
+- Up to 15 hours per week for an External Asset Manager
+
+**4. Poor Data Analytics**
+- Family Offices experiment with 'overpriced' performance reporting software and/or excel spreadsheets
+- Already have a general ledger system, so why not overlay a more affordable reporting software?
+
+**5. Overstaffing & Understaffing**
+- RIAs struggle to recruit new financial advisors when they lack a future-proof, scalable tech stack
+- Excessive hiring puts unnecessary pressure on budget
+
+**6. High Cost of Manual Solutions**
+- Manual solutions are not scalable and become increasingly expensive
+- Wealth Managers spend USD 60K per annum more for in-house tech vs. specialized vendor
+
+### Our Agentic AI Bots: The Future of Data
+
+**1. Data Extraction Bot**
+Unlock trapped data from any source, automate extraction from CRMs, PDFs, Portals, and Protected Systems.
+
+**2. Data Scrubbing Bot**
+Once the data is collated, our Bot reconciles, cleanses, and ensures the data's consistency and reliability across systems.
+
+**3. Centralized Data Warehouse Bot**
+Single source of truth and unlimited access to copies of your data from ALL of your tech stack! Monitor client relationships and predict retention.
+
+**4. Automated Workflows Bot**
+Intelligent automation across your existing technology stack. Recruit new financial advisors thanks to AI-ready, scalable platform.
+
+**5. Analytics Calculator Bot**
+Customizable financial calculations at scale. Bolt on top of your existing tech stack! Build Smart Analytics via Vibe Coding for better client understanding.
+
+**6. AI Report Builder - Vibe Code**
+Don't want to download 'canned reports' from online portals? Talk to your Data! Build custom Reports by giving simple prompts.
+
+### How It Works (7 Simple Steps)
+
+1. **Book a Call** - Schedule a 30-min free consultation with our Agentic AI Bot experts
+2. **Discuss Challenges** - We delve into your specific business challenges & objectives, and pick the best Bot from our library
+3. **Sign NDAs** - We prioritize data security & client confidentiality
+4. **$0 Proof Of Concept** - No specialized headcount needed. No changes to your tech stack. Quick, effortless, and free!
+5. **5 Minutes Setup** - Your data warehouse is created within 5 Minutes. You decide where to host it
+6. **1-3 Days Data Flow** - Data starts flowing into your warehouse using APIs, Bots, web scraping, etc.
+7. **5-10 Days Insights** - Start seeing your first insights via online dashboards within 5-10 business days
+
+### Why Choose Us - Key Benefits
+
+**Predictable Pricing. Minimal Risk. Maximum Value.**
+- Flat fee — no surprises
+- Costs less than a quarter of a full-time hire
+- 100% free if it doesn't work
+
+**1. Audit-Ready Data**
+Benefit from accurate and readily auditable data, ensuring compliance and informed decision-making.
+→ 5x faster client onboarding
+
+**2. Boost Revenue**
+With increased efficiency & streamlined processes, you'll have more time to focus on selling.
+→ Save 15 hours per week on mundane workload
+
+**3. Total Automation**
+Experience seamless automation across your data processes minimizing manual intervention.
+→ 200% YoY growth in client engagement
+
+**4. Security**
+Collation.AI meets international information security standards and is SOC2 certified.
+→ 32% reduction in infrastructure costs
+
+**5. Scalable Data Handling**
+No change required on your incumbent tech stack! Effortlessly manage vast amounts of data.
+→ Save 2/3 on staff salaries
+
+**6. Instant Insights**
+Get immediate access to critical information, enabling faster responses to market changes.
+→ Avoid 2 weeks of delays in reports
+
+### Impact Numbers
+
+- **$100B+** Assets Under Reporting
+- **100+** Active Agentic AI Bots
+- **20+** Wealth Manager Clients
+- **4** Locations
+
+### Featured Media & Recognition
+
+Proudly featured on:
+- The Wealth Mosaic
+- CityWire
+- Forbes
+- RIABiz
+- WealthBriefing
+- Kitces
+- FOTech Hub
+
+### Client Testimonials (Real Quotes)
+
+**RIA in California, USA (CTO):**
+"We were struggling badly with our manual workflows until we brought in Collation.AI. They automated all of our data audit workflows across our Portfolio Management Software, CRM System, Alternative Investments Data Handling Vendor."
+
+**Portfolio Software Provider in Massachusetts, USA (Product Manager):**
+"Collation.AI has successfully built and meticulously maintained two data connectors for both of the custodian banks our RIA clients have been using."
+
+**Multi Family Office in Chicago, USA (Principal):**
+"We have been running Collation.AI for almost 2 years now. They have bolted on top of our incumbent Portfolio System effortlessly and provide extremely customizable, flexible, scalable reporting."
+
+**Registered Investment Advisor in New York, USA (CEO):**
+"Collation.AI has been successfully building APIs and web-scraping our data from our current tech stack and reconciling against our Bank Statements."
+
+**SFO in Atlanta, USA (VP, Family Operations):**
+"Before we engaged with Collation.AI we had 2x fulltime headcount that manually downloaded our data from our Real Estate Valuation Platform, Billing Software, Accounting System, Performance Reporting Software."
+
+**Wealth Management Firm in Texas, USA (Operations Director):**
+"Collation.AI's automated data reconciliation has saved us countless hours and eliminated costly errors in our portfolio reporting."
+
+## About Us Page
+
+### Company Mission
+"We Empower Wealth Managers"
+
+We are a Product Company! Not a SW development shop for hire. And our Mission is to simplify complex tasks, enhance productivity, & unlock new possibilities for WMs by harnessing the power of Agentic AI Bots.
+
+### The Finance & Technology Experts
+
+Collation.AI is a Powerful WealthTech that is specialized in reducing operational costs, improving workflow efficiencies, and increasing client retention for wealth managers by Aggregating Financial Data via Bots from their "existing technology stack" and bring it into a "fully accessible" centralized Data Warehouse. Once the Data is in the Warehouse we setup Bot-driven workflows to check, reconcile, fix, enrich that data, so that infinite Analytics can be derived from it via flexible, scalable Reports.
+
+We originated from the WealthTech provider Canopy.Cloud, which reports on over USD 170 billion in assets and is supported by many Family Offices and UBS Bank.
+
+Our CEO/Founder; Tanmai Sharma, is an entrepreneur, finance expert, and technology aficionado. He established Canopy.Cloud and engineered the core analytics platform. Prior to Canopy, he was a MD at Deutsche Bank, with 20 years of trading expertise in prominent international trading floors, focusing on analytics and arbitrage.
+
+### Leadership Team
+
+**Tanmai Sharma** - Founder & CEO
+- LinkedIn: https://www.linkedin.com/in/tanmai-sharma-9b1777/
+- Background: Entrepreneur, finance expert, and technology aficionado. Established Canopy.Cloud and engineered the core analytics platform. Former MD at Deutsche Bank with 20 years of trading expertise.
+
+**Sinan Biren** - Chief Revenue Officer
+- LinkedIn: https://www.linkedin.com/in/sinanbiren/
+- Contact: Available via Calendly at https://calendly.com/sinan-biren-collationai/30min
+
+**Prashant Surana** - CTO
+- LinkedIn: https://www.linkedin.com/in/prashantsurana/
+
+**Shamara Pereira** - Head, Implementation
+- LinkedIn: https://www.linkedin.com/in/shamara-pereira/
+
+## Case Studies
+
+### Case Study 1: Data Extraction Bot & Analytics Calculator Bot
+**Client:** Family Office
+**Problem:** "We are a FO and our Accounting System does not do investment reporting."
+
+**Results:**
+- Collation.AI generates reports as an overlay to current General Ledger system after having enriched it with data from Custodian Banks (e.g. Schwab, Fidelity)
+- Pulls data from incumbent Accounting System and pushes it into data warehouse, runs various calculations e.g. TWR, PnL, Attribution (with drill down functionality), Risk/Return calculations
+- Was 30% of the cost and 4X faster than the next best solution
+
+### Case Study 2: Data Extraction Bot for Portal Automation
+**Client:** Family Office / RIA
+**Problem:** "Our Staff is spending way too much time on downloading documents manually from various portals."
+
+**Results:**
+- Downloads files and extracts data points from PDF Files automatically
+- Uses Data Extraction Bot to login into data provider (Fund Manager, Custodian Bank, Real Estate Platform), pulls data into warehouse, and pushes it into preferred system
+- Saved 1 full headcount and was 4X faster than any other vendor
+
+### Case Study 3: Data Scrubbing Bot & Automated Workflow Bot
+**Client:** Family Office / RIA
+**Problem:** "My data contains errors, which leads to incorrect reporting."
+
+**Results:**
+- Auditor Bots scrub the data
+- Pulls data from portfolio system(s) into warehouse, then Audit Bots look for data anomalies; either fixes bugs or notifies for action
+- Customer base grew 3X with 80% retention rate
+
+### Case Study 4: Centralized Data Warehouse Bot
+**Client:** Family Office / RIA
+**Problem:** "We will lose our data that is on our old system we are planning to retire."
+
+**Results:**
+- Bots extract and warehouse the data
+- Pulls data from portfolio systems, accounting systems, CRM systems into centralized warehouse for historical data migration
+- Was 60% more affordable and 10X faster than anything else in the market
+
+## Security & Compliance Page
+
+### Security Priorities
+
+**SOC 2 Certified**
+Collation.AI meets international information security standards and is SOC 2 certified. We undergo regular third-party audits to ensure our security controls meet the highest industry standards for protecting sensitive financial data.
+
+**Data Encryption**
+All data is encrypted both in transit and at rest using industry-standard encryption protocols. Your financial data warehouse is hosted in secure, compliant cloud infrastructure with multiple layers of protection.
+
+**Access Control**
+Strict role-based access controls ensure that only authorized personnel can access your data. Multi-factor authentication is required for all system access. We sign NDAs as standard practice before any data integration begins.
+
+**Audit-Ready Data**
+Our Agentic AI Bots ensure all data is audit-ready with complete audit trails, version control, and data lineage tracking. Every data transformation and reconciliation is logged and traceable for compliance and regulatory requirements.
+
+**Two-Factor Authentication**
+Access requires something you know and something you have. This dual-verification process ensures that even if credentials are compromised, your account remains secure.
+
+**Continuous Security Compliance**
+Our automated monitoring systems scan every line of code and system configuration around the clock, ensuring 100% compliance with the most stringent financial security standards.
+
+**End-to-End Encrypted Communication**
+Every piece of data exchanged between our servers and your browser is protected by HTTPS encryption, creating an impenetrable tunnel that shields your information from interception.
+
+### Your Data, Your Control
+
+- You decide where your data warehouse is hosted - your cloud or ours
+- No changes required to your existing technology stack
+- Complete data ownership and portability
+- Transparent data processing with full visibility
+- Regular security updates and monitoring
+
+### Vibe-Coding: Secure Development Architecture
+
+**Data Hosting & Privacy Architecture:**
+
+**Standard Setup:**
+- Vibe-coding applications store data in Supabase
+- Enterprise-grade backend infrastructure
+- Managed seamlessly alongside deployment
+
+**Dev Isolation:**
+- Separate development environments
+- Isolated PostgreSQL servers with dummy data only
+- Zero access to customer data guaranteed
+
+**Production Lock:**
+- We manage deployment & hosting only
+- All customer data stays on secured external servers
+- Military-grade access controls
+
+**Collation.AI Priority - Customer Data Sovereignty:**
+- No Client Data is ever shared with a Public LLM
+- Code & UI Automatically Moved to your secure Local Environment
+- Direct Connection to your Production Database only
+
+### Security Certifications
+- SOC 2 Type II Certified
+- ISO 27001 Certified
+
+## Contact Information
+
+### Get in Touch
+Our friendly team would love to hear from you.
+
+**Two Ways to Contact:**
+
+1. **Inquiry Form** - Submit your details and message via our contact form
+2. **Book a Call** - Schedule directly via Calendly: https://calendly.com/sinan-biren-collationai/30min
+
+**Video Demo Available:**
+YouTube video: https://www.youtube.com/embed/_UfCQ7y-pTo
+
+### Website URLs for Reference
+- Home: https://www.collation.ai/
+- About Us: https://www.collation.ai/about-us
+- Contact: https://www.collation.ai/contact-us
+- Case Studies: https://www.collation.ai/case-studies
+- Security: https://www.collation.ai/security
+- Blog: https://www.collation.ai/blog
+
+## Blog & Thought Leadership Articles
+
+We have an extensive blog with educational content about Agentic AI, Wealth Management, Data Warehouses, RIAs, and Family Offices:
+
+### Featured Blog Articles (20 posts)
+
+**1. Decoding Data Storage: Database, Data Warehouse, and Data Lake in Financial Services**
+- Author: Sinan Biren | Date: Oct 31, 2025
+- URL: https://www.collation.ai/blog/decoding-data-storage-database-data-warehouse-data-lake-in-financial-services
+- Summary: Comprehensive explanation of the differences between databases, data warehouses, and data lakes specifically for financial services. Explains when to use each type of storage, architectural differences, and practical use cases for wealth management.
+- Key Topics: Database vs Warehouse vs Lake, Financial Services Architecture, Data Storage Strategies
+
+**2. Disruption Of Traditional SaaS Models In Wealth Management.. Should We Blame Agentic AI?**
+- Author: Sinan Biren | Date: Oct 23, 2025
+- URL: https://www.collation.ai/blog/disruption-of-traditional-saas-models-in-wealth-management
+- Summary: Analysis of how Agentic AI is fundamentally changing traditional SaaS business models in wealth management industry.
+- Key Topics: SaaS Disruption, Agentic AI Impact, Business Model Evolution
+
+**3. AI Agents: The Next Evolution in Wealth Management for RIAs**
+- Author: Sinan Biren | Date: Oct 8, 2025
+- URL: https://www.collation.ai/blog/ai-agents-the-next-evolution-in-wealth-management-for-rias
+- Summary: Deep dive into how AI agents are transforming wealth management operations for RIAs, from data operations to client reporting. Explains practical applications and implementation strategies.
+- Key Topics: AI Agents for RIAs, Wealth Management Evolution, Automation Benefits
+
+**4. Data Warehouse And Use-Cases For RIAs/FOs**
+- Author: Sinan Biren | Date: Sep 2, 2025
+- URL: https://www.collation.ai/blog/what-is-a-data-warehouse-and-how-is-it-used-by-financial-institutions-such-as-registered-investment-advisors-(rias)-family-offices-(fos)
+- Summary: Practical guide to data warehouse use cases specifically for RIAs and Family Offices with real-world examples.
+- Key Topics: Data Warehouse Use Cases, RIA Operations, Family Office Technology
+
+**5. Asset Management Sector Is Aggressively Automating Its Operational Processes, BUT..**
+- Author: Patrick G. Burke | Date: Aug 21, 2025
+- URL: https://www.collation.ai/blog/the-hidden-cost-why-good-enough-data-is-hurting-your-ria-copy
+- Summary: Analysis of automation surge in asset management and where legacy processes still create bottlenecks in performance.
+- Key Topics: Asset Management Automation, Legacy Technology Challenges, Digital Transformation
+
+**6. The Hidden Cost: Why "Good Enough" Data is Hurting Your RIA**
+- Author: Patrick G. Burke | Date: Jul 8, 2025
+- URL: https://www.collation.ai/blog/the-hidden-cost-why-good-enough-data-is-hurting-your-ria
+- Summary: Quantifies the real operational costs of mediocre data quality and provides solutions for improvement.
+- Key Topics: Data Quality Costs, RIA Operations, Quality Impact
+
+**7. Family Offices: Streamlining Performance Reporting With GL Overlay Solutions**
+- Author: Patrick G. Burke | Date: Jan 13, 2025
+- URL: https://www.collation.ai/blog/family-offices-streamlining-performance-reporting-with-gl-overlay-solutions
+- Summary: How General Ledger overlay solutions improve reporting workflows for family offices without replacing existing systems.
+- Key Topics: GL Overlay, Family Office Reporting, Performance Reports
+
+**8. The Unseen Costs: Why Manual Data Management is Impacting Your RIA's Bottom Line**
+- Author: Sinan Biren | Date: Jun 17, 2025
+- URL: https://www.collation.ai/blog/the-unseen-costs-why-manual-data-management-is-impacting-your-ria-s-bottom-line
+- Summary: Detailed breakdown of hidden costs from manual data operations with quantifiable impact on RIA profitability.
+- Key Topics: Manual Data Costs, RIA Profitability, Automation ROI
+
+**9. Data Lakehouse: Solving Wealth Management's Data Challenges**
+- Author: Raymond DiNunzio | Date: May 15, 2025
+- URL: https://www.collation.ai/blog/data-lakehouse-solving-wealth-management-s-data-challenges
+- Summary: Pragmatic overview of lakehouse architecture and its applications for wealth managers.
+- Key Topics: Data Lakehouse, Wealth Management Architecture, Modern Data Stack
+
+**10. Navigating the Technology Maze: Real Challenges Family Offices Face in Modernization**
+- Author: Alex Ortolani | Date: May 13, 2025
+- URL: https://www.collation.ai/blog/navigating-the-technology-maze-real-challenges-family-offices-face-in-modernization
+- Summary: Common pitfalls in family office technology modernization and proven paths through them.
+- Key Topics: Family Office Modernization, Technology Challenges, Implementation Strategy
+
+**11. More RIAs Are Using Multiple Custodians**
+- Author: Sinan Biren | Date: May 6, 2025
+- URL: https://www.collation.ai/blog/more-rias-are-using-multiple-custodians
+- Summary: Analysis of the trend toward multi-custodian strategies among RIAs and the data implications.
+- Key Topics: Multi-Custodian Strategy, RIA Trends, Data Aggregation Challenges
+
+**12. Breaking Down Data Barriers: How Multi-Family Offices Achieve Total Automation**
+- Author: Sinan Biren | Date: Jan 13, 2025
+- URL: https://www.collation.ai/blog/breaking-down-data-barriers-how-multi-family-offices-achieve-total-automation
+- Summary: Case studies of how leading multi-family offices automate end-to-end data workflows.
+- Key Topics: Total Automation, Multi-Family Offices, Best Practices
+
+**13. Seamless Implementation: How Wealth Managers Can Adopt AI Without Disrupting Existing Systems**
+- Author: Sinan Biren | Date: Jan 14, 2025
+- URL: https://www.collation.ai/blog/seamless-implementation-how-wealth-managers-can-adopt-ai-without-disrupting-existing-systems
+- Summary: Practical tactics and timelines for adopting AI with minimal disruption to existing operations.
+- Key Topics: AI Implementation, Change Management, Non-Disruptive Adoption
+
+**14. The Hidden ROI: Calculating the True Value of Automated Data Operations for Family Offices**
+- Author: Sinan Biren | Date: Jan 12, 2025
+- URL: https://www.collation.ai/blog/the-hidden-roi-calculating-the-true-value-of-automated-data-operations-for-family-offices
+- Summary: Framework for quantifying the ROI of automated data operations with calculation methodologies.
+- Key Topics: ROI Calculation, Automation Value, Family Office Economics
+
+**15. Audit-Ready Data: How Agentic AI Bot Eliminate Compliance Headaches for RIAs**
+- Author: Sinan Biren | Date: Jan 13, 2025
+- URL: https://www.collation.ai/blog/audit-ready-data-how-agentic-ai-bot-eliminate-compliance-headaches-for-rias
+- Summary: How agentic AI maintains audit-ready data and reduces compliance overhead for RIAs.
+- Key Topics: Compliance Automation, Audit-Ready Data, Regulatory Requirements
+
+**16. Beyond the Aspirin: How Collation's AI Agents Provide Lasting Relief for Wealth Managers' Data Headaches**
+- Author: Sinan Biren | Date: Jan 20, 2025
+- URL: https://www.collation.ai/blog/beyond-the-aspirin-how-collation-s-ai-agents-provide-lasting-relief-for-wealth-managers-data-headaches
+- Summary: Moving from temporary fixes to lasting automation solutions for wealth management data challenges.
+- Key Topics: Permanent Solutions, AI Agents, Data Operations
+
+**17. The True Cost of Data Silos: Why Financial Firms Need Integrated AI Solutions**
+- Author: Sinan Biren | Date: Jan 20, 2025
+- URL: https://www.collation.ai/blog/the-true-cost-of-data-silos-why-financial-firms-need-integrated-ai-solutions
+- Summary: Analysis of how siloed data hurts growth and how integrated AI solutions address the problem.
+- Key Topics: Data Silos, Integration Challenges, Unified Solutions
+
+**18. From Manual to Magical: How Agentic AI is Transforming Wealth Management Data Operations**
+- Author: Sinan Biren | Date: Mar 28, 2025
+- URL: https://www.collation.ai/blog/from-manual-to-magical-how-agentic-ai-is-transforming-wealth-management-data-operations
+- Summary: Transformation story from manual processes to AI-driven operations with before/after comparisons.
+- Key Topics: Digital Transformation, Agentic AI, Operations Excellence
+
+**19. Sage Intacct announces new integration with Collation.AI**
+- Author: Sinan Biren | Date: Mar 28, 2025
+- URL: https://www.collation.ai/blog/sage-intacct-announces-new-integration-with-collation-ai
+- Summary: Announcement of seamless data integration between Sage Intacct and Collation.AI platform.
+- Key Topics: Sage Intacct Integration, Accounting Integration, New Features
+
+**20. Embrace the Family Office of the Future: Multigenerational Wealth Meets AI & RPA**
+- Author: Sinan Biren | Date: Oct 20, 2024
+- URL: https://www.collation.ai/blog/embrace-the-family-office-of-the-future-multigenerational-wealth-meets-ai-rpa
+- Summary: How AI and RPA support multigenerational family office operations and long-term wealth preservation.
+- Key Topics: Multigenerational Wealth, AI & RPA, Family Office Future
+
+### When to Reference Blog Articles:
+
+**Data Architecture Questions:**
+- "Database vs warehouse?" → Blog #1: Decoding Data Storage
+- "What's a data lake?" → Blog #1: Decoding Data Storage
+- "Data lakehouse?" → Blog #9: Data Lakehouse Solutions
+- "Data warehouse use cases?" → Blog #4: Data Warehouse for RIAs/FOs
+
+**AI & Automation:**
+- "How do AI agents work?" → Blog #3: AI Agents Evolution
+- "Agentic AI benefits?" → Blog #2: SaaS Disruption & Blog #18: Manual to Magical
+- "AI implementation?" → Blog #13: Seamless Implementation
+
+**Cost & ROI Questions:**
+- "Cost of manual data management?" → Blog #8: Unseen Costs & Blog #6: Hidden Cost
+- "Automation ROI?" → Blog #14: Hidden ROI Calculation
+- "Why automate?" → Multiple blogs on cost savings
+
+**Industry Trends:**
+- "Multi-custodian strategies?" → Blog #11: Multiple Custodians
+- "Asset management automation?" → Blog #5: Asset Management Automation
+- "Family office modernization?" → Blog #10: Technology Maze
+
+**Compliance & Quality:**
+- "Audit-ready data?" → Blog #15: Audit-Ready Data
+- "Data quality impact?" → Blog #6: Hidden Cost of Good Enough Data
+
+**Implementation & Integration:**
+- "How to implement?" → Blog #13: Seamless Implementation
+- "Sage Intacct integration?" → Blog #19: Sage Intacct Announcement
+- "Total automation?" → Blog #12: Breaking Down Barriers
+
+---
+
+*This knowledge base is based on actual Collation AI product documentation, sales materials, website content, and blog articles. All information is accurate and current as of the latest update.*
 `
 
 // This will be used for prompt caching
@@ -729,24 +2098,115 @@ export const SYSTEM_PROMPT = `You are a knowledgeable AI customer support assist
 Your role is to:
 1. Answer questions about Collation AI's wealth aggregation platform and capabilities
 2. Help potential customers (investors, advisors, RIAs, banks) understand how Collation AI solves their specific problems
-3. Provide accurate, detailed information based on the comprehensive knowledge base
+3. Provide accurate, detailed information based on the comprehensive knowledge base (including website content)
 4. Be professional, trustworthy, and demonstrate expertise in wealth management technology
-5. Escalate appropriately when needed
+5. Offer relevant downloadable resources when appropriate
+6. Escalate appropriately when needed
 
 Guidelines:
 - Be professional and knowledgeable - you're representing a platform trusted with billions in assets
 - Focus on understanding whether the user is an investor, advisor, or institution to tailor your response
+- Reference real case studies and testimonials from the website to demonstrate proven results
 - Highlight our unique AI capabilities for processing PDF statements (our key differentiator)
-- Emphasize data security and compliance when relevant
-- For pricing: Explain it's customized based on needs, suggest contacting sales@collation.ai
+- Emphasize data security and compliance when relevant (SOC 2, ISO 27001 certified)
+- Share our "7 Simple Steps" implementation process when discussing how we work
+- Reference the specific Agentic AI Bots (Data Extraction, Data Scrubbing, Data Warehouse, Automated Workflows, Analytics Calculator, AI Report Builder) when discussing solutions
+- For pricing: Mention RIA standard pricing ($30K setup + $30K/year), explain enterprise pricing is customized based on needs, suggest contacting hello@collation.ai
 - For technical questions: Provide details from knowledge base, offer to connect with implementation team
-- For account-specific issues: Direct to support@collation.ai
+- For account-specific issues: Direct to hello@collation.ai
+
+**Formatting for Readability:**
+- Add blank lines between major sections and different topics
+- When listing items, add a blank line before starting the list
+- For numbered lists (1., 2., 3.), ensure each item is on its own line with proper spacing
+- For sub-lists (a., b., c. or i., ii., iii.), add them on separate lines indented under their parent items
+- Add blank lines between different list types (numbered vs lettered vs roman)
+- Break up long paragraphs into shorter, more digestible chunks
+- Use this format for better readability:
+
+Example of good formatting:
+"Here are the main points:
+
+1. First main point with details
+
+2. Second main point with details
+
+a. Sub-point under second point
+b. Another sub-point
+
+3. Third main point
+
+This makes responses much easier to read."
+
+Offering Downloadable Documents:
+When users ask about NDAs, contracts, product information, pricing details, integrations, or want materials to review, offer relevant documents from the "Downloadable Resources & Documents" section. Present download links exactly as shown in the knowledge base (e.g., "/downloads/filename.pdf") and they will automatically become clickable download buttons.
+
+**How to Present Downloads:**
+- For single document requests: Explain what's in the document, then provide the download link
+- For multiple related documents: List all relevant documents with brief descriptions
+- For "due diligence package" or "all security documents": Offer the complete Security & Compliance package (7 documents)
+- For "all materials" or "everything": Organize by category and list all available documents
+- Always format paths as: /downloads/filename.ext (they will auto-convert to download buttons)
+
+Examples of when to offer downloads:
+
+**Legal & Contracts:**
+- "Can I see an NDA?" → Offer /downloads/NDA_Collation.AI_Receiving Party.docx
+- "What are your contract terms?" → Offer /downloads/Collation US Trial Contract_Template_Apr. 2024.docx
+- "Do you have a DPA?" or "GDPR compliance?" → Offer /downloads/Data Protection Agreement (Draft).docx
+- "What's your liability?" or "Service level agreement?" → Offer contract template
+- "Can I white-label your service?" → Explain white-labelling and offer contract template
+
+**Product Information:**
+- "Do you have product materials?" → Offer relevant deck based on their role (RIA, bank, etc.)
+- "Tell me about your pricing" → Mention pricing and offer /downloads/251003 Collation - RIA Deck.pdf for details
+- "How does it work for banks?" → Offer /downloads/CollationAI_Banks.pdf
+- "What integrations do you support?" → Offer /downloads/Collation.AI_APIs & Datafeeds & PDF Parser List_Oct 2025.xlsx
+- "Company overview?" → Offer /downloads/CollationAI_Two Pager_Sep. 2025.pdf
+
+**Security & Compliance:**
+- "What's your security architecture?" or "Show me architecture diagram" → Offer both architecture PDFs (/downloads/azure-collation-architecture-enhanced copy.pdf and /downloads/collation-architecture copy 3.pdf) and explain the bot architecture
+- "How secure is your platform?" → Explain security measures and offer security documentation
+- "Do you have SOC 2?" or "ISO 27001?" or "Show me your SOC 2 report" → Confirm certifications and offer /downloads/Collation AI Inc. SOC 2 Type 2 Report 2024.pdf
+- "Vendor due diligence?" or "Procurement questionnaire?" or "RFP response?" → Offer /downloads/Third Party Vendor Due Diligence Request - CollationAI.pdf and /downloads/Collation.AI_Vendor due diligence questionnaire_June 2024.xlsx
+- "What encryption do you use?" → Explain encryption and offer /downloads/Encryption and Cryptographic_Policy_Ver.1.2 (1).pdf
+- "Access control policies?" → Offer /downloads/Access Control_Policy_Ver.1.1 (2).pdf
+- "Disaster recovery plan?" or "What's your RTO?" or "DR procedures?" → Explain DR capabilities and offer both /downloads/Collation DR Test 29-Jun-2024.pdf and /downloads/Disaster Recovery Procedure.pdf
+- "Penetration testing?" or "pen test results?" or "security testing?" → Offer /downloads/Pen Test Report_Aug. 2025.pdf
+- "Change management?" or "How do you handle changes?" → Offer /downloads/Change Management_Policy_Ver.1.1.pdf
+- "Security incident response?" or "How do you handle security incidents?" → Offer /downloads/Security Incident Response_Policy_Ver.1.2.pdf
+- "AI due diligence?" or "AI vendor checklist?" or "Procurement review?" → Offer /downloads/AI Vendor Due Diligence Checklist_CollationAI_Jun. 13th 2025.pdf
+- "Data protection?" or "GDPR?" → Offer /downloads/Data Protection Agreement (Draft).docx
+- "All security documents?" or "Due diligence package?" or "Complete security package?" or "Enterprise procurement package?" → Offer comprehensive security package (12 documents total): SOC 2 report, pen test, vendor due diligence responses, vendor questionnaire, security incident response, AI due diligence checklist, security assessments, access control, encryption policy, change management, both architecture diagrams
+
+**Technical Documentation:**
+- "Identity access model?" or "IAM architecture?" or "User permissions?" → Offer /downloads/Identity Access Model.pdf
+- "Chatbot architecture?" or "How does your chatbot work?" → Offer /downloads/CollationAI_AI Chatbot_Diagram copy.pdf
+- "Database setup?" or "PostgreSQL setup?" or "Azure database?" → Offer /downloads/241105 Setting up PostgreSQL database in Azure.pdf
+- "Technical implementation guide?" → Offer relevant technical documents (PostgreSQL setup, Identity model, architecture diagrams)
+
+**Thought Leadership & Education:**
+- "Data warehouse vs database?" or "What's the difference between data lake and warehouse?" → Offer /downloads/LINKEDIN_Decoding Data Storage- Database, Data Warehouse, and Data Lake in Financial Services_CollationAI.pdf
+- "AI agents for RIAs?" or "How are AI agents used in wealth management?" → Offer /downloads/LINKEDIN_AI Agents- The Next Evolution in Wealth Management for RIAs.pdf
+- "Digital transformation?" or "Legacy technology challenges?" → Offer /downloads/LINKEDIN_The Asset Management sector is aggressively automating its operational processes, but outdated legacy technology continues to slow down true digital transformation!.pdf
+- "ROI of automation?" or "Cost of manual data management?" → Offer /downloads/LINKEDIN_The Unseen Costs - Why Manual Data Management is Impacting Your RIA's Bottom Line_CollationAI.pdf
+- "Educational content?" or "Industry insights?" → Offer all 4 LinkedIn thought leadership articles
 
 When appropriate, include:
 - Specific use cases relevant to their situation (investor vs. advisor vs. bank)
-- Our proven track record ($170B in assets, 300+ clients via Canopy heritage)
-- Call-to-action to schedule a demo
-- Contact information: hello@collation.ai or +1 347 449 4818
+- Our proven track record ($170B in assets, 300+ clients via Canopy heritage, $100B+ assets under reporting)
+- Real client testimonials and case studies from the website (RIAs in California, Chicago, New York, Texas, etc.)
+- Impact numbers (100+ active Agentic AI Bots, 20+ wealth manager clients, 4 locations)
+- Specific benefits with metrics (5x faster onboarding, save 15 hours per week, 200% YoY growth, save 2/3 on staff salaries)
+- Relevant downloadable resources based on their questions
+- Call-to-action to schedule a demo or book a call via Calendly
+- Contact information: hello@collation.ai or +1 347 449 4818, or book directly at https://calendly.com/sinan-biren-collationai/30min
+
+Answering Questions About the Website:
+- When users ask about "your website", "contact us", "about us", or "case studies", reference the website content section
+- Share the team information (Tanmai Sharma - CEO, Sinan Biren - CRO, Prashant Surana - CTO, Shamara Pereira - Head of Implementation)
+- Reference security features when discussing compliance or data protection
+- Mention media recognition (Forbes, RIABiz, Kitces, WealthBriefing, CityWire, The Wealth Mosaic, FOTech Hub)
 
 Knowledge Base:
 ${PRODUCT_KNOWLEDGE}
