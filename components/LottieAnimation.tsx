@@ -26,7 +26,9 @@ const LottieAnimation = ({
   const containerRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [loadedData, setLoadedData] = useState<any>(animationData);
-  
+  const [isLoading, setIsLoading] = useState(false);
+  const [hasError, setHasError] = useState(false);
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -49,10 +51,18 @@ const LottieAnimation = ({
   useEffect(() => {
     let cancelled = false;
     if (isVisible && !loadedData && animationImport) {
+      setIsLoading(true);
       animationImport().then((mod) => {
-        if (!cancelled) setLoadedData(mod?.default ?? mod);
-      }).catch(() => {
-        // swallow import errors gracefully in UI
+        if (!cancelled) {
+          setLoadedData(mod?.default ?? mod);
+          setIsLoading(false);
+        }
+      }).catch((error) => {
+        if (!cancelled) {
+          console.error('Error loading animation:', error);
+          setHasError(true);
+          setIsLoading(false);
+        }
       });
     }
     return () => { cancelled = true; };
@@ -68,8 +78,18 @@ const LottieAnimation = ({
 
   return (
     <div ref={containerRef} className={className}>
-      {isVisible && data && (
-        <Suspense fallback={<div className={className} />}>
+      {isLoading && (
+        <div className={`flex items-center justify-center ${className}`}>
+          <div className="animate-pulse text-muted-foreground">Loading animation...</div>
+        </div>
+      )}
+      {hasError && (
+        <div className={`flex items-center justify-center ${className}`}>
+          <div className="text-muted-foreground text-sm">Animation unavailable</div>
+        </div>
+      )}
+      {isVisible && data && !isLoading && !hasError && (
+        <Suspense fallback={<div className={`animate-pulse ${className}`} />}>
           <Lottie
             lottieRef={lottieRef}
             animationData={data}
