@@ -10,9 +10,11 @@ async function seed() {
     });
 
     if (existing) {
-      console.log('Basketball article already exists, skipping...');
+      console.log('✓ Basketball article already exists');
       return;
     }
+
+    console.log('Adding basketball article to database...');
 
     const article = {
       slug: 'basketball-winning-teams-wealthtech',
