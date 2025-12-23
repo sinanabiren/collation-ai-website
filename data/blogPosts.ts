@@ -9,6 +9,54 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    title: "What Basketball Teaches Us About Building Winning Teams in WealthTech",
+    author: "Sinan Biren",
+    date: "Dec 23, 2025",
+    url: "/blog/basketball-winning-teams-wealthtech",
+    image: "/api/placeholder/800/400",
+    excerpt: "Success isn't just about individual talent — it's about how well a team moves together. Lessons from basketball coaching applied to wealth management technology."
+  },
+  {
+    title: "Open Banking: Transforming Wealth Management",
+    author: "Sinan Biren",
+    date: "Dec 10, 2025",
+    url: "/blog/open-banking-transforming-wealth-management",
+    image: "/blog-images/open-banking-wealth-management.png",
+    excerpt: "Open banking empowers wealth managers by enabling secure, API-driven access to clients' financial data across institutions, fostering personalized strategies and operational efficiency."
+  },
+  {
+    title: "PDFs to Profits: Automate Parsing, Eliminate Manual Drudgery",
+    author: "Sinan Biren",
+    date: "Dec 2, 2025",
+    url: "/blog/pdfs-to-profits-automate-parsing-eliminate-manual-drudgery",
+    image: "/blog-images/pdfs-to-profits.png",
+    excerpt: "Automating PDF parsing eliminates repetitive, error-prone manual data entry and turns static documents into live, reusable data that can feed downstream systems in seconds instead of hours."
+  },
+  {
+    title: "5 Questions Every Executive Should Ask Before Adopting AI",
+    author: "Nicole Grosskopf",
+    date: "Dec 1, 2025",
+    url: "/blog/questions-executives-should-ask-before-adopting-ai",
+    image: "/blog-images/executives-ai-questions.png",
+    excerpt: "The gap between AI momentum and meaningful implementation—five critical questions to ensure your AI initiatives deliver measurable business value in financial services."
+  },
+  {
+    title: "What 'Actionable Intelligence' can we extract from data to empower Financial Advisors?",
+    author: "Sinan Biren",
+    date: "Nov 24, 2025",
+    url: "/blog/what-actionable-intelligence-can-we-extract-from-data-empower-financial-advisors",
+    image: "https://media.licdn.com/dms/image/v2/D4E12AQGqJAX-06MQLw/article-cover_image-shrink_720_1280/B4EZq1xfzPKoAI-/0/1763986243374?e=2147483647&v=beta&t=t-cToM0RQaYccXfp8E-10QGf7NeTWXw2zxNvF3WswTA",
+    excerpt: "Transforming raw data into practical insights that enhance advisor performance—from sales science to productivity benchmarking and AI-powered monitoring."
+  },
+  {
+    title: "Vibe-coding is revolutionizing how wealth managers approach reporting and portfolio management",
+    author: "Sinan Biren",
+    date: "Nov 11, 2025",
+    url: "/blog/vibe-coding-revolutionizing-wealth-management-reporting-portfolio-management",
+    image: "https://framerusercontent.com/images/K66K68WistVC1lbVpYLLSqzlkU.png?lossless=1&width=1279&height=720",
+    excerpt: "How vibe-coding empowers wealth managers to build highly customized, advanced reports without technical expertise—delivering genuine flexibility and speed."
+  },
+  {
     title: "Decoding Data Storage: Database, Data Warehouse, and Data Lake in Financial Services",
     author: "Sinan Biren",
     date: "Oct 31, 2025",
