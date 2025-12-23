@@ -13,7 +13,7 @@ export const blogPosts: BlogPost[] = [
     author: "Sinan Biren",
     date: "Dec 23, 2025",
     url: "/blog/basketball-winning-teams-wealthtech",
-    image: "/api/placeholder/800/400",
+    image: "/blog-images/basketball-winning-teams.png",
     excerpt: "Success isn't just about individual talent — it's about how well a team moves together. Lessons from basketball coaching applied to wealth management technology."
   },
   {

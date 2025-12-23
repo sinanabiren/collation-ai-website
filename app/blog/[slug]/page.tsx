@@ -649,7 +649,9 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
   }
 
   // Get the hero image from blogPosts data
-  const heroImage = slug === 'open-banking-transforming-wealth-management'
+  const heroImage = slug === 'basketball-winning-teams-wealthtech'
+    ? '/blog-images/basketball-winning-teams.png'
+    : slug === 'open-banking-transforming-wealth-management'
     ? '/blog-images/open-banking-wealth-management.png'
     : slug === 'pdfs-to-profits-automate-parsing-eliminate-manual-drudgery'
     ? '/blog-images/pdfs-to-profits.png'
