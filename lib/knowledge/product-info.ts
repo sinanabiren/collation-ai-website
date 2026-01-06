@@ -700,20 +700,67 @@ The Annex to the Trial Subscription Agreement specifies:
 - Flexible licensing options
 - Enterprise-grade support included in all plans
 
-**RIA Standard Pricing:**
-- **Setup Fee:** $30,000 (one-time)
-- **Annual Subscription:** $30,000 per year
-- Includes data integration, bot workflows, dashboards, and ongoing support
-- Fully functional in days to weeks
-- Custom pricing available for larger implementations
+### Enterprise Contract Pricing Structure (Updated December 2025)
 
-**Enterprise Pricing Factors:**
-1. Number of data sources to integrate
-2. Volume of data processing required
-3. Complexity of reporting requirements
-4. Level of customization needed
-5. Deployment model (multi-tenant vs. dedicated)
-6. Number of users and access levels
+**SETUP COSTS (One-Time Fees):**
+
+**Platform Setup Fee: $30,000** (Includes):
+- Data Warehouse (PostgreSQL database) in Microsoft Azure
+- 4x Connections with target Data Source Providers (e.g., Addepar, Archway, Salesforce, Sage Intacct)
+  - Note: Does NOT include data cleansing/transformation
+- Document Storage setup (Microsoft SharePoint)
+- Microsoft Power BI Dashboards setup on the Data Warehouse
+- "Regulatory compliant" AI Infrastructure (for creating new Dashboards/Reports)
+- 25 hours of Onboarding Support included for:
+  - Creating Workflows
+  - Historical Data Migration
+  - Finding & Fixing data kinks
+  - Modifying existing Power BI Dashboards
+  - Setting up a White-labelled online client portal
+- JIRA Project Management Tracking Tool setup
+
+**Optional One-Time Fees:**
+- **EXISTING Connection Configuration:** $1,000 per connection
+- **NEW API Connection Development:** $7,500 per new connection
+- **NEW Browser Automation Connection:** $10,000 per new connection (for non-standard data sources)
+- **White-labelled Online Client Portal:** $7,500
+  - Custom domain (e.g., https://analytics.o-cfo.com/)
+  - Custom wallpaper landing page
+  - Embedded MS Power BI dashboards with your company logo
+  - Custom corporate font & color scheme
+  - **OR** Complimentary (if within 25 hours of Onboarding Support)
+- **Creating Workflows:** Complimentary under 25 hours of Onboarding Support; $150/hour when exceeded
+- **Historical Data Migration:** Complimentary under 25 hours of Onboarding Support; $150/hour when exceeded
+- **New Power BI Dashboards:** Complimentary under 25 hours of Onboarding Support; $150/hour when exceeded
+
+**RECURRING FEES (Annual):**
+
+**Platform License Fee: $30,000 per annum** (Includes):
+- Maintenance of Data Warehouse (PostgreSQL in Microsoft Azure)
+- Maintenance of 4x Connections
+- 2x complimentary Microsoft Power BI Licenses
+- 1x JIRA Project Management License
+- 1x Data Orchestration tool (Airflow) configuration
+- Maintenance of "regulatory compliant" AI Infrastructure
+- Reasonable amount of Claude Code usage
+- Customer Support
+
+**Optional Recurring Fees:**
+- **Additional Connection Maintenance:** $1,200 per annum per connection
+- **Workflow Maintenance:** $2,400 per annum per workflow
+  - Typical workflows include:
+    - GL transformation into Investment Reporting format
+    - Data reconciliation between CRM and PMS
+    - Daily Data Audits (classification checks, unbilled account alerts, asset allocation threshold alerts)
+    - Daily price fetching from data sources (e.g., Real Estate via Zillow)
+
+**Contract Terms:**
+- **Minimum Subscription Period:** 2 years from commencement date
+- **Billing Cycle:** Annual or Quarterly (as agreed)
+- **Payment Terms:** Invoice issued ~20th day of month preceding billing cycle
+- **Late Payment Penalty:** 0.5% per week
+- **Termination Notice:** 10 business days prior to billing cycle expiry
+- **Service Level:** Datafeeds processed daily; most workflows run once daily (PDF downloads typically weekly)
 
 **Contact for Quote:**
 - **Sales Team:** hello@collation.ai
