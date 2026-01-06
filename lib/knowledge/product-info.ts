@@ -1321,17 +1321,58 @@ The typical wealth management firm faces a nightmare scenario:
 ### Case Studies
 
 **Case Study 1: Investment Reporting from Trial Balance**
-- Generate TWR and P&L attribution reports with drill down
-- Risk/Return calculations
-- Public Market Equivalent analysis (compare private equity to public markets)
-- Instantaneous Profit/TWR for any date range
-- Drill down from macro to individual securities
-- Charts by strategy (TWR, money invested, market value, profit made)
+
+**BI Tool Generated Reports (Power BI / Excel):**
+- **TWR and P&L Attribution Reports with Drill Down** - Instantaneously calculate Profit/TWR for any date range, drill down from macro level to individual securities
+- **Public Market Equivalent (PME) Analysis** - Shows relative performance of private equity strategy compared to public markets (e.g., SPX benchmarking)
+- **Risk/Return Calculations** - Comprehensive risk analytics and return attribution
+- **Charts by Strategy:**
+  - TWR by strategy (cumulative time-weighted return)
+  - Money Invested (inflow/outflow) into strategy
+  - Market Value of Strategy over time
+  - Profit Made by Strategy
+- **Allocation Category Analysis** - Filter and analyze by risk type, entity group, account group with interactive slicers
+- **Trial Balance with Multiple Dimensions** - Multi-dimensional reporting from GL data
+
+**Vibe-Coded (AI) Generated Reports:**
+- **Step 1:** Start with out-of-the-box dashboards (e.g., Profit TWR Charts with quarterly breakdown)
+- **Step 2:** AI Prompt Generation - Describe desired report in plain English (e.g., "Create a comprehensive financial dashboard called 'Profit TWR Charts'. Include TWR calculations and charts. Cumulative profit analysis over time")
+- **Step 3:** Vibe-Coding with Lovable - AI generates custom interactive dashboards that can be further customized through plain English prompts
+- **Result:** Highly customized reports beyond traditional BI tool limitations, delivered faster than custom development
 
 **Case Study 2: Automated PDF Document Processing**
-- Problem: Staff spending time downloading documents manually from portals
-- Solution: Bots download files and extract data from PDFs automatically
-- Sources: Bank, Broker, Custodian, Credit Card statements
+
+**The Problem:** Staff spending time downloading documents manually from portals
+
+**The Solution:** Collation.AI PDF Parser with automated extraction
+
+**Technical Capabilities:**
+- **Coordinate-Based Extraction** - Uses X,Y coordinates on PDF to locate fields (more reliable than OCR for structured forms)
+- **24 Extracted Fields** per document including:
+  - Account Information (account number, account title, filename)
+  - Investment Details (investment name, share class, amount, purchase type, commitment amount, capital call due)
+  - Payment Information (wire transfer - 7 fields including bank name, ABA routing, account number; check delivery - 6 fields; journal transfer)
+- **Processing Speed:** ~21 minutes average for 40 PDFs
+- **Accuracy:** 99%+ data accuracy with 100% field extraction success
+- **Batch Processing:** 20-50 PDFs per run for optimal performance
+- **Output Format:** Single consolidated Excel/CSV file with all extracted data
+- **SharePoint Integration:** Upload PDFs to inbox folder, retrieve Excel from outbox folder
+- **Airflow DAG Automation:** Automated workflow orchestration (pdf_parser_dag)
+- **Python-Based:** Uses PyMuPDF library for reliable PDF text extraction
+
+**Supported Document Sources:**
+- Bank statements (BNY Mellon, Fidelity, Goldman Sachs, etc.)
+- Broker confirmations (Schwab, Pershing, etc.)
+- Custodian reports (Northern Trust, Citibank, etc.)
+- Credit Card statements
+- Alternative investment fund statements (Private Equity, Hedge Funds)
+- Pershing Private Investment Forms (DocuSign)
+
+**Advanced Capability - Scanned PDF Extraction:**
+- **Locally Hosted AI** - No data leakage to OpenAI or Claude public APIs
+- **LLM-Powered OCR** - Extracts structured JSON from scanned documents and complex financial statements
+- **Privacy-First** - All extraction happens in your secure environment
+- **Example:** Extract holdings data from UBS ACCESS statements with equity positions, trade dates, purchase prices, market values
 
 **Case Study 3: Data Auditing and Error Detection**
 - Problem: Data contains errors leading to incorrect reporting
@@ -1346,13 +1387,31 @@ The typical wealth management firm faces a nightmare scenario:
 - Problem: Losing data on old system being retired
 - Solution: Bots extract and warehouse the data for preservation
 
-### Benefits
+### Benefits: How Collation Helps
 
-✓ **No Changes Required** - Collation overlays on top of existing setup
-✓ **Data Ownership** - All your data in your own data warehouse
-✓ **Powerful UI** - Design/customize reports
-✓ **Automated Workflows** - Bots manage data so you don't have to
-✓ **Normalized Data** - Bots get data from all sources and normalize it
+✓ **No Changes Required** - Collation.AI overlays on top of your existing setup; no system replacement needed
+
+✓ **Data Ownership** - All your data in your own data warehouse (in your server or ours)
+
+✓ **Bots Get Data from All Sources** - Automated extraction from:
+  - Existing General Ledgers (Sage Intacct, SEI Archway, Allvue, Quickbooks)
+  - Bank/Broker Feeds (BNY Mellon, Fidelity, Goldman Sachs)
+  - PDF Documents from Portals (Northern Trust, Juniper Square, Carta)
+  - Data from Websites (Zillow for real estate, ETF factsheets)
+  - Custodian Datafeeds (Schwab, Pershing, Fidelity, etc.)
+
+✓ **Normalized & Centralized Data** - Bots normalize data from all sources into consistent format
+
+✓ **Powerful UI to Design/Customize Reports**:
+  - **BI Tools (Power BI / Excel)** - Interactive dashboards with drill-down capabilities
+  - **Vibe-Coding (AI Generated)** - Custom reports built through plain English prompts
+
+✓ **Automated Workflows** - Bots manage your data & workflows so you don't have to:
+  - Data extraction and enrichment
+  - Daily audits and error detection
+  - Automated reconciliation
+  - Report generation
+  - Document processing
 
 ## AI-Driven Alternatives & Document Processing
 
