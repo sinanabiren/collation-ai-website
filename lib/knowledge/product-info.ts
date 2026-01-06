@@ -926,11 +926,13 @@ We provide several resources that users can download for more detailed informati
 ## Collation AI Integration Ecosystem
 
 ### Overview
-- **Total Connections:** 11,267 integrations
-- **Direct Integrations:** 77 platforms
-- **Partner Network:** 11,190 institutions
+- **Total Connections:** 11,273 integrations
+- **Direct Integrations (Collation.ai Direct):** 83 platforms
+- **Partner Network (Via Partner Network):** 11,190 institutions
 
-### Direct Integrations (77 platforms)
+The connections page at /connections provides a searchable interface with grid/list views, alphabetical filtering, and filtering by integration type (Direct vs Partner).
+
+### Direct Integrations (83 platforms)
 Collation AI directly integrates with the following financial platforms, portfolio management systems, and data providers:
 
 Addepar, ADP, ARCH, Allvue, Altruist, Amazon AWS, Archway Group, Black Diamond, Box, Canoe Intelligence, Citibank, DTCC, Databricks, DocuSign, Dynamo, Envestnet, FactSet, Fidelity, Fundcount, Goldman Sachs, HubSpot, ICE Data Services, Intuit Mailchimp, LSEG Data & Analytics, Masttro, Merrill Lynch, Microsoft Azure, Microsoft Dynamics 365, Microsoft OneDrive, Microsoft Power BI, Microsoft SharePoint, Monday.com, MoneyGuide, Morningstar, MySQL, Nirvana Solutions, Northern Trust, Oracle NetSuite, Orion, PCR Insights, PREQIN, Pershing, PitchBook, Plaid, Plain Sail, PostgreSQL, Practifi, Quickbooks, Raymond James, Redtail, SS&C, Sage Intacct, Salesforce, Salesforce Tableau, Schwab, Snowflake, Tamarac, UBS, Vanguard, Wealthbox, Wells Fargo, YCharts, Zendesk, Zeplyn, Zillow, and Zoho.
@@ -945,7 +947,7 @@ Key categories include:
 ### Partner Network (11,190 institutions)
 Through our partner network (including Plaid and other aggregation partners), we connect to 11,190 banks, credit unions, and financial institutions including major institutions like Bank of America, Chase, Wells Fargo, Citibank, Goldman Sachs, Morgan Stanley, and thousands of regional banks and credit unions.
 
-**To explore all integrations:** Visit /connections on the website for the complete searchable list with logos.
+**To explore all integrations:** Visit /connections on the website for the complete searchable list with logos, search functionality, alphabetical filtering (A-Z), and toggle between grid/list views. Each integration displays the platform name, logo, and whether it's a direct integration or via partner network.
 
 ### Integration Capabilities
 - **Real-time data access:** Live connections to custodians and banks
@@ -1933,123 +1935,159 @@ YouTube video: https://www.youtube.com/embed/_UfCQ7y-pTo
 
 We have an extensive blog with educational content about Agentic AI, Wealth Management, Data Warehouses, RIAs, and Family Offices:
 
-### Featured Blog Articles (20 posts)
+### Featured Blog Articles (26 posts)
 
-**1. Decoding Data Storage: Database, Data Warehouse, and Data Lake in Financial Services**
+**1. What Basketball Teaches Us About Building Winning Teams in WealthTech**
+- Author: Sinan Biren | Date: Dec 23, 2025
+- URL: /blog/basketball-winning-teams-wealthtech
+- Summary: Success isn't just about individual talent — it's about how well a team moves together. Lessons from basketball coaching applied to wealth management technology, focusing on team chemistry, shared playbooks, leadership, and execution.
+- Key Topics: Team Building, Leadership, WealthTech Culture, Coaching, Execution Excellence
+
+**2. Open Banking: Transforming Wealth Management**
+- Author: Sinan Biren | Date: Dec 10, 2025
+- URL: /blog/open-banking-transforming-wealth-management
+- Summary: Open banking empowers wealth managers by enabling secure, API-driven access to clients' financial data across institutions, fostering personalized strategies and operational efficiency. Covers holistic client views, streamlined onboarding, personalized advice, efficiency gains, and future potential.
+- Key Topics: Open Banking, API Integration, Client Onboarding, Data Aggregation, Financial Services Innovation
+
+**3. PDFs to Profits: Automate Parsing, Eliminate Manual Drudgery**
+- Author: Sinan Biren | Date: Dec 2, 2025
+- URL: /blog/pdfs-to-profits-automate-parsing-eliminate-manual-drudgery
+- Summary: Automating PDF parsing eliminates repetitive, error-prone manual data entry and turns static documents into live, reusable data. Covers why PDFs are a bottleneck, cost/speed/accuracy benefits, handling document complexity, and the shift from manual labor to human oversight.
+- Key Topics: PDF Automation, Document Processing, Data Extraction, Manual Entry Elimination, OCR
+
+**4. 5 Questions Every Executive Should Ask Before Adopting AI**
+- Author: Nicole Grosskopf | Date: Dec 1, 2025
+- URL: /blog/questions-executives-should-ask-before-adopting-ai
+- Summary: The gap between AI momentum and meaningful implementation—five critical questions to ensure AI initiatives deliver measurable business value: problem definition, foundation readiness, risk management, organizational readiness, and success metrics.
+- Key Topics: AI Strategy, Executive Decision-Making, AI Adoption, Risk Management, ROI Measurement
+
+**5. What 'Actionable Intelligence' can we extract from data to empower Financial Advisors?**
+- Author: Sinan Biren | Date: Nov 24, 2025
+- URL: /blog/what-actionable-intelligence-can-we-extract-from-data-empower-financial-advisors
+- Summary: Transforming raw data into practical insights that enhance advisor performance—from sales science (objection handling, tailored pitches) to financial performance analysis, productivity benchmarking, and AI-powered monitoring. Emphasizes mentorship over surveillance.
+- Key Topics: Advisor Intelligence, Sales Science, Performance Analytics, Productivity Benchmarking, CRM Analysis
+
+**6. Vibe-coding is revolutionizing how wealth managers approach reporting and portfolio management**
+- Author: Sinan Biren | Date: Nov 11, 2025
+- URL: /blog/vibe-coding-revolutionizing-wealth-management-reporting-portfolio-management
+- Summary: How vibe-coding empowers wealth managers to build highly customized, advanced reports without technical expertise—delivering genuine flexibility and speed. Covers the essence of vibe-coding, problems with traditional tools, key differences, and responsible use.
+- Key Topics: Vibe-Coding, No-Code Development, Custom Reporting, AI-Assisted Development, Portfolio Management
+
+**7. Decoding Data Storage: Database, Data Warehouse, and Data Lake in Financial Services**
 - Author: Sinan Biren | Date: Oct 31, 2025
 - URL: https://www.collation.ai/blog/decoding-data-storage-database-data-warehouse-data-lake-in-financial-services
 - Summary: Comprehensive explanation of the differences between databases, data warehouses, and data lakes specifically for financial services. Explains when to use each type of storage, architectural differences, and practical use cases for wealth management.
 - Key Topics: Database vs Warehouse vs Lake, Financial Services Architecture, Data Storage Strategies
 
-**2. Disruption Of Traditional SaaS Models In Wealth Management.. Should We Blame Agentic AI?**
+**8. Disruption Of Traditional SaaS Models In Wealth Management.. Should We Blame Agentic AI?**
 - Author: Sinan Biren | Date: Oct 23, 2025
 - URL: https://www.collation.ai/blog/disruption-of-traditional-saas-models-in-wealth-management
 - Summary: Analysis of how Agentic AI is fundamentally changing traditional SaaS business models in wealth management industry.
 - Key Topics: SaaS Disruption, Agentic AI Impact, Business Model Evolution
 
-**3. AI Agents: The Next Evolution in Wealth Management for RIAs**
+**9. AI Agents: The Next Evolution in Wealth Management for RIAs**
 - Author: Sinan Biren | Date: Oct 8, 2025
 - URL: https://www.collation.ai/blog/ai-agents-the-next-evolution-in-wealth-management-for-rias
 - Summary: Deep dive into how AI agents are transforming wealth management operations for RIAs, from data operations to client reporting. Explains practical applications and implementation strategies.
 - Key Topics: AI Agents for RIAs, Wealth Management Evolution, Automation Benefits
 
-**4. Data Warehouse And Use-Cases For RIAs/FOs**
+**10. Data Warehouse And Use-Cases For RIAs/FOs**
 - Author: Sinan Biren | Date: Sep 2, 2025
 - URL: https://www.collation.ai/blog/what-is-a-data-warehouse-and-how-is-it-used-by-financial-institutions-such-as-registered-investment-advisors-(rias)-family-offices-(fos)
 - Summary: Practical guide to data warehouse use cases specifically for RIAs and Family Offices with real-world examples.
 - Key Topics: Data Warehouse Use Cases, RIA Operations, Family Office Technology
 
-**5. Asset Management Sector Is Aggressively Automating Its Operational Processes, BUT..**
+**11. Asset Management Sector Is Aggressively Automating Its Operational Processes, BUT..**
 - Author: Patrick G. Burke | Date: Aug 21, 2025
 - URL: https://www.collation.ai/blog/the-hidden-cost-why-good-enough-data-is-hurting-your-ria-copy
 - Summary: Analysis of automation surge in asset management and where legacy processes still create bottlenecks in performance.
 - Key Topics: Asset Management Automation, Legacy Technology Challenges, Digital Transformation
 
-**6. The Hidden Cost: Why "Good Enough" Data is Hurting Your RIA**
+**12. The Hidden Cost: Why "Good Enough" Data is Hurting Your RIA**
 - Author: Patrick G. Burke | Date: Jul 8, 2025
 - URL: https://www.collation.ai/blog/the-hidden-cost-why-good-enough-data-is-hurting-your-ria
 - Summary: Quantifies the real operational costs of mediocre data quality and provides solutions for improvement.
 - Key Topics: Data Quality Costs, RIA Operations, Quality Impact
 
-**7. Family Offices: Streamlining Performance Reporting With GL Overlay Solutions**
+**13. Family Offices: Streamlining Performance Reporting With GL Overlay Solutions**
 - Author: Patrick G. Burke | Date: Jan 13, 2025
 - URL: https://www.collation.ai/blog/family-offices-streamlining-performance-reporting-with-gl-overlay-solutions
 - Summary: How General Ledger overlay solutions improve reporting workflows for family offices without replacing existing systems.
 - Key Topics: GL Overlay, Family Office Reporting, Performance Reports
 
-**8. The Unseen Costs: Why Manual Data Management is Impacting Your RIA's Bottom Line**
+**14. The Unseen Costs: Why Manual Data Management is Impacting Your RIA's Bottom Line**
 - Author: Sinan Biren | Date: Jun 17, 2025
 - URL: https://www.collation.ai/blog/the-unseen-costs-why-manual-data-management-is-impacting-your-ria-s-bottom-line
 - Summary: Detailed breakdown of hidden costs from manual data operations with quantifiable impact on RIA profitability.
 - Key Topics: Manual Data Costs, RIA Profitability, Automation ROI
 
-**9. Data Lakehouse: Solving Wealth Management's Data Challenges**
+**15. Data Lakehouse: Solving Wealth Management's Data Challenges**
 - Author: Raymond DiNunzio | Date: May 15, 2025
 - URL: https://www.collation.ai/blog/data-lakehouse-solving-wealth-management-s-data-challenges
 - Summary: Pragmatic overview of lakehouse architecture and its applications for wealth managers.
 - Key Topics: Data Lakehouse, Wealth Management Architecture, Modern Data Stack
 
-**10. Navigating the Technology Maze: Real Challenges Family Offices Face in Modernization**
+**16. Navigating the Technology Maze: Real Challenges Family Offices Face in Modernization**
 - Author: Alex Ortolani | Date: May 13, 2025
 - URL: https://www.collation.ai/blog/navigating-the-technology-maze-real-challenges-family-offices-face-in-modernization
 - Summary: Common pitfalls in family office technology modernization and proven paths through them.
 - Key Topics: Family Office Modernization, Technology Challenges, Implementation Strategy
 
-**11. More RIAs Are Using Multiple Custodians**
+**17. More RIAs Are Using Multiple Custodians**
 - Author: Sinan Biren | Date: May 6, 2025
 - URL: https://www.collation.ai/blog/more-rias-are-using-multiple-custodians
 - Summary: Analysis of the trend toward multi-custodian strategies among RIAs and the data implications.
 - Key Topics: Multi-Custodian Strategy, RIA Trends, Data Aggregation Challenges
 
-**12. Breaking Down Data Barriers: How Multi-Family Offices Achieve Total Automation**
+**18. Breaking Down Data Barriers: How Multi-Family Offices Achieve Total Automation**
 - Author: Sinan Biren | Date: Jan 13, 2025
 - URL: https://www.collation.ai/blog/breaking-down-data-barriers-how-multi-family-offices-achieve-total-automation
 - Summary: Case studies of how leading multi-family offices automate end-to-end data workflows.
 - Key Topics: Total Automation, Multi-Family Offices, Best Practices
 
-**13. Seamless Implementation: How Wealth Managers Can Adopt AI Without Disrupting Existing Systems**
+**19. Seamless Implementation: How Wealth Managers Can Adopt AI Without Disrupting Existing Systems**
 - Author: Sinan Biren | Date: Jan 14, 2025
 - URL: https://www.collation.ai/blog/seamless-implementation-how-wealth-managers-can-adopt-ai-without-disrupting-existing-systems
 - Summary: Practical tactics and timelines for adopting AI with minimal disruption to existing operations.
 - Key Topics: AI Implementation, Change Management, Non-Disruptive Adoption
 
-**14. The Hidden ROI: Calculating the True Value of Automated Data Operations for Family Offices**
+**20. The Hidden ROI: Calculating the True Value of Automated Data Operations for Family Offices**
 - Author: Sinan Biren | Date: Jan 12, 2025
 - URL: https://www.collation.ai/blog/the-hidden-roi-calculating-the-true-value-of-automated-data-operations-for-family-offices
 - Summary: Framework for quantifying the ROI of automated data operations with calculation methodologies.
 - Key Topics: ROI Calculation, Automation Value, Family Office Economics
 
-**15. Audit-Ready Data: How Agentic AI Bot Eliminate Compliance Headaches for RIAs**
+**21. Audit-Ready Data: How Agentic AI Bot Eliminate Compliance Headaches for RIAs**
 - Author: Sinan Biren | Date: Jan 13, 2025
 - URL: https://www.collation.ai/blog/audit-ready-data-how-agentic-ai-bot-eliminate-compliance-headaches-for-rias
 - Summary: How agentic AI maintains audit-ready data and reduces compliance overhead for RIAs.
 - Key Topics: Compliance Automation, Audit-Ready Data, Regulatory Requirements
 
-**16. Beyond the Aspirin: How Collation's AI Agents Provide Lasting Relief for Wealth Managers' Data Headaches**
+**22. Beyond the Aspirin: How Collation's AI Agents Provide Lasting Relief for Wealth Managers' Data Headaches**
 - Author: Sinan Biren | Date: Jan 20, 2025
 - URL: https://www.collation.ai/blog/beyond-the-aspirin-how-collation-s-ai-agents-provide-lasting-relief-for-wealth-managers-data-headaches
 - Summary: Moving from temporary fixes to lasting automation solutions for wealth management data challenges.
 - Key Topics: Permanent Solutions, AI Agents, Data Operations
 
-**17. The True Cost of Data Silos: Why Financial Firms Need Integrated AI Solutions**
+**23. The True Cost of Data Silos: Why Financial Firms Need Integrated AI Solutions**
 - Author: Sinan Biren | Date: Jan 20, 2025
 - URL: https://www.collation.ai/blog/the-true-cost-of-data-silos-why-financial-firms-need-integrated-ai-solutions
 - Summary: Analysis of how siloed data hurts growth and how integrated AI solutions address the problem.
 - Key Topics: Data Silos, Integration Challenges, Unified Solutions
 
-**18. From Manual to Magical: How Agentic AI is Transforming Wealth Management Data Operations**
+**24. From Manual to Magical: How Agentic AI is Transforming Wealth Management Data Operations**
 - Author: Sinan Biren | Date: Mar 28, 2025
 - URL: https://www.collation.ai/blog/from-manual-to-magical-how-agentic-ai-is-transforming-wealth-management-data-operations
 - Summary: Transformation story from manual processes to AI-driven operations with before/after comparisons.
 - Key Topics: Digital Transformation, Agentic AI, Operations Excellence
 
-**19. Sage Intacct announces new integration with Collation.AI**
+**25. Sage Intacct announces new integration with Collation.AI**
 - Author: Sinan Biren | Date: Mar 28, 2025
 - URL: https://www.collation.ai/blog/sage-intacct-announces-new-integration-with-collation-ai
 - Summary: Announcement of seamless data integration between Sage Intacct and Collation.AI platform.
 - Key Topics: Sage Intacct Integration, Accounting Integration, New Features
 
-**20. Embrace the Family Office of the Future: Multigenerational Wealth Meets AI & RPA**
+**26. Embrace the Family Office of the Future: Multigenerational Wealth Meets AI & RPA**
 - Author: Sinan Biren | Date: Oct 20, 2024
 - URL: https://www.collation.ai/blog/embrace-the-family-office-of-the-future-multigenerational-wealth-meets-ai-rpa
 - Summary: How AI and RPA support multigenerational family office operations and long-term wealth preservation.
@@ -2057,35 +2095,65 @@ We have an extensive blog with educational content about Agentic AI, Wealth Mana
 
 ### When to Reference Blog Articles:
 
+**Team Building & Leadership:**
+- "How to build a strong team?" → Blog #1: Basketball Teaches Team Building
+- "Leadership in wealthtech?" → Blog #1: Basketball Teaches Team Building
+- "Team chemistry?" → Blog #1: Basketball Teaches Team Building
+
+**Open Banking & API Integration:**
+- "What is open banking?" → Blog #2: Open Banking Transforming Wealth Management
+- "API-driven data access?" → Blog #2: Open Banking Transforming Wealth Management
+- "Client onboarding speed?" → Blog #2: Open Banking Transforming Wealth Management
+
+**PDF Processing & Document Automation:**
+- "Automate PDF processing?" → Blog #3: PDFs to Profits
+- "Extract data from PDFs?" → Blog #3: PDFs to Profits
+- "Eliminate manual data entry?" → Blog #3: PDFs to Profits
+
+**AI Strategy & Decision Making:**
+- "Should we adopt AI?" → Blog #4: 5 Questions Executives Should Ask
+- "AI adoption strategy?" → Blog #4: 5 Questions Executives Should Ask
+- "Measuring AI ROI?" → Blog #4: 5 Questions Executives Should Ask
+
+**Advisor Intelligence & Performance:**
+- "Empower financial advisors?" → Blog #5: Actionable Intelligence for Advisors
+- "Sales science for advisors?" → Blog #5: Actionable Intelligence for Advisors
+- "Advisor productivity benchmarking?" → Blog #5: Actionable Intelligence for Advisors
+
+**Vibe-Coding & Custom Development:**
+- "What is vibe-coding?" → Blog #6: Vibe-coding Revolution
+- "Build custom reports?" → Blog #6: Vibe-coding Revolution
+- "No-code portfolio management?" → Blog #6: Vibe-coding Revolution
+
 **Data Architecture Questions:**
-- "Database vs warehouse?" → Blog #1: Decoding Data Storage
-- "What's a data lake?" → Blog #1: Decoding Data Storage
-- "Data lakehouse?" → Blog #9: Data Lakehouse Solutions
-- "Data warehouse use cases?" → Blog #4: Data Warehouse for RIAs/FOs
+- "Database vs warehouse?" → Blog #7: Decoding Data Storage
+- "What's a data lake?" → Blog #7: Decoding Data Storage
+- "Data lakehouse?" → Blog #15: Data Lakehouse Solutions
+- "Data warehouse use cases?" → Blog #10: Data Warehouse for RIAs/FOs
 
 **AI & Automation:**
-- "How do AI agents work?" → Blog #3: AI Agents Evolution
-- "Agentic AI benefits?" → Blog #2: SaaS Disruption & Blog #18: Manual to Magical
-- "AI implementation?" → Blog #13: Seamless Implementation
+- "How do AI agents work?" → Blog #9: AI Agents Evolution
+- "Agentic AI benefits?" → Blog #8: SaaS Disruption & Blog #24: Manual to Magical
+- "AI implementation?" → Blog #19: Seamless Implementation
 
 **Cost & ROI Questions:**
-- "Cost of manual data management?" → Blog #8: Unseen Costs & Blog #6: Hidden Cost
-- "Automation ROI?" → Blog #14: Hidden ROI Calculation
+- "Cost of manual data management?" → Blog #14: Unseen Costs & Blog #12: Hidden Cost
+- "Automation ROI?" → Blog #20: Hidden ROI Calculation
 - "Why automate?" → Multiple blogs on cost savings
 
 **Industry Trends:**
-- "Multi-custodian strategies?" → Blog #11: Multiple Custodians
-- "Asset management automation?" → Blog #5: Asset Management Automation
-- "Family office modernization?" → Blog #10: Technology Maze
+- "Multi-custodian strategies?" → Blog #17: Multiple Custodians
+- "Asset management automation?" → Blog #11: Asset Management Automation
+- "Family office modernization?" → Blog #16: Technology Maze
 
 **Compliance & Quality:**
-- "Audit-ready data?" → Blog #15: Audit-Ready Data
-- "Data quality impact?" → Blog #6: Hidden Cost of Good Enough Data
+- "Audit-ready data?" → Blog #21: Audit-Ready Data
+- "Data quality impact?" → Blog #12: Hidden Cost of Good Enough Data
 
 **Implementation & Integration:**
-- "How to implement?" → Blog #13: Seamless Implementation
-- "Sage Intacct integration?" → Blog #19: Sage Intacct Announcement
-- "Total automation?" → Blog #12: Breaking Down Barriers
+- "How to implement?" → Blog #19: Seamless Implementation
+- "Sage Intacct integration?" → Blog #25: Sage Intacct Announcement
+- "Total automation?" → Blog #18: Breaking Down Barriers
 
 ---
 
