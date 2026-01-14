@@ -9,7 +9,7 @@ import { prisma } from '@/lib/prisma'
 const blogPosts: Record<string, any> = {
   'agentic-ai-bots-eating-manual-pe-data-ops': {
     title: "Agentic AI Bots Are Eating Manual PE Data Ops: The End of PDF Hell in Alternatives",
-    publishedDate: 'Jan 24, 2025',
+    publishedDate: 'Jan 14, 2026',
     author: 'Sinan Biren',
     content: `
       <p>The alternative investments data world is moving from static PDF parsing to autonomous, agentic workflows where AI-driven bots ingest, classify, interpret, and route PE and other fund documents end-to-end into downstream systems. PDF processing is effectively becoming the orchestration layer for agentic AI in private markets operations.</p>
@@ -55,7 +55,7 @@ const blogPosts: Record<string, any> = {
         <li><a href="https://www.linkedin.com/pulse/how-agentic-ai-revolutionize-intelligent-document-processing-e5wmc" target="_blank" rel="noopener noreferrer">LinkedIn - How Agentic AI Will Revolutionize Intelligent Document Processing</a></li>
       </ol>
     `,
-    date: '2025-01-24',
+    date: '2026-01-14',
     category: 'Agentic AI',
     readTime: '4 min read',
   },
