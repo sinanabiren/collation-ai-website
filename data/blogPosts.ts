@@ -9,6 +9,14 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    title: "Agentic AI Bots Are Eating Manual PE Data Ops: The End of PDF Hell in Alternatives",
+    author: "Sinan Biren",
+    date: "Jan 24, 2025",
+    url: "/blog/agentic-ai-bots-eating-manual-pe-data-ops",
+    image: "/blog-images/agentic-ai-pdf-hell.png",
+    excerpt: "The alternative investments data world is moving from static PDF parsing to autonomous, agentic workflows where AI-driven bots ingest, classify, interpret, and route PE documents end-to-end."
+  },
+  {
     title: "What Basketball Teaches Us About Building Winning Teams in WealthTech",
     author: "Sinan Biren",
     date: "Dec 23, 2025",

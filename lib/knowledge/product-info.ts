@@ -2263,6 +2263,224 @@ We have an extensive blog with educational content about Agentic AI, Wealth Mana
 
 ---
 
+## Knowledge Services
+
+Collation offers end-to-end knowledge support that spans strategic guidance as well as hands-on implementation (e.g. prompt engineering) and maintenance. Collation's team works closely with your stakeholders to help define, design the right data and workflow strategy and then execute that strategy with precision.
+
+### Pricing Structure
+
+**Hourly Rates:**
+- **Principal Consultant (Strategic Advisory & Design)**: USD $250 per hour
+- **Delivery Team (Engineering, Data, Workflow Specialists)**: USD $150 per hour
+
+**Billing Model:**
+- Knowledge Services are billed in **USD $10,000 blocks**
+- These blocks function as drawdowns of time and effort
+- Can be used flexibly across advisory, design, and implementation activities
+- Ensures predictable budgeting
+
+### Service Dimensions
+
+**Platform License Fee:**
+- Primary role: Provide licensed access to Collation software, tooling, and control-plane capabilities and software updates
+- Nature of work: System-level availability and compatibility
+- Human execution: None (software only)
+- Operational ownership: Yes (software level automated monitoring & support)
+- Creates new capabilities: No
+- Keeps existing running: Yes (software level automated)
+- Infrastructure responsibility: Yes (Collation managed infra.)
+
+**Knowledge Services:**
+- Primary role: Perform expert-led analytical, design, and data alignment work across systems
+- Nature of work: Project-based, outcome-oriented initiatives
+- Human execution: Yes (expert consultants & engineers)
+- Operational ownership: None
+- Creates new capabilities: Yes (new logic, mappings, reconciliations, insights)
+- Keeps existing running: No
+
+**Dedicated FTE:**
+- Primary role: Ensure operational continuity and stability of existing production pipelines
+- Nature of work: Continuous, repeatable, operational activities
+- Human execution: Yes (named operational resource)
+- Operational ownership: Yes, limited to day-to-day operations of existing pipelines
+- Creates new capabilities: No
+- Keeps existing running: Yes
+
+### Knowledge Services Capabilities
+
+**What Knowledge Services Cover:**
+- Adding new systems/connectors
+- Data reconciliation across systems
+- Cross-system data mapping (e.g., Salesforce ↔ Tamarac ↔ Schwab ↔ Fidelity)
+- Business logic alignment (account matching, position normalization, identifier resolution)
+- Data validation & exception analysis (cross data connector)
+- Transformation logic design
+- Dashboard/report creation
+- Prompt engineering/AI workflow design
+- Performance tuning (architecture-level)
+- Cost optimization (design-level)
+- Root cause analysis (design/logic)
+- Documentation & runbooks (Design docs only)
+- Stakeholder advisory/workshops
+
+**What Dedicated FTE Covers:**
+- Pipeline monitoring & retries
+- Schema/API change accommodation (within existing integrations)
+- Adding new objects within existing systems
+- Data validation & exception analysis (within the same data connector)
+- Performance tuning (parameters/scheduling)
+- Cost optimization (runtime hygiene)
+- Incident response & communication
+- Root cause analysis (operational)
+- Documentation & runbooks (Operational runbooks)
+
+---
+
+## PDF Processor Software
+
+### Overview
+
+Collation.AI's PDF Processor Software extracts data from PDF documents using AI—leveraging AWS Textract and multiple LLM providers. It's a web-based platform with intuitive interface accessible from any browser.
+
+### Key Features
+
+**Multiple AI Models:**
+- OpenAI (GPT-4o, GPT-4)
+- Anthropic (Claude Sonnet 4)
+- Google (Gemini 1.5)
+- Azure OpenAI
+- Locally Hosted Models: Optional Qwen3 80B and 235B for on-premises processing and data privacy
+
+**Two Processing Modes:**
+1. **Page by Page Mode:**
+   - Each page is processed independently with the LLM using {{text}} placeholder
+   - Works best with documents containing large tables on each page
+   - Ideal for: Bank statements, broker statements, custodian reports, credit card statements
+
+2. **Whole Document Mode:**
+   - All pages are combined and sent to the LLM together using {{document}} placeholder
+   - Best for documents where information spans multiple pages
+   - Ideal for: PE reports, contracts, multi-page forms, investment documents
+
+**Platform Features:**
+- **Text Extraction**: Extract text from both scanned and electronic PDFs using AWS Textract
+- **AI Processing**: Use LLMs to structure data into JSON format
+- **Prompt Builder**: AI-assisted tool to create custom extraction prompts from PDF screenshots
+- **Prompt Library**: Build, save, and reuse extraction templates for different document types
+- **SharePoint Integration**: Browse and select files directly from your SharePoint folders
+- **Flexible Exports**: Download results in CSV, JSON, or Excel formats
+- **Job Queue Management**: Track, monitor, and manage multiple processing jobs simultaneously
+- **Role-Based Access**: USER, ADMIN, and SUPER_ADMIN roles for security and permissions
+
+### Financial Services Use Cases
+
+**Document Types Supported:**
+- Bank Statements: Extract transactions, balances, dates, and account details
+- Brokerage Statements: Parse holdings, trades, valuations, and performance data
+- Custodian Reports: Extract asset details, valuations, transaction histories, and fee information
+- Credit Card Statements: Pull charges, payments, interest, and account activity
+- Investment Documents: Parse subscription agreements, capital calls, and commitment amounts
+- PE/VC Reports: Extract fund metrics including IRR, TVPI, DPI, RVPI from quarterly reports
+- Account Opening Forms: Extract KYC data, client information, and account specifications
+
+### Performance Metrics
+
+- **99%+ Data Accuracy**: Validated across thousands of documents
+- **21 minutes average processing time**: For 40 complex financial PDFs
+- **24+ fields per document**: Structured data extraction
+- **Multiple AI Models**: Choose based on accuracy requirements and budget
+
+### How It Works (4-Step Process)
+
+1. **Configure Settings**: Set up SharePoint and AI provider connections
+2. **Create Prompts**: Build extraction templates for your document types
+3. **Process Documents**: Upload PDFs and select processing mode
+4. **Export Results**: Download structured data in CSV, JSON, or Excel
+
+### Export Options
+
+- **CSV Export**: Flattened tabular format compatible with Excel, Google Sheets, and data analysis tools
+- **JSON Export**: Full structured data as returned by the LLM—preserves nested objects and arrays
+- **Excel Export (.xlsx)**: Native Microsoft Excel format with formatting and metadata columns
+- **Database Integration**: PostgreSQL support for storing results with auto-schema initialization
+
+All exports include: document name, page number, extracted data, timestamp, and model used.
+
+### Enterprise Security & Compliance
+
+- **AWS Textract**: Enterprise-grade OCR with HIPAA, SOC, and PCI DSS compliance certifications
+- **Encryption**: End-to-end encryption for data in transit (TLS 1.3) and at rest (AES-256)
+- **SharePoint Integration**: Secure App-Only authentication using Client ID and Client Secret
+- **Role-Based Access Control**: USER, ADMIN, and SUPER_ADMIN permissions
+- **Audit Logs**: Complete processing history with timestamps, user tracking, and system events
+- **Flexible Deployment**: Cloud-hosted SaaS or customer-managed infrastructure options
+
+### Business Impact
+
+- **Time Savings**: Reduce document processing time by 90-95% compared to manual data entry
+- **Cost Reduction**: Average savings of $50-100 per document processed
+- **Error Elimination**: 99%+ accuracy reduces costly errors, rework, and compliance violations
+- **Faster Decisions**: Process documents in minutes instead of days or weeks
+- **Scalability**: Handle 10x document volume without adding headcount
+- **Example ROI**: 1,000 documents/month at $75 manual cost = $900K annual savings
+
+### Contact & Demo
+
+- **Website**: https://pdf-parser.collation.ai
+- **Email**: hello@collation.ai
+- **Demo**: Schedule a demo to see PDF Processor in action with your own sample documents
+- **Pilot Program**: 15-day pilot to validate accuracy and ROI with real financial documents
+
+---
+
+## Blog Article: Agentic AI Bots and PE Data Operations
+
+### Title: Agentic AI Bots Are Eating Manual PE Data Ops: The End of PDF Hell in Alternatives
+
+**Author**: Sinan Biren
+**Date**: January 24, 2025
+
+### Key Themes
+
+**From OCR to Autonomous Agents:**
+The alternative investments data world is moving from static PDF parsing to autonomous, agentic workflows where AI-driven bots ingest, classify, interpret, and route PE and other fund documents end-to-end into downstream systems. PDF processing is effectively becoming the orchestration layer for agentic AI in private markets operations.
+
+**Evolution of PDF Processing:**
+- Early "PDF parsers" were glorified OCR: they turned scans into text but still relied on humans or rigid rules to decide what mattered and where it should go
+- The new generation combines OCR, LLMs, and workflow logic so that agents can understand document types, extract structured data, validate it, and trigger actions across portfolio management and reporting platforms
+
+**What Bots Can Now Do for PE Data:**
+
+1. **Auto-classification**: Bots can auto-classify incoming alternative investment files (capital calls, distribution notices, quarterly PE fund reports, side letters) based purely on content and layout, not just filename rules
+
+2. **Smart extraction and mapping**: Once classified, agents can decide what to do with each document: extract specific data points (commitment, unfunded, NAV, IRR/TVPI/DPI, cash flows), map them to the target data model, and prepare them for upload into PMS, data warehouses, or reporting systems
+
+3. **Cross-document validation**: In more advanced setups, agents also perform cross-document checks (e.g. reconciling latest NAV to prior quarter, checking that capital call amounts tie out to commitment schedules) and either auto-approve or route exceptions to operations teams
+
+**Why This is Agentic AI:**
+
+- Agentic AI in documents means systems that do not just "answer questions" on PDFs, but plan and execute multi-step workflows: ingest, classify, extract, validate, enrich, post, and notify
+- Modern platforms are introducing "agentic document workflows" that coordinate multiple models and tools—OCR, LLMs, retrieval, and business rules—to automate knowledge work instead of isolated extraction tasks
+- In practice, this looks like self-governing document pipelines: agents monitor inboxes or SharePoint libraries, launch the right extraction prompt, validate outputs against policies, and push clean data into CRMs, portfolio systems, or BI tools
+
+**How Collation.AI's PDF Processor Illustrates This Shift:**
+
+- AI-based text extraction, LLM-driven JSON output, job management, and reusable prompts for complex financial documents like PE reports and custodian statements
+- Support for page-by-page and whole-document modes (for multi-page PE and VC reports)
+- Prompt Builder that lets operations teams design extraction logic visually
+- Integrations to sources like SharePoint plus exports to CSV/JSON/Excel or databases
+- Multiple AI models (OpenAI, Anthropic, Google, Azure, and even local models) can be orchestrated per job, which is exactly the kind of multi-agent pattern described in newer "agentic document processing" architectures
+
+### When to Reference This Article:
+
+- "Agentic AI for PE data?" → Blog: Agentic AI Bots Eating Manual PE Data Ops
+- "PDF processing automation?" → Blog: Agentic AI Bots Eating Manual PE Data Ops
+- "Alternative investment data operations?" → Blog: Agentic AI Bots Eating Manual PE Data Ops
+- "PE fund document processing?" → Blog: Agentic AI Bots Eating Manual PE Data Ops
+- "Multi-step document workflows?" → Blog: Agentic AI Bots Eating Manual PE Data Ops
+
+---
+
 *This knowledge base is based on actual Collation AI product documentation, sales materials, website content, and blog articles. All information is accurate and current as of the latest update.*
 `
 

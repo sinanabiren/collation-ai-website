@@ -7,6 +7,58 @@ import { prisma } from '@/lib/prisma'
 
 // Blog post data - hardcoded posts
 const blogPosts: Record<string, any> = {
+  'agentic-ai-bots-eating-manual-pe-data-ops': {
+    title: "Agentic AI Bots Are Eating Manual PE Data Ops: The End of PDF Hell in Alternatives",
+    publishedDate: 'Jan 24, 2025',
+    author: 'Sinan Biren',
+    content: `
+      <p>The alternative investments data world is moving from static PDF parsing to autonomous, agentic workflows where AI-driven bots ingest, classify, interpret, and route PE and other fund documents end-to-end into downstream systems. PDF processing is effectively becoming the orchestration layer for agentic AI in private markets operations.</p>
+
+      <h2>From OCR to Autonomous Agents</h2>
+      <ul>
+        <li><strong>Early "PDF parsers" were glorified OCR:</strong> They turned scans into text but still relied on humans or rigid rules to decide what mattered and where it should go.</li>
+        <li><strong>The new generation combines OCR, LLMs, and workflow logic</strong> so that agents can understand document types, extract structured data, validate it, and trigger actions across portfolio management and reporting platforms.</li>
+      </ul>
+
+      <h2>What Bots Can Now Do for PE Data</h2>
+      <ul>
+        <li><strong>Auto-classify incoming alternative investment files</strong> (capital calls, distribution notices, quarterly PE fund reports, side letters) based purely on content and layout, not just filename rules.</li>
+        <li><strong>Extract and map specific data points</strong> Once classified, agents can decide what to do with each document: extract specific data points (commitment, unfunded, NAV, IRR/TVPI/DPI, cash flows), map them to the target data model, and prepare them for upload into PMS, data warehouses, or reporting systems.</li>
+        <li><strong>Perform cross-document checks</strong> In more advanced setups, agents also perform cross-document checks (e.g. reconciling latest NAV to prior quarter, checking that capital call amounts tie out to commitment schedules) and either auto-approve or route exceptions to operations teams.</li>
+      </ul>
+
+      <h2>Why This is Essentially Agentic AI</h2>
+      <ul>
+        <li><strong>Agentic AI in documents means systems that do not just "answer questions" on PDFs,</strong> but plan and execute multi-step workflows: ingest, classify, extract, validate, enrich, post, and notify.</li>
+        <li><strong>Modern platforms are introducing "agentic document workflows"</strong> that coordinate multiple models and tools—OCR, LLMs, retrieval, and business rules—to automate knowledge work instead of isolated extraction tasks.</li>
+        <li><strong>Self-governing document pipelines</strong> In practice, this looks like self-governing document pipelines: agents monitor inboxes or SharePoint libraries, launch the right extraction prompt, validate outputs against policies, and push clean data into CRMs, portfolio systems, or BI tools.</li>
+      </ul>
+
+      <h2>How Platforms Illustrate the Shift</h2>
+      <ul>
+        <li><strong>AI-based extraction platforms</strong> encapsulate this evolution: AI-based text extraction, LLM-driven JSON output, job management, and reusable prompts for complex financial documents like PE reports and custodian statements.</li>
+        <li><strong>Multiple processing modes</strong> They support page-by-page and whole-document modes (for multi-page PE and VC reports), a Prompt Builder that lets operations teams design extraction logic visually, and integrations to sources like SharePoint plus exports to CSV/JSON/Excel or databases.</li>
+        <li><strong>Multi-agent orchestration</strong> Under the hood, multiple AI models (OpenAI, Anthropic, Google, Azure, and even local models) can be orchestrated per job, which is exactly the kind of multi-agent pattern described in newer "agentic document processing" architectures.</li>
+      </ul>
+
+      <h2>References</h2>
+      <ol>
+        <li><a href="https://www.llamaindex.ai/blog/introducing-agentic-document-workflows" target="_blank" rel="noopener noreferrer">LlamaIndex - Introducing Agentic Document Workflows</a></li>
+        <li><a href="https://www.veryfi.com/technology/agentic-ai-document-automation/" target="_blank" rel="noopener noreferrer">Veryfi - Agentic AI Document Automation</a></li>
+        <li><a href="https://www.v7labs.com/blog/ai-in-wealth-management" target="_blank" rel="noopener noreferrer">V7 Labs - AI in Wealth Management</a></li>
+        <li><a href="https://xenoss.io/blog/agentic-ai-document-processing" target="_blank" rel="noopener noreferrer">Xenoss - Agentic AI Document Processing</a></li>
+        <li><a href="https://www.atominvest.co/resources/automating-portfolio-management-for-alternative-investments-enhancing-decision-making-with-data-automation" target="_blank" rel="noopener noreferrer">Atom Invest - Automating Portfolio Management</a></li>
+        <li><a href="https://landing.ai/agentic-document-extraction" target="_blank" rel="noopener noreferrer">Landing AI - Agentic Document Extraction</a></li>
+        <li><a href="https://www.hyland.com/en/company/newsroom/hyland-launches-agentic-document-processing" target="_blank" rel="noopener noreferrer">Hyland - Launches Agentic Document Processing</a></li>
+        <li><a href="https://carta.com/blog/data-extraction-fund-manager-reports/" target="_blank" rel="noopener noreferrer">Carta - Data Extraction Fund Manager Reports</a></li>
+        <li><a href="https://nextvestment.com/resources/blog/future-wealth-management-2026-guide" target="_blank" rel="noopener noreferrer">Nextvestment - Future Wealth Management 2026 Guide</a></li>
+        <li><a href="https://www.linkedin.com/pulse/how-agentic-ai-revolutionize-intelligent-document-processing-e5wmc" target="_blank" rel="noopener noreferrer">LinkedIn - How Agentic AI Will Revolutionize Intelligent Document Processing</a></li>
+      </ol>
+    `,
+    date: '2025-01-24',
+    category: 'Agentic AI',
+    readTime: '4 min read',
+  },
   'basketball-winning-teams-wealthtech': {
     title: "What Basketball Teaches Us About Building Winning Teams in WealthTech",
     publishedDate: 'Dec 23, 2025',
