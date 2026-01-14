@@ -15,7 +15,7 @@ const config: Config = {
       },
       fontFamily: {
         sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
-        tight: ['Inter Tight', 'Inter', 'sans-serif'],
+        'inter-tight': ['var(--font-inter-tight)', 'Inter Tight', 'Inter', 'sans-serif'],
       },
       animation: {
         'bounce': 'bounce 1s infinite',

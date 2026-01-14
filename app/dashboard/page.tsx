@@ -1,35 +1,9 @@
-import { getServerSession } from 'next-auth/next';
-import { redirect } from 'next/navigation';
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
-import DashboardClient from './DashboardClient';
-import { getUserByEmail, isTrialActive, getTrialDaysRemaining } from '@/lib/auth/users';
+'use client';
 
-export default async function DashboardPage() {
-  const session = await getServerSession(authOptions);
+import dynamic from 'next/dynamic';
 
-  if (!session?.user?.email) {
-    redirect('/login');
-  }
+const LovableStyleBuilder = dynamic(() => import('@/components/ui-builder/LovableStyleBuilder'), { ssr: false });
 
-  // Get user details including trial info
-  const user = await getUserByEmail(session.user.email);
-
-  if (!user) {
-    redirect('/login');
-  }
-
-  const trialActive = isTrialActive(user);
-  const daysRemaining = getTrialDaysRemaining(user);
-
-  return (
-    <DashboardClient
-      user={{
-        id: user.id,
-        name: user.name,
-        email: user.email,
-        trialActive,
-        daysRemaining
-      }}
-    />
-  );
+export default function DashboardPage() {
+  return <LovableStyleBuilder />;
 }

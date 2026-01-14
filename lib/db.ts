@@ -3,16 +3,25 @@ import { Pool } from 'pg';
 let pool: Pool | null = null;
 
 export function getPool() {
+  if (!process.env.DATABASE_URL) {
+    throw new Error('DATABASE_URL not configured - using local storage');
+  }
+
   if (!pool) {
     pool = new Pool({
       connectionString: process.env.DATABASE_URL,
       ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : undefined,
+      connectionTimeoutMillis: 3000, // 3 second timeout for connection attempts
+      query_timeout: 5000, // 5 second timeout for queries
     });
   }
   return pool;
 }
 
 export async function query(text: string, params?: any[]) {
+  if (!process.env.DATABASE_URL) {
+    throw new Error('DATABASE_URL not configured - using local storage');
+  }
   const pool = getPool();
   const result = await pool.query(text, params);
   return result;

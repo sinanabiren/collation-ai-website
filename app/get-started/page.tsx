@@ -107,71 +107,71 @@ export default function GetStartedPage() {
     <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="border-b border-gray-200 bg-white/50 backdrop-blur-sm">
-        <div className="container mx-auto px-6 py-4">
+        <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
           <div className="flex items-center justify-between">
-            <div className="text-xl font-bold text-dark">
+            <div className="text-lg sm:text-xl font-bold text-dark">
               collation.ai
             </div>
             <Link href="/" className="flex items-center space-x-2 text-gray-600 hover:text-dark transition-colors">
               <ArrowLeft className="w-4 h-4" />
-              <span className="text-sm">Back to Home</span>
+              <span className="text-xs sm:text-sm">Back to Home</span>
             </Link>
           </div>
         </div>
       </header>
 
-      <div className="container mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start max-w-6xl mx-auto">
+      <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 md:py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 items-start max-w-6xl mx-auto">
           {/* Left Column - Trial Information */}
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8">
             <div>
-              <h1 className="text-4xl md:text-5xl font-bold text-dark mb-6">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-dark mb-4 sm:mb-6">
                 Start Your Free{" "}
                 <span className="bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
                   7-Day Trial
                 </span>
               </h1>
 
-              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+              <p className="text-lg sm:text-xl text-gray-600 mb-6 sm:mb-8 leading-relaxed">
                 Experience the power of automated investment reporting without any commitment. No credit card required.
               </p>
             </div>
 
             {/* Trial Features */}
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               {trialFeatures.map((feature, index) => (
                 <div key={index} className="flex items-center space-x-3">
-                  <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center">
-                    <Check className="w-4 h-4 text-green-600" />
+                  <div className="w-5 h-5 sm:w-6 sm:h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Check className="w-3 h-3 sm:w-4 sm:h-4 text-green-600" />
                   </div>
-                  <span className="text-dark">{feature}</span>
+                  <span className="text-sm sm:text-base text-dark">{feature}</span>
                 </div>
               ))}
             </div>
 
             {/* Trial Benefits */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-8">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 pt-6 sm:pt-8">
               {trialBenefits.map((benefit, index) => (
                 <div key={index} className="text-center">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-3">
-                    <benefit.icon className="w-6 h-6 text-primary" />
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-2 sm:mb-3">
+                    <benefit.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
                   </div>
-                  <h3 className="font-semibold text-dark mb-1">{benefit.title}</h3>
-                  <p className="text-sm text-gray-600">{benefit.description}</p>
+                  <h3 className="text-sm sm:text-base font-semibold text-dark mb-1">{benefit.title}</h3>
+                  <p className="text-xs sm:text-sm text-gray-600">{benefit.description}</p>
                 </div>
               ))}
             </div>
           </div>
 
           {/* Right Column - Signup Form */}
-          <div className="lg:pl-8">
+          <div className="lg:pl-8 mt-8 lg:mt-0">
             <Card className="border-gray-200 shadow-lg">
-              <CardHeader className="text-center">
-                <CardTitle className="text-2xl font-bold">Create Your Account</CardTitle>
-                <CardDescription>Get started in less than 2 minutes</CardDescription>
+              <CardHeader className="text-center p-4 sm:p-6">
+                <CardTitle className="text-xl sm:text-2xl font-bold">Create Your Account</CardTitle>
+                <CardDescription className="text-sm sm:text-base">Get started in less than 2 minutes</CardDescription>
               </CardHeader>
-              <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-6">
+              <CardContent className="p-4 sm:p-6">
+                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                   <div className="space-y-2">
                     <Label htmlFor="fullName">Full Name</Label>
                     <Input
@@ -239,13 +239,13 @@ export default function GetStartedPage() {
 
                   <Button
                     type="submit"
-                    className="w-full text-lg py-6"
+                    className="w-full text-base sm:text-lg py-5 sm:py-6 touch-manipulation"
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? "Creating Account..." : "Start Free Trial →"}
                   </Button>
 
-                  <p className="text-xs text-center text-gray-600">
+                  <p className="text-xs sm:text-sm text-center text-gray-600 leading-relaxed">
                     By creating an account, you agree to our{" "}
                     <a href="#" className="text-primary hover:underline">Terms of Service</a>
                     {" "}and{" "}

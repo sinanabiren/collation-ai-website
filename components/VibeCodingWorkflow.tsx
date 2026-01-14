@@ -22,8 +22,8 @@ const VibeCodingWorkflow = () => {
       } else {
         clearInterval(typingInterval);
       }
-    }, 50);
-    
+    }, 35);
+
     return () => clearInterval(typingInterval);
   }, []);
 
@@ -38,8 +38,8 @@ const VibeCodingWorkflow = () => {
         } else {
           clearInterval(typer);
         }
-      }, 35);
-    }, 1200);
+      }, 15);
+    }, 500);
     return () => clearTimeout(start);
   }, []);
 
@@ -53,10 +53,10 @@ const VibeCodingWorkflow = () => {
           // Mark as done shortly after
           setTimeout(() => {
             setFileStates(prev => prev.map(f => f.name === name ? { ...f, done: true } : f));
-          }, 500);
-        }, idx * 600);
+          }, 250);
+        }, idx * 300);
       });
-    }, 2500);
+    }, 1000);
     return () => clearTimeout(start);
   }, []);
 
@@ -68,7 +68,7 @@ const VibeCodingWorkflow = () => {
         loss: 4 + Math.floor(Math.random() * 5),
         net: 10 + Math.floor(Math.random() * 8)
       });
-    }, 2000);
+    }, 1200);
     return () => clearInterval(interval);
   }, []);
 
@@ -81,11 +81,11 @@ const VibeCodingWorkflow = () => {
           className="absolute top-1/2 left-[31%] transform -translate-y-1/2 z-10"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 1 }}
+          transition={{ duration: 0.4, delay: 0.5 }}
         >
           <motion.div
             animate={{ x: [0, 8, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
             className="flex items-center gap-1"
           >
             <ArrowRight className="w-8 h-8 text-blue-500" strokeWidth={3} />
@@ -98,11 +98,11 @@ const VibeCodingWorkflow = () => {
           className="absolute top-1/2 left-[64%] transform -translate-y-1/2 z-10"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 1.5 }}
+          transition={{ duration: 0.4, delay: 0.7 }}
         >
           <motion.div
             animate={{ x: [0, 8, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+            transition={{ duration: 1, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
             className="flex items-center gap-1"
           >
             <ArrowRight className="w-8 h-8 text-green-500" strokeWidth={3} />
@@ -126,13 +126,13 @@ const VibeCodingWorkflow = () => {
             x1="30%" y1="50%" x2="63%" y2="50%"
             stroke="url(#gradBlue)" strokeWidth="3" strokeDasharray="6 8"
             animate={{ strokeDashoffset: [0, -60] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+            transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
           />
           <motion.line
             x1="63%" y1="50%" x2="95%" y2="50%"
             stroke="url(#gradGreen)" strokeWidth="3" strokeDasharray="6 8"
             animate={{ strokeDashoffset: [0, -60] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "linear", delay: 0.5 }}
+            transition={{ duration: 1, repeat: Infinity, ease: "linear", delay: 0.3 }}
           />
         </svg>
       </div>
@@ -223,7 +223,7 @@ const VibeCodingWorkflow = () => {
                     <motion.div
                       className="absolute top-0 left-0 h-full w-10 bg-gradient-to-r from-blue-200/40 to-transparent"
                       animate={{ x: ['-10%', '120%'] }}
-                      transition={{ duration: 1.2, repeat: Infinity, ease: 'linear' }}
+                      transition={{ duration: 0.7, repeat: Infinity, ease: 'linear' }}
                     />
                   </div>
                 </div>
@@ -232,10 +232,10 @@ const VibeCodingWorkflow = () => {
                   <div className="text-[10px] font-semibold text-slate-600 dark:text-slate-400 mb-1">Live Preview</div>
                   <div className="h-10 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded mb-1" />
                   <div className="h-1.5 bg-slate-200 dark:bg-slate-800 rounded overflow-hidden">
-                    <motion.div 
+                    <motion.div
                       className="h-full bg-blue-500"
                       animate={{ x: ['-100%', '0%'], width: ['30%', '100%'] }}
-                      transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+                      transition={{ duration: 0.8, repeat: Infinity, ease: 'easeInOut' }}
                     />
                   </div>
                 </div>

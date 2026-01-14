@@ -1,0 +1,843 @@
+'use client';
+
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { X, Search } from 'lucide-react';
+import VibeCodingShowcase from './VibeCodingShowcase';
+import WorkflowShowcase from './WorkflowShowcase';
+
+type ZoomType = 'workflow' | 'reporting' | null;
+
+interface WorkflowTask {
+  id: string;
+  name: string;
+  type: string;
+  description?: string;
+  x: number;
+  y: number;
+  dependencies: string[];
+}
+
+interface HeroZoomOverlayProps {
+  onHover?: (type: ZoomType) => void;
+  heroAnimationComplete?: boolean;
+}
+
+export default function HeroZoomOverlay({ onHover, heroAnimationComplete = false }: HeroZoomOverlayProps) {
+  const [activeZoom, setActiveZoom] = useState<ZoomType>(null);
+
+  const handleZoomIn = (type: ZoomType) => {
+    setActiveZoom(type);
+    onHover?.(type);
+  };
+
+  const handleZoomOut = () => {
+    setActiveZoom(null);
+    onHover?.(null);
+  };
+
+  // Don't show magnifying glasses until hero animation is complete
+  if (!heroAnimationComplete) {
+    return null;
+  }
+
+  return (
+    <>
+      {/* Workflow Automation Hotspot - Under workflow box */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 0.5, type: 'spring', stiffness: 200 }}
+        className="absolute cursor-pointer z-20"
+        style={{
+          // UNDER workflow automation box (3rd box) - positioned under blue robot icon
+          top: '56%',
+          left: '48.5%',
+          width: '70px',
+          height: '70px',
+        }}
+        onClick={() => handleZoomIn('workflow')}
+      >
+        <motion.div
+          animate={{
+            scale: [1, 1.15, 1],
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+          className="relative w-full h-full group"
+        >
+          {/* Outer glow ring */}
+          <div className="absolute inset-0 rounded-full bg-blue-400/30 blur-md" />
+
+          {/* Pulsing ring */}
+          <motion.div
+            animate={{
+              scale: [1, 1.3],
+              opacity: [0.6, 0],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: 'easeOut',
+            }}
+            className="absolute inset-0 rounded-full border-4 border-blue-400"
+          />
+
+          {/* Main circle */}
+          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600 shadow-2xl group-hover:from-blue-500 group-hover:via-blue-600 group-hover:to-blue-700 transition-all duration-300" />
+
+          {/* Inner highlight */}
+          <div className="absolute inset-[3px] rounded-full bg-gradient-to-br from-white/30 to-transparent" />
+
+          {/* Icon */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <Search className="w-9 h-9 text-white drop-shadow-lg" strokeWidth={2.5} />
+          </div>
+
+          {/* Tooltip */}
+          <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+            <div className="bg-blue-600 text-white px-3 py-1.5 rounded-lg shadow-xl text-xs font-semibold">
+              Workflow Automation
+              <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-blue-600 rotate-45" />
+            </div>
+          </div>
+        </motion.div>
+      </motion.div>
+
+      {/* Reporting/VibeCoding Hotspot - Bottom-right corner of last box (reporting) */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 0.7, type: 'spring', stiffness: 200 }}
+        className="absolute cursor-pointer z-20"
+        style={{
+          // Bottom-right corner of reporting box (last box)
+          top: '65%',
+          right: '8%',
+          width: '70px',
+          height: '70px',
+        }}
+        onClick={() => handleZoomIn('reporting')}
+      >
+        <motion.div
+          animate={{
+            scale: [1, 1.15, 1],
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: 'easeInOut',
+            delay: 0.5,
+          }}
+          className="relative w-full h-full group"
+        >
+          {/* Outer glow ring */}
+          <div className="absolute inset-0 rounded-full bg-purple-400/30 blur-md" />
+
+          {/* Pulsing ring */}
+          <motion.div
+            animate={{
+              scale: [1, 1.3],
+              opacity: [0.6, 0],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: 'easeOut',
+              delay: 0.5,
+            }}
+            className="absolute inset-0 rounded-full border-4 border-purple-400"
+          />
+
+          {/* Main circle */}
+          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-purple-400 via-purple-500 to-purple-600 shadow-2xl group-hover:from-purple-500 group-hover:via-purple-600 group-hover:to-purple-700 transition-all duration-300" />
+
+          {/* Inner highlight */}
+          <div className="absolute inset-[3px] rounded-full bg-gradient-to-br from-white/30 to-transparent" />
+
+          {/* Icon */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <Search className="w-9 h-9 text-white drop-shadow-lg" strokeWidth={2.5} />
+          </div>
+
+          {/* Tooltip */}
+          <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+            <div className="bg-purple-600 text-white px-3 py-1.5 rounded-lg shadow-xl text-xs font-semibold">
+              VibeCoding Reports
+              <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-purple-600 rotate-45" />
+            </div>
+          </div>
+        </motion.div>
+      </motion.div>
+
+      {/* Zoom Overlay Modal */}
+      <AnimatePresence>
+        {activeZoom && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4"
+            onClick={handleZoomOut}
+          >
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ type: 'spring', duration: 0.5 }}
+              className="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[80vh] overflow-hidden relative"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close button */}
+              <button
+                onClick={handleZoomOut}
+                className="absolute top-4 right-4 z-10 bg-white/90 hover:bg-white rounded-full p-2 shadow-lg transition-colors"
+              >
+                <X className="w-6 h-6 text-gray-600" />
+              </button>
+
+              {/* Content */}
+              <div className="p-8">
+                {activeZoom === 'workflow' && <WorkflowMechanics />}
+                {activeZoom === 'reporting' && <ReportingMechanics />}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
+}
+
+// Node palette definitions - matching the screenshots
+const nodePalette = {
+  'Data Sources': [
+    { id: 'orion', name: 'Orion API', icon: Database, color: 'blue', description: 'Connect to Orion portfolio data' },
+    { id: 'zoho', name: 'Zoho API', icon: Database, color: 'green', description: 'Import data from Zoho CRM' },
+    { id: 'addepar', name: 'Addepar Scraper', icon: Code, color: 'orange', description: 'Extract data from Addepar' },
+  ],
+  'Decision/Branch': [
+    { id: 'ifelse', name: 'If/Else Branch', icon: GitBranch, color: 'cyan', description: 'Branch workflow based on condition' },
+    { id: 'switch', name: 'Switch Branch', icon: ArrowRightLeft, color: 'purple', description: 'Multi-way branch based on value' },
+  ],
+  'Destinations': [
+    { id: 'table', name: 'Save to Table', icon: Table2, color: 'gray', description: 'Save data to database table' },
+    { id: 'view', name: 'Save to View', icon: Eye, color: 'indigo', description: 'Create or update database view' },
+    { id: 'powerbi', name: 'Power BI Refresh', icon: BarChart3, color: 'orange', description: 'Trigger Power BI dataset refresh' },
+    { id: 'chart', name: 'Graph Widget', icon: BarChart3, color: 'teal', description: 'Display data as graph widget' },
+    { id: 'tablewidget', name: 'Table Widget', icon: Table2, color: 'blue', description: 'Display data as table widget' },
+    { id: 'email', name: 'Email Report', icon: Mail, color: 'pink', description: 'Send data as email report' },
+  ],
+};
+
+// Workflow Automation Mechanics - Node Palette Builder
+function WorkflowMechanics() {
+  const [workflowTasks, setWorkflowTasks] = useState<WorkflowTask[]>([]);
+  const [expandedCategories, setExpandedCategories] = useState<Set<string>>(
+    new Set(Object.keys(nodePalette))
+  );
+  const [searchQuery, setSearchQuery] = useState('');
+  const [isDrawingConnection, setIsDrawingConnection] = useState(false);
+  const [connectionStart, setConnectionStart] = useState<{ id: string; x: number; y: number } | null>(null);
+  const [mousePosition, setMousePosition] = useState<{ x: number; y: number } | null>(null);
+  const [draggingNode, setDraggingNode] = useState<string | null>(null);
+  const [dragOffset, setDragOffset] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
+  const [canvasRect, setCanvasRect] = useState<DOMRect | null>(null);
+  const [selectedNodes, setSelectedNodes] = useState<Set<string>>(new Set());
+
+  // Filter nodes based on search
+  const getFilteredNodes = () => {
+    if (!searchQuery.trim()) return nodePalette;
+
+    const filtered: typeof nodePalette = {};
+    Object.entries(nodePalette).forEach(([category, nodes]) => {
+      const matchingNodes = nodes.filter(node =>
+        node.name.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      if (matchingNodes.length > 0) {
+        filtered[category] = matchingNodes;
+      }
+    });
+    return filtered;
+  };
+
+  const toggleCategory = (category: string) => {
+    const newExpanded = new Set(expandedCategories);
+    if (newExpanded.has(category)) {
+      newExpanded.delete(category);
+    } else {
+      newExpanded.add(category);
+    }
+    setExpandedCategories(newExpanded);
+  };
+
+  const toggleNodeSelection = (nodeId: string) => {
+    const newSelected = new Set(selectedNodes);
+    if (newSelected.has(nodeId)) {
+      newSelected.delete(nodeId);
+      console.log(`Removed ${nodeId} from selection. Total selected:`, newSelected.size);
+    } else {
+      newSelected.add(nodeId);
+      console.log(`Added ${nodeId} to selection. Total selected:`, newSelected.size);
+    }
+    setSelectedNodes(newSelected);
+    console.log('Selected nodes:', Array.from(newSelected));
+  };
+
+  const addSelectedNodesToCanvas = () => {
+    console.log('Adding selected nodes to canvas. Selected count:', selectedNodes.size);
+    console.log('Selected node IDs:', Array.from(selectedNodes));
+
+    // Add all selected nodes to the canvas with unique IDs
+    let counter = 0;
+    Object.values(nodePalette).flat().forEach(node => {
+      if (selectedNodes.has(node.id)) {
+        console.log(`Will add node: ${node.name} (${node.id}) with delay ${counter * 10}ms`);
+        // Add small delay to ensure unique timestamps
+        setTimeout(() => {
+          addNodeToCanvas(node.id, node.name);
+        }, counter * 10);
+        counter++;
+      }
+    });
+
+    console.log(`Total nodes to add: ${counter}`);
+    // Clear selection after adding
+    setSelectedNodes(new Set());
+  };
+
+  const addNodeToCanvas = (nodeType: string, nodeName: string, description?: string) => {
+    // Place nodes CLOSE to warehouse in a tight circle - easy to read
+    // Warehouse is at center: x=500, y=280
+    const warehouseX = 500;
+    const warehouseY = 280;
+    const radius = 180; // MUCH CLOSER - nodes will be readable
+
+    // Calculate angle based on number of existing tasks to spread them evenly
+    const angle = (workflowTasks.length * (360 / 6)) * (Math.PI / 180); // 6 positions around circle
+
+    // Small randomness
+    const randomOffset = (Math.random() - 0.5) * 20;
+    const actualRadius = radius + randomOffset;
+
+    const x = warehouseX + actualRadius * Math.cos(angle);
+    const y = warehouseY + actualRadius * Math.sin(angle);
+
+    const newTask: WorkflowTask = {
+      id: `${nodeType}_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+      name: nodeName,
+      type: nodeType,
+      description,
+      x: Math.max(50, Math.min(800, x)),
+      y: Math.max(50, Math.min(400, y)),
+      dependencies: [],
+    };
+    setWorkflowTasks([...workflowTasks, newTask]);
+  };
+
+  const addCustomTask = () => {
+    addNodeToCanvas('custom', 'New Task', 'Describe what this task should do...');
+  };
+
+  const updateTaskName = (taskId: string, newName: string) => {
+    setWorkflowTasks(workflowTasks.map(t =>
+      t.id === taskId ? { ...t, name: newName } : t
+    ));
+  };
+
+  const updateTaskDescription = (taskId: string, newDescription: string) => {
+    setWorkflowTasks(workflowTasks.map(t =>
+      t.id === taskId ? { ...t, description: newDescription } : t
+    ));
+  };
+
+  const removeTask = (id: string) => {
+    if (id === 'warehouse') return; // Don't remove warehouse
+    setWorkflowTasks(workflowTasks.filter(t => t.id !== id).map(t => ({
+      ...t,
+      dependencies: t.dependencies.filter(depId => depId !== id)
+    })));
+  };
+
+  // Drag-based connection system
+  const startConnection = (taskId: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    const task = workflowTasks.find(t => t.id === taskId);
+    if (!task && taskId !== 'warehouse') return;
+
+    const rect = (e.currentTarget as HTMLElement).closest('.canvas-area')?.getBoundingClientRect();
+    if (!rect) return;
+
+    // EXACT position of blue arrow button (right edge + 4px for w-8 h-8 button center)
+    const x = task ? task.x + 200 + 4 : 500 + 56 + 5; // Right edge + button center offset
+    const y = task ? task.y + 30 : 280 + 56; // Middle of node
+
+    setConnectionStart({ id: taskId, x, y });
+    setIsDrawingConnection(true);
+    setCanvasRect(rect);
+  };
+
+  const handleCanvasMouseMove = (e: React.MouseEvent) => {
+    if (isDrawingConnection && canvasRect) {
+      setMousePosition({
+        x: e.clientX - canvasRect.left + (e.currentTarget as HTMLElement).scrollLeft,
+        y: e.clientY - canvasRect.top + (e.currentTarget as HTMLElement).scrollTop,
+      });
+    } else if (draggingNode) {
+      const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+      const newX = e.clientX - rect.left + (e.currentTarget as HTMLElement).scrollLeft - dragOffset.x;
+      const newY = e.clientY - rect.top + (e.currentTarget as HTMLElement).scrollTop - dragOffset.y;
+
+      setWorkflowTasks(workflowTasks.map(t =>
+        t.id === draggingNode
+          ? { ...t, x: Math.max(50, Math.min(900, newX)), y: Math.max(50, Math.min(500, newY)) }
+          : t
+      ));
+    }
+  };
+
+  const endConnection = (targetTaskId: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (isDrawingConnection && connectionStart && connectionStart.id !== targetTaskId) {
+      // Add connection - handle both regular nodes and warehouse
+      if (targetTaskId === 'warehouse') {
+        // For warehouse as target, we need to create a virtual warehouse node or just log it
+        // Since warehouse is the central node, connections to it don't need to be tracked
+        console.log(`Connected ${connectionStart.id} to warehouse`);
+        // Visual feedback - warehouse accepts connections but doesn't need to store them
+      } else {
+        // Regular node connection
+        setWorkflowTasks(workflowTasks.map(t =>
+          t.id === targetTaskId
+            ? { ...t, dependencies: [...new Set([...t.dependencies, connectionStart.id])] }
+            : t
+        ));
+      }
+    }
+    setIsDrawingConnection(false);
+    setConnectionStart(null);
+    setMousePosition(null);
+  };
+
+  const cancelConnection = () => {
+    if (isDrawingConnection) {
+      setIsDrawingConnection(false);
+      setConnectionStart(null);
+      setMousePosition(null);
+    }
+    if (draggingNode) {
+      setDraggingNode(null);
+    }
+  };
+
+  const startDraggingNode = (taskId: string, e: React.MouseEvent) => {
+    if ((e.target as HTMLElement).closest('.connection-point')) return; // Don't drag when clicking connection points
+    e.stopPropagation();
+
+    const task = workflowTasks.find(t => t.id === taskId);
+    if (!task) return;
+
+    const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+    const parentRect = (e.currentTarget as HTMLElement).offsetParent?.getBoundingClientRect();
+
+    if (parentRect) {
+      setDragOffset({
+        x: e.clientX - parentRect.left - task.x,
+        y: e.clientY - parentRect.top - task.y,
+      });
+      setDraggingNode(taskId);
+    }
+  };
+
+  return (
+    <div className="space-y-4">
+      <div className="text-center">
+        <h3 className="text-3xl font-bold text-gray-900 mb-2">
+          Workflow Automation
+        </h3>
+        <p className="text-gray-600 text-lg">
+          Build workflows with drag-and-drop nodes
+        </p>
+      </div>
+
+      {/* Main Builder Interface */}
+      <div className="flex bg-white border-2 border-gray-200 rounded-xl overflow-hidden" style={{ height: '560px' }}>
+        {/* Node Palette Sidebar */}
+        <div className="w-80 border-r border-gray-200 bg-gray-50 overflow-y-auto">
+          <div className="p-4">
+            <h4 className="text-sm font-semibold text-gray-700 mb-3">Add Nodes</h4>
+
+            {/* Search */}
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search nodes..."
+              className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
+            />
+
+            {/* Instructions */}
+            <div className="mb-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+              <p className="text-xs text-blue-900">
+                <strong>How to use:</strong> Check boxes to select multiple nodes, then click "Add Selected" below. Or click any node directly to add it immediately. Drag blue arrows to connect nodes.
+              </p>
+            </div>
+
+            {/* Add Selected Nodes Button - More Prominent */}
+            {selectedNodes.size > 0 && (
+              <button
+                onClick={addSelectedNodesToCanvas}
+                className="w-full mb-4 px-4 py-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold rounded-lg shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2 animate-pulse"
+              >
+                <Plus className="w-5 h-5" />
+                <span>Add Selected ({selectedNodes.size})</span>
+                <Plus className="w-5 h-5" />
+              </button>
+            )}
+
+            {/* Categories */}
+            {Object.entries(getFilteredNodes()).map(([category, nodes]) => (
+              <div key={category} className="mb-3">
+                <button
+                  onClick={() => toggleCategory(category)}
+                  className="w-full flex items-center justify-between px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
+                >
+                  <span>{category}</span>
+                  <ChevronDown
+                    className={`w-4 h-4 transition-transform ${
+                      expandedCategories.has(category) ? 'rotate-180' : ''
+                    }`}
+                  />
+                </button>
+
+                {expandedCategories.has(category) && (
+                  <div className="mt-2 space-y-2">
+                    {nodes.map((node) => {
+                      const IconComponent = node.icon;
+                      const isSelected = selectedNodes.has(node.id);
+                      return (
+                        <div
+                          key={node.id}
+                          className={`w-full px-3 py-3 bg-white border rounded-lg transition-all ${
+                            isSelected ? 'border-blue-500 bg-blue-50' : 'border-gray-200 hover:border-blue-300 hover:shadow-sm'
+                          }`}
+                        >
+                          <div className="flex items-start gap-3">
+                            {/* Checkbox for multi-select */}
+                            <input
+                              type="checkbox"
+                              checked={isSelected}
+                              onChange={(e) => {
+                                e.stopPropagation();
+                                toggleNodeSelection(node.id);
+                                console.log(`Checkbox clicked for ${node.id}, new state:`, !isSelected);
+                              }}
+                              className="w-4 h-4 mt-0.5 text-blue-600 rounded border-gray-300 focus:ring-2 focus:ring-blue-500 cursor-pointer flex-shrink-0"
+                            />
+
+                            {/* Node icon */}
+                            <div className="flex-shrink-0">
+                              <div className={`p-2 rounded-lg bg-${node.color}-100`}>
+                                <IconComponent className={`w-5 h-5 text-${node.color}-600`} />
+                              </div>
+                            </div>
+
+                            {/* Node details - clickable to add immediately */}
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                addNodeToCanvas(node.id, node.name);
+                              }}
+                              className="flex-1 text-left min-w-0"
+                            >
+                              <p className="text-sm font-semibold text-gray-900 mb-0.5">{node.name}</p>
+                              {node.description && (
+                                <p className="text-xs text-gray-600 leading-relaxed">{node.description}</p>
+                              )}
+                            </button>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            ))}
+
+            {/* Create Custom Task Button */}
+            <div className="mt-4 px-2">
+              <button
+                onClick={addCustomTask}
+                className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all shadow-md hover:shadow-lg"
+              >
+                <Plus className="w-4 h-4" />
+                <span className="font-medium text-sm">Create Custom Task</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Canvas Area */}
+        <div className="flex-1 relative">
+          {/* HUGE Add More Nodes Button - Top Center */}
+          <div className="absolute top-4 left-1/2 -translate-x-1/2 z-30">
+            <button
+              onClick={() => {
+                // Scroll sidebar to top
+                const sidebar = document.querySelector('.w-80.border-r');
+                if (sidebar) {
+                  sidebar.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+              }}
+              className="px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold text-lg rounded-xl shadow-2xl hover:shadow-emerald-500/50 transition-all flex items-center gap-3 hover:scale-110 animate-pulse"
+              title="Add more nodes to your workflow"
+            >
+              <Plus className="w-7 h-7" />
+              <span>ADD MORE NODES</span>
+              <Plus className="w-7 h-7" />
+            </button>
+          </div>
+
+          {workflowTasks.length === 0 ? (
+            <div className="flex flex-col items-center justify-center h-full bg-gradient-to-br from-blue-50 to-white">
+              {/* Fixed Data Warehouse Icon */}
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ type: 'spring', stiffness: 200 }}
+                className="relative"
+              >
+                <div className="w-32 h-32 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl shadow-2xl flex items-center justify-center">
+                  <Database className="w-16 h-16 text-white" />
+                </div>
+                <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap">
+                  <p className="text-sm font-semibold text-purple-600">Data Warehouse</p>
+                </div>
+              </motion.div>
+              <div className="mt-16 text-center">
+                <p className="text-gray-500 text-sm">
+                  Select nodes from the palette to build your workflow
+                </p>
+              </div>
+            </div>
+          ) : (
+            <div
+              className="canvas-area relative w-full h-full bg-gradient-to-br from-blue-50 to-white overflow-auto"
+              onMouseMove={handleCanvasMouseMove}
+              onMouseUp={cancelConnection}
+              onMouseLeave={cancelConnection}
+            >
+              {/* Fixed Data Warehouse in Center - Always Visible */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ type: 'spring', stiffness: 200 }}
+                  className="relative"
+                >
+                  <div className="w-28 h-28 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl shadow-2xl flex items-center justify-center border-4 border-white">
+                    <Database className="w-14 h-14 text-white" />
+                  </div>
+                  <div className="absolute -bottom-7 left-1/2 -translate-x-1/2 whitespace-nowrap">
+                    <p className="text-xs font-semibold text-purple-600 bg-white px-2 py-0.5 rounded-full shadow">
+                      Data Warehouse
+                    </p>
+                  </div>
+
+                  {/* Connection points for warehouse - LARGE and VISIBLE */}
+                  <div
+                    onMouseUp={(e) => {
+                      e.stopPropagation();
+                      endConnection('warehouse', e);
+                    }}
+                    className="connection-point absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 rounded-full border-4 border-white shadow-2xl cursor-pointer hover:scale-125 transition-all z-40 flex items-center justify-center bg-green-500 hover:bg-green-600"
+                    title="DROP HERE to connect to warehouse"
+                    style={{ pointerEvents: 'all' }}
+                  >
+                    <div className="w-4 h-4 bg-white rounded-full animate-pulse" />
+                  </div>
+                  <div
+                    onMouseDown={(e) => {
+                      e.stopPropagation();
+                      startConnection('warehouse', e);
+                    }}
+                    className="connection-point absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-10 h-10 rounded-full border-4 border-white shadow-2xl cursor-pointer hover:scale-125 transition-all z-40 flex items-center justify-center bg-blue-600 hover:bg-blue-700"
+                    title="DRAG from here to create connection"
+                    style={{ pointerEvents: 'all' }}
+                  >
+                    <ArrowRight className="w-5 h-5 text-white font-bold" />
+                  </div>
+                </motion.div>
+              </div>
+
+              <svg className="absolute inset-0 w-full h-full pointer-events-none z-10" style={{ minWidth: '1000px', minHeight: '600px' }}>
+                {/* Draw connection lines */}
+                {workflowTasks.flatMap((task) =>
+                  task.dependencies.map((depId) => {
+                    const depTask = depId === 'warehouse' ? null : workflowTasks.find(t => t.id === depId);
+                    // Start from EXACT blue arrow position
+                    const x1 = depTask ? depTask.x + 200 + 4 : 500 + 56 + 5;
+                    const y1 = depTask ? depTask.y + 30 : 280 + 56;
+                    // End at EXACT green circle position (left edge - 4px)
+                    const x2 = task.x - 4;
+                    const y2 = task.y + 30;
+                    return (
+                      <g key={`${depId}-${task.id}`}>
+                        <line
+                          x1={x1}
+                          y1={y1}
+                          x2={x2}
+                          y2={y2}
+                          stroke="#3b82f6"
+                          strokeWidth="3"
+                          markerEnd="url(#arrowhead)"
+                        />
+                      </g>
+                    );
+                  })
+                )}
+
+                {/* Temporary connection line while dragging */}
+                {isDrawingConnection && connectionStart && mousePosition && (
+                  <line
+                    x1={connectionStart.x}
+                    y1={connectionStart.y}
+                    x2={mousePosition.x}
+                    y2={mousePosition.y}
+                    stroke="#3b82f6"
+                    strokeWidth="2"
+                    strokeDasharray="5,5"
+                    markerEnd="url(#arrowhead)"
+                  />
+                )}
+
+                <defs>
+                  <marker
+                    id="arrowhead"
+                    markerWidth="8"
+                    markerHeight="8"
+                    refX="7"
+                    refY="3"
+                    orient="auto"
+                  >
+                    <polygon points="0 0, 8 3, 0 6" fill="#3b82f6" />
+                  </marker>
+                </defs>
+              </svg>
+
+              {/* Task Nodes */}
+              <div style={{ position: 'relative', minWidth: '1000px', minHeight: '600px' }}>
+                {workflowTasks.map((task) => (
+                  <motion.div
+                    key={task.id}
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ type: 'spring', stiffness: 200 }}
+                    className="absolute bg-white border-2 border-blue-500 rounded-lg shadow-lg hover:shadow-xl transition-shadow cursor-move"
+                    style={{
+                      left: `${task.x}px`,
+                      top: `${task.y}px`,
+                      width: '200px',
+                      zIndex: 15,
+                    }}
+                    onMouseDown={(e) => startDraggingNode(task.id, e)}
+                    onMouseUp={() => setDraggingNode(null)}
+                  >
+                    {/* Connection points - LARGE and VISIBLE */}
+                    <div
+                      onMouseUp={(e) => {
+                        e.stopPropagation();
+                        endConnection(task.id, e);
+                      }}
+                      className="connection-point absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 w-8 h-8 rounded-full border-3 border-white shadow-2xl cursor-pointer hover:scale-150 transition-all z-30 flex items-center justify-center bg-green-500 hover:bg-green-600"
+                      title="DROP HERE to connect"
+                      style={{ pointerEvents: 'all' }}
+                    >
+                      <div className="w-3 h-3 bg-white rounded-full animate-pulse" />
+                    </div>
+                    <div
+                      onMouseDown={(e) => {
+                        e.stopPropagation();
+                        startConnection(task.id, e);
+                      }}
+                      className="connection-point absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-8 h-8 rounded-full border-3 border-white shadow-2xl cursor-pointer hover:scale-150 transition-all z-30 flex items-center justify-center bg-blue-600 hover:bg-blue-700"
+                      title="DRAG from here"
+                      style={{ pointerEvents: 'all' }}
+                    >
+                      <ArrowRight className="w-4 h-4 text-white font-bold" />
+                    </div>
+
+                    {/* Task Content */}
+                    <div className="p-3">
+                      <div className="flex items-center justify-between mb-2">
+                        <p className="text-xs font-semibold text-gray-600 truncate">{task.type}</p>
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            removeTask(task.id);
+                          }}
+                          className="text-gray-400 hover:text-red-500 transition-colors"
+                        >
+                          <Trash2 className="w-3 h-3" />
+                        </button>
+                      </div>
+                      <input
+                        type="text"
+                        value={task.name}
+                        onChange={(e) => {
+                          e.stopPropagation();
+                          updateTaskName(task.id, e.target.value);
+                        }}
+                        onMouseDown={(e) => e.stopPropagation()}
+                        className="w-full text-sm font-medium text-gray-900 bg-transparent border-b border-transparent hover:border-blue-300 focus:border-blue-500 focus:outline-none px-1 py-0.5 mb-2"
+                        placeholder="Task name"
+                      />
+                      {task.description !== undefined && (
+                        <textarea
+                          value={task.description}
+                          onChange={(e) => {
+                            e.stopPropagation();
+                            updateTaskDescription(task.id, e.target.value);
+                          }}
+                          onMouseDown={(e) => e.stopPropagation()}
+                          className="w-full text-xs text-gray-600 bg-gray-50 border border-gray-200 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+                          placeholder="Describe what this task should do..."
+                          rows={2}
+                        />
+                      )}
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Reporting Mechanics - VibeCoding Showcase
+function ReportingMechanics() {
+  return (
+    <div className="space-y-4">
+      <div className="text-center">
+        <h3 className="text-3xl font-bold text-gray-900 mb-2">
+          VibeCoding - AI Report Builder
+        </h3>
+        <p className="text-gray-600 text-lg">
+          Talk to your data and build custom reports with simple prompts
+        </p>
+      </div>
+
+      {/* VibeCoding Live Showcase */}
+      <div className="bg-gradient-to-br from-purple-50 to-white rounded-xl p-6">
+        <VibeCodingShowcase />
+      </div>
+    </div>
+  );
+}
+

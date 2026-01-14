@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { query } from '@/lib/db';
+import { getUserById, updateUser } from '@/lib/auth/users';
 
 export async function POST(req: NextRequest) {
   try {
@@ -17,15 +17,12 @@ export async function POST(req: NextRequest) {
     const ip = forwarded ? forwarded.split(',')[0] : req.headers.get('x-real-ip') || 'unknown';
 
     // Update user's NDA acceptance
-    await query(
-      `UPDATE auth_users
-       SET nda_accepted = true,
-           nda_accepted_at = CURRENT_TIMESTAMP,
-           nda_signature_name = $1,
-           nda_ip_address = $2
-       WHERE id = $3`,
-      [signatureName, ip, userId]
-    );
+    await updateUser(userId, {
+      ndaAccepted: true,
+      ndaAcceptedAt: new Date().toISOString(),
+      ndaSignatureName: signatureName,
+      ndaIpAddress: ip,
+    });
 
     return NextResponse.json({ success: true });
   } catch (error: any) {
@@ -50,12 +47,9 @@ export async function GET(req: NextRequest) {
       );
     }
 
-    const result = await query(
-      'SELECT nda_accepted, nda_accepted_at, nda_signature_name FROM auth_users WHERE id = $1',
-      [userId]
-    );
+    const user = await getUserById(userId);
 
-    if (result.rows.length === 0) {
+    if (!user) {
       return NextResponse.json(
         { success: false, error: 'User not found' },
         { status: 404 }
@@ -65,9 +59,9 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({
       success: true,
       data: {
-        ndaAccepted: result.rows[0].nda_accepted,
-        ndaAcceptedAt: result.rows[0].nda_accepted_at,
-        ndaSignatureName: result.rows[0].nda_signature_name,
+        ndaAccepted: user.ndaAccepted || false,
+        ndaAcceptedAt: user.ndaAcceptedAt,
+        ndaSignatureName: user.ndaSignatureName,
       },
     });
   } catch (error: any) {

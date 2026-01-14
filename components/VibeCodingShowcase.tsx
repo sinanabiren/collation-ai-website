@@ -111,10 +111,16 @@ const VibeCodingShowcase = () => {
     return () => clearInterval(typeInterval);
   }, [currentPromptIndex, shouldAnimate]);
 
+  // Reset to first prompt on mount to ensure it always starts from beginning
+  useEffect(() => {
+    setCurrentPromptIndex(0);
+    setVisibleElements([]);
+  }, []);
+
   // Auto-cycle through prompts
   useEffect(() => {
     if (!shouldAnimate) return;
-    
+
     const cycleInterval = setInterval(() => {
       setCurrentPromptIndex((prev) => (prev + 1) % prompts.length);
     }, 4000);

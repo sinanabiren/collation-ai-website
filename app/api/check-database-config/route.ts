@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { query } from '@/lib/db';
+import { getUserById } from '@/lib/auth/users';
 
 export async function GET(request: NextRequest) {
   try {
@@ -13,25 +13,20 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    const result = await query(
-      `SELECT database_configured, database_connection_string FROM auth_users WHERE id = $1`,
-      [userId]
-    );
+    const user = await getUserById(userId);
 
-    if (result.rows.length === 0) {
+    if (!user) {
       return NextResponse.json(
         { success: false, error: 'User not found' },
         { status: 404 }
       );
     }
 
-    const user = result.rows[0];
-
     return NextResponse.json({
       success: true,
       data: {
-        databaseConfigured: user.database_configured || false,
-        hasConnectionString: !!user.database_connection_string,
+        databaseConfigured: user.databaseConfigured || false,
+        hasConnectionString: !!user.databaseConnectionString,
       },
     });
   } catch (error: any) {

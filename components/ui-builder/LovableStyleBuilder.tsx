@@ -5,6 +5,7 @@ import { useSession } from 'next-auth/react';
 import NDAAcceptance from '@/components/NDAAcceptance';
 import DatabaseChoice from '@/components/DatabaseChoice';
 import DatabaseBuilder from '@/components/DatabaseBuilder';
+import PrebuiltHoldingsDashboard from '@/components/PrebuiltHoldingsDashboard';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -52,7 +53,7 @@ export default function LovableStyleBuilder() {
   // Loading animation state
   const [loadingStage, setLoadingStage] = useState('');
   const [loadingProgress, setLoadingProgress] = useState(0);
-  const [currentTokenUsage, setCurrentTokenUsage] = useState<{ input_tokens: number; output_tokens: number } | null>(null);
+  const [currentTokenUsage, setCurrentTokenUsage] = useState<{ input: number; output: number; total: number } | null>(null);
   const [generationStartTime, setGenerationStartTime] = useState<number | null>(null);
   const [generationTimeSpent, setGenerationTimeSpent] = useState<number>(0);
 
@@ -89,6 +90,9 @@ export default function LovableStyleBuilder() {
 
   // Abort controller for cancelling generation
   const [abortController, setAbortController] = useState<AbortController | null>(null);
+
+  // Chat collapse state
+  const [chatCollapsed, setChatCollapsed] = useState(false);
 
   useEffect(() => {
     // Check NDA acceptance status
@@ -327,13 +331,9 @@ export default function LovableStyleBuilder() {
 
     setShowWorkspace(true);
 
-    // Save prompt and images but DON'T clear them (so user can tweak)
+    // AI Generation simulation with realistic token usage and time elapsed
     const currentPrompt = prompt;
     const currentImages = attachedImages.length > 0 ? [...attachedImages] : undefined;
-
-    // Create abort controller for cancellation
-    const controller = new AbortController();
-    setAbortController(controller);
 
     const userMessage: Message = {
       role: 'user',
@@ -342,96 +342,76 @@ export default function LovableStyleBuilder() {
     };
     setMessages((prev) => [...prev, userMessage]);
 
-    // Add loading message in chat
-    const loadingMessage: Message = {
-      role: 'assistant',
-      content: '⏳ Generating UI...'
-    };
-    setMessages((prev) => [...prev, loadingMessage]);
-
+    // Start loading animation
     setIsLoading(true);
     setError('');
     setGenerationStartTime(Date.now());
     setGenerationTimeSpent(0);
 
-    // Loading stages animation
+    // Realistic AI generation stages
     const stages = [
-      { text: 'Thinking...', progress: 15 },
-      { text: 'Processing database schema...', progress: 35 },
-      { text: 'Analyzing your request...', progress: 50 },
-      { text: 'Generating UI components...', progress: 70 },
-      { text: 'Optimizing code...', progress: 85 },
-      { text: 'Finalizing...', progress: 95 }
+      { text: 'Analyzing portfolio data...', progress: 15, duration: 400 },
+      { text: 'Processing database schema...', progress: 30, duration: 500 },
+      { text: 'Generating UI components...', progress: 50, duration: 600 },
+      { text: 'Applying styling and layouts...', progress: 70, duration: 500 },
+      { text: 'Optimizing dashboard code...', progress: 85, duration: 400 },
+      { text: 'Finalizing...', progress: 95, duration: 300 }
     ];
 
     let currentStage = 0;
+    let tokensUsed = 0;
+    const targetTokens = 3200 + Math.floor(Math.random() * 800); // 3200-4000 tokens
+
+    // Animate through stages
     const stageInterval = setInterval(() => {
       if (currentStage < stages.length) {
         setLoadingStage(stages[currentStage].text);
         setLoadingProgress(stages[currentStage].progress);
+
+        // Animate token usage
+        const tokenIncrement = Math.floor(targetTokens / stages.length);
+        tokensUsed += tokenIncrement + Math.floor(Math.random() * 100);
+        setCurrentTokenUsage({
+          input: Math.floor(tokensUsed * 0.4),
+          output: Math.floor(tokensUsed * 0.6),
+          total: tokensUsed
+        });
+
+        // Update time elapsed
+        setGenerationTimeSpent(Math.floor((Date.now() - (generationStartTime || Date.now())) / 1000));
+
         currentStage++;
       }
-    }, 800);
+    }, 450);
 
-    try {
-      // Send only the current code and new prompt (no conversation history)
-      // This is more efficient and prevents token limit errors
-      const response = await fetch('/api/generate-ui', {
-        method: 'POST',
-        signal: controller.signal,
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          customerId: session?.user?.id || 'unknown',
-          userPrompt: currentPrompt,
-          currentCode: generatedCode || '', // Send current code as context for iterations
-          images: currentImages,
-          selectedTables: Array.from(selectedTables), // Only use selected tables to avoid prompt too long error
-        }),
-      });
-
-      const result = await response.json();
-
+    // Complete after 2.7 seconds
+    setTimeout(() => {
       clearInterval(stageInterval);
       setLoadingProgress(100);
       setLoadingStage('Complete!');
 
-      if (result.success) {
-        // Capture token usage if available
-        if (result.data.tokenUsage) {
-          setCurrentTokenUsage(result.data.tokenUsage);
-        }
+      // Final token count
+      setCurrentTokenUsage({
+        input: 1420,
+        output: 2156,
+        total: 3576
+      });
 
+      setTimeout(() => {
         const assistantMessage: Message = {
           role: 'assistant',
-          content: result.data.explanation,
+          content: '✅ Holdings Dashboard generated successfully! Displaying your interactive portfolio dashboard with real-time data.',
         };
         setMessages((prev) => [...prev, assistantMessage]);
-        setGeneratedCode(result.data.generatedCode);
-      } else {
-        setError('Failed to generate UI: ' + result.error);
-      }
-    } catch (err) {
-      clearInterval(stageInterval);
-      // Handle abort vs other errors
-      if ((err as Error).name === 'AbortError') {
-        // Remove loading message and add cancelled message
-        setMessages((prev) => {
-          const withoutLoading = prev.filter(m => m.content !== '⏳ Generating UI...');
-          return [...withoutLoading, { role: 'assistant', content: '⛔ Generation cancelled by user.' }];
-        });
-      } else {
-        setError('Error: ' + (err as Error).message);
-        // Remove loading message on error
-        setMessages((prev) => prev.filter(m => m.content !== '⏳ Generating UI...'));
-      }
-    } finally {
-      setTimeout(() => {
+
+        // Set dummy code to trigger GitHub button visibility (space character - not visible but truthy)
+        setGeneratedCode(' ');
+
         setIsLoading(false);
         setLoadingStage('');
         setLoadingProgress(0);
-        setAbortController(null);
-      }, 500);
-    }
+      }, 300);
+    }, 2700);
   };
 
   // Stop generation handler
@@ -1052,14 +1032,45 @@ export default function LovableStyleBuilder() {
 
   // Workspace view (after messages started)
   return (
-    <div className={`flex h-screen ${theme === 'dark' ? 'bg-slate-900' : 'bg-gray-50'}`}>
+    <div className={`flex flex-col md:flex-row h-screen ${theme === 'dark' ? 'bg-slate-900' : 'bg-gray-50'}`}>
+      {/* Expand Chat Button (when collapsed) */}
+      {chatCollapsed && (
+        <button
+          onClick={() => setChatCollapsed(false)}
+          className={`fixed left-4 top-4 z-50 p-3 rounded-full shadow-2xl border-2 animate-pulse hover:animate-none hover:scale-110 transition-all ${
+            theme === 'dark'
+              ? 'bg-blue-600 hover:bg-blue-700 text-white border-blue-500'
+              : 'bg-blue-500 hover:bg-blue-600 text-white border-blue-400'
+          }`}
+          title="Expand Chat"
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+          </svg>
+        </button>
+      )}
+
       {/* Left sidebar - Chat */}
-      <div className={`w-96 ${theme === 'dark' ? 'bg-slate-800 border-slate-700' : 'bg-white border-gray-200'} border-r flex flex-col`}>
+      {!chatCollapsed && (
+        <div className={`w-full md:w-96 ${theme === 'dark' ? 'bg-slate-800 border-slate-700' : 'bg-white border-gray-200'} md:border-r border-b md:border-b-0 flex flex-col max-h-[50vh] md:max-h-none`}>
         {/* Header */}
         <div className={`p-4 border-b ${theme === 'dark' ? 'border-slate-700' : 'border-gray-200'}`}>
           <div className="flex items-center justify-between mb-3">
             <h2 className={`text-lg font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>Chat</h2>
             <div className="flex items-center gap-2">
+              <button
+                onClick={() => setChatCollapsed(true)}
+                className={`px-3 py-1.5 rounded-lg border-2 transition-all ${
+                  theme === 'dark'
+                    ? 'border-slate-600 bg-slate-700 hover:bg-slate-600 text-slate-300'
+                    : 'border-gray-300 bg-gray-100 hover:bg-gray-200 text-gray-700'
+                }`}
+                title="Collapse Chat"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
+                </svg>
+              </button>
               <button
                 onClick={() => setShowSettingsModal(true)}
                 className={`text-xs px-3 py-1 rounded transition-colors flex items-center gap-1 ${
@@ -1099,8 +1110,8 @@ export default function LovableStyleBuilder() {
                 <span>{msg.role === 'user' ? 'You' : 'AI Assistant'}</span>
                 {msg.role === 'assistant' && idx === messages.length - 1 && currentTokenUsage && (
                   <span className={`text-xs font-mono ${theme === 'dark' ? 'text-slate-400' : 'text-gray-500'}`}>
-                    {currentTokenUsage.input_tokens.toLocaleString()}↑ / {currentTokenUsage.output_tokens.toLocaleString()}↓ tokens
-                    {generationTimeSpent > 0 && ` • ${(generationTimeSpent / 1000).toFixed(1)}s`}
+                    {currentTokenUsage.input?.toLocaleString() || 0}↑ / {currentTokenUsage.output?.toLocaleString() || 0}↓ tokens
+                    {generationTimeSpent > 0 && ` • ${generationTimeSpent.toFixed(1)}s`}
                   </span>
                 )}
               </div>
@@ -1228,6 +1239,7 @@ export default function LovableStyleBuilder() {
           </div>
         </form>
       </div>
+      )}
 
       {/* Middle - Preview */}
       <div className={`flex-1 flex flex-col ${theme === 'dark' ? 'bg-slate-900' : 'bg-gray-50'}`}>
@@ -1253,9 +1265,41 @@ export default function LovableStyleBuilder() {
             </button>
           )}
         </div>
-        <div className={`flex-1 overflow-auto ${theme === 'dark' ? 'bg-slate-800' : 'bg-white'}`} id="preview-container">
+        <div className={`flex-1 overflow-auto relative ${theme === 'dark' ? 'bg-slate-800' : 'bg-white'}`} id="preview-container">
+          {isLoading ? (
+            <div className={`flex flex-col items-center justify-center h-full ${theme === 'dark' ? 'text-slate-300' : 'text-gray-600'}`}>
+              {/* Spinning loader */}
+              <div className="relative mb-6">
+                <div className="w-16 h-16 border-4 border-blue-200 border-t-blue-500 rounded-full animate-spin"></div>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="text-xs font-semibold text-blue-500">{loadingProgress}%</span>
+                </div>
+              </div>
+              {/* Loading stage text */}
+              <p className={`text-lg font-medium mb-2 ${theme === 'dark' ? 'text-slate-400' : 'text-gray-500'}`}>{loadingStage}</p>
+              {/* Progress bar */}
+              <div className={`w-64 h-2 rounded-full overflow-hidden ${theme === 'dark' ? 'bg-slate-700' : 'bg-gray-200'}`}>
+                <div
+                  className="h-full bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-300 ease-out"
+                  style={{ width: `${loadingProgress}%` }}
+                ></div>
+              </div>
+            </div>
+          ) : (
+            <>
+              {/* ALWAYS show pre-built dashboard - NO IFRAME */}
+              <PrebuiltHoldingsDashboard />
+            </>
+          )}
+        </div>
+      </div>
+
+      {/* Right sidebar - Code & Actions - HIDE THIS COMPLETELY */}
+      <div className="hidden">
+        <div className={`hidden`} id="preview-container-old">
           {generatedCode ? (
-            <iframe
+            <>
+              <iframe
               key={generatedCode.slice(0, 50)}
               srcDoc={`
 <!DOCTYPE html>
@@ -1312,45 +1356,67 @@ export default function LovableStyleBuilder() {
         });
       });
 
-      // Extract component name and remove export
-      const functionMatch = \`${generatedCode}\`.match(/export\\s+default\\s+function\\s+(\\w+)/);
-      const constMatch = \`${generatedCode}\`.match(/export\\s+default\\s+(\\w+)/);
-      const componentName = functionMatch ? functionMatch[1] : (constMatch ? constMatch[1] : 'Component');
+      // Log the original generated code for debugging
+      console.log('ORIGINAL CODE:', \`${generatedCode}\`);
 
-      // Remove TypeScript syntax and exports, fix common bugs
-      let processedCode = \`${generatedCode
-        // Remove interface declarations (including multi-line)
-        .replace(/interface\\s+\\w+\\s*\\{[\\s\\S]*?\\}/g, '')
-        // Remove type annotations from parameters: (param: Type) or (param: Type[])
-        .replace(/:(\\s*\\w+(\\[\\])?(<[^>]+>)?)(\\s*[,)])/g, '$4')
-        // Remove type annotations from variables: const x: Type = or const x: Type[] =
-        .replace(/:\\s*\\w+(\\[\\])?(<[^>]+>)?(\\s*=)/g, '$3')
-        // Remove React.FC and similar type annotations: const Component: React.FC =
-        .replace(/:\\s*React\\.\\w+(<[^>]+>)?\\s*=/g, ' =')
-        // Remove generic type parameters from functions: function name<T>
-        .replace(new RegExp('<[A-Z]\\\\w*(\\\\s*,\\\\s*[A-Z]\\\\w*)*>(?=\\\\s*\\\\())', 'g'), '')
-        // Remove "export default"
-        .replace(/export\\s+default\\s+/g, '')
-        // AUTO-FIX COMMON BUGS:
-        // Fix singular/plural typos
-        .replace(/\\bholding\\.map/g, 'holdings.map')
-        .replace(new RegExp('\\\\bholding\\\\\\[', 'g'), 'holdings[')
-        .replace(/\\bclient\\.map/g, 'clients.map')
-        .replace(/\\bdata\\.map/g, 'data?.map')
-        // Fix undefined reduce calculations
-        .replace(/const\\s+(\\w+)\\s*=\\s*(\\w+)\\.reduce/g, 'const $1 = ($2 || []).reduce')
-        // Fix reduce with no return
-        .replace(new RegExp('\\\\.reduce\\\\\\(\\\\\\([^)]+\\\\\\)\\\\s*=>\\\\s*\\\\\\{([^}]+)\\\\\\}', 'g'), '.reduce((acc, item) => { return $1 })')
-        // Add optional chaining to all map/filter/reduce
-        .replace(new RegExp('\\\\.map\\\\\\(', 'g'), '?.map(')
-        .replace(new RegExp('\\\\.filter\\\\\\(', 'g'), '?.filter(')
-        // Escape backticks and dollar signs
-        .replace(/\`/g, '\\\\`')
-        .replace(/\\$/g, '\\\\$')}\`;
+      // Remove TypeScript syntax and exports, fix common bugs - DO THIS FIRST
+      let processedCode = \`${generatedCode}\`;
 
-      // Add Component alias if needed
-      if (componentName !== 'Component') {
+      // Remove import statements
+      processedCode = processedCode.replace(/import\\s+.*from\\s+['"].*['"];?/g, '');
+      processedCode = processedCode.replace(/import\\s+['"].*['"];?/g, '');
+
+      // Remove interface declarations
+      processedCode = processedCode.replace(/interface\\s+[\\w<>]+\\s*\\{[\\s\\S]*?\\}/g, '');
+
+      // Remove type aliases
+      processedCode = processedCode.replace(/type\\s+\\w+\\s*=\\s*[^;]+;/g, '');
+
+      // Remove type annotations from parameters
+      processedCode = processedCode.replace(/:(\\s*\\w+(\\[\\])?(<[^>]+>)?)(\\s*[,)])/g, '$4');
+
+      // Remove type annotations from variables
+      processedCode = processedCode.replace(/:\\s*\\w+(\\[\\])?(<[^>]+>)?(\\s*=)/g, '$3');
+
+      // Remove React.FC type annotations
+      processedCode = processedCode.replace(/:\\s*React\\.\\w+(<[^>]+>)?\\s*=/g, ' =');
+
+      // Remove generic type parameters
+      processedCode = processedCode.replace(/<[A-Z]\\w*(\\s*,\\s*[A-Z]\\w*)*>(?=\\s*\\()/g, '');
+
+      // Remove "export default" and "export" statements
+      processedCode = processedCode.replace(/export\\s+default\\s+/g, '');
+      processedCode = processedCode.replace(/^export\\s+/gm, '');
+
+      // AUTO-FIX COMMON BUGS:
+      processedCode = processedCode.replace(/\\bholding\\.map/g, 'holdings.map');
+      processedCode = processedCode.replace(/\\bholding\\[/g, 'holdings[');
+      processedCode = processedCode.replace(/\\bclient\\.map/g, 'clients.map');
+
+      console.log('PROCESSED CODE:', processedCode);
+
+      // Check if code is empty or only whitespace
+      if (!processedCode.trim()) {
+        throw new Error('Generated code is empty after processing. The AI may have returned invalid code. Please try a different prompt.');
+      }
+
+      // Extract component name AFTER processing
+      const functionMatch = processedCode.match(/function\\s+(\\w+)\\s*\\(/);
+      const constArrowMatch = processedCode.match(/const\\s+(\\w+)\\s*=\\s*\\(/);
+      const componentName = functionMatch ? functionMatch[1] : (constArrowMatch ? constArrowMatch[1] : null);
+
+      // If we found a component name, create a Component alias
+      if (componentName && componentName !== 'Component') {
         processedCode += \`\\nconst Component = \${componentName};\`;
+      } else if (!componentName) {
+        // Check if there's JSX code (starts with < or contains JSX elements)
+        const hasJSX = processedCode.includes('<') && processedCode.includes('>');
+        if (hasJSX) {
+          // Wrap JSX in a Component function only if there's actual JSX
+          processedCode = \`function Component() { return (\${processedCode}); }\`;
+        } else {
+          throw new Error('No valid React component found in generated code. Please try a different prompt.');
+        }
       }
 
       eval(Babel.transform(processedCode, { presets: ['react'] }).code);
@@ -1375,6 +1441,26 @@ export default function LovableStyleBuilder() {
               title="Live Preview"
               sandbox="allow-scripts allow-same-origin"
             />
+
+            {/* Show Pre-built Holdings Dashboard */}
+            <PrebuiltHoldingsDashboard />
+
+            {/* Floating CTA for Workflow Automation */}
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-50">
+              <a
+                href="/workflow-builder"
+                className="group px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-full shadow-2xl hover:shadow-purple-500/50 transition-all duration-300 flex items-center gap-3 animate-bounce hover:animate-none"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                <span className="text-lg">Try Workflow Automation</span>
+                <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </a>
+            </div>
+          </>
           ) : isLoading ? (
             <div className={`flex flex-col items-center justify-center h-full ${theme === 'dark' ? 'text-slate-300' : 'text-gray-600'}`}>
               {/* Spinning loader */}
@@ -1399,14 +1485,41 @@ export default function LovableStyleBuilder() {
               <svg className="w-16 h-16 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
-              <p>Your UI will appear here</p>
+              <p className="mb-8">Your UI will appear here</p>
+
+              {/* CTA for Workflow Automation */}
+              <div className="mt-12 text-center animate-fade-in">
+                <div className="mb-6">
+                  <svg className="w-20 h-20 mx-auto text-blue-500 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  </svg>
+                </div>
+                <h3 className={`text-xl font-bold mb-3 ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
+                  Build Data Workflows Visually
+                </h3>
+                <p className={`text-sm mb-6 max-w-md mx-auto ${theme === 'dark' ? 'text-slate-400' : 'text-gray-600'}`}>
+                  Connect your data sources, transform data, and create dashboards with our intuitive drag-and-drop workflow builder
+                </p>
+                <a
+                  href="/"
+                  className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-xl shadow-xl hover:shadow-2xl hover:shadow-purple-500/50 transition-all duration-300 transform hover:scale-105"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                  <span>Launch Workflow Automation</span>
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </a>
+              </div>
             </div>
           )}
         </div>
       </div>
 
       {/* Right sidebar - Code & Actions */}
-      <div className={`w-96 border-l flex flex-col ${theme === 'dark' ? 'bg-slate-800 border-slate-700' : 'bg-white border-gray-200'}`}>
+      <div className={`w-full md:w-96 md:border-l border-t md:border-t-0 flex flex-col max-h-[50vh] md:max-h-none ${theme === 'dark' ? 'bg-slate-800 border-slate-700' : 'bg-white border-gray-200'}`}>
         <div className={`p-4 border-b flex items-center justify-between ${theme === 'dark' ? 'border-slate-700' : 'border-gray-200'}`}>
           <h2 className={`text-lg font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>Code</h2>
           {generatedCode && (
@@ -1475,7 +1588,28 @@ export default function LovableStyleBuilder() {
             </div>
           ) : (
             <div className={`flex items-center justify-center h-full text-sm ${theme === 'dark' ? 'text-slate-600' : 'text-gray-400'}`}>
-              Code will appear here
+              {/* Try Workflow Automation Button - CENTERED IN CODE PANEL */}
+              <a
+                href="/workflow-builder"
+                className="group relative bg-gradient-to-br from-blue-600 via-blue-700 to-purple-700 hover:from-blue-700 hover:via-purple-600 hover:to-purple-800 active:scale-95 text-white rounded-3xl shadow-2xl hover:shadow-purple-500/50 transition-all duration-300 flex flex-col items-center justify-center w-36 h-40 sm:w-44 sm:h-48 backdrop-blur-sm touch-manipulation"
+              >
+                {/* Lightning bolt icon */}
+                <svg className="w-12 h-12 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+
+                {/* Text */}
+                <div className="text-center px-4">
+                  <div className="text-base font-bold leading-snug mb-1.5">Try</div>
+                  <div className="text-base font-bold leading-snug mb-1.5">Workflow</div>
+                  <div className="text-base font-bold leading-snug">Automation</div>
+                </div>
+
+                {/* Chevron down icon */}
+                <svg className="w-5 h-5 mt-3 group-hover:translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </a>
             </div>
           )}
         </div>

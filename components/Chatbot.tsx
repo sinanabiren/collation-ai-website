@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 
 interface Message {
   role: 'user' | 'assistant'
@@ -63,7 +63,7 @@ export default function Chatbot() {
         ...prev,
         {
           role: 'assistant',
-          content: 'I apologize, but I encountered an error. Please try again or contact us at support@collation.ai for immediate assistance.',
+          content: 'I apologize, but I encountered an error. Please try again or contact us at hello@collation.ai for immediate assistance.',
         },
       ])
     } finally {
@@ -80,11 +80,82 @@ export default function Chatbot() {
 
   // Format message content for better readability
   const formatMessage = (content: string) => {
-    // Split by double line breaks for paragraphs
-    const paragraphs = content.split('\n\n')
+    // Split by double line breaks for paragraphs, OR single line breaks for better list handling
+    const lines = content.split('\n')
+    const elements: React.ReactElement[] = []
+    let currentGroup: string[] = []
+    let currentType: 'numbered' | 'lettered' | 'roman' | 'bullet' | 'paragraph' | null = null
+    let groupIndex = 0
 
-    // Helper to format text with bold
+    // Helper to detect and render download links
+    const renderDownloadLink = (text: string) => {
+      // Match patterns like: Download: /downloads/filename.ext or /downloads/filename.ext
+      // Matches complete paths including spaces until we hit the file extension
+      const downloadPattern = /(?:Download:\s*)?(\/downloads\/[^)\n]+?\.(?:pdf|docx|xlsx|md))/gi
+      const parts: (string | React.ReactElement)[] = []
+      let lastIndex = 0
+      let match
+
+      while ((match = downloadPattern.exec(text)) !== null) {
+        // Add text before the link
+        if (match.index > lastIndex) {
+          parts.push(text.substring(lastIndex, match.index))
+        }
+
+        const downloadPath = match[1]
+        const filename = downloadPath.split('/').pop() || 'Download'
+
+        // Create download link (Perplexity-style)
+        parts.push(
+          <a
+            key={`download-${match.index}`}
+            href={encodeURI(downloadPath)}
+            download
+            className="inline-flex items-center gap-1 text-blue-600 hover:text-blue-800 hover:underline text-sm font-medium transition-colors mx-1"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            <span className="underline decoration-dotted">{filename}</span>
+          </a>
+        )
+
+        lastIndex = downloadPattern.lastIndex
+      }
+
+      // Add remaining text
+      if (lastIndex < text.length) {
+        parts.push(text.substring(lastIndex))
+      }
+
+      return parts.length > 0 ? parts : text
+    }
+
+    // Helper to format text with bold and links
     const formatText = (text: string) => {
+      // First handle download links
+      const withLinks = renderDownloadLink(text)
+
+      // If we have JSX elements from links, process each string part for bold
+      if (Array.isArray(withLinks)) {
+        return withLinks.map((part, i) => {
+          if (typeof part === 'string') {
+            // Process bold formatting on string parts
+            const boldParts = part.split(/(\*\*[^*]+\*\*)/g)
+            return boldParts.map((boldPart, j) => {
+              if (boldPart.startsWith('**') && boldPart.endsWith('**')) {
+                return <strong key={`${i}-${j}`} className="font-semibold">{boldPart.slice(2, -2)}</strong>
+              }
+              return <span key={`${i}-${j}`}>{boldPart}</span>
+            })
+          }
+          return part
+        })
+      }
+
+      // Otherwise just handle bold formatting
       const parts = text.split(/(\*\*[^*]+\*\*)/g)
       return parts.map((part, i) => {
         if (part.startsWith('**') && part.endsWith('**')) {
@@ -94,42 +165,107 @@ export default function Chatbot() {
       })
     }
 
-    return paragraphs.map((para, idx) => {
-      // Check if it's a list item
-      if (para.trim().startsWith('-') || para.trim().startsWith('•') || para.trim().startsWith('*')) {
-        const items = para.split('\n').filter(line => line.trim())
-        return (
-          <ul key={idx} className="list-disc list-inside space-y-1.5 my-3 ml-2">
-            {items.map((item, i) => (
-              <li key={i} className="leading-relaxed pl-1">
-                {formatText(item.replace(/^[-•*]\s*/, ''))}
-              </li>
-            ))}
-          </ul>
-        )
-      }
+    // Helper to detect line type
+    const getLineType = (line: string): 'numbered' | 'lettered' | 'roman' | 'bullet' | 'paragraph' => {
+      const trimmed = line.trim()
+      if (!trimmed) return 'paragraph'
+      if (/^\d+\./.test(trimmed)) return 'numbered'
+      if (/^[a-z]\./.test(trimmed)) return 'lettered'
+      if (/^(i{1,3}|iv|v|vi{0,3}|ix|x)\./.test(trimmed)) return 'roman'
+      if (trimmed.startsWith('-') || trimmed.startsWith('•') || trimmed.startsWith('*')) return 'bullet'
+      return 'paragraph'
+    }
 
-      // Check if it's a numbered list
-      if (/^\d+\./.test(para.trim())) {
-        const items = para.split('\n').filter(line => line.trim())
-        return (
-          <ol key={idx} className="list-decimal list-inside space-y-1.5 my-3 ml-2">
+    // Helper to render a group
+    const renderGroup = (type: typeof currentType, items: string[], key: number) => {
+      if (type === 'numbered') {
+        return [
+          <ol key={key} className="list-decimal list-outside space-y-3 my-4 ml-5 text-gray-800">
             {items.map((item, i) => (
-              <li key={i} className="leading-relaxed pl-1">
+              <li key={i} className="leading-7 pl-2">
                 {formatText(item.replace(/^\d+\.\s*/, ''))}
               </li>
             ))}
           </ol>
-        )
+        ]
+      }
+      if (type === 'lettered') {
+        return [
+          <ol key={key} className="list-[lower-alpha] list-outside space-y-2 my-3 ml-8 text-gray-800">
+            {items.map((item, i) => (
+              <li key={i} className="leading-7 pl-2">
+                {formatText(item.replace(/^[a-z]\.\s*/, ''))}
+              </li>
+            ))}
+          </ol>
+        ]
+      }
+      if (type === 'roman') {
+        return [
+          <ol key={key} className="list-[lower-roman] list-outside space-y-2 my-3 ml-10 text-gray-800">
+            {items.map((item, i) => (
+              <li key={i} className="leading-7 pl-2">
+                {formatText(item.replace(/^(i{1,3}|iv|v|vi{0,3}|ix|x)\.\s*/, ''))}
+              </li>
+            ))}
+          </ol>
+        ]
+      }
+      if (type === 'bullet') {
+        return [
+          <ul key={key} className="list-disc list-outside space-y-3 my-4 ml-5 text-gray-800">
+            {items.map((item, i) => (
+              <li key={i} className="leading-7 pl-2">
+                {formatText(item.replace(/^[-•*]\s*/, ''))}
+              </li>
+            ))}
+          </ul>
+        ]
+      }
+      // Paragraph
+      return items.map((item, i) => (
+        <p key={`${key}-${i}`} className="leading-7 my-4 text-gray-800">
+          {formatText(item)}
+        </p>
+      ))
+    }
+
+    // Process each line
+    lines.forEach((line) => {
+      const lineType = getLineType(line)
+      const trimmed = line.trim()
+
+      // Skip empty lines
+      if (!trimmed) {
+        // Flush current group if exists
+        if (currentGroup.length > 0) {
+          elements.push(...renderGroup(currentType, currentGroup, groupIndex++))
+          currentGroup = []
+          currentType = null
+        }
+        return
       }
 
-      // Regular paragraph
-      return (
-        <p key={idx} className="leading-relaxed my-2.5">
-          {formatText(para)}
-        </p>
-      )
+      // If line type matches current group, add to group
+      if (lineType === currentType || currentType === null) {
+        currentGroup.push(trimmed)
+        currentType = lineType
+      } else {
+        // Different type, flush current group and start new one
+        if (currentGroup.length > 0) {
+          elements.push(...renderGroup(currentType, currentGroup, groupIndex++))
+        }
+        currentGroup = [trimmed]
+        currentType = lineType
+      }
     })
+
+    // Flush any remaining group
+    if (currentGroup.length > 0) {
+      elements.push(...renderGroup(currentType, currentGroup, groupIndex++))
+    }
+
+    return elements
   }
 
   return (
@@ -206,7 +342,7 @@ export default function Chatbot() {
           </div>
 
           {/* Messages */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50">
+          <div className="flex-1 overflow-y-auto p-6 space-y-6 bg-white">
             {messages.map((message, index) => (
               <div
                 key={index}
@@ -215,16 +351,16 @@ export default function Chatbot() {
                 }`}
               >
                 <div
-                  className={`max-w-[85%] rounded-lg px-4 py-3 ${
+                  className={`max-w-[85%] ${
                     message.role === 'user'
-                      ? 'bg-primary text-white'
-                      : 'bg-white text-gray-900 border border-gray-200 shadow-sm'
+                      ? 'bg-gray-100 text-gray-900 rounded-2xl px-4 py-3'
+                      : 'text-gray-800'
                   }`}
                 >
                   {message.role === 'user' ? (
-                    <p className="text-sm leading-relaxed">{message.content}</p>
+                    <p className="text-[15px] leading-relaxed">{message.content}</p>
                   ) : (
-                    <div className="text-sm space-y-2">
+                    <div className="text-[15px] leading-7 space-y-3">
                       {formatMessage(message.content)}
                     </div>
                   )}
@@ -280,8 +416,8 @@ export default function Chatbot() {
             </div>
             <p className="text-xs text-gray-500 mt-2 text-center">
               For urgent issues, email{' '}
-              <a href="mailto:support@collation.ai" className="text-primary hover:underline">
-                support@collation.ai
+              <a href="mailto:hello@collation.ai" className="text-primary hover:underline">
+                hello@collation.ai
               </a>
             </p>
           </div>

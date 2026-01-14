@@ -54,13 +54,13 @@ export default function Blogs() {
 
       <main className="pt-16">
         {/* Hero Section */}
-        <section className="py-20 bg-gradient-to-br from-blue-50 to-white">
+        <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-blue-50 to-white px-4 sm:px-6">
           <div className="container-custom">
             <div className="max-w-4xl">
-              <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 sm:mb-6">
                 Insights & Updates
               </h1>
-              <p className="text-xl text-gray-600 leading-relaxed">
+              <p className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed">
                 Stay up to date with the latest trends in AI, wealth management, and data automation.
               </p>
             </div>
@@ -68,9 +68,9 @@ export default function Blogs() {
         </section>
 
         {/* Blog Grid */}
-        <section className="py-20 bg-white">
+        <section className="py-12 sm:py-16 md:py-20 bg-white px-4 sm:px-6">
           <div className="container-custom">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
               {blogPosts.map((post, index) => (
                 <Link
                   key={index}
@@ -81,23 +81,23 @@ export default function Blogs() {
                   <div className="aspect-video bg-gradient-to-br from-blue-100 to-gray-100 relative overflow-hidden">
                     {/* Placeholder for blog image */}
                     <div className="absolute inset-0 bg-gradient-to-br from-teal-500 to-blue-600 flex items-center justify-center">
-                      <svg className="w-16 h-16 text-white/30" fill="currentColor" viewBox="0 0 20 20">
+                      <svg className="w-12 h-12 sm:w-16 sm:h-16 text-white/30" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd"/>
                       </svg>
                     </div>
                   </div>
 
                   {/* Content */}
-                  <div className="p-6">
-                    <div className="text-sm text-primary font-medium mb-3">
+                  <div className="p-4 sm:p-5 md:p-6">
+                    <div className="text-xs sm:text-sm text-primary font-medium mb-2 sm:mb-3">
                       {post.author} • {post.date}
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary transition-colors line-clamp-2">
+                    <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-900 mb-2 sm:mb-3 group-hover:text-primary transition-colors line-clamp-2">
                       {post.title}
                     </h3>
-                    <div className="flex items-center text-primary font-medium">
+                    <div className="flex items-center text-primary font-medium text-sm sm:text-base">
                       <span>Read More</span>
-                      <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                       </svg>
                     </div>
@@ -109,32 +109,32 @@ export default function Blogs() {
         </section>
 
         {/* Get In Touch Section */}
-        <section id="contact" className="py-20 bg-light">
+        <section id="contact" className="py-12 sm:py-16 md:py-20 bg-light px-4 sm:px-6">
           <div className="container-custom max-w-6xl">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center">
               <div>
-                <h2 className="text-4xl font-bold text-gray-900 mb-6">Get In Touch</h2>
-                <p className="text-xl text-gray-600 mb-8">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">Get In Touch</h2>
+                <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-6 sm:mb-8">
                   Our friendly team would love to hear from you.
                 </p>
 
-                <div className="bg-white p-8 rounded-2xl shadow-sm">
-                  <div className="flex gap-4 mb-6 border-b pb-4">
-                    <button className="px-6 py-2 bg-gray-900 text-white rounded-lg font-medium">
+                <div className="bg-white p-4 sm:p-6 md:p-8 rounded-2xl shadow-sm">
+                  <div className="flex gap-2 sm:gap-4 mb-4 sm:mb-6 border-b pb-3 sm:pb-4 overflow-x-auto">
+                    <button className="px-4 sm:px-6 py-2 bg-gray-900 text-white rounded-lg font-medium text-sm sm:text-base whitespace-nowrap">
                       Inquiry Form
                     </button>
-                    <button className="px-6 py-2 text-gray-600 hover:text-gray-900 font-medium">
+                    <button className="px-4 sm:px-6 py-2 text-gray-600 hover:text-gray-900 font-medium text-sm sm:text-base whitespace-nowrap">
                       Book a Call
                     </button>
                   </div>
 
-                  <form className="space-y-6">
-                    <div className="grid grid-cols-2 gap-4">
+                  <form className="space-y-4 sm:space-y-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">First Name</label>
                         <input
                           type="text"
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                          className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-sm sm:text-base"
                           placeholder="Ex. John"
                         />
                       </div>
@@ -142,7 +142,7 @@ export default function Blogs() {
                         <label className="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
                         <input
                           type="text"
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                          className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-sm sm:text-base"
                           placeholder="Ex. Doe"
                         />
                       </div>
@@ -152,7 +152,7 @@ export default function Blogs() {
                       <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
                       <input
                         type="email"
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                        className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-sm sm:text-base"
                         placeholder="you@company.com"
                       />
                     </div>
@@ -161,7 +161,7 @@ export default function Blogs() {
                       <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
                       <input
                         type="tel"
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                        className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-sm sm:text-base"
                         placeholder="+1 (555) 000-0000"
                       />
                     </div>
@@ -170,38 +170,38 @@ export default function Blogs() {
                       <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
                       <textarea
                         rows={4}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                        className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-sm sm:text-base"
                         placeholder="Tell us about your needs..."
                       ></textarea>
                     </div>
 
                     <div className="flex items-start">
                       <input type="checkbox" className="mt-1 mr-2" id="privacy-blog" />
-                      <label htmlFor="privacy-blog" className="text-sm text-gray-600">
+                      <label htmlFor="privacy-blog" className="text-xs sm:text-sm text-gray-600">
                         You agree to our <a href="#" className="text-primary hover:underline">friendly privacy policy</a>.
                       </label>
                     </div>
 
-                    <button type="submit" className="btn-primary w-full">
+                    <button type="submit" className="btn-primary w-full text-sm sm:text-base">
                       Submit
                     </button>
                   </form>
                 </div>
               </div>
 
-              <div className="relative">
-                <div className="bg-gray-200 rounded-2xl overflow-hidden aspect-square">
+              <div className="relative order-first md:order-last">
+                <div className="bg-gray-200 rounded-2xl overflow-hidden aspect-video sm:aspect-square">
                   {/* Placeholder for contact image */}
                   <div className="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center">
-                    <svg className="w-32 h-32 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
+                    <svg className="w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
                       <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z"/>
                       <path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z"/>
                     </svg>
                   </div>
                   {/* Play button overlay */}
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <button className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
-                      <svg className="w-8 h-8 text-primary ml-1" fill="currentColor" viewBox="0 0 20 20">
+                    <button className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
+                      <svg className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-primary ml-1" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
                       </svg>
                     </button>

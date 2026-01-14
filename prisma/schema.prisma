@@ -1,0 +1,26 @@
+// This is your Prisma schema file
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model BlogPost {
+  id          String   @id @default(uuid())
+  slug        String   @unique
+  title       String
+  author      String
+  date        String
+  category    String
+  readTime    String
+  excerpt     String
+  content     String
+  image       String
+  pdfFileName String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

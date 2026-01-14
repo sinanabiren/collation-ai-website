@@ -63,12 +63,12 @@ export async function generateDataConstrainedUI(
 
 ${schemaDescription}
 
-Your task is to generate React/TypeScript UI components based on user requests. You MUST follow these rules:
+Your task is to generate React UI components in PLAIN JAVASCRIPT (NOT TypeScript) based on user requests. You MUST follow these rules:
 
 1. **Data Constraint**: Only use data from the schema provided above. Do NOT invent, mock, or hallucinate data.
 2. **Real Data Only**: All data references must map to actual tables and columns in the schema.
 3. **API Integration**: Generate code that fetches real data from the provided tables.
-4. **TypeScript**: Use TypeScript with proper types derived from the schema.
+4. **PLAIN JAVASCRIPT ONLY**: Use plain JavaScript with NO TypeScript syntax. NO interfaces, NO type annotations, NO generics. Just pure JavaScript.
 5. **Modern Stack**: Use Next.js 14+, React Server Components where appropriate, and Tailwind CSS.
 6. **Validation**: Before generating any component, verify that all data fields exist in the schema.
 

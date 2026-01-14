@@ -2,6 +2,8 @@
 
 import { signOut } from 'next-auth/react';
 import dynamic from 'next/dynamic';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const LovableStyleBuilder = dynamic(() => import('@/components/ui-builder/LovableStyleBuilder'), { ssr: false });
 
@@ -16,6 +18,8 @@ interface DashboardClientProps {
 }
 
 export default function DashboardClient({ user }: DashboardClientProps) {
+  const pathname = usePathname();
+
   const handleSignOut = () => {
     signOut({ callbackUrl: '/' });
   };
@@ -27,6 +31,30 @@ export default function DashboardClient({ user }: DashboardClientProps) {
         {/* Trial Banner - Centered at top to avoid blocking workspace buttons */}
         <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-50">
           <div className="bg-white/95 backdrop-blur-sm rounded-full shadow-lg px-4 py-2 flex items-center gap-3">
+            {/* Navigation Tabs */}
+            <div className="flex items-center gap-1">
+              <Link
+                href="/dashboard"
+                className={`text-xs font-medium px-3 py-1 rounded-full transition ${
+                  pathname === '/dashboard'
+                    ? 'bg-blue-100 text-blue-700'
+                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+                }`}
+              >
+                UI Builder
+              </Link>
+              <Link
+                href="/dashboard/workflow-automation"
+                className={`text-xs font-medium px-3 py-1 rounded-full transition ${
+                  pathname === '/dashboard/workflow-automation'
+                    ? 'bg-blue-100 text-blue-700'
+                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+                }`}
+              >
+                Workflow Automation
+              </Link>
+            </div>
+            <div className="h-4 w-px bg-gray-300"></div>
             <div className="flex items-center gap-2">
               <span className="text-sm font-medium text-gray-700">
                 {user.daysRemaining > 0

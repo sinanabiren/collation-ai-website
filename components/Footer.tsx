@@ -21,9 +21,9 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <a href="/#our-agents" className="text-foreground hover:text-primary transition-colors font-medium">
+                <Link href="/#our-agents" scroll={true} className="text-foreground hover:text-primary transition-colors font-medium">
                   Agentic AI Bots
-                </a>
+                </Link>
               </li>
               <li>
                 <Link href="/case-studies" className="text-foreground hover:text-primary transition-colors font-medium">
@@ -31,9 +31,14 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <a href="/#faq" className="text-foreground hover:text-primary transition-colors font-medium">
+                <Link href="/#faq" scroll={true} className="text-foreground hover:text-primary transition-colors font-medium">
                   FAQs
-                </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/security" className="text-foreground hover:text-primary transition-colors font-medium">
+                  Security
+                </Link>
               </li>
             </ul>
           </div>
@@ -43,7 +48,12 @@ const Footer = () => {
             <ul className="space-y-3">
               <li>
                 <Link href="/blog" className="text-foreground hover:text-primary transition-colors font-medium">
-                  Blogs
+                  Blog
+                </Link>
+              </li>
+              <li>
+                <Link href="/schedule-demo" className="text-foreground hover:text-primary transition-colors font-medium">
+                  Schedule Demo
                 </Link>
               </li>
               <li>
