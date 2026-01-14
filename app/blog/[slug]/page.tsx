@@ -653,7 +653,9 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
   }
 
   // Get the hero image from blogPosts data
-  const heroImage = slug === 'basketball-winning-teams-wealthtech'
+  const heroImage = slug === 'agentic-ai-bots-eating-manual-pe-data-ops'
+    ? '/blog-images/agentic-ai-pdf-hell.png'
+    : slug === 'basketball-winning-teams-wealthtech'
     ? '/blog-images/basketball-winning-teams.png'
     : slug === 'open-banking-transforming-wealth-management'
     ? '/blog-images/open-banking-wealth-management.png'
