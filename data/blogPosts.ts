@@ -10,6 +10,14 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    title: "Vibe-Coding with Guardrails: Secure Innovation for Wealth Management",
+    author: "Sinan Biren",
+    date: "Jan 21, 2026",
+    url: "/blog/vibe-coding-with-guardrails",
+    image: "/blog-images/vibe-coding-guardrails.png",
+    excerpt: "Vibe-coding empowers wealth managers to build custom UIs using natural language prompts, but its unpredictable nature demands robust guardrails to protect sensitive data."
+  },
+  {
     title: "Agentic AI Bots Are Eating Manual PE Data Ops: The End of PDF Hell in Alternatives",
     author: "Sinan Biren",
     date: "Jan 14, 2026",
