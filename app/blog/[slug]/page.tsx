@@ -695,6 +695,8 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     ? '/blog-images/pdfs-to-profits.png'
     : slug === 'questions-executives-should-ask-before-adopting-ai'
     ? '/blog-images/executives-ai-questions.png'
+    : slug === 'vibe-coding-with-guardrails'
+    ? '/blog-images/vibe-coding-guardrails.png'
     : slug === 'vibe-coding-revolutionizing-wealth-management-reporting-portfolio-management'
     ? 'https://framerusercontent.com/images/K66K68WistVC1lbVpYLLSqzlkU.png?lossless=1&width=1279&height=720'
     : slug === 'what-actionable-intelligence-can-we-extract-from-data-empower-financial-advisors'
