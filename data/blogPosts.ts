@@ -6,7 +6,7 @@ export type BlogPost = {
   image: string;
   excerpt: string;
 };
-// Cache bust: 2026-01-21
+// Cache bust: 2026-01-21 09:45
 
 export const blogPosts: BlogPost[] = [
   {
