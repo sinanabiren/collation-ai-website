@@ -7,6 +7,71 @@ import { prisma } from '@/lib/prisma'
 
 // Blog post data - hardcoded posts
 const blogPosts: Record<string, any> = {
+  'how-we-got-here-reporting-platforms-did-their-job': {
+    title: "How We Got Here: Reporting Platforms Did Their Job",
+    publishedDate: 'Jan 27, 2026',
+    author: 'Sinan Biren',
+    content: `
+      <p>For the last decade, performance reporting solutions did exactly what they were supposed to do:</p>
+      <ul>
+        <li>Unified performance and client reporting.</li>
+        <li>Standardized data models so everyone spoke the same language.</li>
+        <li>Delivered polished UIs that advisors could live in day to day.</li>
+      </ul>
+      <p>In a pre-AI world, that was enough. Reporting was mostly periodic, data sources were relatively stable, and "good enough" often meant a quarterly PDF and a portal login. Today, that baseline is table stakes.</p>
+
+      <h2>The Rise of the Shadow Data Layer</h2>
+      <p>As soon as firms needed new data and new workflows, cracks appeared. Some of the most important data—alts, capital calls, operating businesses, private structures, held-away assets—never lived cleanly inside the reporting platform.</p>
+      <p>So teams did what smart people always do: they solved the problem locally.</p>
+      <ul>
+        <li>Export from the reporting tool.</li>
+        <li>Pull in missing data from email, PDFs, portals, and internal systems.</li>
+        <li>Rebuild the "real" picture in Excel, SQL, or a BI tool.</li>
+      </ul>
+      <p>Very quietly, every firm built its own shadow data layer. The reporting platform remained the UI of record, but the spreadsheet, database, or BI model became the system of record. That shadow layer is where the actual decisions, exceptions, and reconciliations live.</p>
+
+      <h2>The Hidden Cost: Structurally High TCO</h2>
+      <p>This pattern has a predictable outcome: structurally high total cost of ownership. Closed platforms externalize integration costs—every new data source, entity, or workflow ends up as a services project plus incremental headcount.</p>
+      <p>Because the shadow layer is bespoke and fragile, small changes are expensive: a new custodian feed, a new fund structure, a tweak to a capital call process, a new KPI for the board pack. None of these sound like "projects," but each one chips away at capacity. Over time, the firm is running two systems: the official one (licensed) and the real one (manual, under-governed, and impossible to fully audit).</p>
+
+      <h2>What Firms Actually Need: Replace the Shadow Layer</h2>
+      <p>The real category shift is not "better reporting," it is replacing the shadow layer with AI-native data infrastructure. In practice, that means:</p>
+      <ul>
+        <li>Ingest anything: custodians, fund admins, portals, docs, spreadsheets, and internal systems.</li>
+        <li>Use AI agents to extract → normalize → reconcile data into a client-owned, governed warehouse.</li>
+        <li>Make governance the default: lineage, RBAC, approvals, audit trails, and policy checks baked into the stack.</li>
+      </ul>
+      <p>Once that foundation exists, you can vibe-code workflows and dashboards safely:</p>
+      <ul>
+        <li>Alts reconciliation, capital call tracking, and held-away aggregation as configurable building blocks.</li>
+        <li>Advisor views, client portal views, and ops monitoring dashboards built directly on top of the governed warehouse.</li>
+        <li>Fast iteration without vendor tickets, because the primitives (entities, relationships, policies) live in your own data layer, not someone else's black box.</li>
+      </ul>
+      <p>The key: infrastructure that actually gets cheaper to run as complexity grows, because you're compounding on a single, well-structured data model instead of multiplying bespoke integrations and spreadsheets.</p>
+
+      <h2>Move Fast Without Breaking Compliance</h2>
+      <p>In wealth, "move fast and break things" has never been an option. But "move slowly and break people" (via manual work, late nights, and error-prone reconciliations) is not sustainable either. AI-native data infrastructure offers a third path: move fast without breaking compliance.</p>
+      <p>When your workflows sit on top of an audited, governed warehouse—populated and maintained by AI agents instead of swivel-chair processes—you unlock a different operating model: fewer shadow systems, lower operational risk, faster change cycles, and the ability to let advisors and ops teams design the experiences they actually need.</p>
+      <p>That is the real category shift: from performance reporting platforms as the center of the universe to AI-native data infrastructure as the firm's nervous system. Reporting doesn't disappear—but it finally becomes what it should have been all along: just another application on top of a clean, trusted, and truly firm-owned data layer.</p>
+
+      <h2>References</h2>
+      <ol>
+        <li><a href="https://lumitech.co/insights/ai-in-wealth-management" target="_blank" rel="noopener noreferrer">Lumitech - AI in Wealth Management</a></li>
+        <li><a href="https://www.tinytechfund.com/ct/collationai-inc" target="_blank" rel="noopener noreferrer">Tiny Tech Fund - Collation AI</a></li>
+        <li><a href="https://www.collation.ai" target="_blank" rel="noopener noreferrer">Collation.AI</a></li>
+        <li><a href="https://www.linkedin.com/pulse/ai-wealth-management-significance-use-cases-benefits-atul-yadav-fpsqc" target="_blank" rel="noopener noreferrer">LinkedIn - AI Wealth Management</a></li>
+        <li><a href="https://paristech.com/blog/an-excel-database-and-sql-server-reporting-for-real-time-financials-with-powerexcel/" target="_blank" rel="noopener noreferrer">ParisTech - Excel Database and SQL Server Reporting</a></li>
+        <li><a href="https://www.syncfusion.com/succinctly-free-ebooks/bisolutions/introduction-to-the-microsoft-bi-stack" target="_blank" rel="noopener noreferrer">Syncfusion - Microsoft BI Stack</a></li>
+        <li><a href="https://www.hubbis.com/article/from-experimentation-to-execution-how-ai-is-rewiring-wealth-managementworkflows" target="_blank" rel="noopener noreferrer">Hubbis - AI Rewiring Wealth Management Workflows</a></li>
+        <li><a href="https://www.thewealthmosaic.com/vendors/the-wealth-mosaic/blogs/futurity-and-ai-an-infrastructure-drivenapproach/" target="_blank" rel="noopener noreferrer">The Wealth Mosaic - AI Infrastructure Approach</a></li>
+        <li><a href="https://www.wealthhorizon.ai" target="_blank" rel="noopener noreferrer">Wealth Horizon AI</a></li>
+        <li><a href="https://nextvestment.com/solutions/wealth-management" target="_blank" rel="noopener noreferrer">Nextvestment - Wealth Management Solutions</a></li>
+      </ol>
+    `,
+    date: '2026-01-27',
+    category: 'AI Infrastructure',
+    readTime: '5 min read',
+  },
   'agentic-ai-bots-eating-manual-pe-data-ops': {
     title: "Agentic AI Bots Are Eating Manual PE Data Ops: The End of PDF Hell in Alternatives",
     publishedDate: 'Jan 14, 2026',
@@ -685,7 +750,9 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
   }
 
   // Get the hero image from blogPosts data
-  const heroImage = slug === 'agentic-ai-bots-eating-manual-pe-data-ops'
+  const heroImage = slug === 'how-we-got-here-reporting-platforms-did-their-job'
+    ? '/blog-images/shadow-data-layer.png'
+    : slug === 'agentic-ai-bots-eating-manual-pe-data-ops'
     ? '/blog-images/agentic-ai-pdf-hell.png'
     : slug === 'basketball-winning-teams-wealthtech'
     ? '/blog-images/basketball-winning-teams.png'

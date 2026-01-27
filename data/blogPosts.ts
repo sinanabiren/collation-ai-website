@@ -6,9 +6,17 @@ export type BlogPost = {
   image: string;
   excerpt: string;
 };
-// Cache bust: 2026-01-21 09:45
+// Cache bust: 2026-01-27 09:22
 
 export const blogPosts: BlogPost[] = [
+  {
+    title: "How We Got Here: Reporting Platforms Did Their Job",
+    author: "Sinan Biren",
+    date: "Jan 27, 2026",
+    url: "/blog/how-we-got-here-reporting-platforms-did-their-job",
+    image: "/blog-images/shadow-data-layer.png",
+    excerpt: "For the last decade, performance reporting solutions did exactly what they were supposed to do. Today, the real category shift is replacing the shadow layer with AI-native data infrastructure."
+  },
   {
     title: "Vibe-Coding with Guardrails: Secure Innovation for Wealth Management",
     author: "Sinan Biren",
