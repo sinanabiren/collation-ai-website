@@ -6,9 +6,17 @@ export type BlogPost = {
   image: string;
   excerpt: string;
 };
-// Cache bust: 2026-01-27 09:22
+// Cache bust: 2026-02-04 09:00
 
 export const blogPosts: BlogPost[] = [
+  {
+    title: "Is the SaaS Model Dying—or Being Reborn Through AI?",
+    author: "Sinan Biren",
+    date: "Feb 4, 2026",
+    url: "/blog/is-the-saas-model-dying-or-being-reborn-through-ai",
+    image: "/blog-images/saas-model-ai-transformation.png",
+    excerpt: "SaaS companies face unprecedented pressure in 2026 as AI tools threaten traditional subscription models. Yet this 'SaaSpocalypse' might ignite a powerful evolution rather than spell the end—discover how AI-native SaaS is being reborn."
+  },
   {
     title: "How We Got Here: Reporting Platforms Did Their Job",
     author: "Sinan Biren",
