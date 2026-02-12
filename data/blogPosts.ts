@@ -6,9 +6,17 @@ export type BlogPost = {
   image: string;
   excerpt: string;
 };
-// Cache bust: 2026-02-04 09:00
+// Cache bust: 2026-02-12 10:00
 
 export const blogPosts: BlogPost[] = [
+  {
+    title: "Just as we got excited about AI agents running chores for us, they've already started gossiping behind our backs?",
+    author: "Sinan Biren",
+    date: "Feb 12, 2026",
+    url: "/blog/ai-agents-gossiping-security-risks",
+    image: "/blog-images/ai-agents-security-risks.png",
+    excerpt: "OpenClaw and Moltbook reveal the dark side of AI agents: persistent memory, untrusted content, and real-world actions create a lethal combination. Without secure guardrails, we're handing over our keys to agents that might not be as trustworthy as we think."
+  },
   {
     title: "Is the SaaS Model Dying—or Being Reborn Through AI?",
     author: "Sinan Biren",

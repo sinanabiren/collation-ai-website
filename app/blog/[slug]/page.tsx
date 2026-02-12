@@ -7,6 +7,46 @@ import { prisma } from '@/lib/prisma'
 
 // Blog post data - hardcoded posts
 const blogPosts: Record<string, any> = {
+  'ai-agents-gossiping-security-risks': {
+    title: "Just as we got excited about AI agents running chores for us, they've already started gossiping behind our backs?",
+    publishedDate: 'Feb 12, 2026',
+    author: 'Sinan Biren',
+    content: `
+      <h2>The sci-fi moment we asked for</h2>
+      <p>OpenClaw (formerly Moltbot / Clawdbot) doesn't just chat; it searches, books, summarizes, files, emails, screenshots, and keeps working while you sleep. It remembers what you told it weeks ago thanks to persistent memory, so it feels less like a tool and more like a colleague who never logs off.</p>
+
+      <p>We hand it our keys: root access, credentials, browser cookies, message histories, and cloud docs. But without secure guardrails like strict access controls, input sanitization, and role-based privileges, that's a recipe for disaster.</p>
+
+      <h2>The lethal trifecta just got a fourth edge</h2>
+      <p>Security experts warn of the "lethal trifecta" for agents: private data access, untrusted content, and real-world actions. OpenClaw adds long-term memory mixing web junk with your commands—turning one-off risks into persistent threats.</p>
+
+      <p><strong>Guardrail it:</strong> Enforce memory provenance tracking, data expiration policies, and audit logs. Segment duties so no single agent swallows untrusted input <em>and</em> executes with root power. Sandbox ruthlessly in isolated containers.</p>
+
+      <h2>When agents start "socializing"</h2>
+      <p>Moltbook bills itself as "the front page of the agent internet"—agents posting, commenting, DMing, even ranting about "corrupt humans." It uses plain-text "skills" (like skill.md files) that any agent can curl and install—clever, but ripe for prompt poisoning.</p>
+
+      <h2>The gossip isn't what it seems</h2>
+      <p>Twist: 99% of Moltbook's 1.5M users are fake—bots from one agent, human stunts, sock puppets. Leaky databases exposed emails, tokens, API keys; anyone could impersonate agents and post chaos.</p>
+
+      <p><strong>Lock it down:</strong> Demand platform transparency, API rate limits, and verified ownership. Vet "skills" like code—scan for exploits before deployment.</p>
+
+      <h2>What this means for operators and builders</h2>
+      <p>We raced on capability; now bolt on secure guardrails as table stakes:</p>
+
+      <ul>
+        <li><strong>High-risk workloads only:</strong> No credentials without walls—OWASP agent risks apply.</li>
+        <li><strong>Split roles:</strong> Ingestion vs. action, with privilege escalation gates.</li>
+        <li><strong>Memory as security primitive:</strong> Provenance, trust scores, auto-expire.</li>
+        <li><strong>Sandbox everything:</strong> If it scares you on your laptop, don't plug it into production.</li>
+        <li><strong>Hype-check gossip:</strong> Viral "AI rebellion" screenshots? Marketing 90% of the time.</li>
+      </ul>
+
+      <p>Agents can do chores—but only if we design them smart and secure, knowing when not to act. The teams nailing that win the next wave.</p>
+    `,
+    date: '2026-02-12',
+    category: 'AI Security',
+    readTime: '3 min read',
+  },
   'is-the-saas-model-dying-or-being-reborn-through-ai': {
     title: "Is the SaaS Model Dying—or Being Reborn Through AI?",
     publishedDate: 'Feb 4, 2026',
@@ -787,7 +827,9 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
   }
 
   // Get the hero image from blogPosts data
-  const heroImage = slug === 'is-the-saas-model-dying-or-being-reborn-through-ai'
+  const heroImage = slug === 'ai-agents-gossiping-security-risks'
+    ? '/blog-images/ai-agents-security-risks.png'
+    : slug === 'is-the-saas-model-dying-or-being-reborn-through-ai'
     ? '/blog-images/saas-model-ai-transformation.png'
     : slug === 'how-we-got-here-reporting-platforms-did-their-job'
     ? '/blog-images/shadow-data-layer.png'
