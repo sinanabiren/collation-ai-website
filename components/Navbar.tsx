@@ -39,14 +39,17 @@ const Navbar = () => {
             <Link href="/" className="text-foreground hover:text-primary transition-colors">
               Home
             </Link>
-            <Link href="/connections" className="text-foreground hover:text-primary transition-colors">
-              Connections
+            <Link href="/company-overview" className="text-foreground hover:text-primary transition-colors">
+              Solution
+            </Link>
+            <Link href="/case-studies" className="text-foreground hover:text-primary transition-colors">
+              Case Studies
             </Link>
             <Link href="/security" className="text-foreground hover:text-primary transition-colors">
               Security
             </Link>
-            <Link href="/case-studies" className="text-foreground hover:text-primary transition-colors">
-              Case Studies
+            <Link href="/connections" className="text-foreground hover:text-primary transition-colors">
+              Connections
             </Link>
             <Link href="/blog" className="text-foreground hover:text-primary transition-colors">
               Blog
@@ -99,11 +102,18 @@ const Navbar = () => {
                   Home
                 </Link>
                 <Link
-                  href="/connections"
+                  href="/company-overview"
                   className="text-foreground hover:text-primary transition-colors py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Connections
+                  Solution
+                </Link>
+                <Link
+                  href="/case-studies"
+                  className="text-foreground hover:text-primary transition-colors py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Case Studies
                 </Link>
                 <Link
                   href="/security"
@@ -113,11 +123,11 @@ const Navbar = () => {
                   Security
                 </Link>
                 <Link
-                  href="/case-studies"
+                  href="/connections"
                   className="text-foreground hover:text-primary transition-colors py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Case Studies
+                  Connections
                 </Link>
                 <Link
                   href="/blog"

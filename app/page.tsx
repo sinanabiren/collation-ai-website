@@ -182,17 +182,17 @@ const Home = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground mb-4 sm:mb-6 leading-tight px-2"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-semibold text-foreground mb-4 sm:mb-6 leading-relaxed px-2"
           >
-            We Solve Data Headaches<br />For Wealth Managers
+            Compliant AI Infrastructure<br />for Financial Services
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.2, delay: 0.05, ease: "easeOut" }}
-            className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-4xl mx-auto mb-8 sm:mb-10 md:mb-12 leading-relaxed px-2"
+            className="text-base sm:text-lg md:text-xl lg:text-xl text-muted-foreground max-w-5xl mx-auto mb-8 sm:mb-10 md:mb-12 leading-relaxed px-2"
           >
-            Cut costs and streamline operations by letting AI bots pull all your financial data from your existing systems into one fully accessible data warehouse.
+            We create AI infrastructure that automates reporting, analytics, and workflows for wealth managers—making process improvements and driving business efficiency.
           </motion.p>
 
           {/* Hero Illustration with Arrow */}

@@ -21,6 +21,11 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
+                <Link href="/company-overview" className="text-foreground hover:text-primary transition-colors font-medium">
+                  Solution
+                </Link>
+              </li>
+              <li>
                 <Link href="/#our-agents" scroll={true} className="text-foreground hover:text-primary transition-colors font-medium">
                   Agentic AI Bots
                 </Link>
