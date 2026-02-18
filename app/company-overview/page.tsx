@@ -28,24 +28,24 @@ export default function CompanyOverview() {
       <Navbar />
 
       {/* Main Tagline */}
-      <div className="text-center px-16 py-4 mb-4 mt-20">
+      <div className="text-center px-4 sm:px-8 md:px-12 lg:px-16 py-4 mb-4 mt-12 sm:mt-16 md:mt-20">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent leading-tight drop-shadow-lg"
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent leading-tight drop-shadow-lg"
         >
           Compliance-Friendly AI Infrastructure for Financial Services
         </motion.h1>
       </div>
 
       {/* Main content - Two Column Layout */}
-      <div className="flex-1 px-16 pb-6 grid grid-cols-2 gap-12">
+      <div className="flex-1 px-4 sm:px-8 md:px-12 lg:px-16 pb-6 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12">
         {/* Left Column - Business Overview */}
-        <div className={`flex flex-col transition-all duration-1000 ${showRightSide ? '' : 'col-span-2'}`}>
-          <h2 className="text-2xl font-bold text-primary mb-6">Business Overview</h2>
+        <div className={`flex flex-col transition-all duration-1000 ${showRightSide ? '' : 'lg:col-span-2'}`}>
+          <h2 className="text-xl sm:text-2xl font-bold text-primary mb-4 sm:mb-6">Business Overview</h2>
 
-          <div className="space-y-6 text-base leading-relaxed">
+          <div className="space-y-4 sm:space-y-6 text-sm sm:text-base leading-relaxed">
             <p className="text-gray-700">
               Collation.AI creates <span className="font-semibold text-black">AI native infrastructure</span> for wealth managers, enabling AI-powered analytics, reporting, workflows, and business efficiency.
             </p>
@@ -80,18 +80,18 @@ export default function CompanyOverview() {
               <h3 className="font-bold text-sm">Platform Metrics</h3>
             </div>
 
-            <div className="grid grid-cols-3 gap-4 mb-4">
+            <div className="grid grid-cols-3 gap-2 sm:gap-3 md:gap-4 mb-4">
               <div className="text-center">
-                <div className="text-3xl font-bold">$100bn+</div>
-                <div className="text-xs">Assets<br/>Under Reporting</div>
+                <div className="text-xl sm:text-2xl md:text-3xl font-bold">$100bn+</div>
+                <div className="text-[10px] sm:text-xs">Assets<br/>Under Reporting</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold">100+</div>
-                <div className="text-xs">Active Agentic<br/>AI Bots</div>
+                <div className="text-xl sm:text-2xl md:text-3xl font-bold">100+</div>
+                <div className="text-[10px] sm:text-xs">Active Agentic<br/>AI Bots</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold">25+</div>
-                <div className="text-xs">Wealth Manager<br/>Clients</div>
+                <div className="text-xl sm:text-2xl md:text-3xl font-bold">25+</div>
+                <div className="text-[10px] sm:text-xs">Wealth Manager<br/>Clients</div>
               </div>
             </div>
 
@@ -100,17 +100,17 @@ export default function CompanyOverview() {
               <h3 className="font-bold text-sm">Platform Capabilities</h3>
             </div>
 
-            <div className="grid grid-cols-2 gap-3 mb-4">
-              <div className="bg-gradient-to-br from-indigo-50 to-blue-50 border-2 border-indigo-300 rounded-lg p-3 shadow-md relative overflow-hidden">
-                <p className="font-bold text-indigo-900 text-xs mb-2">Ingest anything</p>
-                <p className="text-indigo-700 text-xs mb-2">Pull from any source</p>
+            <div className="grid grid-cols-2 gap-2 sm:gap-3 mb-4">
+              <div className="bg-gradient-to-br from-indigo-50 to-blue-50 border-2 border-indigo-300 rounded-lg p-2 sm:p-3 shadow-md relative overflow-hidden">
+                <p className="font-bold text-indigo-900 text-[10px] sm:text-xs mb-1 sm:mb-2">Ingest anything</p>
+                <p className="text-indigo-700 text-[10px] sm:text-xs mb-1 sm:mb-2">Pull from any source</p>
                 {/* Animated source boxes */}
-                <div className="flex gap-1 flex-wrap mt-2">
+                <div className="flex gap-1 flex-wrap mt-1 sm:mt-2">
                   <motion.div
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ duration: 0.3, delay: 0 }}
-                    className="bg-indigo-600 text-white px-2 py-0.5 rounded-full text-[10px] font-semibold"
+                    className="bg-indigo-600 text-white px-1.5 sm:px-2 py-0.5 rounded-full text-[8px] sm:text-[10px] font-semibold"
                   >
                     APIs
                   </motion.div>
@@ -118,7 +118,7 @@ export default function CompanyOverview() {
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ duration: 0.3, delay: 0.2 }}
-                    className="bg-indigo-600 text-white px-2 py-0.5 rounded-full text-[10px] font-semibold"
+                    className="bg-indigo-600 text-white px-1.5 sm:px-2 py-0.5 rounded-full text-[8px] sm:text-[10px] font-semibold"
                   >
                     PDFs
                   </motion.div>
@@ -126,7 +126,7 @@ export default function CompanyOverview() {
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ duration: 0.3, delay: 0.4 }}
-                    className="bg-indigo-600 text-white px-2 py-0.5 rounded-full text-[10px] font-semibold"
+                    className="bg-indigo-600 text-white px-1.5 sm:px-2 py-0.5 rounded-full text-[8px] sm:text-[10px] font-semibold"
                   >
                     Web
                   </motion.div>
@@ -134,52 +134,52 @@ export default function CompanyOverview() {
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ duration: 0.3, delay: 0.6 }}
-                    className="bg-indigo-600 text-white px-2 py-0.5 rounded-full text-[10px] font-semibold"
+                    className="bg-indigo-600 text-white px-1.5 sm:px-2 py-0.5 rounded-full text-[8px] sm:text-[10px] font-semibold"
                   >
                     Data
                   </motion.div>
                 </div>
               </div>
-              <div className="bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-300 rounded-lg p-3 shadow-md">
-                <p className="font-bold text-purple-900 text-xs mb-1">Host your data</p>
-                <p className="text-purple-700 text-xs">Your Azure/AWS account</p>
+              <div className="bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-300 rounded-lg p-2 sm:p-3 shadow-md">
+                <p className="font-bold text-purple-900 text-[10px] sm:text-xs mb-1">Host your data</p>
+                <p className="text-purple-700 text-[10px] sm:text-xs">Your Azure/AWS account</p>
               </div>
-              <div className="bg-gradient-to-br from-emerald-50 to-teal-50 border-2 border-emerald-300 rounded-lg p-3 shadow-md">
-                <p className="font-bold text-emerald-900 text-xs mb-1">Clean & unified</p>
-                <p className="text-emerald-700 text-xs">Auto reconciliation</p>
+              <div className="bg-gradient-to-br from-emerald-50 to-teal-50 border-2 border-emerald-300 rounded-lg p-2 sm:p-3 shadow-md">
+                <p className="font-bold text-emerald-900 text-[10px] sm:text-xs mb-1">Clean & unified</p>
+                <p className="text-emerald-700 text-[10px] sm:text-xs">Auto reconciliation</p>
               </div>
-              <div className="bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-amber-300 rounded-lg p-3 shadow-md">
-                <p className="font-bold text-amber-900 text-xs mb-1">Compliant coding</p>
-                <p className="text-amber-700 text-xs">Guard rails & controls</p>
+              <div className="bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-amber-300 rounded-lg p-2 sm:p-3 shadow-md">
+                <p className="font-bold text-amber-900 text-[10px] sm:text-xs mb-1">Compliant coding</p>
+                <p className="text-amber-700 text-[10px] sm:text-xs">Guard rails & controls</p>
               </div>
             </div>
 
             {/* Flow Diagram */}
-            <div className="flex flex-col items-center space-y-2">
+            <div className="flex flex-col items-center space-y-1.5 sm:space-y-2">
               {/* Arrow down */}
-              <ArrowDown className="h-5 w-5 text-green-500" />
+              <ArrowDown className="h-4 w-4 sm:h-5 sm:w-5 text-green-500" />
 
               {/* Customer hosted Data Warehouse */}
-              <div className="w-full bg-indigo-700 text-white px-4 py-2 rounded text-center">
-                <div className="font-bold text-sm">Customer hosted Data Warehouse</div>
-                <div className="text-xs">(Extract, Normalize and Reconcile)</div>
+              <div className="w-full bg-indigo-700 text-white px-2 sm:px-4 py-1.5 sm:py-2 rounded text-center">
+                <div className="font-bold text-[11px] sm:text-sm">Customer hosted Data Warehouse</div>
+                <div className="text-[9px] sm:text-xs">(Extract, Normalize and Reconcile)</div>
               </div>
 
               {/* Arrow down */}
-              <ArrowDown className="h-5 w-5 text-green-500" />
+              <ArrowDown className="h-4 w-4 sm:h-5 sm:w-5 text-green-500" />
 
               {/* Data Guardrails */}
-              <div className="w-full bg-indigo-700 text-white px-4 py-2 rounded text-center">
-                <div className="font-bold text-sm">Data Guardrails</div>
-                <div className="text-xs">(Role Based Access, Approvals, Logs, Policy etc.)</div>
+              <div className="w-full bg-indigo-700 text-white px-2 sm:px-4 py-1.5 sm:py-2 rounded text-center">
+                <div className="font-bold text-[11px] sm:text-sm">Data Guardrails</div>
+                <div className="text-[9px] sm:text-xs">(Role Based Access, Approvals, Logs, Policy etc.)</div>
               </div>
 
               {/* Arrow down */}
-              <ArrowDown className="h-5 w-5 text-green-500" />
+              <ArrowDown className="h-4 w-4 sm:h-5 sm:w-5 text-green-500" />
 
               {/* Vibe Coded Workflows */}
-              <div className="w-full bg-gray-900 text-white px-4 py-2 rounded text-center">
-                <div className="font-bold text-sm">Vibe Coded Workflows and Dashboards</div>
+              <div className="w-full bg-gray-900 text-white px-2 sm:px-4 py-1.5 sm:py-2 rounded text-center">
+                <div className="font-bold text-[11px] sm:text-sm">Vibe Coded Workflows and Dashboards</div>
               </div>
             </div>
           </motion.div>
@@ -187,14 +187,14 @@ export default function CompanyOverview() {
       </div>
 
       {/* Bottom CTA */}
-      <div className="text-center pb-4">
+      <div className="text-center pb-4 px-4">
         <Button
-          className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold px-12 py-6 rounded-full hover:scale-105 transition-all"
+          className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold px-6 sm:px-8 md:px-12 py-4 sm:py-5 md:py-6 rounded-full hover:scale-105 transition-all text-sm sm:text-base"
           asChild
         >
           <Link href="/schedule-demo">
             Schedule a Demo
-            <ArrowRight className="h-5 w-5 ml-2" />
+            <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 ml-2" />
           </Link>
         </Button>
       </div>

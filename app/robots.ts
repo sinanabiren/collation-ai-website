@@ -8,7 +8,7 @@ export default function robots(): MetadataRoute.Robots {
         allow: '/',
         disallow: [],
       },
-      // Explicitly allow AI/LLM crawlers
+      // Explicitly allow ALL AI/LLM crawlers
       {
         userAgent: ['GPTBot', 'ChatGPT-User'],
         allow: '/',
@@ -20,12 +20,97 @@ export default function robots(): MetadataRoute.Robots {
         disallow: [],
       },
       {
+        userAgent: 'ClaudeBot',
+        allow: '/',
+        disallow: [],
+      },
+      {
+        userAgent: 'anthropic-ai',
+        allow: '/',
+        disallow: [],
+      },
+      {
         userAgent: 'PerplexityBot',
         allow: '/',
         disallow: [],
       },
       {
         userAgent: 'Google-Extended',
+        allow: '/',
+        disallow: [],
+      },
+      {
+        userAgent: 'GoogleOther',
+        allow: '/',
+        disallow: [],
+      },
+      {
+        userAgent: 'Googlebot',
+        allow: '/',
+        disallow: [],
+      },
+      {
+        userAgent: 'Bingbot',
+        allow: '/',
+        disallow: [],
+      },
+      {
+        userAgent: 'Applebot',
+        allow: '/',
+        disallow: [],
+      },
+      {
+        userAgent: 'Applebot-Extended',
+        allow: '/',
+        disallow: [],
+      },
+      {
+        userAgent: 'Meta-ExternalAgent',
+        allow: '/',
+        disallow: [],
+      },
+      {
+        userAgent: 'FacebookBot',
+        allow: '/',
+        disallow: [],
+      },
+      {
+        userAgent: 'cohere-ai',
+        allow: '/',
+        disallow: [],
+      },
+      {
+        userAgent: 'Omgilibot',
+        allow: '/',
+        disallow: [],
+      },
+      {
+        userAgent: 'Omgili',
+        allow: '/',
+        disallow: [],
+      },
+      {
+        userAgent: 'YouBot',
+        allow: '/',
+        disallow: [],
+      },
+      {
+        userAgent: 'Bytespider',
+        allow: '/',
+        disallow: [],
+      },
+      {
+        userAgent: 'diffbot',
+        allow: '/',
+        disallow: [],
+      },
+      {
+        userAgent: 'AI2Bot',
+        allow: '/',
+        disallow: [],
+      },
+      {
+        userAgent: 'iaskspider',
         allow: '/',
         disallow: [],
       },
