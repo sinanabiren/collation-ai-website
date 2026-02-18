@@ -14,10 +14,10 @@ export default function CompanyOverview() {
     // Reset right side visibility when component mounts
     setShowRightSide(false);
 
-    // Show right side after 8 seconds
+    // Show right side after 3.5 seconds
     const timer = setTimeout(() => {
       setShowRightSide(true);
-    }, 8000);
+    }, 3500);
 
     return () => clearTimeout(timer);
   }, []);
