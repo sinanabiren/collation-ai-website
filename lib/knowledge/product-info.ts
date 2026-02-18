@@ -4,6 +4,84 @@
 export const PRODUCT_KNOWLEDGE = `
 # Collation AI - Complete Product Knowledge Base
 
+## LATEST UPDATE: AI Native Infrastructure for Financial Services (2026)
+
+**Current Positioning:** Compliance-Friendly AI Infrastructure for Financial Services
+
+**Business Overview:**
+Collation.AI creates **AI native infrastructure** for wealth managers, enabling AI-powered analytics, reporting, workflows, and business efficiency.
+
+**Target Clients:**
+- Single and Multi Family Offices
+- RIAs (Registered Investment Advisors)
+- Enterprises (Banks, FinTechs)
+
+**Deployment Models:**
+- Setup as an overlay on existing tech stack / SaaS
+- Standalone solution
+- Customer-hosted data warehouses on their own Azure/AWS accounts
+
+**Infrastructure Components:**
+1. **Data Warehouses** - Customer-hosted in client's Azure/AWS account
+2. **AI Bots for Data Ingestion** - Pull from any source (APIs, SFTPs, PDFs, websites)
+3. **Automated Reconciliation & Cleansing** - Clean and unified data models
+4. **Compliant AI Coding with Guardrails** - Role-based access controls, approval workflows, audit logs, policy enforcement
+
+**Current Platform Metrics (2026):**
+- **$100B+** Assets Under Reporting
+- **100+** Active Agentic AI Bots
+- **25+** Wealth Manager Clients
+
+**Platform Capabilities:**
+
+1. **Ingest Anything** - Pull from any source
+   - APIs
+   - PDFs
+   - Websites
+   - DataFeeds
+
+2. **Host Your Data** - Your Azure/AWS account
+   - Full admin-level access
+   - Data stays in your infrastructure
+   - Complete control and ownership
+
+3. **Clean & Unified** - Auto reconciliation
+   - Automated data reconciliation
+   - Data cleansing and normalization
+   - Unified data models across business
+
+4. **Compliant Coding** - Guard rails & controls
+   - Role-based access controls
+   - Approval workflows
+   - Audit logs
+   - Policy enforcement
+   - PII leak prevention
+
+**Data Flow Architecture:**
+1. Data Sources (APIs, PDFs, Web, Data)
+   ↓
+2. Customer-hosted Data Warehouse (Extract, Normalize, Reconcile)
+   ↓
+3. Data Guardrails (Role Based Access, Approvals, Logs, Policy)
+   ↓
+4. Vibe Coded Workflows and Dashboards
+
+**Key Differentiators (2026):**
+- **AI-Native Infrastructure**: Purpose-built for AI/LLM integration with compliance guardrails
+- **Customer-Hosted Data**: Data warehouse in client's own cloud account (Azure/AWS) with full admin access
+- **Compliance-First**: Built-in guardrails prevent PII leaks, enforce role-based access, require approvals
+- **Flexible Deployment**: Overlay on existing systems or standalone solution
+- **Any Data Source**: Ingest from APIs, SFTPs, PDFs, websites - truly any source
+- **Secure AI Coding**: Wealth managers can use AI tools like Claude Code securely within guardrails
+
+**Website Pages & Content (2026):**
+- **Solution** (/company-overview) - AI infrastructure overview with sequential reveal animation
+- **Case Studies** (/case-studies) - Success stories in wealth management automation
+- **Security** (/security) - Enterprise-grade data protection, SOC 2 compliance
+- **Connections** (/connections) - 10,000+ data source integrations
+- **About Us** (/about-us) - Team and company background
+- **Blog** (/blog) - Insights on AI, data automation, wealth management
+
 ## Company Overview
 
 **Tagline:** INVEST BETTER
