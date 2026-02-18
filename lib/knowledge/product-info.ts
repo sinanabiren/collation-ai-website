@@ -82,6 +82,124 @@ Collation.AI creates **AI native infrastructure** for wealth managers, enabling 
 - **About Us** (/about-us) - Team and company background
 - **Blog** (/blog) - Insights on AI, data automation, wealth management
 
+## Connections & Integrations (11,267 Total Integrations)
+
+Collation.AI connects to **11,267+ data sources** across two integration networks:
+
+### Integration Network Breakdown:
+- **77 Collation.AI Direct Integrations** - Native, direct API connections
+- **11,190 Via Partner Network** - Extended integrations through partner APIs (Plaid, Yodlee, etc.)
+
+### Collation.AI Direct Integrations (77 Native Connections):
+
+**Custodians & Financial Institutions:**
+- Fidelity, Schwab, Pershing, Northern Trust
+- Goldman Sachs, Merrill Lynch, Raymond James
+- Citibank, Safra Bank of New York
+
+**Portfolio Management & Reporting:**
+- Addepar, Black Diamond, Orion, Tamarac
+- Envestnet, eMoney, Morningstar
+- Factset, ICE Data Services, LSEG Data & Analytics
+- YCharts, PitchBook, PREQIN
+
+**Alternative Investments:**
+- Allvue, Dynamo, PCR Insights
+- Fundcount, Canoe Intelligence
+
+**CRM & Practice Management:**
+- Salesforce, Wealthbox, Redtail
+- Practifi, Salentica, SmartOffice
+- Masttro, Nirvana Solutions
+
+**Financial Planning:**
+- RightCapital, MoneyGuide, eMoney
+- Wealthsite, Plain Sail
+
+**Accounting & ERP:**
+- QuickBooks, Xero, Sage Intacct
+- Oracle NetSuite, Microsoft Dynamics 365
+
+**Data & Cloud Platforms:**
+- Microsoft Azure, Amazon AWS, Snowflake
+- Databricks, PostgreSQL, MySQL, SQL Server
+- Microsoft Power BI, Salesforce Tableau
+
+**Document Management:**
+- Box, Microsoft OneDrive, Microsoft SharePoint
+- DocuSign
+
+**Communication & Workflow:**
+- HubSpot, Slack, Monday.com
+- Zendesk, Twilio, SendGrid
+- Intuit Mailchimp
+
+**Real Estate & Property Management:**
+- Yardi, Zillow, Re-Leased, Toast
+
+**Data Services:**
+- DTCC, Plaid, LSEG Data & Analytics
+
+**Other Systems:**
+- Zoho, ADP, Zeplyn
+
+### Partner Network Integrations (11,190 Connections):
+
+Through partner APIs (Plaid, Yodlee, Quovo, Tink, etc.), Collation.AI connects to thousands of additional institutions including:
+
+**Banks & Credit Unions:**
+- Major national banks (Chase, Bank of America, Wells Fargo, Citibank, etc.)
+- Regional banks (1st Bank, 5 Star Bank, AB&T National Bank, etc.)
+- Credit unions (AAA Credit Union, Abound Credit Union, etc.)
+- International banks (ABN AMRO, Abanca, etc.)
+
+**Retirement & 401(k) Providers:**
+- 401k Direct, 401save, 401(k) Access
+- Retirement plan administrators and services
+- HSA providers
+
+**Mortgage & Lending:**
+- Mortgage providers (1st Advantage Mortgage, 21st Mortgage, 360 Mortgage Group)
+- Consumer lending platforms
+
+**Investment Platforms:**
+- Brokerage accounts
+- Trading platforms
+- Investment management systems
+
+**Payment & Card Services:**
+- Credit card providers
+- Payment processors
+- Card access platforms
+
+### Key Integration Capabilities:
+
+**Data Sources Supported:**
+1. **API Integrations** - Real-time data feeds via native APIs
+2. **Bank Datafeeds** - Direct datafeed connections to custodians
+3. **PDF Statements** - AI-powered extraction from PDF documents
+4. **Excel/CSV Files** - Structured data file imports
+5. **SFTP** - Secure file transfer protocol connections
+6. **Web Scraping** - Automated data extraction from web portals
+
+**Integration Features:**
+- Automated daily/weekly/monthly data synchronization
+- Historical data backfill capabilities
+- Multi-account aggregation
+- Cross-institution reconciliation
+- Real-time balance and position updates
+- Transaction history import
+- Document storage and management
+
+**When Users Ask About Integrations:**
+- We support 11,267+ connections total
+- 77 direct native integrations with major platforms
+- 11,190+ institutions via partner network
+- If a specific institution is requested, explain we likely support it through direct or partner connections
+- Offer to check specific integration availability
+- Mention our PDF parser can handle any institution that provides PDF statements
+- Reference /connections page for searchable list
+
 ## Company Overview
 
 **Tagline:** INVEST BETTER
@@ -2556,6 +2674,636 @@ The alternative investments data world is moving from static PDF parsing to auto
 - "Alternative investment data operations?" → Blog: Agentic AI Bots Eating Manual PE Data Ops
 - "PE fund document processing?" → Blog: Agentic AI Bots Eating Manual PE Data Ops
 - "Multi-step document workflows?" → Blog: Agentic AI Bots Eating Manual PE Data Ops
+
+---
+
+## RIA Solutions: Solving Data Headaches for Wealth Managers
+
+### The Data Problem Facing RIAs
+
+**Manual Data Operations Are Expensive and Inefficient:**
+
+Wealth managers and RIAs face a critical operational challenge: **throwing people at the data problem**. The current approach of hiring staff to manually handle data operations is:
+
+- **Expensive**: Manual data entry and reconciliation requires significant headcount
+- **Slow**: Processing documents and updating systems takes days or weeks
+- **Error-prone**: Human data entry leads to mistakes that impact reporting accuracy
+- **Not scalable**: Growing AUM requires hiring more people linearly
+
+**The Traditional Workflow:**
+1. Documents arrive (bank statements, brokerage reports, custodian files, PE/VC reports)
+2. Operations team manually extracts data from PDFs
+3. Data entry into portfolio management systems or spreadsheets
+4. Manual reconciliation to catch errors
+5. Report generation for clients
+
+**The Cost:**
+- Average time: 15+ hours per week per operations staff member on data tasks
+- Staff salary costs: $50K-$100K+ per person annually
+- Error correction: Hours of rework when mistakes are discovered
+- Client impact: Delayed reports and potential compliance issues
+
+### Collation's Solution: AI-Powered Data Infrastructure
+
+**Three-Step Transformation:**
+
+1. **Extract to Data Warehouse**
+   - AI-powered PDF processing extracts data from ANY financial document
+   - OCR + multiple LLMs (OpenAI, Anthropic, Google, Azure) ensure 99%+ accuracy
+   - Handles bank statements, brokerage reports, custodian files, PE/VC reports, side letters
+   - Average processing time: 21 minutes for 40 documents
+
+2. **Fix the Data Automatically**
+   - Automated data normalization and standardization (Medallion Architecture: Bronze → Silver → Gold)
+   - Cross-document validation and reconciliation
+   - Exception handling with intelligent routing
+   - Built-in compliance checks and audit trails
+
+3. **Send Back to Your Systems**
+   - Clean, reconciled data flows into your PMS, CRM, reporting tools
+   - API integrations with 77+ platforms (Addepar, Black Diamond, Orion, Tamarac, etc.)
+   - Or build custom dashboards and reports directly on your data warehouse
+   - Real-time updates vs. weekly batch processing
+
+**The Results:**
+- **90-95% time savings** on data operations
+- **$50-100 per document** cost reduction
+- **15+ hours per week** saved per operations staff member
+- **$900K annual savings** example: 1,000 documents/month at $75 manual cost
+
+**ROI Example:**
+- **Before**: 10 operations staff @ $75K each = $750K/year + errors + delays
+- **After**: 2 operations staff for exceptions @ $150K + Collation platform = $180K/year
+- **Savings**: $570K+ annually + improved accuracy + faster reporting
+
+### When Users Ask About RIA Data Problems:
+
+- "Manual data entry taking too long?" → Explain the RIA data problem and Collation's solution
+- "How do you help RIAs?" → Reference this section and the three-step transformation
+- "ROI for RIAs?" → Share the 90-95% time savings and cost reduction metrics
+- "Throwing people at data problem?" → This is the exact problem we solve
+- "Operations staff overwhelmed?" → Show how we reduce headcount needs by 80%
+
+---
+
+## Company Profile: Collation.AI (February 2026 Update)
+
+### Executive Summary
+
+Collation.AI creates **AI native infrastructure** for wealth managers, enabling AI-powered analytics, reporting, workflows, and business efficiency.
+
+**Current Scale (February 2026):**
+- **$100 billion+** Assets Under Reporting
+- **100+** Active Agentic AI Bots deployed across client base
+- **25+** Wealth Manager Clients (RIAs, Family Offices, Enterprises)
+- **4** Office locations globally
+
+**Target Markets:**
+1. **Single and Multi-Family Offices** - High-net-worth family wealth management
+2. **RIAs (Registered Investment Advisors)** - Independent wealth advisory firms
+3. **Enterprises** - Banks, FinTechs, and institutional wealth managers
+
+### Platform Positioning: Compliance-Friendly AI Infrastructure for Financial Services
+
+**The Core Value Proposition:**
+
+Collation.AI provides the **data infrastructure and AI guardrails** that enable financial institutions to safely deploy AI agents while maintaining regulatory compliance and operational control.
+
+**Four Pillars of the Platform:**
+
+1. **Ingest Anything**
+   - Pull from any source: APIs, PDFs, Websites, DataFeeds
+   - 77+ direct integrations (Addepar, Schwab, Fidelity, Black Diamond, Orion, etc.)
+   - 11,190+ institutions via partner network (Plaid, Yodlee)
+   - AI-powered PDF processor for any document format
+   - Web scraping for fund websites and data portals
+
+2. **Host Your Data**
+   - Customer-hosted data warehouses on YOUR Azure or AWS account
+   - You own and control your data - we never store your sensitive information
+   - Medallion Architecture (Bronze → Silver → Gold) for clean, auditable data
+   - PostgreSQL or SQL Server based on your preference
+
+3. **Clean & Unified**
+   - Automated reconciliation across custodians and data sources
+   - Standardized data model for consistent reporting
+   - Exception handling with approval workflows
+   - Cross-document validation (e.g., capital calls vs. commitment schedules)
+
+4. **Compliant Coding**
+   - **Data Guardrails**: Role-Based Access Control, approval workflows, audit logs
+   - **Policy Enforcement**: Business rules and compliance checks built into workflows
+   - **Vibe Coded Workflows**: AI-generated dashboards and reports with human oversight
+   - **Complete Transparency**: Every data transformation is logged and auditable
+
+### Deployment Models
+
+**Three Flexible Options:**
+
+1. **Overlay on Existing Tech Stack**
+   - Works alongside your current PMS, CRM, and reporting tools
+   - Enriches and cleans data before it enters your systems
+   - No rip-and-replace required
+
+2. **Standalone Solution**
+   - Replace legacy data aggregation platforms
+   - All-in-one data warehouse + analytics + reporting
+   - Ideal for firms building new infrastructure
+
+3. **Customer-Hosted Data Warehouse**
+   - Your Azure/AWS account, your control
+   - Collation manages the AI agents and workflows
+   - Maximum security and compliance for enterprise clients
+
+### Data Flow Architecture
+
+**Comprehensive Five-Layer Stack:**
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│ Layer 5: Vibe Coded Workflows and Dashboards               │
+│ (AI-generated analytics, custom reports, client portals)    │
+└─────────────────────────────────────────────────────────────┘
+                            ↑
+┌─────────────────────────────────────────────────────────────┐
+│ Layer 4: Data Guardrails                                    │
+│ • Role Based Access Control (USER/ADMIN/SUPER_ADMIN)        │
+│ • Approval Workflows (pending → approved → published)       │
+│ • Complete Audit Logs (who, what, when)                     │
+│ • Policy Enforcement (business rules, compliance checks)    │
+└─────────────────────────────────────────────────────────────┘
+                            ↑
+┌─────────────────────────────────────────────────────────────┐
+│ Layer 3: Customer-Hosted Data Warehouse (Your Azure/AWS)   │
+│ • Extract: Pull from all sources                            │
+│ • Normalize: Medallion Architecture (Bronze → Silver → Gold)│
+│ • Reconcile: Cross-source validation and matching           │
+└─────────────────────────────────────────────────────────────┘
+                            ↑
+┌─────────────────────────────────────────────────────────────┐
+│ Layer 2: Collation.AI Ingestion Layer                      │
+│ • PDF Processor (AWS Textract + LLMs)                       │
+│ • API Integrations (77+ direct connections)                 │
+│ • Web Scraping (fund websites, portals)                     │
+│ • Data Feeds (market data, reference data)                  │
+└─────────────────────────────────────────────────────────────┘
+                            ↑
+┌─────────────────────────────────────────────────────────────┐
+│ Layer 1: Data Sources                                       │
+│ APIs | PDFs | Websites | Data Feeds                         │
+│ (Custodians, Banks, PMS, Fund Administrators, etc.)         │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### Leadership Team (Updated February 2026)
+
+**Tanmai Sharma - CEO & Co-Founder**
+- **Experience**: 31 years in financial technology and wealth management
+- **Background**: Previously founded Canopy (acquired), deep expertise in RIA and family office technology
+- **Role**: Product vision, client relationships, strategic partnerships
+
+**Sinan Biren - CRO (Chief Revenue Officer)**
+- **Experience**: 17 years in enterprise software sales and financial services
+- **Background**: Proven track record in scaling B2B SaaS revenue
+- **Role**: Sales, marketing, revenue operations, client success
+
+**Prashant Surana - CTO & Co-Founder**
+- **Experience**: 21 years in software engineering and data infrastructure
+- **Background**: Built and scaled data platforms for financial services
+- **Role**: Platform architecture, engineering team, technical delivery
+
+**Shamara Pereira - Head of Implementation**
+- **Experience**: 13 years in client onboarding and operations for wealth tech
+- **Background**: Expert in RIA workflows, data migration, and client training
+- **Role**: Client implementation, support, training, and success
+
+### Key Differentiators
+
+**What Makes Collation.AI Unique:**
+
+1. **Customer-Hosted Infrastructure**
+   - Unlike SaaS competitors, YOUR data stays in YOUR cloud
+   - Maximum security and control for regulated firms
+   - No vendor lock-in on your data
+
+2. **AI Guardrails for Compliance**
+   - Not just automation - compliant automation with oversight
+   - Role-based access, approval workflows, complete audit trails
+   - Built for SEC, FINRA, and enterprise compliance requirements
+
+3. **Proven at Scale**
+   - $100B+ assets under reporting (February 2026)
+   - 25+ wealth manager clients across RIAs, family offices, and enterprises
+   - 100+ active AI agents deployed in production
+
+4. **Universal Ingestion**
+   - 77+ direct integrations with major platforms
+   - 11,190+ institutions via partner network
+   - AI-powered PDF processing for ANY document format
+
+5. **Medallion Data Architecture**
+   - Industry-standard Bronze → Silver → Gold pattern
+   - Ensures data quality, auditability, and flexibility
+   - Supports both operational reporting and advanced analytics
+
+### When Users Ask About Company Profile:
+
+- "Who is Collation.AI?" → Share executive summary and current scale
+- "Who runs Collation?" → Introduce leadership team with experience
+- "What makes you different?" → Explain key differentiators
+- "How big is your company?" → Share metrics: $100B AUR, 25+ clients, 100+ bots
+- "Where are you located?" → 4 office locations globally
+- "Who are your customers?" → RIAs, family offices, enterprises (banks, fintechs)
+
+---
+
+## Knowledge Services: Pricing & Engagement Models
+
+### Three Dimensions of Engagement
+
+Collation.AI offers **three distinct engagement models** that can be mixed and matched based on client needs:
+
+```
+┌───────────────────┬────────────────────┬──────────────────┐
+│ Platform License  │ Knowledge Services │ Dedicated FTE    │
+│ Fee               │                    │                  │
+├───────────────────┼────────────────────┼──────────────────┤
+│ • Software access │ • Consulting hours │ • Full-time      │
+│ • Core features   │ • On-demand help   │   resource       │
+│ • Self-service    │ • Strategic advice │ • Embedded team  │
+└───────────────────┴────────────────────┴──────────────────┘
+```
+
+### Dimension 1: Platform License Fee
+
+**What's Included:**
+- Access to the Collation.AI platform software
+- Core features: data ingestion, warehouse, AI bots, basic workflows
+- Technical support (email/ticketing)
+- Platform updates and maintenance
+- Self-service configuration and administration
+
+**What's NOT Included:**
+- Custom development or new features
+- Hands-on implementation services
+- Data migration or ETL build-out
+- Ongoing operational execution
+- Strategic consulting or advisory
+
+**Typical Use Case:**
+- Client has technical team that can configure and operate the platform
+- Client wants software license only, will handle implementation internally
+- Self-sufficient organizations with data engineering resources
+
+### Dimension 2: Knowledge Services
+
+**What's Included:**
+- **Consulting Hours**: Principal Consultant ($250/hr) or Delivery Team ($150/hr)
+- **Billed in Blocks**: $10,000 minimum per engagement
+- **On-Demand Expertise**: Call on Collation experts when you need them
+- **Strategic Guidance**: Best practices, architecture decisions, workflow design
+- **Intermittent Support**: Not full-time, project-based or advisory
+- **Transfer of Knowledge**: We train your team to be self-sufficient
+
+**What's NOT Included:**
+- Day-to-day operational execution
+- Full-time dedicated resources
+- Ongoing "run the business" tasks
+- Human execution of workflows (we build, you run)
+
+**Typical Activities:**
+- Initial platform setup and configuration (one-time)
+- Data model design and warehouse architecture
+- Custom workflow development (AI bots, reports, dashboards)
+- Integration builds with your systems
+- Training sessions for your team
+- Troubleshooting and optimization
+- Quarterly business reviews
+
+**Pricing Structure:**
+- **Principal Consultant**: $250/hour (senior architects, strategic advisors)
+- **Delivery Team**: $150/hour (engineers, implementation specialists)
+- **Billing**: $10,000 blocks (40 hours of Delivery or 26.7 hours of Principal)
+- **Estimated Commitment**: Most projects require 2-5 blocks ($20K-$50K)
+
+**Example Knowledge Services Project:**
+- **Initial Implementation**: $30,000 (3 blocks)
+  - Week 1-2: Data warehouse setup, Bronze layer ingestion
+  - Week 3-4: Silver layer normalization, business logic
+  - Week 5-6: Gold layer reporting marts, dashboard build
+  - Total: ~120 Delivery hours or 80 Principal hours
+
+**Ongoing Knowledge Services:**
+- **Quarterly Support**: $10,000 per quarter (1 block)
+  - New integrations or data sources
+  - Workflow enhancements and new AI bots
+  - Performance optimization
+  - Ad-hoc troubleshooting
+
+### Dimension 3: Dedicated FTE (Full-Time Equivalent)
+
+**What's Included:**
+- **Full-time Collation resource** dedicated to your account
+- **Operational Ownership**: We execute, not just advise
+- **Day-to-day Management**: Run the platform on your behalf
+- **Proactive Monitoring**: We watch for issues and fix them
+- **Continuous Improvement**: Ongoing optimization and enhancements
+- **Human Execution**: We handle exception processing, approvals, QA
+- **Creates New Capabilities**: We build new workflows and reports as needs arise
+
+**What's NOT Included in Other Dimensions:**
+- Knowledge Services = we teach you to fish (consulting)
+- Platform License = software only, you do everything
+- Dedicated FTE = we fish for you (managed service)
+
+**Typical Use Case:**
+- Client wants a "fully managed" experience
+- Client lacks internal resources to operate the platform
+- Client wants Collation to own data operations end-to-end
+- Growing RIAs that want to scale without hiring ops staff
+
+**Pricing Structure:**
+- Typically **$100K-$200K per FTE annually**
+- Includes both operational execution and continuous development
+- FTE can cover multiple capabilities: data ops, workflow builds, reporting, client support
+
+**Example Dedicated FTE Engagement:**
+- **RIA with $5B AUM**: 0.5 FTE dedicated resource ($100K/year)
+  - Daily: Monitor data feeds, process exception reports
+  - Weekly: Client report generation, QA checks
+  - Monthly: New client onboarding, data source additions
+  - Quarterly: New workflow builds, dashboard enhancements
+
+### Comparison Table: Three Dimensions
+
+| Feature | Platform License | Knowledge Services | Dedicated FTE |
+|---------|-----------------|-------------------|---------------|
+| **Software Access** | ✅ Yes | ✅ Yes | ✅ Yes |
+| **Human Execution** | ❌ You do it | ❌ You do it | ✅ We do it |
+| **Operational Ownership** | ❌ Client owns | ❌ Client owns | ✅ Collation owns |
+| **Creates New Capabilities** | ❌ You build | ✅ We build (project) | ✅ We build (ongoing) |
+| **Day-to-Day Management** | ❌ Client | ❌ Client | ✅ Collation |
+| **Proactive Monitoring** | ❌ Client | ❌ Client | ✅ Collation |
+| **Exception Handling** | ❌ Client | ❌ Client | ✅ Collation |
+| **Strategic Consulting** | ❌ No | ✅ Yes | ✅ Yes |
+| **Training & Knowledge Transfer** | ⚠️ Self-service docs | ✅ Yes | ✅ Yes |
+| **Typical Annual Cost** | $30K-$100K | $20K-$80K | $100K-$200K |
+
+### Typical Client Combinations
+
+**Self-Service Client:**
+- Platform License Fee: $30K/year
+- Knowledge Services: $20K one-time setup
+- Total Year 1: $50K
+
+**Assisted Client:**
+- Platform License Fee: $50K/year
+- Knowledge Services: $40K/year (4 blocks for ongoing enhancements)
+- Total: $90K/year
+
+**Managed Client:**
+- Platform License Fee: $50K/year
+- Dedicated FTE: 0.5 FTE = $100K/year
+- Knowledge Services: $10K/year (1 block for specialized consulting)
+- Total: $160K/year
+
+**Enterprise Client:**
+- Platform License Fee: $100K/year (enterprise tier)
+- Dedicated FTE: 1.5 FTE = $225K/year
+- Knowledge Services: $40K/year (strategic advisory)
+- Total: $365K/year
+
+### When Users Ask About Knowledge Services:
+
+- "How much does consulting cost?" → $250/hr Principal, $150/hr Delivery, $10K blocks
+- "What's included in Knowledge Services?" → Explain consulting model vs. dedicated FTE
+- "Do you offer managed services?" → Yes, Dedicated FTE model
+- "Can you run the platform for us?" → Yes, Dedicated FTE includes operational ownership
+- "What's the difference between consulting and managed service?" → Consulting = we build and train, Managed = we build and run
+- "How much for implementation?" → Typical $20K-$50K depending on complexity (Knowledge Services)
+- "Ongoing support costs?" → $10K per quarter (1 block) for ad-hoc needs, or Dedicated FTE for full management
+
+---
+
+## Medallion Architecture: Data Warehouse Foundation
+
+### What is Medallion Architecture?
+
+Medallion Architecture is a **data design pattern** that organizes data into three progressive layers of quality and refinement:
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│ GOLD LAYER: Business-Ready Aggregations                    │
+│ • Client-facing reports and dashboards                      │
+│ • KPIs, metrics, and analytics                              │
+│ • Performance attribution and benchmarking                  │
+│ • Optimized for speed and usability                         │
+└─────────────────────────────────────────────────────────────┘
+                            ↑
+┌─────────────────────────────────────────────────────────────┐
+│ SILVER LAYER: Cleansed & Standardized Data                 │
+│ • Normalized and reconciled data                            │
+│ • Deduplicated and validated                                │
+│ • Conformed to standard data model                          │
+│ • Business logic applied                                    │
+└─────────────────────────────────────────────────────────────┘
+                            ↑
+┌─────────────────────────────────────────────────────────────┐
+│ BRONZE LAYER: Raw Data Capture                             │
+│ • Exact copy of source data (PDFs, APIs, files)            │
+│ • No transformations, just extraction                       │
+│ • Complete audit trail of what arrived                      │
+│ • Historical snapshots preserved                            │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### The Three Layers Explained
+
+**Bronze Layer: Raw Data Capture**
+
+**Purpose**: Preserve the exact state of source data as it arrives
+
+**Characteristics:**
+- **Immutable**: Never changed after initial load
+- **Comprehensive**: Every field from every source
+- **Timestamped**: When data arrived and from where
+- **Unfiltered**: Includes bad data, duplicates, errors
+
+**Example Bronze Tables:**
+- `bronze_custodian_schwab_positions_raw` - Exact Schwab position file
+- `bronze_pdf_fidelity_statement_20260115` - Raw PDF extraction results
+- `bronze_api_addepar_holdings_v2` - Addepar API response payload
+
+**Why Bronze Matters:**
+- **Regulatory Compliance**: Prove what the source system provided
+- **Debugging**: Trace issues back to original data
+- **Reprocessing**: Re-run transformations without re-fetching from source
+- **Audit Trail**: Complete lineage of every data point
+
+**Silver Layer: Cleansed & Standardized**
+
+**Purpose**: Create a single source of truth with clean, conformed data
+
+**Characteristics:**
+- **Normalized**: Standardized column names, data types, formats
+- **Deduplicated**: One record per entity (security, account, transaction)
+- **Validated**: Business rules applied, outliers flagged
+- **Reconciled**: Cross-source matching (e.g., Schwab + Fidelity positions)
+- **Enriched**: Reference data joined (security master, account hierarchy)
+
+**Example Silver Tables:**
+- `silver_positions` - All custodian positions in standard format
+- `silver_transactions` - All transactions normalized across custodians
+- `silver_securities` - Master security reference with identifiers
+- `silver_accounts` - Account hierarchy with client relationships
+
+**Key Transformations:**
+- **Data Type Standardization**: "01/15/2026" → `DATE '2026-01-15'`
+- **Currency Normalization**: Convert all currencies to USD using rates
+- **Security Matching**: Map "AAPL", "Apple Inc", "037833100" → single AAPL record
+- **Account Hierarchy**: Link sub-accounts to master accounts and clients
+
+**Why Silver Matters:**
+- **Data Quality**: One clean version of truth for analytics
+- **Reconciliation**: Identify discrepancies between sources
+- **Efficiency**: Downstream queries don't re-calculate standardizations
+- **Governance**: Apply business rules consistently
+
+**Gold Layer: Business-Ready Aggregations**
+
+**Purpose**: Pre-calculated metrics and reports optimized for end users
+
+**Characteristics:**
+- **Aggregated**: Summarized to relevant granularity (client, account, asset class)
+- **Performance-Optimized**: Pre-joined, pre-calculated for fast queries
+- **Business-Friendly**: Column names match client terminology
+- **Report-Ready**: Directly power dashboards and client reports
+
+**Example Gold Tables:**
+- `gold_client_aum_summary` - AUM by client, rolled up daily
+- `gold_performance_attribution` - Return attribution by asset class
+- `gold_cash_flow_forecast` - Projected cash flows for next 12 months
+- `gold_portfolio_drift` - Current vs. target allocation by account
+
+**Key Aggregations:**
+- **Time-Series Rollups**: Daily positions → Monthly snapshots
+- **Hierarchical Summaries**: Security → Asset Class → Total Portfolio
+- **Calculated Metrics**: IRR, TVPI, DPI, cash-on-cash returns
+- **Variance Analysis**: Actual vs. Budget, Current vs. Target allocation
+
+**Why Gold Matters:**
+- **Speed**: Reports load in seconds vs. minutes
+- **Consistency**: Everyone sees the same calculated metrics
+- **User Experience**: Business-friendly labels and pre-filtered views
+- **Client-Ready**: Directly export to PDFs, Excel, client portals
+
+### Benefits of Medallion Architecture
+
+**1. Improves Data Accuracy**
+- Silver layer catches errors through validation rules
+- Cross-source reconciliation identifies discrepancies
+- Gold layer metrics are calculated once, consistently
+- **Result**: 95%+ data accuracy vs. 70-80% with ad-hoc transformations
+
+**2. Enhances Auditability**
+- Bronze layer proves what source provided
+- Silver layer documents every transformation step
+- Gold layer shows calculation logic
+- **Result**: Pass regulatory audits, trace any number back to source
+
+**3. Increases Speed of Iteration**
+- New reports built on Gold layer in hours, not weeks
+- Don't need to re-engineer data cleaning for each new use case
+- Pre-calculated metrics enable real-time dashboards
+- **Result**: 5x faster to build new reports and analytics
+
+**4. Builds Confidence in Reporting**
+- Business users trust numbers because lineage is transparent
+- Reconciliation reports show where sources disagree
+- Version control on transformations (when logic changed and why)
+- **Result**: Stakeholders confidently make decisions on data
+
+**5. Enables Scalability**
+- Add new data sources without changing Gold layer
+- Update business logic in Silver without breaking reports
+- Archive Bronze data while keeping Gold for historical analysis
+- **Result**: Platform grows with your business without major re-architecture
+
+### Implementation Blueprint: 4 Phases
+
+**Phase 1: Bronze Layer Foundation (1-3 weeks)**
+
+**Activities:**
+- Set up customer-hosted data warehouse (Azure SQL or PostgreSQL)
+- Build ingestion pipelines from priority data sources
+- Create Bronze tables with raw data capture
+- Establish data arrival monitoring and alerting
+
+**Deliverables:**
+- Bronze layer tables for top 5-10 data sources
+- Automated ingestion jobs (daily, weekly, or real-time)
+- Data lineage documentation (what arrived when)
+
+**Typical Duration**: 1-3 weeks depending on source complexity
+
+**Phase 2: Silver Layer Standardization (2-6 weeks)**
+
+**Activities:**
+- Design standard data model (positions, transactions, securities, accounts)
+- Build transformation logic from Bronze → Silver
+- Implement validation rules and reconciliation
+- Create exception handling workflows
+
+**Deliverables:**
+- Silver layer tables with clean, standardized data
+- Reconciliation reports (source A vs. source B)
+- Exception dashboard for operations team
+- Data quality metrics and monitoring
+
+**Typical Duration**: 2-6 weeks depending on data complexity
+
+**Phase 3: Gold Layer Reporting Marts (2-6 weeks)**
+
+**Activities:**
+- Design Gold layer tables based on reporting requirements
+- Build aggregation logic from Silver → Gold
+- Create client-facing dashboards and reports
+- Optimize query performance
+
+**Deliverables:**
+- Gold layer tables for key business metrics
+- Client-ready reports and dashboards
+- Performance benchmarks (query times, refresh frequency)
+- User training and documentation
+
+**Typical Duration**: 2-6 weeks depending on reporting needs
+
+**Phase 4: Governance & Optimization (Ongoing)**
+
+**Activities:**
+- Monitor data quality and reconciliation
+- Add new data sources as needed
+- Refine business logic based on client feedback
+- Optimize performance and cost
+
+**Deliverables:**
+- Data quality scorecards
+- Continuous improvement backlog
+- Monthly data governance reviews
+
+**Typical Duration**: Ongoing operational management
+
+### When Users Ask About Medallion Architecture:
+
+- "What is Medallion Architecture?" → Explain the three layers (Bronze, Silver, Gold)
+- "Why do you use Medallion?" → Explain benefits (accuracy, auditability, speed, confidence)
+- "How long does implementation take?" → 4-12 weeks depending on complexity (4 phases)
+- "What's Bronze vs. Silver vs. Gold?" → Raw capture vs. Cleansed vs. Report-ready
+- "Data warehouse design?" → Medallion Architecture is our standard pattern
+- "How do you ensure data quality?" → Silver layer validation, Gold layer consistency
+- "Audit trail for compliance?" → Bronze layer preserves source, Silver tracks transformations
+- "Can we add new reports easily?" → Yes, Gold layer enables rapid report development
+- "Data lineage?" → Full lineage from Bronze (source) → Silver (cleaned) → Gold (metrics)
 
 ---
 
