@@ -3,6 +3,19 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Security & Compliance - Collation.AI | Enterprise-Grade Data Protection',
   description: 'Collation.AI ensures enterprise-grade security with SOC 2 compliance, end-to-end encryption, and robust data protection for financial data aggregation and automation.',
+  keywords: [
+    'financial data security',
+    'SOC 2 compliance',
+    'wealth management security',
+    'data encryption',
+    'financial data protection',
+    'enterprise security',
+    'data privacy compliance',
+    'secure data aggregation',
+    'financial services security',
+    'GDPR compliance',
+    'data governance',
+  ],
   openGraph: {
     title: 'Security & Compliance - Collation.AI | Enterprise-Grade Protection',
     description: 'Enterprise-grade security with SOC 2 compliance, end-to-end encryption, and robust data protection for financial data aggregation.',

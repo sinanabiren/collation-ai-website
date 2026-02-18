@@ -3,6 +3,16 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'About Us - Collation.AI | AI-Powered Financial Data Automation Team',
   description: 'Meet the Collation.AI team transforming wealth management with AI-powered data aggregation and automation. $100B+ in assets under reporting across 20+ clients.',
+  keywords: [
+    'Collation.AI team',
+    'wealth management technology company',
+    'AI data automation company',
+    'financial technology startup',
+    'wealth tech company',
+    'AI-powered fintech',
+    'data aggregation platform',
+    'financial services technology',
+  ],
   openGraph: {
     title: 'About Us - Collation.AI | AI-Powered Financial Data Automation',
     description: 'Meet the Collation.AI team transforming wealth management with AI-powered data aggregation and automation. $100B+ in assets under reporting.',

@@ -3,6 +3,18 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Blog - Collation.AI | Insights on AI, Data Automation & Wealth Management',
   description: 'Read the latest insights from Collation.AI on AI-powered data automation, wealth management technology, financial data aggregation, and industry best practices.',
+  keywords: [
+    'wealth management blog',
+    'AI data automation insights',
+    'financial technology blog',
+    'wealth tech articles',
+    'data aggregation best practices',
+    'AI in finance',
+    'portfolio management insights',
+    'financial data automation tips',
+    'RIA technology blog',
+    'family office technology insights',
+  ],
   openGraph: {
     title: 'Blog - Collation.AI | AI & Data Automation Insights',
     description: 'Latest insights on AI-powered data automation, wealth management technology, and financial data aggregation best practices.',
