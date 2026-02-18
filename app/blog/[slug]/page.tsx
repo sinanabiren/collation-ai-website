@@ -7,6 +7,76 @@ import { prisma } from '@/lib/prisma'
 
 // Blog post data - hardcoded posts
 const blogPosts: Record<string, any> = {
+  'service-as-software-ai-enterprise-tech': {
+    title: "The Dawn of Service-as-Software: AI's Bold Shift in Enterprise Tech",
+    publishedDate: 'Feb 18, 2026',
+    author: 'Sinan Biren',
+    content: `
+      <p>Traditional SaaS models face intense pressure from AI advancements, but established players are evolving into "Service-as-Software" (SaS) providers that automate entire workflows. This transition promises to blend software budgets with labor costs, unlocking massive growth opportunities for adaptable vendors.</p>
+
+      <h2>Why SaaS Feels Obsolete</h2>
+      <p>AI benchmarks like ARC-AGI-2 now exceed 60 points at costs of $1-10 per task, hitting the threshold for replacing human labor in key domains such as finance and legal. Hyperscalers like Amazon and Microsoft are ramping AI infrastructure spending toward $1 trillion yearly, prioritizing compute for agentic AI over basic tools. Enterprises demand more than productivity boosts; they seek full workflow automation, shifting value from seats to outcomes.</p>
+
+      <h2>Infrastructure Fuels the Super-Cycle</h2>
+      <p>Datacenter investments precede AI app deployment, mirroring past tech waves, with enterprise cloud migrations accelerating in 2026. Reports from AMD, SAP, and ServiceNow show doubled on-premises deployments and 90% AI inclusion in major deals. This sets up a 20-year enterprise AI era where software replaces employees, not just assists them.</p>
+
+      <h2>From Productivity to Full Replacement</h2>
+      <p>Legacy SaaS captures ~$1,200 annually per seat for time savings, but SaS targets $10,000 per automated workflow, merging software with payroll TAMs. Billable-hour industries like consulting face disruption as AI handles routine tasks at fractions of human rates. Vendors must pivot to outcome pricing to thrive, turning fear of obsolescence into revenue expansion.</p>
+
+      <h2>Incumbents' 10 Defensible Moats</h2>
+      <table style="width: 100%; border-collapse: collapse; margin: 2em 0;">
+        <thead>
+          <tr style="background-color: #f3f4f6;">
+            <th style="padding: 12px; text-align: left; border: 1px solid #e5e7eb;">Moat</th>
+            <th style="padding: 12px; text-align: left; border: 1px solid #e5e7eb;">Advantage for Established Vendors</th>
+            <th style="padding: 12px; text-align: left; border: 1px solid #e5e7eb;">Challenger Counter</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>Distribution</strong></td>
+            <td style="padding: 12px; border: 1px solid #e5e7eb;">Proven sales channels and contracts</td>
+            <td style="padding: 12px; border: 1px solid #e5e7eb;">Speed-to-value demos for quick adoption</td>
+          </tr>
+          <tr style="background-color: #f9fafb;">
+            <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>Data Context</strong></td>
+            <td style="padding: 12px; border: 1px solid #e5e7eb;">Own systems-of-record data</td>
+            <td style="padding: 12px; border: 1px solid #e5e7eb;">Federated search across apps</td>
+          </tr>
+          <tr>
+            <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>Switching Costs</strong></td>
+            <td style="padding: 12px; border: 1px solid #e5e7eb;">High migration barriers</td>
+            <td style="padding: 12px; border: 1px solid #e5e7eb;">Sidecar wrappers on legacy systems</td>
+          </tr>
+          <tr style="background-color: #f9fafb;">
+            <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>Workflow Integration</strong></td>
+            <td style="padding: 12px; border: 1px solid #e5e7eb;">Embedded AI in core UIs</td>
+            <td style="padding: 12px; border: 1px solid #e5e7eb;">Cross-app orchestration</td>
+          </tr>
+          <tr>
+            <td style="padding: 12px; border: 1px solid #e5e7eb;"><strong>Security/Compliance</strong></td>
+            <td style="padding: 12px; border: 1px solid #e5e7eb;">Battle-tested protocols</td>
+            <td style="padding: 12px; border: 1px solid #e5e7eb;">Rapid SOC 2 achievement</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>Additional moats include AI as a pricing layer, outcome models, vendor consolidation, investment scale, and proprietary business logic. These protect incumbents while AI-native startups target niches like support automation.</p>
+
+      <h2>Strategies for Investors and Leaders</h2>
+      <p>Private equity should audit for "workflow-wrapper" risks and enforce outcome pricing with 60% gross margin covenants. VCs must skip UI wrappers, favoring vertical agents with data moats. Founders: Build invisible agents, own data, price by results; IT leaders: Hire digital workers and block data scrapers.</p>
+
+      <p>Market fear accelerates this SaS pivot 18 months early, positioning quick adapters to dominate the labor-replacement TAM.</p>
+
+      <h2>References</h2>
+      <ol>
+        <li>q1-2026-pitchbook-analyst-note-saas-is-dead-long-live-sas.pdf</li>
+      </ol>
+    `,
+    date: '2026-02-18',
+    category: 'Enterprise AI',
+    readTime: '6 min read',
+  },
   'ai-agents-gossiping-security-risks': {
     title: "Just as we got excited about AI agents running chores for us, they've already started gossiping behind our backs?",
     publishedDate: 'Feb 12, 2026',
@@ -827,7 +897,9 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
   }
 
   // Get the hero image from blogPosts data
-  const heroImage = slug === 'ai-agents-gossiping-security-risks'
+  const heroImage = slug === 'service-as-software-ai-enterprise-tech'
+    ? '/blog-images/service-as-software-ai-enterprise.png'
+    : slug === 'ai-agents-gossiping-security-risks'
     ? '/blog-images/ai-agents-security-risks.png'
     : slug === 'is-the-saas-model-dying-or-being-reborn-through-ai'
     ? '/blog-images/saas-model-ai-transformation.png'

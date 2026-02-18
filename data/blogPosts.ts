@@ -6,9 +6,17 @@ export type BlogPost = {
   image: string;
   excerpt: string;
 };
-// Cache bust: 2026-02-12 10:00
+// Cache bust: 2026-02-18 09:00
 
 export const blogPosts: BlogPost[] = [
+  {
+    title: "The Dawn of Service-as-Software: AI's Bold Shift in Enterprise Tech",
+    author: "Sinan Biren",
+    date: "Feb 18, 2026",
+    url: "/blog/service-as-software-ai-enterprise-tech",
+    image: "/blog-images/service-as-software-ai-enterprise.png",
+    excerpt: "Traditional SaaS models face intense pressure from AI advancements, but established players are evolving into 'Service-as-Software' (SaS) providers that automate entire workflows. This transition promises to blend software budgets with labor costs, unlocking massive growth opportunities for adaptable vendors."
+  },
   {
     title: "Just as we got excited about AI agents running chores for us, they've already started gossiping behind our backs?",
     author: "Sinan Biren",
