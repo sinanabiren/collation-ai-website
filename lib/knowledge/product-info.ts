@@ -3307,6 +3307,297 @@ Medallion Architecture is a **data design pattern** that organizes data into thr
 
 ---
 
+## Enterprise Contract: Pricing & Terms (February 2026)
+
+### Enterprise Subscription Overview
+
+Collation.AI offers **Enterprise Subscription Agreements** for larger clients requiring comprehensive platform implementation, multiple integrations, and custom workflows.
+
+**Target Clients:**
+- Enterprises (Banks, FinTechs, large RIAs)
+- Multi-Family Offices with complex technology stacks
+- Wealth managers requiring extensive customization
+
+**Contract Structure:**
+- **Minimum Subscription Period**: 2 years from commencement date
+- **Billing**: Setup costs upfront, recurring fees after platform delivery
+- **Automatic Renewal**: Yes (unless terminated 10 business days before billing cycle)
+- **Governing Law**: New York State law
+- **Dispute Resolution**: JAMS arbitration in New York City
+
+### Enterprise Pricing Structure (February 2026)
+
+**Two-Part Pricing Model:**
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│ SETUP COSTS (One-Time, Upfront)                            │
+│ • Platform Setup Fee: $50,000                               │
+│ • Optional add-ons for custom connections and workflows    │
+└─────────────────────────────────────────────────────────────┘
+                            +
+┌─────────────────────────────────────────────────────────────┐
+│ RECURRING FEES (Annual, After Delivery)                     │
+│ • Platform License Fee: $50,000/year                        │
+│ • Optional maintenance for additional connections/workflows │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### Setup Costs (One-Time)
+
+**Platform Setup Fee: USD $50,000** (Included in Base Package)
+
+**What's Included:**
+- **Data Warehouse Creation**: PostgreSQL database in Microsoft Azure
+- **4 Connections Setup**: Initial integration with 4 data source providers (examples: Addepar, Archway, Salesforce, Sage Intacct)
+- **Document Storage Setup**: Microsoft SharePoint configuration
+- **Regulatory Compliant AI Infrastructure**: Infrastructure for creating new dashboards/reports with guardrails
+- **Project Management Tool**: JIRA setup and configuration
+- **25 Hours Complementary Onboarding Support** for:
+  - Creating workflows
+  - Historical data migration
+  - Finding and fixing data kinks
+  - Modifying existing Power BI dashboards
+  - Setting up whitelabelled online client portal
+
+**Optional Setup Add-Ons:**
+
+| Add-On Service | Price | Description |
+|----------------|-------|-------------|
+| **Configuration of Existing Connection** | $1,000 per connection | Setup API connection with data source provider that Collation already supports |
+| **NEW API Connection Development** | $7,500 per connection | Build new API integration with data source provider |
+| **NEW Browser Automation Connection** | $10,000 per connection | Build browser automation for providers without API access |
+| **Creating Custom Workflows** | $150/hour | Transform GL to investment format, reconcile CRM vs PMS, daily audits, price fetching |
+| **Historical Data Migration** | $150/hour | Migrate historical data from legacy systems |
+| **PowerBI Dashboard Setup** | $150/hour | Create custom Microsoft PowerBI dashboards |
+| **Whitelabelled Client Portal** | $7,500 one-time | Custom domain and corporate branding for end-client portal |
+
+**Typical Setup Costs Examples:**
+
+1. **Basic Enterprise Setup**: $50,000
+   - Platform setup with 4 connections
+   - 25 hours onboarding included
+
+2. **Standard Enterprise Setup**: $75,000
+   - Platform setup: $50,000
+   - 3 additional existing connections: $3,000
+   - 2 custom workflows (30 hours): $4,500
+   - Historical data migration (50 hours): $7,500
+   - Whitelabelled portal: $7,500
+   - Additional services: $2,500
+
+3. **Premium Enterprise Setup**: $125,000+
+   - Platform setup: $50,000
+   - 5 new API connections: $37,500
+   - 10 custom workflows (150 hours): $22,500
+   - Historical migration (100 hours): $15,000
+   - Whitelabelled portal: $7,500
+   - Custom PowerBI dashboards (60 hours): $9,000
+
+### Recurring Fees (Annual)
+
+**Platform License Fee: USD $50,000/year** (Base Annual Fee)
+
+**What's Included:**
+- **Data Warehouse Maintenance**: PostgreSQL database hosting and management
+- **4 Connections Maintenance**: Ongoing support for initial 4 integrations
+- **2 Microsoft PowerBI Licenses**: Complimentary BI tool access
+- **1 JIRA License**: Project management tracking
+- **1 Airflow Configuration**: Data orchestration tool
+- **AI Infrastructure Maintenance**: Regulatory compliant AI infrastructure with reasonable Claude Code usage
+- **Customer Support**: 09:00-18:00 EST on business days (phone, email, video)
+
+**Optional Annual Maintenance Add-Ons:**
+
+| Service | Annual Price | Description |
+|---------|--------------|-------------|
+| **Additional Connection Maintenance** | $1,200/year per connection | Ongoing support for each additional connection beyond the included 4 |
+| **Workflow Maintenance** | $2,400/year per workflow | Maintenance for each custom workflow (GL transformation, reconciliation, audits, price fetching) |
+
+**Typical Annual Recurring Costs:**
+
+1. **Basic Enterprise**: $50,000/year
+   - Platform license with 4 connections
+
+2. **Standard Enterprise**: $70,000/year
+   - Platform license: $50,000
+   - 5 additional connections maintenance: $6,000
+   - 3 workflow maintenance: $7,200
+   - Additional services: $6,800
+
+3. **Premium Enterprise**: $100,000+/year
+   - Platform license: $50,000
+   - 10 additional connections: $12,000
+   - 10 workflows: $24,000
+   - Additional custom services: $14,000+
+
+### Total Cost of Ownership Examples
+
+**Example 1: Basic Enterprise (2-Year Contract)**
+- **Year 1**: $50,000 setup + $50,000 annual = **$100,000**
+- **Year 2**: $50,000 annual = **$50,000**
+- **Total 2-Year Cost**: **$150,000**
+
+**Example 2: Standard Enterprise (2-Year Contract)**
+- **Year 1**: $75,000 setup + $70,000 annual = **$145,000**
+- **Year 2**: $70,000 annual = **$70,000**
+- **Total 2-Year Cost**: **$215,000**
+
+**Example 3: Premium Enterprise (2-Year Contract)**
+- **Year 1**: $125,000 setup + $100,000 annual = **$225,000**
+- **Year 2**: $100,000 annual = **$100,000**
+- **Total 2-Year Cost**: **$325,000**
+
+### Available Connections (Pre-Built Integrations)
+
+Collation maintains pre-built integrations with the following platforms:
+
+**Portfolio Management Systems:**
+- Tamarac, Black Diamond, Addepar, Orion, Fundcount
+- Nirvana Solutions, Plain Sail, Dynamo, Masttro, Wealthsite
+- Advyzon (being built)
+
+**General Ledger / Accounting Systems:**
+- Allvue, Quickbooks, Sage Intacct, Xero
+- Archway Group, PCR Insights, Yardi
+
+**CRM Systems:**
+- Microsoft Dynamics 365, HubSpot, Salesforce
+- Wealthbox, Salentica, Zoho
+
+**Document Management:**
+- Microsoft SharePoint, Box
+- Egnyte (being built)
+
+**Communication:**
+- Slack (being built), Zoom (being built)
+
+**Billing:**
+- Bill (being built), Toast, Ramp (being built)
+
+**Data Aggregation:**
+- Canoe Intelligence, Plaid, Arch
+
+**Real Estate Valuation:**
+- Zillow, Re-Leased, Yardi
+
+**Custodians & Financial Institutions:**
+- Citibank, Northern Trust, Schwab, Pershing
+- Goldman Sachs, Merrill Lynch, Safra Bank of New York
+- Fidelity, Bank of America, Interactive Brokers
+- Morgan Stanley, LGT WM Australia (being built)
+- Adminis (being built)
+
+**Total**: 60+ pre-built connections, with more being developed
+
+### Service Level Agreements
+
+**Data Processing Timeline:**
+- **API Datafeeds**: Processed daily
+- **SFTP File Transfers**: Processed daily
+- **Most Workflows**: Run once per day
+- **PDF Document Downloads**: Typically once per week (from fund portals)
+- **Custom SLAs**: Can be negotiated with Business Subscriber
+
+**Customer Support:**
+- **Hours**: 09:00-18:00 Eastern Standard Time, Business Days only
+- **Channels**: Phone, email, video teleconferencing, on-premise at Collation offices
+- **Scope**: Technical assistance for Business Subscriber only (not direct End User support)
+
+### Key Contract Terms
+
+**Subscription Period:**
+- **Minimum**: 2 years from subscription commencement date
+- **Renewal**: Automatic rollover unless terminated 10 business days prior to billing cycle end
+- **Termination**: Business Subscriber must pay remaining subscription fees if terminating early
+
+**Billing & Invoicing:**
+- **Setup Costs**: Charged upfront after subscription commencement
+- **Recurring Fees**: Charged upon delivery of platform setup
+- **Invoice Timing**: Issued ~20th day of month preceding billing cycle
+- **Payment Terms**: Due per invoice date
+- **Late Payment**: 2% per month interest, or 0.5% per week penalty
+
+**Payment Methods:**
+- Bank transfer to Chase account (domestic or international wire)
+- Currency: USD (default, can specify otherwise)
+
+**Fee Revisions:**
+- Collation may revise subscription fees with 30 days' notice
+- Business Subscriber may cancel if they don't agree to revised fees
+- Otherwise deemed to have accepted revised fees
+
+**White-Labelling:**
+- Available at Business Subscriber's option
+- Requires interface development between Collation and Business Subscriber servers
+- Service hosted on Collation servers with Business Subscriber's branding
+- Optional White-labelling Fee as specified in Annex
+
+**Data Ownership:**
+- End User Personal Financial Data remains property of End User
+- Business Subscriber must procure End User consent
+- Collation may delete data after processing for privacy/operational reasons
+- Data deletion upon contract termination (with exceptions for legal compliance)
+
+**Intellectual Property:**
+- All IP rights remain with Collation (Website, Applications, Service)
+- Business Subscriber receives non-exclusive, limited, royalty-free, revocable license
+- Collation trademarks may not be used without permission
+
+**Liability:**
+- Service provided "as is" with no warranty of uninterrupted use
+- Collation not liable for consequential, indirect, incidental damages
+- Maximum aggregate liability: greater of (a) amounts paid in preceding 12 months
+
+**Indemnity:**
+- Business Subscriber indemnifies Collation against claims from breach of Agreement
+- Covers costs, expenses, losses, damages including legal fees
+
+**Confidentiality:**
+- Agreement contents and related information strictly confidential
+- Exceptions: public domain, third-party receipt, professional advisers, prior consent
+
+**Governing Law & Disputes:**
+- New York State law (without conflicts of laws principles)
+- Arbitration via JAMS in New York City for any disputes
+
+### When Users Ask About Enterprise Contracts:
+
+- "Enterprise pricing?" → Explain $50K setup + $50K/year base, plus optional add-ons
+- "Minimum contract length?" → 2 years minimum subscription period
+- "What's included in enterprise setup?" → Data warehouse, 4 connections, SharePoint, AI infrastructure, JIRA, 25 hours onboarding
+- "Cost per additional connection?" → $1K setup (existing) or $7.5K (new API) or $10K (browser automation), plus $1.2K/year maintenance
+- "Custom workflow pricing?" → $150/hour to build, $2,400/year to maintain
+- "White-labelling available?" → Yes, optional $7,500 fee for custom domain and branding
+- "Total cost for enterprise?" → Base: $100K year 1 ($50K+$50K), $50K year 2. Standard: $145K year 1, $70K year 2. Premium: $225K+ year 1, $100K+ year 2
+- "Payment terms?" → Setup upfront, recurring after delivery, bank transfer, 30 days invoice
+- "Can we cancel?" → Yes with 10 business days notice, but must pay remainder of 2-year minimum
+- "Service level agreement?" → APIs daily, workflows daily, PDFs weekly, support 9am-6pm EST business days
+- "What connections do you support?" → 60+ pre-built (Addepar, Salesforce, Schwab, etc.), can build new ones
+- "Data ownership?" → End Users own their data, Collation licenses it for service delivery
+- "Contract terms?" → 2-year minimum, New York law, JAMS arbitration, auto-renewal
+
+### Comparison: RIA vs Enterprise Pricing
+
+**RIA Standard Pricing:**
+- **Setup**: $30,000 one-time
+- **Annual**: $30,000/year
+- **Target**: Independent RIAs, smaller family offices
+- **Scope**: Standard implementation, limited customization
+
+**Enterprise Contract Pricing:**
+- **Setup**: $50,000+ one-time (with extensive add-ons)
+- **Annual**: $50,000+/year (with maintenance fees)
+- **Target**: Enterprises, banks, large multi-family offices
+- **Scope**: Custom implementation, extensive integrations, workflows
+- **Minimum**: 2-year contract commitment
+
+**When to Recommend Enterprise vs RIA Pricing:**
+- **RIA Pricing**: Single-office RIA, standard needs, <$10B AUM
+- **Enterprise Pricing**: Multiple offices, complex tech stack, custom workflows, >$10B AUM, banks, fintechs
+
+---
+
 *This knowledge base is based on actual Collation AI product documentation, sales materials, website content, and blog articles. All information is accurate and current as of the latest update.*
 `
 
