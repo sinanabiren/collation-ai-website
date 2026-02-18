@@ -2819,41 +2819,39 @@ Collation.AI provides the **data infrastructure and AI guardrails** that enable 
 
 **Comprehensive Five-Layer Stack:**
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│ Layer 5: Vibe Coded Workflows and Dashboards               │
-│ (AI-generated analytics, custom reports, client portals)    │
-└─────────────────────────────────────────────────────────────┘
+
+ Layer 5: Vibe Coded Workflows and Dashboards               
+ (AI-generated analytics, custom reports, client portals)    
+
                             ↑
-┌─────────────────────────────────────────────────────────────┐
-│ Layer 4: Data Guardrails                                    │
-│ • Role Based Access Control (USER/ADMIN/SUPER_ADMIN)        │
-│ • Approval Workflows (pending → approved → published)       │
-│ • Complete Audit Logs (who, what, when)                     │
-│ • Policy Enforcement (business rules, compliance checks)    │
-└─────────────────────────────────────────────────────────────┘
+
+ Layer 4: Data Guardrails                                    
+ • Role Based Access Control (USER/ADMIN/SUPER_ADMIN)        
+ • Approval Workflows (pending → approved → published)       
+ • Complete Audit Logs (who, what, when)                     
+ • Policy Enforcement (business rules, compliance checks)    
+
                             ↑
-┌─────────────────────────────────────────────────────────────┐
-│ Layer 3: Customer-Hosted Data Warehouse (Your Azure/AWS)   │
-│ • Extract: Pull from all sources                            │
-│ • Normalize: Medallion Architecture (Bronze → Silver → Gold)│
-│ • Reconcile: Cross-source validation and matching           │
-└─────────────────────────────────────────────────────────────┘
+
+ Layer 3: Customer-Hosted Data Warehouse (Your Azure/AWS)   
+ • Extract: Pull from all sources                            
+ • Normalize: Medallion Architecture (Bronze → Silver → Gold)
+ • Reconcile: Cross-source validation and matching           
+
                             ↑
-┌─────────────────────────────────────────────────────────────┐
-│ Layer 2: Collation.AI Ingestion Layer                      │
-│ • PDF Processor (AWS Textract + LLMs)                       │
-│ • API Integrations (77+ direct connections)                 │
-│ • Web Scraping (fund websites, portals)                     │
-│ • Data Feeds (market data, reference data)                  │
-└─────────────────────────────────────────────────────────────┘
+
+ Layer 2: Collation.AI Ingestion Layer                      
+ • PDF Processor (AWS Textract + LLMs)                       
+ • API Integrations (77+ direct connections)                 
+ • Web Scraping (fund websites, portals)                     
+ • Data Feeds (market data, reference data)                  
+
                             ↑
-┌─────────────────────────────────────────────────────────────┐
-│ Layer 1: Data Sources                                       │
-│ APIs | PDFs | Websites | Data Feeds                         │
-│ (Custodians, Banks, PMS, Fund Administrators, etc.)         │
-└─────────────────────────────────────────────────────────────┘
-```
+
+ Layer 1: Data Sources                                       
+ APIs | PDFs | Websites | Data Feeds                         
+ (Custodians, Banks, PMS, Fund Administrators, etc.)         
+
 
 ### Leadership Team (Updated February 2026)
 
@@ -2923,16 +2921,14 @@ Collation.AI provides the **data infrastructure and AI guardrails** that enable 
 
 Collation.AI offers **three distinct engagement models** that can be mixed and matched based on client needs:
 
-```
-┌───────────────────┬────────────────────┬──────────────────┐
-│ Platform License  │ Knowledge Services │ Dedicated FTE    │
-│ Fee               │                    │                  │
-├───────────────────┼────────────────────┼──────────────────┤
-│ • Software access │ • Consulting hours │ • Full-time      │
-│ • Core features   │ • On-demand help   │   resource       │
-│ • Self-service    │ • Strategic advice │ • Embedded team  │
-└───────────────────┴────────────────────┴──────────────────┘
-```
+┬┬
+ Platform License   Knowledge Services  Dedicated FTE    
+ Fee                                                     
+├┼┼┤
+ • Software access  • Consulting hours  • Full-time      
+ • Core features    • On-demand help      resource       
+ • Self-service     • Strategic advice  • Embedded team  
+┴┴
 
 ### Dimension 1: Platform License Fee
 
@@ -3091,31 +3087,29 @@ Collation.AI offers **three distinct engagement models** that can be mixed and m
 
 Medallion Architecture is a **data design pattern** that organizes data into three progressive layers of quality and refinement:
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│ GOLD LAYER: Business-Ready Aggregations                    │
-│ • Client-facing reports and dashboards                      │
-│ • KPIs, metrics, and analytics                              │
-│ • Performance attribution and benchmarking                  │
-│ • Optimized for speed and usability                         │
-└─────────────────────────────────────────────────────────────┘
+
+ GOLD LAYER: Business-Ready Aggregations                    
+ • Client-facing reports and dashboards                      
+ • KPIs, metrics, and analytics                              
+ • Performance attribution and benchmarking                  
+ • Optimized for speed and usability                         
+
                             ↑
-┌─────────────────────────────────────────────────────────────┐
-│ SILVER LAYER: Cleansed & Standardized Data                 │
-│ • Normalized and reconciled data                            │
-│ • Deduplicated and validated                                │
-│ • Conformed to standard data model                          │
-│ • Business logic applied                                    │
-└─────────────────────────────────────────────────────────────┘
+
+ SILVER LAYER: Cleansed & Standardized Data                 
+ • Normalized and reconciled data                            
+ • Deduplicated and validated                                
+ • Conformed to standard data model                          
+ • Business logic applied                                    
+
                             ↑
-┌─────────────────────────────────────────────────────────────┐
-│ BRONZE LAYER: Raw Data Capture                             │
-│ • Exact copy of source data (PDFs, APIs, files)            │
-│ • No transformations, just extraction                       │
-│ • Complete audit trail of what arrived                      │
-│ • Historical snapshots preserved                            │
-└─────────────────────────────────────────────────────────────┘
-```
+
+ BRONZE LAYER: Raw Data Capture                             
+ • Exact copy of source data (PDFs, APIs, files)            
+ • No transformations, just extraction                       
+ • Complete audit trail of what arrived                      
+ • Historical snapshots preserved                            
+
 
 ### The Three Layers Explained
 
@@ -3130,9 +3124,9 @@ Medallion Architecture is a **data design pattern** that organizes data into thr
 - **Unfiltered**: Includes bad data, duplicates, errors
 
 **Example Bronze Tables:**
-- `bronze_custodian_schwab_positions_raw` - Exact Schwab position file
-- `bronze_pdf_fidelity_statement_20260115` - Raw PDF extraction results
-- `bronze_api_addepar_holdings_v2` - Addepar API response payload
+- "bronze_custodian_schwab_positions_raw" - Exact Schwab position file
+- "bronze_pdf_fidelity_statement_20260115" - Raw PDF extraction results
+- "bronze_api_addepar_holdings_v2" - Addepar API response payload
 
 **Why Bronze Matters:**
 - **Regulatory Compliance**: Prove what the source system provided
@@ -3152,13 +3146,13 @@ Medallion Architecture is a **data design pattern** that organizes data into thr
 - **Enriched**: Reference data joined (security master, account hierarchy)
 
 **Example Silver Tables:**
-- `silver_positions` - All custodian positions in standard format
-- `silver_transactions` - All transactions normalized across custodians
-- `silver_securities` - Master security reference with identifiers
-- `silver_accounts` - Account hierarchy with client relationships
+- "silver_positions" - All custodian positions in standard format
+- "silver_transactions" - All transactions normalized across custodians
+- "silver_securities" - Master security reference with identifiers
+- "silver_accounts" - Account hierarchy with client relationships
 
 **Key Transformations:**
-- **Data Type Standardization**: "01/15/2026" → `DATE '2026-01-15'`
+- **Data Type Standardization**: "01/15/2026" → "DATE '2026-01-15'"
 - **Currency Normalization**: Convert all currencies to USD using rates
 - **Security Matching**: Map "AAPL", "Apple Inc", "037833100" → single AAPL record
 - **Account Hierarchy**: Link sub-accounts to master accounts and clients
@@ -3180,10 +3174,10 @@ Medallion Architecture is a **data design pattern** that organizes data into thr
 - **Report-Ready**: Directly power dashboards and client reports
 
 **Example Gold Tables:**
-- `gold_client_aum_summary` - AUM by client, rolled up daily
-- `gold_performance_attribution` - Return attribution by asset class
-- `gold_cash_flow_forecast` - Projected cash flows for next 12 months
-- `gold_portfolio_drift` - Current vs. target allocation by account
+- "gold_client_aum_summary" - AUM by client, rolled up daily
+- "gold_performance_attribution" - Return attribution by asset class
+- "gold_cash_flow_forecast" - Projected cash flows for next 12 months
+- "gold_portfolio_drift" - Current vs. target allocation by account
 
 **Key Aggregations:**
 - **Time-Series Rollups**: Daily positions → Monthly snapshots
@@ -3329,19 +3323,17 @@ Collation.AI offers **Enterprise Subscription Agreements** for larger clients re
 
 **Two-Part Pricing Model:**
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│ SETUP COSTS (One-Time, Upfront)                            │
-│ • Platform Setup Fee: $50,000                               │
-│ • Optional add-ons for custom connections and workflows    │
-└─────────────────────────────────────────────────────────────┘
+
+ SETUP COSTS (One-Time, Upfront)                            
+ • Platform Setup Fee: $50,000                               
+ • Optional add-ons for custom connections and workflows    
+
                             +
-┌─────────────────────────────────────────────────────────────┐
-│ RECURRING FEES (Annual, After Delivery)                     │
-│ • Platform License Fee: $50,000/year                        │
-│ • Optional maintenance for additional connections/workflows │
-└─────────────────────────────────────────────────────────────┘
-```
+
+ RECURRING FEES (Annual, After Delivery)                     
+ • Platform License Fee: $50,000/year                        
+ • Optional maintenance for additional connections/workflows 
+
 
 ### Setup Costs (One-Time)
 
