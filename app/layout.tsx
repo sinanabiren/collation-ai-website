@@ -107,11 +107,100 @@ export default function RootLayout({
               '@context': 'https://schema.org',
               '@type': 'Organization',
               name: 'Collation AI',
+              alternateName: 'Collation.AI',
               url: 'https://www.collation.ai',
               logo: 'https://www.collation.ai/logo.png',
-              description: 'AI-powered data processing and automation platform',
+              description: 'AI native infrastructure for wealth managers - data aggregation, automation, and AI-powered analytics platform',
+              foundingDate: '2023',
               sameAs: [
-                // Add social media URLs here
+                'https://www.linkedin.com/company/collation-ai',
+              ],
+              contactPoint: {
+                '@type': 'ContactPoint',
+                email: 'hello@collation.ai',
+                contactType: 'Customer Support',
+              },
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'SoftwareApplication',
+              name: 'Collation.AI Platform',
+              applicationCategory: 'BusinessApplication',
+              operatingSystem: 'Web',
+              offers: {
+                '@type': 'Offer',
+                price: '0',
+                priceCurrency: 'USD',
+              },
+              description: 'AI native infrastructure that creates data warehouses, deploys AI bots for data ingestion, performs automated reconciliation, and enables compliant AI coding with guardrails for wealth management firms.',
+              featureList: [
+                'AI-powered data aggregation from any source (APIs, PDFs, SFTPs)',
+                'Customer-hosted data warehouse on Azure/AWS',
+                'Automated data reconciliation and cleansing',
+                'Unified data model across business',
+                'Compliant AI coding with guardrails and access controls',
+                'AI bots for workflow automation',
+                'Financial reporting and analytics',
+              ],
+              audience: {
+                '@type': 'Audience',
+                audienceType: 'Wealth Managers, RIAs, Family Offices, Banks, FinTechs',
+              },
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'FAQPage',
+              mainEntity: [
+                {
+                  '@type': 'Question',
+                  name: 'What is Collation.AI?',
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: 'Collation.AI creates AI native infrastructure for wealth managers, enabling AI-powered analytics, reporting, workflows, and business efficiency. We service Single and Multi Family Offices, RIAs, and Enterprises like Banks and FinTechs.',
+                  },
+                },
+                {
+                  '@type': 'Question',
+                  name: 'What does AI native infrastructure include?',
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: 'Our infrastructure includes customer-hosted data warehouses, AI bots for data ingestion from any source (APIs, SFTPs, PDFs, websites), automated data reconciliation and cleansing, unified data models, and compliant AI coding with guardrails for secure access.',
+                  },
+                },
+                {
+                  '@type': 'Question',
+                  name: 'Who uses Collation.AI?',
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: 'We serve 25+ wealth management clients including Single and Multi Family Offices, RIAs, and Enterprises such as Banks and FinTechs, managing over $100 billion in assets under reporting with 100+ active AI bots.',
+                  },
+                },
+                {
+                  '@type': 'Question',
+                  name: 'How is Collation.AI deployed?',
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: 'Collation.AI can be deployed as an overlay on your existing tech stack/SaaS or as a standalone solution. The data warehouse is hosted in your own Azure or AWS account with full admin-level access.',
+                  },
+                },
+                {
+                  '@type': 'Question',
+                  name: 'What makes Collation.AI different from other wealth management technology vendors?',
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: 'Collation.AI provides true AI-native infrastructure with compliance guardrails, allowing wealth managers to use AI tools like Claude Code securely. We offer customer-hosted data warehouses, automated data ingestion from any source, and built-in compliance controls that prevent PII leaks and enforce role-based access.',
+                  },
+                },
               ],
             }),
           }}
