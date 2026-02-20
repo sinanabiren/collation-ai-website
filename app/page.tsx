@@ -43,6 +43,10 @@ const Home = () => {
   const [showVideo, setShowVideo] = useState(false);
   const [heroAnimationComplete, setHeroAnimationComplete] = useState(false);
   const [showReportingHeader, setShowReportingHeader] = useState(false);
+  const [showReconciliationOverlay, setShowReconciliationOverlay] = useState(false);
+  const [showDataAggregationOverlay, setShowDataAggregationOverlay] = useState(false);
+  const [showDataWarehouseOverlay, setShowDataWarehouseOverlay] = useState(false);
+  const [showWorkflowOverlay, setShowWorkflowOverlay] = useState(false);
   const [blogPosts, setBlogPosts] = useState(staticBlogPosts);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [agreedToPrivacy, setAgreedToPrivacy] = useState(false);
@@ -74,11 +78,19 @@ const Home = () => {
       .catch(error => console.error('Error fetching blog posts:', error));
   }, []);
 
+  // Show Reconciliation overlay when that section of animation appears (around 2.5 seconds)
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowReconciliationOverlay(true);
+    }, 2500);
+    return () => clearTimeout(timer);
+  }, []);
+
   // Show Reporting header after Workflow Automation section (around 8.5 seconds)
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowReportingHeader(true);
-    }, 8500);
+    }, 8100);
     return () => clearTimeout(timer);
   }, []);
 
@@ -87,6 +99,30 @@ const Home = () => {
     const timer = setTimeout(() => {
       setHeroAnimationComplete(true);
     }, 9000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Show Data Aggregation overlay immediately
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowDataAggregationOverlay(true);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Show Data Warehouse overlay (around 1.5 seconds)
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowDataWarehouseOverlay(true);
+    }, 1500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Show Workflow Automation overlay (around 5.5 seconds)
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowWorkflowOverlay(true);
+    }, 5500);
     return () => clearTimeout(timer);
   }, []);
 
@@ -210,22 +246,114 @@ const Home = () => {
                   loop={false}
                   speed={3}
                 />
+                {/* Data Aggregation Overlay */}
+                {showDataAggregationOverlay && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5 }}
+                    className="absolute text-center pointer-events-none"
+                    style={{
+                      top: '8.5%',
+                      left: '0%',
+                      fontSize: '0.95vw',
+                      fontWeight: 400,
+                      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+                      color: '#000000',
+                      letterSpacing: '0',
+                      backgroundColor: '#ffffff',
+                      padding: '4px 8px',
+                    }}
+                  >
+                    Data Aggregation
+                  </motion.div>
+                )}
+                {/* Your Data Warehouse Overlay */}
+                {showDataWarehouseOverlay && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5 }}
+                    className="absolute text-center pointer-events-none"
+                    style={{
+                      top: '14.5%',
+                      left: '15.25%',
+                      fontSize: '0.95vw',
+                      fontWeight: 400,
+                      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+                      color: '#000000',
+                      letterSpacing: '0',
+                      backgroundColor: '#ffffff',
+                      padding: '4px 8px',
+                    }}
+                  >
+                    Your Data Warehouse
+                  </motion.div>
+                )}
+                {/* Reconciliation Overlay - Covers embedded text in Lottie animation */}
+                {showReconciliationOverlay && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5 }}
+                    className="absolute text-center pointer-events-none"
+                    style={{
+                      top: '-3.75%',
+                      left: '31%',
+                      fontSize: '0.95vw',
+                      fontWeight: 400,
+                      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+                      color: '#000000',
+                      letterSpacing: '0',
+                      backgroundColor: '#ffffff',
+                      padding: '4px 8px',
+                    }}
+                  >
+                    Fully Compliant Data Guardrails
+                  </motion.div>
+                )}
+                {/* Workflow Automation Overlay */}
+                {showWorkflowOverlay && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5 }}
+                    className="absolute text-center pointer-events-none"
+                    style={{
+                      top: '-0.5%',
+                      left: '59.25%',
+                      fontSize: '0.95vw',
+                      fontWeight: 400,
+                      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+                      color: '#000000',
+                      letterSpacing: '0',
+                      backgroundColor: '#ffffff',
+                      padding: '4px 8px',
+                    }}
+                  >
+                    Workflow Automation
+                  </motion.div>
+                )}
                 {/* Reporting Header Overlay - Appears after Workflow Automation */}
                 {showReportingHeader && (
                   <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.5 }}
-                    className="absolute text-center pointer-events-none text-foreground"
+                    className="absolute text-center pointer-events-none"
                     style={{
-                      top: '-2.5%',
-                      right: '13.5%',
-                      fontSize: '0.7vw',
+                      top: '-3.75%',
+                      right: '4%',
+                      fontSize: '0.95vw',
                       fontWeight: 400,
-                      letterSpacing: '0.02em',
+                      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+                      color: '#000000',
+                      letterSpacing: '0',
+                      backgroundColor: '#ffffff',
+                      padding: '4px 8px',
                     }}
                   >
-                    Reporting
+                    AI Generated Reporting
                   </motion.div>
                 )}
                 {/* Interactive Zoom Hotspots */}
@@ -647,7 +775,7 @@ const Home = () => {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-2">
-              Over 20+ Clients
+              Over 25+ Clients
             </h2>
             <h3 className="text-3xl font-semibold text-foreground">
               Used Our Agentic AI Bots
@@ -1202,7 +1330,7 @@ const benefits = [
 const impactStats = [
   { value: 100, suffix: "B+", prefix: "$", label: "Assets Under Reporting" },
   { value: 100, suffix: "+", prefix: "", label: "Active Agentic AI Bots" },
-  { value: 20, suffix: "+", prefix: "", label: "Wealth Manager Clients" },
+  { value: 25, suffix: "+", prefix: "", label: "Wealth Manager Clients" },
   { value: 4, suffix: "", prefix: "", label: "Locations" }
 ];
 
