@@ -106,7 +106,7 @@ const Home = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowDataAggregationOverlay(true);
-    }, 1000);
+    }, 700);
     return () => clearTimeout(timer);
   }, []);
 
