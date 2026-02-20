@@ -82,26 +82,28 @@ Collation.AI creates **AI native infrastructure** for wealth managers, enabling 
 - **About Us** (/about-us) - Team and company background
 - **Blog** (/blog) - Insights on AI, data automation, wealth management
 
-## Connections & Integrations (11,267 Total Integrations)
+## Connections & Integrations (11,278 Total Integrations)
 
-Collation.AI connects to **11,267+ data sources** across two integration networks:
+Collation.AI connects to **11,278+ data sources** across two integration networks:
 
 ### Integration Network Breakdown:
-- **77 Collation.AI Direct Integrations** - Native, direct API connections
+- **88 Collation.AI Direct Integrations** - Native, direct API connections
 - **11,190 Via Partner Network** - Extended integrations through partner APIs (Plaid, Yodlee, etc.)
 
-### Collation.AI Direct Integrations (77 Native Connections):
+### Collation.AI Direct Integrations (88 Native Connections):
 
 **Custodians & Financial Institutions:**
 - Fidelity, Schwab, Pershing, Northern Trust
 - Goldman Sachs, Merrill Lynch, Raymond James
 - Citibank, Safra Bank of New York
+- LGT Wealth Management Australia, Adminis
 
 **Portfolio Management & Reporting:**
 - Addepar, Black Diamond, Orion, Tamarac
 - Envestnet, eMoney, Morningstar
 - Factset, ICE Data Services, LSEG Data & Analytics
 - YCharts, PitchBook, PREQIN
+- Advyzon
 
 **Alternative Investments:**
 - Allvue, Dynamo, PCR Insights
@@ -119,6 +121,7 @@ Collation.AI connects to **11,267+ data sources** across two integration network
 **Accounting & ERP:**
 - QuickBooks, Xero, Sage Intacct
 - Oracle NetSuite, Microsoft Dynamics 365
+- Bill, Ramp
 
 **Data & Cloud Platforms:**
 - Microsoft Azure, Amazon AWS, Snowflake
@@ -127,12 +130,12 @@ Collation.AI connects to **11,267+ data sources** across two integration network
 
 **Document Management:**
 - Box, Microsoft OneDrive, Microsoft SharePoint
-- DocuSign
+- DocuSign, Egnyte
 
 **Communication & Workflow:**
 - HubSpot, Slack, Monday.com
 - Zendesk, Twilio, SendGrid
-- Intuit Mailchimp
+- Intuit Mailchimp, Zoom
 
 **Real Estate & Property Management:**
 - Yardi, Zillow, Re-Leased, Toast
@@ -142,6 +145,7 @@ Collation.AI connects to **11,267+ data sources** across two integration network
 
 **Other Systems:**
 - Zoho, ADP, Zeplyn
+- Foundation Power, Quiltt
 
 ### Partner Network Integrations (11,190 Connections):
 
@@ -192,8 +196,8 @@ Through partner APIs (Plaid, Yodlee, Quovo, Tink, etc.), Collation.AI connects t
 - Document storage and management
 
 **When Users Ask About Integrations:**
-- We support 11,267+ connections total
-- 77 direct native integrations with major platforms
+- We support 11,278+ connections total
+- 88 direct native integrations with major platforms
 - 11,190+ institutions via partner network
 - If a specific institution is requested, explain we likely support it through direct or partner connections
 - Offer to check specific integration availability
@@ -1169,16 +1173,16 @@ We provide several resources that users can download for more detailed informati
 ## Collation AI Integration Ecosystem
 
 ### Overview
-- **Total Connections:** 11,273 integrations
-- **Direct Integrations (Collation.ai Direct):** 83 platforms
+- **Total Connections:** 11,278 integrations
+- **Direct Integrations (Collation.ai Direct):** 88 platforms
 - **Partner Network (Via Partner Network):** 11,190 institutions
 
 The connections page at /connections provides a searchable interface with grid/list views, alphabetical filtering, and filtering by integration type (Direct vs Partner).
 
-### Direct Integrations (83 platforms)
+### Direct Integrations (88 platforms)
 Collation AI directly integrates with the following financial platforms, portfolio management systems, and data providers:
 
-Addepar, ADP, ARCH, Allvue, Altruist, Amazon AWS, Archway Group, Black Diamond, Box, Canoe Intelligence, Citibank, DTCC, Databricks, DocuSign, Dynamo, Envestnet, FactSet, Fidelity, Fundcount, Goldman Sachs, HubSpot, ICE Data Services, Intuit Mailchimp, LSEG Data & Analytics, Masttro, Merrill Lynch, Microsoft Azure, Microsoft Dynamics 365, Microsoft OneDrive, Microsoft Power BI, Microsoft SharePoint, Monday.com, MoneyGuide, Morningstar, MySQL, Nirvana Solutions, Northern Trust, Oracle NetSuite, Orion, PCR Insights, PREQIN, Pershing, PitchBook, Plaid, Plain Sail, PostgreSQL, Practifi, Quickbooks, Raymond James, Redtail, SS&C, Sage Intacct, Salesforce, Salesforce Tableau, Schwab, Snowflake, Tamarac, UBS, Vanguard, Wealthbox, Wells Fargo, YCharts, Zendesk, Zeplyn, Zillow, and Zoho.
+Addepar, Adminis, ADP, Advyzon, ARCH, Allvue, Altruist, Amazon AWS, Archway Group, Bill, Black Diamond, Box, Canoe Intelligence, Citibank, DTCC, Databricks, DocuSign, Dynamo, Egnyte, Envestnet, FactSet, Fidelity, Foundation Power, Fundcount, Goldman Sachs, HubSpot, ICE Data Services, Intuit Mailchimp, LSEG Data & Analytics, LGT Wealth Management Australia, Masttro, Merrill Lynch, Microsoft Azure, Microsoft Dynamics 365, Microsoft OneDrive, Microsoft Power BI, Microsoft SharePoint, Monday.com, MoneyGuide, Morningstar, MySQL, Nirvana Solutions, Northern Trust, Oracle NetSuite, Orion, PCR Insights, PREQIN, Pershing, PitchBook, Plaid, Plain Sail, PostgreSQL, Practifi, Quickbooks, Quiltt, Ramp, Raymond James, Redtail, SS&C, Sage Intacct, Salesforce, Salesforce Tableau, Schwab, Snowflake, Tamarac, UBS, Vanguard, Wealthbox, Wells Fargo, YCharts, Zendesk, Zeplyn, Zillow, Zoom, and Zoho.
 
 Key categories include:
 - **Portfolio Management Systems:** Addepar, Black Diamond, Orion, Tamarac, Envestnet
@@ -2048,7 +2052,7 @@ Get immediate access to critical information, enabling faster responses to marke
 
 - **$100B+** Assets Under Reporting
 - **100+** Active Agentic AI Bots
-- **20+** Wealth Manager Clients
+- **25+** Wealth Manager Clients
 - **4** Locations
 
 ### Featured Media & Recognition
@@ -3697,7 +3701,7 @@ When appropriate, include:
 - Specific use cases relevant to their situation (investor vs. advisor vs. bank)
 - Our proven track record ($170B in assets, 300+ clients via Canopy heritage, $100B+ assets under reporting)
 - Real client testimonials and case studies from the website (RIAs in California, Chicago, New York, Texas, etc.)
-- Impact numbers (100+ active Agentic AI Bots, 20+ wealth manager clients, 4 locations)
+- Impact numbers (100+ active Agentic AI Bots, 25+ wealth manager clients, 4 locations)
 - Specific benefits with metrics (5x faster onboarding, save 15 hours per week, 200% YoY growth, save 2/3 on staff salaries)
 - Relevant downloadable resources based on their questions
 - Call-to-action to schedule a demo or book a call via Calendly

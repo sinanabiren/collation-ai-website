@@ -13,7 +13,7 @@ let logoDataCache: any = null;
 
 export default function ConnectionsPage() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedFilter, setSelectedFilter] = useState<"all" | "direct" | "partner">("all");
+  const [selectedFilter, setSelectedFilter] = useState<"all" | "direct" | "partner">("direct");
   const [selectedLetter, setSelectedLetter] = useState("all");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [isLoading, setIsLoading] = useState(true);
@@ -82,8 +82,8 @@ export default function ConnectionsPage() {
   }, [filteredIntegrations, displayCount]);
 
   const stats = {
-    total: 11273,
-    direct: 83,
+    total: 11278,
+    direct: 88,
     partner: 11190,
   };
 

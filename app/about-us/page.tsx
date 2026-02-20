@@ -21,7 +21,7 @@ const About = () => {
   const impactStats = [
     { value: 100, suffix: "B+", prefix: "$", label: "Assets Under Reporting" },
     { value: 100, suffix: "+", prefix: "", label: "Active Agentic AI Bots" },
-    { value: 20, suffix: "+", prefix: "", label: "Wealth Manager Clients" },
+    { value: 25, suffix: "+", prefix: "", label: "Wealth Manager Clients" },
     { value: 4, suffix: "", prefix: "", label: "Locations" }
   ];
 
@@ -155,7 +155,10 @@ const About = () => {
             className="space-y-4 sm:space-y-5 md:space-y-6 text-base sm:text-lg text-muted-foreground leading-relaxed"
           >
             <p>
-              Collation.AI is a Powerful WealthTech that is specialized in reducing operational costs, improving workflow efficiencies, and increasing client retention for wealth managers by Aggregating Financial Data via Bots from their "existing technology stack" and bring it into a "fully accessible" centralized Data Warehouse. Once the Data is in the Warehouse we setup Bot-driven workflows to check, reconcile, fix, enrich that data, so that infinite Analytics can be derived from it via flexible, scalable Reports.
+              Collation.AI is a Compliance-Friendly AI Infrastructure for Financial Services.
+            </p>
+            <p>
+              We create AI native infrastructure for wealth managers, enabling AI-powered analytics, reporting, workflows, and business efficiency.
             </p>
             <p>
               We originated from the WealthTech provider Canopy.Cloud, which reports on over USD 170 billion in assets and is supported by many Family Offices and UBS Bank.

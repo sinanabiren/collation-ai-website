@@ -351,7 +351,7 @@ const Security = () => {
                       <ul className="space-y-2 text-sm sm:text-base text-muted-foreground">
                         <li className="flex items-start gap-2">
                           <span className="text-primary mt-1 flex-shrink-0">•</span>
-                          <span>Vibe-coding applications store data in Supabase</span>
+                          <span>Vibe-coding applications store data in any Database Tech. (e.g. PostgreSQL)</span>
                         </li>
                         <li className="flex items-start gap-2">
                           <span className="text-primary mt-1 flex-shrink-0">•</span>
@@ -381,7 +381,7 @@ const Security = () => {
                         </li>
                         <li className="flex items-start gap-2">
                           <span className="text-primary mt-1 flex-shrink-0">•</span>
-                          <span>Isolated PostgreSQL servers with dummy data only</span>
+                          <span>Isolated Database servers (e.g. PostgreSQL) with dummy data only</span>
                         </li>
                         <li className="flex items-start gap-2">
                           <span className="text-primary mt-1 flex-shrink-0">•</span>

@@ -1,0 +1,3 @@
+name,category,logo_filename,status
+Example Vendor,direct,example-vendor.png,active
+Another Vendor,partner,another-vendor.png,pipeline
