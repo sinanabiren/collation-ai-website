@@ -19,7 +19,7 @@ const interTight = Inter_Tight({
 
 export const metadata: Metadata = {
   title: 'Collation.AI - AI-Powered Financial Data Aggregation & Automation for Wealth Management',
-  description: 'Cut costs and streamline operations with Collation.AI\'s AI-powered data aggregation platform. Trusted by 20+ wealth managers managing $100B+ in assets under reporting.',
+  description: 'Cut costs and streamline operations with Collation.AI\'s AI-powered data aggregation platform. Trusted by 25+ wealth managers managing $100B+ in assets under reporting.',
   keywords: [
     'AI data aggregation',
     'financial data automation',
@@ -100,6 +100,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${interTight.variable}`}>
       <head>
+        <link rel="alternate" type="application/rss+xml" title="Collation.AI Blog RSS Feed" href="/feed.xml" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
