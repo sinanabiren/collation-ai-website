@@ -128,7 +128,7 @@ export default function CompanyOverview() {
                     transition={{ duration: 0.3, delay: 0.4 }}
                     className="bg-indigo-600 text-white px-1.5 sm:px-2 py-0.5 rounded-full text-[8px] sm:text-[10px] font-semibold"
                   >
-                    Web
+                    Websites
                   </motion.div>
                   <motion.div
                     initial={{ scale: 0 }}
@@ -136,7 +136,7 @@ export default function CompanyOverview() {
                     transition={{ duration: 0.3, delay: 0.6 }}
                     className="bg-indigo-600 text-white px-1.5 sm:px-2 py-0.5 rounded-full text-[8px] sm:text-[10px] font-semibold"
                   >
-                    Data
+                    Datafeeds
                   </motion.div>
                 </div>
               </div>
@@ -149,7 +149,7 @@ export default function CompanyOverview() {
                 <p className="text-emerald-700 text-[10px] sm:text-xs">Auto reconciliation</p>
               </div>
               <div className="bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-amber-300 rounded-lg p-2 sm:p-3 shadow-md">
-                <p className="font-bold text-amber-900 text-[10px] sm:text-xs mb-1">Compliant coding</p>
+                <p className="font-bold text-amber-900 text-[10px] sm:text-xs mb-1">Compliant Vibe-Coding</p>
                 <p className="text-amber-700 text-[10px] sm:text-xs">Guard rails & controls</p>
               </div>
             </div>
