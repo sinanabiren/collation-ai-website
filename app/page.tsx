@@ -255,7 +255,7 @@ const Home = () => {
                     className="absolute text-center pointer-events-none"
                     style={{
                       top: '8.5%',
-                      left: '0%',
+                      left: '-1%',
                       fontSize: '0.95vw',
                       fontWeight: 400,
                       fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
@@ -277,7 +277,7 @@ const Home = () => {
                     className="absolute text-center pointer-events-none"
                     style={{
                       top: '14.5%',
-                      left: '15.25%',
+                      left: '13.25%',
                       fontSize: '0.95vw',
                       fontWeight: 400,
                       fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
@@ -298,8 +298,8 @@ const Home = () => {
                     transition={{ duration: 0.5 }}
                     className="absolute text-center pointer-events-none"
                     style={{
-                      top: '-3.75%',
-                      left: '31%',
+                      top: '-5.75%',
+                      left: '29%',
                       fontSize: '0.95vw',
                       fontWeight: 400,
                       fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
@@ -321,7 +321,7 @@ const Home = () => {
                     className="absolute text-center pointer-events-none"
                     style={{
                       top: '-0.5%',
-                      left: '59.25%',
+                      left: '57.25%',
                       fontSize: '0.95vw',
                       fontWeight: 400,
                       fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
@@ -342,8 +342,8 @@ const Home = () => {
                     transition={{ duration: 0.5 }}
                     className="absolute text-center pointer-events-none"
                     style={{
-                      top: '-3.75%',
-                      right: '4%',
+                      top: '-4.75%',
+                      right: '2%',
                       fontSize: '0.95vw',
                       fontWeight: 400,
                       fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
@@ -400,7 +400,7 @@ const Home = () => {
                   <img
                     src={logo.src}
                     alt={logo.alt}
-                    className="w-full h-8 sm:h-10 md:h-12 object-contain grayscale opacity-60 hover:opacity-80 transition-opacity duration-300"
+                    className="w-full h-8 sm:h-10 md:h-12 object-contain grayscale opacity-90 hover:opacity-100 transition-opacity duration-300 contrast-125 brightness-95"
                     loading="lazy"
                   />
                 </motion.div>

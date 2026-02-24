@@ -6,9 +6,17 @@ export type BlogPost = {
   image: string;
   excerpt: string;
 };
-// Cache bust: 2026-02-18 09:00
+// Cache bust: 2026-02-24 10:30
 
 export const blogPosts: BlogPost[] = [
+  {
+    title: "Building AI-Native Infrastructure: Empowering Wealth Managers with True Self-Service",
+    author: "Sinan Biren",
+    date: "Feb 24, 2026",
+    url: "/blog/ai-native-infrastructure-wealth-managers-self-service",
+    image: "/blog-images/ai-native-infrastructure.png",
+    excerpt: "Wealth management faces fragmented data from custodians, CRMs, PDFs, and APIs—driving manual reconciliation, delays, and lost insights. AI-native infrastructure, built ground-up for agentic AI, changes this by enabling true self-service with automated data ingestion, unified models, and autonomous scaling."
+  },
   {
     title: "The Dawn of Service-as-Software: AI's Bold Shift in Enterprise Tech",
     author: "Sinan Biren",

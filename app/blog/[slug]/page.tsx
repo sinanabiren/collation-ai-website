@@ -7,6 +7,48 @@ import { prisma } from '@/lib/prisma'
 
 // Blog post data - hardcoded posts
 const blogPosts: Record<string, any> = {
+  'ai-native-infrastructure-wealth-managers-self-service': {
+    title: "Building AI-Native Infrastructure: Empowering Wealth Managers with True Self-Service",
+    publishedDate: 'Feb 24, 2026',
+    author: 'Sinan Biren',
+    content: `
+      <p>Wealth management faces fragmented data from custodians, CRMs, PDFs, and APIs—driving manual reconciliation, delays, and lost insights. AI-native infrastructure, built ground-up for agentic AI, changes this.</p>
+
+      <h2>Deployable with Full Control</h2>
+      <p>Deployable in your Cloud account (overlay or standalone) with full admin access, it enables self-service:</p>
+
+      <ul>
+        <li><strong>Ingest Anything:</strong> Agentic AI bots extract from portfolios, banks, SFTPs, browsers—no ETL.</li>
+        <li><strong>Unified Data:</strong> Automated cleaning and single model across operations.</li>
+        <li><strong>Safe Customization:</strong> Guardrails for coding (role-based access, PII blocks, logs) support compliant workflows.</li>
+        <li><strong>Autonomous Scaling:</strong> Host data internally, customize bots, cut costs via self-service analytics.</li>
+      </ul>
+
+      <p>Unlike legacy systems needing constant support, these enable proactive bots that learn and report.</p>
+
+      <h2>Industry Outlook</h2>
+      <p>By 2035, agentic AI will automate rebalancing and risk, per McKinsey—AI-native firms lead.</p>
+
+      <p>What's your top data challenge? Join the conversation!</p>
+
+      <h2>References</h2>
+      <ol>
+        <li><a href="https://www.linkedin.com/posts/royvillanueva96_wealth-management-has-been-running-on-20th-century-activity7361290662052356096-kC3i" target="_blank" rel="noopener noreferrer">Roy Villanueva - Wealth Management on 20th Century Infrastructure</a></li>
+        <li><a href="https://wealthai.tech" target="_blank" rel="noopener noreferrer">WealthAI.tech</a></li>
+        <li><a href="https://www.mckinsey.com/industries/financial-services/our-insights/us-wealth-management-in-2035-a-transformative-decade-begins" target="_blank" rel="noopener noreferrer">McKinsey - US Wealth Management in 2035: A Transformative Decade Begins</a></li>
+        <li><a href="https://www.intellectai.com/augmented-not-replaced-ai-native-future-wealth-management/" target="_blank" rel="noopener noreferrer">IntellectAI - Augmented, Not Replaced: AI-Native Future of Wealth Management</a></li>
+        <li><a href="https://www.twig.so/blog/ai-future-customer-self-service-fintech" target="_blank" rel="noopener noreferrer">Twig - AI's Future in Customer Self-Service for Fintech</a></li>
+        <li><a href="https://brimlabs.ai/blog/from-smart-algorithms-to-autonomous-finance-how-agentic-ai-is-redefining-wealth-management/" target="_blank" rel="noopener noreferrer">Brim Labs - From Smart Algorithms to Autonomous Finance: How Agentic AI Is Redefining Wealth Management</a></li>
+      </ol>
+
+      <div style="margin-top: 2em; padding: 1.5em; background-color: #f3f4f6; border-radius: 8px;">
+        <p style="margin: 0;"><strong>Download the full article:</strong> <a href="/downloads/ai-native-infrastructure-wealth-managers.pdf" download style="color: #2563eb; text-decoration: underline;">Building AI-Native Infrastructure (PDF)</a></p>
+      </div>
+    `,
+    date: '2026-02-24',
+    category: 'AI Infrastructure',
+    readTime: '3 min read',
+  },
   'service-as-software-ai-enterprise-tech': {
     title: "The Dawn of Service-as-Software: AI's Bold Shift in Enterprise Tech",
     publishedDate: 'Feb 18, 2026',
@@ -897,7 +939,9 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
   }
 
   // Get the hero image from blogPosts data
-  const heroImage = slug === 'service-as-software-ai-enterprise-tech'
+  const heroImage = slug === 'ai-native-infrastructure-wealth-managers-self-service'
+    ? '/blog-images/ai-native-infrastructure.png'
+    : slug === 'service-as-software-ai-enterprise-tech'
     ? '/blog-images/service-as-software-ai-enterprise.png'
     : slug === 'ai-agents-gossiping-security-risks'
     ? '/blog-images/ai-agents-security-risks.png'
